@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Circular Engineering Alumni Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Verdana', sans-serif;
+            background: linear-gradient(135deg, #001C3D 0%, #0a2847 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 24px;
+        }
+
+        .header {
+            margin-bottom: 40px;
+            padding: 40px 0;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 3.2em;
+            font-weight: 300;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #ffffff, #00A2DB);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.2em;
+            font-weight: 300;
+        }
+
+        .stats-overview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 32px 24px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #E84E10, #00A2DB, #F39425);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 40px rgba(0, 162, 219, 0.2);
+        }
+
+        .stat-number {
+            font-size: 2.8em;
+            font-weight: 600;
+            background: linear-gradient(135deg, #00A2DB, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1em;
+            font-weight: 400;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 32px;
+            margin-bottom: 40px;
+        }
+
+        .chart-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 32px;
+            transition: all 0.3s ease;
+        }
+
+        .chart-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .chart-title {
+            font-size: 1.5em;
+            font-weight: 600;
+            margin-bottom: 24px;
+            color: #ffffff;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 350px;
+            margin-bottom: 24px;
+        }
+
+        .chart-breakdown {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .breakdown-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            font-size: 0.9em;
+        }
+
+        .color-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .breakdown-text {
+            color: #ffffff;
+            font-weight: 500;
+        }
+
+        .breakdown-value {
+            color: rgba(255, 255, 255, 0.7);
+            margin-left: auto;
+            font-weight: 600;
+        }
+
+        .tab-container {
+            margin-bottom: 32px;
+        }
+
+        .tab-buttons {
+            display: flex;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 6px;
+            margin-bottom: 24px;
+            overflow-x: auto;
+        }
+
+        .tab-button {
+            padding: 12px 24px;
+            background: transparent;
+            border: none;
+            color: rgba(255, 255, 255, 0.7);
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            font-weight: 500;
+        }
+
+        .tab-button.active {
+            background: #00A2DB;
+            color: white;
+            box-shadow: 0 4px 12px rgba(0, 162, 219, 0.3);
+        }
+
+        .tab-button:hover:not(.active) {
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+        }
+
+        .details-panel {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 24px;
+        }
+
+        .details-title {
+            font-size: 1.3em;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #00A2DB;
+        }
+
+        .university-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+        }
+
+        .university-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            padding: 16px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border-left: 4px solid transparent;
+        }
+
+        .university-card:hover {
+            background: rgba(0, 162, 219, 0.1);
+            border-left-color: #00A2DB;
+            transform: translateX(4px);
+        }
+
+        .university-name {
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+
+        .university-students {
+            color: #00A2DB;
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+
+        .university-programs {
+            margin-top: 8px;
+        }
+
+        .program-tag {
+            display: inline-block;
+            background: rgba(232, 78, 16, 0.2);
+            color: #E84E10;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 0.75em;
+            margin-right: 6px;
+            margin-bottom: 4px;
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        .concentration-selector {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .concentration-btn {
+            padding: 12px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            color: rgba(255, 255, 255, 0.8);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .concentration-btn.active {
+            background: rgba(0, 162, 219, 0.2);
+            border-color: #00A2DB;
+            color: #00A2DB;
+        }
+
+        .concentration-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+        }
+
+        @media (max-width: 1024px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .stats-overview {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .header h1 {
+                font-size: 2.5em;
+            }
+
+            .tab-buttons {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>BSc Circular Engineering Alumni</h1>
+            <p>Interactive Dashboard • Connecting with the Future • 2023-2025</p>
+        </div>
+
+        <div class="stats-overview">
+            <div class="stat-card">
+                <div class="stat-number">45</div>
+                <div class="stat-label">Total Alumni</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">15</div>
+                <div class="stat-label">Countries of Origin</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">9</div>
+                <div class="stat-label">Master's Countries</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Continuing Education</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">37.8%</div>
+                <div class="stat-label">Chemical Engineering</div>
+            </div>
+        </div>
+
+        <div class="dashboard-grid">
+            <!-- CE Concentrations Chart -->
+            <div class="chart-card">
+                <h3 class="chart-title">CE Concentrations Distribution</h3>
+                <div class="chart-container">
+                    <canvas id="concentrationsChart"></canvas>
+                </div>
+                <div class="chart-breakdown">
+                    <div class="breakdown-item">
+                        <div class="color-dot" style="background-color: #E84E10;"></div>
+                        <span class="breakdown-text">Circular Chemical Engineering</span>
+                        <span class="breakdown-value">37.8%</span>
+                    </div>
+                    <div class="breakdown-item">
+                        <div class="color-dot" style="background-color: #001C3D;"></div>
+                        <span class="breakdown-text">Sustainable Biotechnology</span>
+                        <span class="breakdown-value">35.6%</span>
+                    </div>
+                    <div class="breakdown-item">
+                        <div class="color-dot" style="background-color: #F39425;"></div>
+                        <span class="breakdown-text">Engineering Physics</span>
+                        <span class="breakdown-value">26.7%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Master's Destinations Chart -->
+            <div class="chart-card">
+                <h3 class="chart-title">Master's Destination Countries</h3>
+                <div class="chart-container">
+                    <canvas id="destinationsChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Academic Pathways Chart -->
+            <div class="chart-card">
+                <h3 class="chart-title">Academic Pathways</h3>
+                <div class="chart-container">
+                    <canvas id="pathwaysChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Top Universities Chart -->
+            <div class="chart-card">
+                <h3 class="chart-title">Top Master's Universities</h3>
+                <div class="chart-container">
+                    <canvas id="universitiesChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Concentration Deep Dive -->
+        <div class="tab-container">
+            <div class="tab-buttons">
+                <button class="tab-button active" onclick="showConcentration('chemical')">Circular Chemical Engineering</button>
+                <button class="tab-button" onclick="showConcentration('bio')">Sustainable Biotechnology</button>
+                <button class="tab-button" onclick="showConcentration('physics')">Engineering Physics</button>
+            </div>
+            
+            <div id="concentrationContent">
+                <div class="details-panel">
+                    <div class="details-title">Circular Chemical Engineering • 17 Students • 37.8%</div>
+                    <div class="university-grid" id="universityGrid">
+                        <!-- Universities will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Netherlands Focus -->
+        <div class="chart-card full-width">
+            <h3 class="chart-title">CE Alumni in the Netherlands • 30% of Total</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center;">
+                <div class="chart-container" style="height: 300px;">
+                    <canvas id="netherlandsChart"></canvas>
+                </div>
+                <div>
+                    <div class="breakdown-item" style="margin-bottom: 12px;">
+                        <div class="color-dot" style="background-color: #E84E10;"></div>
+                        <span class="breakdown-text">Maastricht</span>
+                        <span class="breakdown-value">23.3%</span>
+                    </div>
+                    <div class="breakdown-item" style="margin-bottom: 12px;">
+                        <div class="color-dot" style="background-color: #00A2DB;"></div>
+                        <span class="breakdown-text">Wageningen</span>
+                        <span class="breakdown-value">23.1%</span>
+                    </div>
+                    <div class="breakdown-item" style="margin-bottom: 12px;">
+                        <div class="color-dot" style="background-color: #F39425;"></div>
+                        <span class="breakdown-text">Eindhoven</span>
+                        <span class="breakdown-value">15.4%</span>
+                    </div>
+                    <div class="breakdown-item" style="margin-bottom: 12px;">
+                        <div class="color-dot" style="background-color: #001C3D;"></div>
+                        <span class="breakdown-text">Delft</span>
+                        <span class="breakdown-value">15.1%</span>
+                    </div>
+                    <div class="breakdown-item" style="margin-bottom: 12px;">
+                        <div class="color-dot" style="background-color: #AE0B12;"></div>
+                        <span class="breakdown-text">Other Cities</span>
+                        <span class="breakdown-value">23.1%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Data based on your official PDF
+        const concentrationData = {
+            chemical: {
+                title: 'Circular Chemical Engineering • 17 Students • 37.8%',
+                universities: [
+                    { name: 'KTH Royal Institute of Technology', country: 'Sweden', students: 3, programs: ['Chemical Engineering for Energy', 'Environmental Sustainability'] },
+                    { name: 'TU Delft', country: 'Netherlands', students: 2, programs: ['Sustainable Energy Technology'] },
+                    { name: 'Eindhoven University', country: 'Netherlands', students: 2, programs: ['Chemical Engineering', 'Process Technology'] },
+                    { name: 'Technical University of Denmark', country: 'Denmark', students: 1, programs: ['Environmental Engineering Technology'] },
+                    { name: 'Universidad Politécnica Madrid', country: 'Spain', students: 1, programs: ['Chemical Engineering'] },
+                    { name: 'University of Seoul', country: 'South Korea', students: 1, programs: ['Environmental Engineering'] },
+                    { name: 'NOVA School Lisbon', country: 'Portugal', students: 1, programs: ['Management (Sustainability)'] }
+                ]
+            },
+            bio: {
+                title: 'Sustainable Biotechnology • 16 Students • 35.6%',
+                universities: [
+                    { name: 'Wageningen University', country: 'Netherlands', students: 4, programs: ['Biotechnology', 'Urban Management', 'Farming Systems'] },
+                    { name: 'Maastricht University', country: 'Netherlands', students: 2, programs: ['Biobased Materials'] },
+                    { name: 'Instituto Superior Técnico', country: 'Portugal', students: 1, programs: ['Biotechnology'] },
+                    { name: 'Université Libre de Bruxelles', country: 'Belgium', students: 1, programs: ['Biochemistry'] },
+                    { name: 'IAAC Barcelona', country: 'Spain', students: 1, programs: ['Ecological Buildings'] },
+                    { name: 'ENO Conexus Valencia', country: 'Spain', students: 1, programs: ['Marine Biology'] }
+                ]
+            },
+            physics: {
+                title: 'Engineering Physics for Sustainable Manufacturing • 12 Students • 26.7%',
+                universities: [
+                    { name: 'TU Delft', country: 'Netherlands', students: 2, programs: ['Mechanical Engineering'] },
+                    { name: 'Technical University Munich', country: 'Germany', students: 1, programs: ['Automotive Engineering'] },
+                    { name: 'RWTH Aachen', country: 'Germany', students: 1, programs: ['Automation Engineering'] },
+                    { name: 'University of Liège', country: 'Belgium', students: 1, programs: ['Engineering Physics'] },
+                    { name: 'NOVA School Lisbon', country: 'Portugal', students: 1, programs: ['Business Analytics'] },
+                    { name: 'University of Groningen', country: 'Netherlands', students: 1, programs: ['Mechanical Engineering'] }
+                ]
+            }
+        };
+
+        let charts = {};
+
+        function initializeCharts() {
+            if (typeof Chart === 'undefined') {
+                console.error('Chart.js not loaded');
+                return;
+            }
+
+            const chartOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                }
+            };
+
+            // CE Concentrations Chart
+            charts.concentrations = new Chart(document.getElementById('concentrationsChart'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['Circular Chemical Engineering', 'Sustainable Biotechnology', 'Engineering Physics'],
+                    datasets: [{
+                        data: [17, 16, 12],
+                        backgroundColor: ['#E84E10', '#001C3D', '#F39425'],
+                        borderWidth: 0,
+                        cutout: '65%'
+                    }]
+                },
+                options: chartOptions
+            });
+
+            // Master's Destinations Chart
+            charts.destinations = new Chart(document.getElementById('destinationsChart'), {
+                type: 'bar',
+                data: {
+                    labels: ['Netherlands', 'Germany', 'Belgium', 'Sweden', 'Portugal', 'Spain', 'Denmark', 'S.Korea'],
+                    datasets: [{
+                        data: [30, 8, 8, 8, 6, 5, 3, 3],
+                        backgroundColor: ['#E84E10', '#00A2DB', '#F39425', '#001C3D', '#AE0B12', '#0a2847', '#ff6b9d', '#45b7d1'],
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    ...chartOptions,
+                    scales: {
+                        y: { 
+                            beginAtZero: true,
+                            grid: { color: 'rgba(255,255,255,0.1)' },
+                            ticks: { color: '#ffffff' }
+                        },
+                        x: { 
+                            grid: { display: false },
+                            ticks: { color: '#ffffff' }
+                        }
+                    }
+                }
+            });
+
+            // Academic Pathways Chart
+            charts.pathways = new Chart(document.getElementById('pathwaysChart'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['Chemical & Environmental', 'Work/Gap Year', 'Life Sciences', 'Physical Sciences', 'Business'],
+                    datasets: [{
+                        data: [29.7, 24.3, 18.9, 18.9, 5.4],
+                        backgroundColor: ['#E84E10', '#001C3D', '#00A2DB', '#F39425', '#AE0B12'],
+                        borderWidth: 0,
+                        cutout: '60%'
+                    }]
+                },
+                options: chartOptions
+            });
+
+            // Top Universities Chart
+            charts.universities = new Chart(document.getElementById('universitiesChart'), {
+                type: 'bar',
+                data: {
+                    labels: ['Wageningen', 'KTH Stockholm', 'Eindhoven', 'Maastricht', 'TU Delft'],
+                    datasets: [{
+                        data: [10.8, 8.1, 5.4, 5.4, 5.4],
+                        backgroundColor: ['#00A2DB', '#E84E10', '#F39425', '#001C3D', '#AE0B12'],
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    ...chartOptions,
+                    scales: {
+                        y: { 
+                            beginAtZero: true,
+                            max: 12,
+                            grid: { color: 'rgba(255,255,255,0.1)' },
+                            ticks: { color: '#ffffff', callback: value => value + '%' }
+                        },
+                        x: { 
+                            grid: { display: false },
+                            ticks: { color: '#ffffff' }
+                        }
+                    }
+                }
+            });
+
+            // Netherlands Chart
+            charts.netherlands = new Chart(document.getElementById('netherlandsChart'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['Maastricht', 'Wageningen', 'Eindhoven', 'Delft', 'Other Cities'],
+                    datasets: [{
+                        data: [23.3, 23.1, 15.4, 15.1, 23.1],
+                        backgroundColor: ['#E84E10', '#00A2DB', '#F39425', '#001C3D', '#AE0B12'],
+                        borderWidth: 0,
+                        cutout: '60%'
+                    }]
+                },
+                options: chartOptions
+            });
+        }
+
+        function showConcentration(type) {
+            // Update active tab
+            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const data = concentrationData[type];
+            const content = document.getElementById('concentrationContent');
+            
+            content.innerHTML = `
+                <div class="details-panel">
+                    <div class="details-title">${data.title}</div>
+                    <div class="university-grid">
+                        ${data.universities.map(uni => `
+                            <div class="university-card">
+                                <div class="university-name">${uni.name}</div>
+                                <div class="university-students">${uni.students} student${uni.students > 1 ? 's' : ''} • ${uni.country}</div>
+                                <div class="university-programs">
+                                    ${uni.programs.map(program => `<span class="program-tag">${program}</span>`).join('')}
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof Chart === 'undefined') {
+                const script = document.createElement('script');
+                script.src = 'https://unpkg.com/chart.js@4.4.0/dist/chart.min.js';
+                script.onload = () => {
+                    setTimeout(initializeCharts, 100);
+                    showConcentration('chemical');
+                };
+                document.head.appendChild(script);
+            } else {
+                initializeCharts();
+                showConcentration('chemical');
+            }
+        });
+    </script>
+</body>
+</html>
