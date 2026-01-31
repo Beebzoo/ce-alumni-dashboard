@@ -1809,47 +1809,61 @@
            COUNTRY MODAL
         ============================================ */
         .country-modal-header {
-            padding: 30px;
-            background: linear-gradient(135deg, #1a365d, #2563eb);
+            padding: 40px 30px;
+            background-size: cover;
+            background-position: center;
             color: white;
             border-radius: var(--radius-xl) var(--radius-xl) 0 0;
             position: relative;
             text-align: center;
+            min-height: 140px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+        }
+        
+        .country-modal-header::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.1) 100%);
+            border-radius: var(--radius-xl) var(--radius-xl) 0 0;
         }
         
         .country-modal-flag {
-            width: 120px;
-            height: 80px;
-            object-fit: cover;
-            border-radius: 8px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-            margin-bottom: 16px;
+            display: none;
         }
         
         .country-modal-name {
-            font-size: 28px;
+            font-size: 32px;
             font-weight: 700;
-            margin-bottom: 4px;
+            margin-bottom: 0;
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.4);
         }
         
         .country-modal-close {
             position: absolute;
-            top: 20px;
-            right: 20px;
+            top: 16px;
+            right: 16px;
             width: 36px;
             height: 36px;
             border: none;
-            background: rgba(255,255,255,0.15);
+            background: rgba(0,0,0,0.3);
+            backdrop-filter: blur(4px);
             border-radius: 50%;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all 0.2s ease;
+            z-index: 2;
         }
         
         .country-modal-close:hover {
-            background: rgba(255,255,255,0.25);
+            background: rgba(0,0,0,0.5);
         }
         
         .country-modal-close i {
@@ -3942,7 +3956,9 @@
         function openCountryModal(countryCode) {
             const country = countryData[countryCode];
             if (!country) return;
-            document.getElementById('countryModalFlag').src = 'https://flagcdn.com/w160/' + countryCode + '.png';
+            // Set flag as background on header (using higher res flag)
+            const header = document.querySelector('#countryModal .country-modal-header');
+            header.style.backgroundImage = 'url(https://flagcdn.com/w640/' + countryCode + '.png)';
             document.getElementById('countryModalName').textContent = country.name;
             document.getElementById('countryModalCapital').textContent = country.capital;
             document.getElementById('countryModalPopulation').textContent = country.population;
