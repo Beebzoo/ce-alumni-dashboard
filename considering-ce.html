@@ -1313,9 +1313,457 @@
         .footer-bottom a:hover { color: white; }
         
         /* ============================================
+           CE JOURNEY SECTION
+        ============================================ */
+        .journey-section {
+            background: linear-gradient(180deg, white 0%, var(--gray-50) 100%);
+            padding: 100px 50px;
+            overflow: hidden;
+        }
+        
+        .journey-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .journey-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .journey-header h2 {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--um-dark-blue);
+            margin-bottom: 12px;
+        }
+        
+        .journey-header p {
+            font-size: 16px;
+            color: var(--gray-500);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Main journey visualization */
+        .journey-visual {
+            position: relative;
+            padding: 40px 0;
+        }
+        
+        /* Connection line running through */
+        .journey-line {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, 
+                var(--gray-200) 0%, 
+                var(--ce-green-primary) 20%, 
+                var(--ce-green-primary) 80%, 
+                var(--gray-200) 100%);
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+        
+        .journey-line::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 20px;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(16, 185, 129, 0.15) 20%, 
+                rgba(16, 185, 129, 0.15) 80%, 
+                transparent 100%);
+            transform: translateY(-50%);
+            filter: blur(10px);
+        }
+        
+        /* Year stages container */
+        .journey-stages {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1.5fr 1fr;
+            gap: 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Individual year card */
+        .journey-stage {
+            background: white;
+            border-radius: var(--radius-xl);
+            padding: 30px 24px;
+            box-shadow: var(--shadow-md);
+            border: 2px solid var(--gray-100);
+            transition: all var(--transition-smooth);
+            position: relative;
+        }
+        
+        .journey-stage:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--ce-green-primary);
+        }
+        
+        .journey-stage::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: 20px;
+            right: 20px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--ce-green-primary), var(--ce-teal));
+            border-radius: 4px 4px 0 0;
+        }
+        
+        .stage-year {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, var(--ce-green-primary), var(--ce-green-dark));
+            color: white;
+            padding: 6px 14px;
+            border-radius: var(--radius-full);
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        
+        .stage-year i {
+            width: 14px;
+            height: 14px;
+        }
+        
+        .stage-title {
+            font-family: var(--font-heading);
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--um-dark-blue);
+            margin-bottom: 8px;
+        }
+        
+        .stage-subtitle {
+            font-size: 13px;
+            color: var(--ce-green-dark);
+            font-weight: 600;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .stage-content {
+            font-size: 14px;
+            color: var(--gray-600);
+            line-height: 1.6;
+        }
+        
+        .stage-stats {
+            display: flex;
+            gap: 16px;
+            margin-top: 20px;
+            padding-top: 16px;
+            border-top: 1px solid var(--gray-100);
+        }
+        
+        .stage-stat {
+            text-align: center;
+            flex: 1;
+        }
+        
+        .stage-stat-value {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--ce-green-primary);
+        }
+        
+        .stage-stat-label {
+            font-size: 11px;
+            color: var(--gray-500);
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+        
+        /* Year 3 special - concentration branches */
+        .journey-stage.year-3 {
+            background: linear-gradient(135deg, var(--um-dark-blue) 0%, #002b5c 100%);
+            border-color: transparent;
+            color: white;
+        }
+        
+        .journey-stage.year-3::before {
+            background: linear-gradient(90deg, var(--ce-green-light), var(--ce-teal));
+        }
+        
+        .journey-stage.year-3 .stage-title {
+            color: white;
+        }
+        
+        .journey-stage.year-3 .stage-subtitle {
+            color: var(--ce-green-light);
+        }
+        
+        .journey-stage.year-3 .stage-content {
+            color: rgba(255,255,255,0.8);
+        }
+        
+        .concentration-branches {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 16px;
+        }
+        
+        .branch {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: var(--radius-md);
+            padding: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all var(--transition-fast);
+        }
+        
+        .branch:hover {
+            background: rgba(255,255,255,0.15);
+            border-color: var(--ce-green-light);
+        }
+        
+        .branch-icon {
+            width: 32px;
+            height: 32px;
+            background: rgba(16, 185, 129, 0.3);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .branch-icon i {
+            width: 16px;
+            height: 16px;
+            color: var(--ce-green-light);
+        }
+        
+        .branch-name {
+            font-size: 12px;
+            font-weight: 600;
+            color: white;
+            line-height: 1.3;
+        }
+        
+        /* Future stage */
+        .journey-stage.future {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(20, 184, 166, 0.1));
+            border: 2px dashed var(--ce-green-primary);
+        }
+        
+        .journey-stage.future::before {
+            display: none;
+        }
+        
+        .future-paths {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 16px;
+        }
+        
+        .future-path {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 14px;
+            background: white;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--gray-200);
+            transition: all var(--transition-fast);
+        }
+        
+        .future-path:hover {
+            border-color: var(--ce-green-primary);
+            transform: translateX(4px);
+        }
+        
+        .future-path i {
+            width: 18px;
+            height: 18px;
+            color: var(--ce-green-primary);
+        }
+        
+        .future-path span {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--um-dark-blue);
+        }
+        
+        .future-path .path-percent {
+            margin-left: auto;
+            font-size: 12px;
+            color: var(--gray-500);
+            font-weight: 500;
+        }
+        
+        /* ============================================
+           7-7-3 MODEL SECTION
+        ============================================ */
+        .semester-model {
+            margin-top: 80px;
+            padding-top: 60px;
+            border-top: 1px solid var(--gray-200);
+        }
+        
+        .semester-model-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .semester-model-header h3 {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--um-dark-blue);
+            margin-bottom: 8px;
+        }
+        
+        .semester-model-header p {
+            font-size: 14px;
+            color: var(--gray-500);
+        }
+        
+        .semester-visual {
+            display: flex;
+            gap: 12px;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .semester-visual::before {
+            content: '× 2 semesters = 1 year';
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 13px;
+            color: var(--gray-500);
+            font-weight: 500;
+        }
+        
+        .period-block {
+            flex: 1;
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            box-shadow: var(--shadow-sm);
+            border: 2px solid var(--gray-100);
+            text-align: center;
+            transition: all var(--transition-smooth);
+            position: relative;
+        }
+        
+        .period-block:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--ce-green-primary);
+        }
+        
+        .period-block.period-1,
+        .period-block.period-2 {
+            flex: 2.3;
+        }
+        
+        .period-block.period-3 {
+            flex: 1;
+            background: linear-gradient(135deg, var(--ce-green-primary), var(--ce-green-dark));
+            border-color: transparent;
+            color: white;
+        }
+        
+        .period-weeks {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--gray-100);
+            padding: 6px 12px;
+            border-radius: var(--radius-full);
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--um-dark-blue);
+            margin-bottom: 12px;
+        }
+        
+        .period-block.period-3 .period-weeks {
+            background: rgba(255,255,255,0.2);
+            color: white;
+        }
+        
+        .period-title {
+            font-family: var(--font-heading);
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--um-dark-blue);
+            margin-bottom: 12px;
+        }
+        
+        .period-block.period-3 .period-title {
+            color: white;
+        }
+        
+        .period-content {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .period-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 8px 12px;
+            background: var(--gray-50);
+            border-radius: var(--radius-sm);
+            font-size: 13px;
+            color: var(--gray-600);
+        }
+        
+        .period-block.period-3 .period-item {
+            background: rgba(255,255,255,0.15);
+            color: rgba(255,255,255,0.9);
+        }
+        
+        .period-item i {
+            width: 16px;
+            height: 16px;
+            color: var(--ce-green-primary);
+        }
+        
+        .period-block.period-3 .period-item i {
+            color: white;
+        }
+        
+        .period-connector {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray-300);
+            font-size: 20px;
+        }
+        
+        /* ============================================
            RESPONSIVE
         ============================================ */
         @media (max-width: 1024px) {
+            .journey-stages { grid-template-columns: 1fr 1fr; gap: 20px; }
+            .journey-line { display: none; }
+            .semester-visual { flex-wrap: wrap; }
+            .semester-visual::before { bottom: -40px; }
             .hero-content { grid-template-columns: 1fr; text-align: center; }
             .hero-stats-card { max-width: 400px; margin: 0 auto; }
             .concentration-cards { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
@@ -1334,6 +1782,12 @@
             .cta-section { padding: 40px 20px; }
             .footer-content { grid-template-columns: 1fr; gap: 40px; }
             .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+            .journey-section { padding: 60px 20px; }
+            .journey-stages { grid-template-columns: 1fr; }
+            .concentration-branches { grid-template-columns: 1fr; }
+            .semester-visual { flex-direction: column; }
+            .period-block.period-1, .period-block.period-2, .period-block.period-3 { flex: none; }
+            .semester-visual::before { position: static; transform: none; margin-top: 20px; text-align: center; }
         }
     </style>
 </head>
@@ -1410,7 +1864,7 @@
                     For Prospective Students
                 </div>
                 <h1>Where Will <span>CE</span> Take You?</h1>
-                <p>Circular Engineering graduates are building sustainable futures at top universities and companies worldwide. See where they've gone — and where you could go.</p>
+                <p>Circular Engineering graduates are building sustainable futures at top universities and companies worldwide. See where they've gone â€” and where you could go.</p>
                 <a href="https://www.maastrichtuniversity.nl/education/bachelor/circular-engineering" target="_blank" class="hero-cta">
                     <i data-lucide="external-link"></i>
                     Explore the Programme
@@ -1525,13 +1979,207 @@
         </div>
     </section>
     
+    <!-- CE Journey Section -->
+    <section class="journey-section">
+        <div class="journey-container">
+            <div class="journey-header">
+                <h2>Your 3-Year Journey</h2>
+                <p>From foundational STEM to specialized expertise — see how CE transforms you into a circular engineer</p>
+            </div>
+            
+            <div class="journey-visual">
+                <div class="journey-line"></div>
+                
+                <div class="journey-stages">
+                    <!-- Year 1 -->
+                    <div class="journey-stage">
+                        <div class="stage-year">
+                            <i data-lucide="layers"></i>
+                            Year 1
+                        </div>
+                        <h3 class="stage-title">Foundation</h3>
+                        <p class="stage-subtitle">Build Your Core</p>
+                        <p class="stage-content">
+                            Master the fundamentals: Calculus, Physics, Chemistry, Biotechnology, and Thermodynamics. Learn to think like an engineer and assess sustainability through Life Cycle Assessment.
+                        </p>
+                        <div class="stage-stats">
+                            <div class="stage-stat">
+                                <div class="stage-stat-value">8</div>
+                                <div class="stage-stat-label">Core Courses</div>
+                            </div>
+                            <div class="stage-stat">
+                                <div class="stage-stat-value">4</div>
+                                <div class="stage-stat-label">Skills Labs</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Year 2 -->
+                    <div class="journey-stage">
+                        <div class="stage-year">
+                            <i data-lucide="compass"></i>
+                            Year 2
+                        </div>
+                        <h3 class="stage-title">Exploration</h3>
+                        <p class="stage-subtitle">Find Your Path</p>
+                        <p class="stage-content">
+                            Choose from electives like Data Science, Biochemistry, Energy Systems, or Sustainable Agronomy. Shape your profile with academic advisor guidance.
+                        </p>
+                        <div class="stage-stats">
+                            <div class="stage-stat">
+                                <div class="stage-stat-value">20+</div>
+                                <div class="stage-stat-label">Electives</div>
+                            </div>
+                            <div class="stage-stat">
+                                <div class="stage-stat-value">3</div>
+                                <div class="stage-stat-label">Projects</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Year 3 -->
+                    <div class="journey-stage year-3">
+                        <div class="stage-year">
+                            <i data-lucide="git-branch"></i>
+                            Year 3
+                        </div>
+                        <h3 class="stage-title">Specialization</h3>
+                        <p class="stage-subtitle">Master Your Domain</p>
+                        <p class="stage-content">
+                            Deep-dive into one of four concentrations. Work with Brightlands industry partners. Complete your Bachelor Thesis (25 ECTS).
+                        </p>
+                        <div class="concentration-branches">
+                            <div class="branch">
+                                <div class="branch-icon"><i data-lucide="flask-conical"></i></div>
+                                <span class="branch-name">Circular Chemical Engineering</span>
+                            </div>
+                            <div class="branch">
+                                <div class="branch-icon"><i data-lucide="dna"></i></div>
+                                <span class="branch-name">Sustainable Biotechnology</span>
+                            </div>
+                            <div class="branch">
+                                <div class="branch-icon"><i data-lucide="cpu"></i></div>
+                                <span class="branch-name">Engineering Physics</span>
+                            </div>
+                            <div class="branch">
+                                <div class="branch-icon"><i data-lucide="cog"></i></div>
+                                <span class="branch-name">Mechanical Engineering</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Future -->
+                    <div class="journey-stage future">
+                        <div class="stage-year">
+                            <i data-lucide="rocket"></i>
+                            Future
+                        </div>
+                        <h3 class="stage-title">Your Career</h3>
+                        <p class="stage-subtitle">Make an Impact</p>
+                        <p class="stage-content">
+                            Where CE graduates go next:
+                        </p>
+                        <div class="future-paths">
+                            <div class="future-path">
+                                <i data-lucide="graduation-cap"></i>
+                                <span>Master's Degree</span>
+                                <span class="path-percent">67%</span>
+                            </div>
+                            <div class="future-path">
+                                <i data-lucide="briefcase"></i>
+                                <span>Industry Career</span>
+                                <span class="path-percent">33%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 7-7-3 Semester Model -->
+            <div class="semester-model">
+                <div class="semester-model-header">
+                    <h3>How Each Semester Works</h3>
+                    <p>Maastricht's unique 7-7-3 model: learn, apply, repeat</p>
+                </div>
+                
+                <div class="semester-visual">
+                    <div class="period-block period-1">
+                        <div class="period-weeks">
+                            <i data-lucide="calendar" style="width: 14px; height: 14px;"></i>
+                            7 weeks
+                        </div>
+                        <h4 class="period-title">Period 1</h4>
+                        <div class="period-content">
+                            <div class="period-item">
+                                <i data-lucide="book-open"></i>
+                                2 Courses
+                            </div>
+                            <div class="period-item">
+                                <i data-lucide="wrench"></i>
+                                1 Skills Lab
+                            </div>
+                            <div class="period-item">
+                                <i data-lucide="file-check"></i>
+                                Exam Week
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="period-connector">→</div>
+                    
+                    <div class="period-block period-2">
+                        <div class="period-weeks">
+                            <i data-lucide="calendar" style="width: 14px; height: 14px;"></i>
+                            7 weeks
+                        </div>
+                        <h4 class="period-title">Period 2</h4>
+                        <div class="period-content">
+                            <div class="period-item">
+                                <i data-lucide="book-open"></i>
+                                2 Courses
+                            </div>
+                            <div class="period-item">
+                                <i data-lucide="wrench"></i>
+                                1 Skills Lab
+                            </div>
+                            <div class="period-item">
+                                <i data-lucide="file-check"></i>
+                                Exam Week
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="period-connector">→</div>
+                    
+                    <div class="period-block period-3">
+                        <div class="period-weeks">
+                            <i data-lucide="calendar" style="width: 14px; height: 14px;"></i>
+                            3 weeks
+                        </div>
+                        <h4 class="period-title">Period 3</h4>
+                        <div class="period-content">
+                            <div class="period-item">
+                                <i data-lucide="lightbulb"></i>
+                                Apply Everything
+                            </div>
+                            <div class="period-item">
+                                <i data-lucide="users"></i>
+                                Team Project
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
     <!-- Main Content -->
     <div class="main-content">
         <!-- Real-Life Challenges Section -->
         <section class="challenges-section" style="margin: -80px -50px 0; padding: 80px 50px;">
             <div class="section-header">
                 <h2>Real-Life Challenges You'll Tackle</h2>
-                <p>From day one, you'll work on actual engineering problems â€” not hypotheticals</p>
+                <p>From day one, you'll work on actual engineering problems Ã¢â‚¬â€ not hypotheticals</p>
             </div>
             
             <div class="challenges-grid" id="challengesGrid">
@@ -1540,8 +2188,8 @@
                         <i data-lucide="heart-pulse"></i>
                     </div>
                     <h3>Disposable Medical Sensors</h3>
-                    <p>Analyse pressure sensors used in Intensive Care units from a circularity perspective. Determine which parts can be reused, remade, or recycled â€” and design a technical solution to increase their circularity.</p>
-                    <span class="challenge-tag">Healthcare Ã— Sustainability</span>
+                    <p>Analyse pressure sensors used in Intensive Care units from a circularity perspective. Determine which parts can be reused, remade, or recycled Ã¢â‚¬â€ and design a technical solution to increase their circularity.</p>
+                    <span class="challenge-tag">Healthcare Ãƒâ€” Sustainability</span>
                 </div>
                 
                 <div class="challenge-card">
@@ -1615,7 +2263,7 @@
         <section class="employers-section">
             <div class="section-header">
                 <h2>Where CE Alumni Work</h2>
-                <p>33% of graduates enter the workforce directly â€” here's where</p>
+                <p>33% of graduates enter the workforce directly Ã¢â‚¬â€ here's where</p>
             </div>
             
             <div class="employers-grid" id="employersGrid">
@@ -1703,7 +2351,7 @@
         </div>
         
         <div class="footer-bottom">
-            <p>&copy; 2025 Maastricht University · Faculty of Science and Engineering</p>
+            <p>&copy; 2025 Maastricht University Â· Faculty of Science and Engineering</p>
             <a href="mailto:fse-alumni@maastrichtuniversity.nl">fse-alumni@maastrichtuniversity.nl</a>
         </div>
     </footer>
