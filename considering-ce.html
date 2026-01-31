@@ -132,21 +132,198 @@
            HERO
         ============================================ */
         .hero {
-            background: linear-gradient(165deg, var(--um-dark-blue) 0%, #002952 100%);
+            background: linear-gradient(165deg, #000408 0%, #000a15 20%, #001020 40%, var(--um-dark-blue) 70%, #001530 100%);
             padding: 140px 50px 80px;
             position: relative;
             overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
         }
         
-        .hero::before {
-            content: '';
+        /* Animated background rings */
+        .hero-bg-rings {
             position: absolute;
-            top: -30%;
-            right: -15%;
-            width: 500px;
-            height: 500px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 1000px;
+            height: 1000px;
+            pointer-events: none;
+        }
+        
+        .bg-ring {
+            position: absolute;
             border: 1px solid rgba(16, 185, 129, 0.1);
             border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .bg-ring:nth-child(1) { width: 400px; height: 400px; animation: ring-pulse 5s ease-in-out infinite; }
+        .bg-ring:nth-child(2) { width: 600px; height: 600px; animation: ring-pulse 5s ease-in-out infinite 1s; }
+        .bg-ring:nth-child(3) { width: 800px; height: 800px; animation: ring-pulse 5s ease-in-out infinite 2s; }
+        .bg-ring:nth-child(4) { width: 1000px; height: 1000px; animation: ring-pulse 5s ease-in-out infinite 3s; }
+        
+        @keyframes ring-pulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+        
+        /* Sustainability elements container */
+        .hero-visuals {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        
+        /* Wind turbine */
+        .wind-turbine {
+            position: absolute;
+            width: 100px;
+            height: 150px;
+        }
+        
+        .turbine-tower {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 8px;
+            height: 80px;
+            background: linear-gradient(to bottom, rgba(16, 185, 129, 0.5), rgba(16, 185, 129, 0.2));
+            border-radius: 4px;
+        }
+        
+        .turbine-hub {
+            position: absolute;
+            top: 35px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 14px;
+            height: 14px;
+            background: rgba(16, 185, 129, 0.6);
+            border-radius: 50%;
+        }
+        
+        .turbine-blades {
+            position: absolute;
+            top: 42px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 80px;
+            animation: spin-turbine 8s linear infinite;
+        }
+        
+        .turbine-blade {
+            position: absolute;
+            width: 5px;
+            height: 35px;
+            background: linear-gradient(to top, rgba(16, 185, 129, 0.6), rgba(16, 185, 129, 0.2));
+            border-radius: 3px;
+            top: 50%;
+            left: 50%;
+            transform-origin: center top;
+        }
+        
+        .turbine-blade:nth-child(1) { transform: translate(-50%, 0) rotate(0deg); }
+        .turbine-blade:nth-child(2) { transform: translate(-50%, 0) rotate(120deg); }
+        .turbine-blade:nth-child(3) { transform: translate(-50%, 0) rotate(240deg); }
+        
+        @keyframes spin-turbine {
+            from { transform: translateX(-50%) rotate(0deg); }
+            to { transform: translateX(-50%) rotate(360deg); }
+        }
+        
+        .wind-turbine.wt1 { bottom: 10%; left: 5%; opacity: 0.7; }
+        .wind-turbine.wt1 .turbine-blades { animation-duration: 6s; }
+        .wind-turbine.wt2 { bottom: 15%; left: 12%; opacity: 0.5; transform: scale(0.7); }
+        .wind-turbine.wt2 .turbine-blades { animation-duration: 9s; }
+        .wind-turbine.wt3 { bottom: 8%; right: 8%; opacity: 0.6; transform: scale(0.8); }
+        .wind-turbine.wt3 .turbine-blades { animation-duration: 7s; }
+        .wind-turbine.wt4 { bottom: 12%; right: 15%; opacity: 0.4; transform: scale(0.5); }
+        .wind-turbine.wt4 .turbine-blades { animation-duration: 11s; }
+        
+        /* Molecule/atom */
+        .molecule {
+            position: absolute;
+            animation: float-molecule 20s ease-in-out infinite;
+        }
+        
+        .atom {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(16, 185, 129, 0.7), rgba(16, 185, 129, 0.2));
+        }
+        
+        .bond {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(90deg, rgba(16, 185, 129, 0.5), rgba(20, 184, 166, 0.5));
+            transform-origin: left center;
+        }
+        
+        .molecule.mol1 { top: 15%; right: 10%; opacity: 0.6; }
+        .molecule.mol2 { top: 40%; left: 8%; opacity: 0.4; animation-delay: -7s; }
+        .molecule.mol3 { bottom: 35%; right: 5%; opacity: 0.5; animation-delay: -14s; transform: scale(0.8); }
+        
+        @keyframes float-molecule {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-20px) rotate(10deg); }
+            50% { transform: translateY(5px) rotate(0deg); }
+            75% { transform: translateY(15px) rotate(-10deg); }
+        }
+        
+        /* Leaf */
+        .leaf {
+            position: absolute;
+            width: 40px;
+            height: 50px;
+            animation: sway 8s ease-in-out infinite;
+        }
+        
+        .leaf svg {
+            width: 100%;
+            height: 100%;
+            fill: rgba(16, 185, 129, 0.4);
+        }
+        
+        .leaf.lf1 { top: 25%; left: 18%; opacity: 0.5; }
+        .leaf.lf2 { top: 60%; right: 15%; opacity: 0.4; transform: scale(0.7) rotate(20deg); animation-delay: -3s; }
+        .leaf.lf3 { bottom: 40%; left: 5%; opacity: 0.3; transform: scale(0.6) rotate(-15deg); animation-delay: -6s; }
+        
+        @keyframes sway {
+            0%, 100% { transform: rotate(0deg) translateY(0); }
+            25% { transform: rotate(15deg) translateY(-10px); }
+            75% { transform: rotate(-15deg) translateY(10px); }
+        }
+        
+        /* Circular economy arrows */
+        .circular-arrows {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            opacity: 0.15;
+            animation: rotate-arrows 40s linear infinite;
+        }
+        
+        .circular-arrows svg {
+            width: 100%;
+            height: 100%;
+            stroke: var(--ce-green-light);
+            fill: none;
+            stroke-width: 2;
+        }
+        
+        .circular-arrows.ca1 { top: 10%; left: 30%; }
+        .circular-arrows.ca2 { bottom: 20%; right: 20%; animation-direction: reverse; }
+        
+        @keyframes rotate-arrows {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
         
         .hero-content {
@@ -290,6 +467,90 @@
         .section-header p {
             font-size: 16px;
             color: var(--gray-500);
+        }
+        
+        /* ============================================
+           REAL-LIFE CHALLENGES SECTION
+        ============================================ */
+        .challenges-section {
+            background: white;
+            padding: 80px 50px;
+            margin-bottom: 0;
+        }
+        
+        .challenges-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        .challenge-card {
+            background: var(--gray-50);
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            border: 1px solid var(--gray-200);
+            transition: all var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .challenge-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--ce-green-primary);
+        }
+        
+        .challenge-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--ce-green-primary), var(--ce-teal));
+        }
+        
+        .challenge-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--ce-green-primary), var(--ce-green-dark));
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .challenge-icon i {
+            width: 24px;
+            height: 24px;
+            color: white;
+        }
+        
+        .challenge-card h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--um-dark-blue);
+            margin-bottom: 12px;
+        }
+        
+        .challenge-card p {
+            font-size: 14px;
+            color: var(--gray-600);
+            line-height: 1.6;
+        }
+        
+        .challenge-tag {
+            display: inline-block;
+            margin-top: 16px;
+            padding: 6px 12px;
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--ce-green-dark);
+            font-size: 12px;
+            font-weight: 600;
+            border-radius: var(--radius-full);
         }
         
         /* ============================================
@@ -707,6 +968,115 @@
     
     <!-- Hero -->
     <section class="hero">
+        <!-- Background rings -->
+        <div class="hero-bg-rings">
+            <div class="bg-ring"></div>
+            <div class="bg-ring"></div>
+            <div class="bg-ring"></div>
+            <div class="bg-ring"></div>
+        </div>
+        
+        <!-- Sustainability visuals -->
+        <div class="hero-visuals">
+            <!-- Wind turbines -->
+            <div class="wind-turbine wt1">
+                <div class="turbine-tower"></div>
+                <div class="turbine-hub"></div>
+                <div class="turbine-blades">
+                    <div class="turbine-blade"></div>
+                    <div class="turbine-blade"></div>
+                    <div class="turbine-blade"></div>
+                </div>
+            </div>
+            <div class="wind-turbine wt2">
+                <div class="turbine-tower"></div>
+                <div class="turbine-hub"></div>
+                <div class="turbine-blades">
+                    <div class="turbine-blade"></div>
+                    <div class="turbine-blade"></div>
+                    <div class="turbine-blade"></div>
+                </div>
+            </div>
+            <div class="wind-turbine wt3">
+                <div class="turbine-tower"></div>
+                <div class="turbine-hub"></div>
+                <div class="turbine-blades">
+                    <div class="turbine-blade"></div>
+                    <div class="turbine-blade"></div>
+                    <div class="turbine-blade"></div>
+                </div>
+            </div>
+            <div class="wind-turbine wt4">
+                <div class="turbine-tower"></div>
+                <div class="turbine-hub"></div>
+                <div class="turbine-blades">
+                    <div class="turbine-blade"></div>
+                    <div class="turbine-blade"></div>
+                    <div class="turbine-blade"></div>
+                </div>
+            </div>
+            
+            <!-- Molecules -->
+            <div class="molecule mol1">
+                <div class="atom" style="width: 18px; height: 18px; top: 0; left: 25px;"></div>
+                <div class="atom" style="width: 14px; height: 14px; top: 35px; left: 0;"></div>
+                <div class="atom" style="width: 14px; height: 14px; top: 35px; left: 50px;"></div>
+                <div class="bond" style="width: 30px; top: 14px; left: 15px; transform: rotate(50deg);"></div>
+                <div class="bond" style="width: 30px; top: 14px; left: 38px; transform: rotate(130deg);"></div>
+            </div>
+            <div class="molecule mol2">
+                <div class="atom" style="width: 16px; height: 16px; top: 20px; left: 20px;"></div>
+                <div class="atom" style="width: 12px; height: 12px; top: 0; left: 0;"></div>
+                <div class="atom" style="width: 12px; height: 12px; top: 0; left: 45px;"></div>
+                <div class="atom" style="width: 12px; height: 12px; top: 45px; left: 0;"></div>
+                <div class="atom" style="width: 12px; height: 12px; top: 45px; left: 45px;"></div>
+                <div class="bond" style="width: 25px; top: 10px; left: 10px; transform: rotate(-45deg);"></div>
+                <div class="bond" style="width: 25px; top: 10px; left: 32px; transform: rotate(45deg);"></div>
+                <div class="bond" style="width: 25px; top: 32px; left: 10px; transform: rotate(45deg);"></div>
+                <div class="bond" style="width: 25px; top: 32px; left: 32px; transform: rotate(-45deg);"></div>
+            </div>
+            <div class="molecule mol3">
+                <div class="atom" style="width: 14px; height: 14px; top: 15px; left: 15px;"></div>
+                <div class="atom" style="width: 10px; height: 10px; top: 0; left: 30px;"></div>
+                <div class="atom" style="width: 10px; height: 10px; top: 35px; left: 0;"></div>
+                <div class="bond" style="width: 20px; top: 10px; left: 22px; transform: rotate(-50deg);"></div>
+                <div class="bond" style="width: 20px; top: 22px; left: 8px; transform: rotate(50deg);"></div>
+            </div>
+            
+            <!-- Leaves -->
+            <div class="leaf lf1">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
+                </svg>
+            </div>
+            <div class="leaf lf2">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
+                </svg>
+            </div>
+            <div class="leaf lf3">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
+                </svg>
+            </div>
+            
+            <!-- Circular economy symbol -->
+            <div class="circular-arrows ca1">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M50 10 A40 40 0 0 1 85 65 L75 60 L90 75 L80 55 L70 60 A30 30 0 0 0 50 20 Z"/>
+                    <path d="M85 65 A40 40 0 0 1 25 80 L30 70 L10 80 L25 90 L30 80 A30 30 0 0 0 75 65 Z"/>
+                    <path d="M25 80 A40 40 0 0 1 50 10 L45 20 L60 5 L40 5 L45 15 A30 30 0 0 0 30 70 Z"/>
+                </svg>
+            </div>
+            <div class="circular-arrows ca2">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M50 10 A40 40 0 0 1 85 65 L75 60 L90 75 L80 55 L70 60 A30 30 0 0 0 50 20 Z"/>
+                    <path d="M85 65 A40 40 0 0 1 25 80 L30 70 L10 80 L25 90 L30 80 A30 30 0 0 0 75 65 Z"/>
+                    <path d="M25 80 A40 40 0 0 1 50 10 L45 20 L60 5 L40 5 L45 15 A30 30 0 0 0 30 70 Z"/>
+                </svg>
+            </div>
+        </div>
+        
         <div class="hero-content">
             <div class="hero-text">
                 <div class="hero-badge">
@@ -732,6 +1102,52 @@
     
     <!-- Main Content -->
     <div class="main-content">
+        <!-- Real-Life Challenges Section -->
+        <section class="challenges-section" style="margin: -80px -50px 0; padding: 80px 50px;">
+            <div class="section-header">
+                <h2>Real-Life Challenges You'll Tackle</h2>
+                <p>From day one, you'll work on actual engineering problems — not hypotheticals</p>
+            </div>
+            
+            <div class="challenges-grid" id="challengesGrid">
+                <div class="challenge-card">
+                    <div class="challenge-icon">
+                        <i data-lucide="heart-pulse"></i>
+                    </div>
+                    <h3>Disposable Medical Sensors</h3>
+                    <p>Analyse pressure sensors used in Intensive Care units from a circularity perspective. Determine which parts can be reused, remade, or recycled — and design a technical solution to increase their circularity.</p>
+                    <span class="challenge-tag">Healthcare × Sustainability</span>
+                </div>
+                
+                <div class="challenge-card">
+                    <div class="challenge-icon">
+                        <i data-lucide="package"></i>
+                    </div>
+                    <h3>Plastic Food Packaging</h3>
+                    <p>Analyse the entire packaging chain of a food product, identify all stakeholders, and determine sustainable alternatives. Help solve the plastic soup problem through engineering.</p>
+                    <span class="challenge-tag">Circular Chemical Engineering</span>
+                </div>
+                
+                <div class="challenge-card">
+                    <div class="challenge-icon">
+                        <i data-lucide="factory"></i>
+                    </div>
+                    <h3>Replacing Fossil Feedstock</h3>
+                    <p>Select which biomass and technologies can replace fossil resources in chemical production. Optimise process design to minimise energy consumption across an entire production cluster.</p>
+                    <span class="challenge-tag">Chemical Industry</span>
+                </div>
+                
+                <div class="challenge-card">
+                    <div class="challenge-icon">
+                        <i data-lucide="sprout"></i>
+                    </div>
+                    <h3>Smart Food Production</h3>
+                    <p>Design greenhouse systems using sensors and AI to optimise growing conditions. Apply engineering physics to solve challenges in sustainable agriculture.</p>
+                    <span class="challenge-tag">Sustainable Biotechnology</span>
+                </div>
+            </div>
+        </section>
+        
         <!-- Concentrations -->
         <section class="concentrations-section">
             <div class="section-header">

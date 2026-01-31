@@ -259,8 +259,70 @@ const CE_DATA = {
         startYear: 2021,
         website: "https://www.maastrichtuniversity.nl/education/bachelor/circular-engineering",
         email: "fse-admissions@maastrichtuniversity.nl",
-        alumniEmail: "fse-alumni@maastrichtuniversity.nl"
+        alumniEmail: "fse-alumni@maastrichtuniversity.nl",
+        
+        // Key programme features
+        highlights: [
+            "Problem-Based Learning (PBL) in small groups of ~15 students",
+            "Research-Based Learning (RBL) with real engineering challenges",
+            "Collaboration with Brightlands innovation campuses",
+            "State-of-the-art engineering laboratories",
+            "Three specialisation concentrations in Year 3",
+            "Design projects with industry partners"
+        ],
+        
+        // Brightlands campuses connection
+        brightlandsCampuses: [
+            {
+                name: "Brightlands Chemelot Campus",
+                location: "Geleen",
+                focus: "Chemistry, materials, and circular economy"
+            },
+            {
+                name: "Brightlands Maastricht Health Campus",
+                location: "Maastricht",
+                focus: "Health, life sciences, and biotechnology"
+            },
+            {
+                name: "Brightlands Smart Services Campus",
+                location: "Heerlen",
+                focus: "Digital services and smart technology"
+            }
+        ],
+        
+        // Core principles
+        circularPrinciples: ["Reduce", "Reuse", "Remake", "Repair", "Recycle"]
     },
+
+    // ==========================================
+    // REAL-LIFE CHALLENGES (for prospective students)
+    // ==========================================
+    realLifeChallenges: [
+        {
+            title: "Disposable Medical Sensors",
+            description: "Analyse pressure sensors used in Intensive Care units from a circularity perspective. Determine which parts can be reused, remade, or recycled — and design a technical solution to increase their circularity.",
+            icon: "heart-pulse",
+            tag: "Healthcare × Sustainability"
+        },
+        {
+            title: "Plastic Food Packaging",
+            description: "Analyse the entire packaging chain of a food product, identify all stakeholders, and determine sustainable alternatives. Help solve the plastic soup problem through engineering.",
+            icon: "package",
+            tag: "Circular Chemical Engineering"
+        },
+        {
+            title: "Replacing Fossil Feedstock",
+            description: "Select which biomass and technologies can replace fossil resources in chemical production. Optimise process design to minimise energy consumption across an entire production cluster.",
+            icon: "factory",
+            tag: "Chemical Industry"
+        },
+        {
+            title: "Smart Food Production",
+            description: "Design greenhouse systems using sensors and AI to optimise growing conditions. Apply engineering physics to solve challenges in sustainable agriculture.",
+            icon: "sprout",
+            tag: "Sustainable Biotechnology"
+        }
+    ],
 
     // ==========================================
     // CAREER SECTORS (from CE programme info)
