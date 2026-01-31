@@ -2963,7 +2963,7 @@
         const universityData = {
             tudelft: {
                 name: 'TU Delft',
-                logo: 'tudelft-logo.png',
+                logo: 'tu-delft.png',
                 location: 'Delft, Netherlands',
                 flag: 'nl',
                 alumni: 3,
@@ -2973,7 +2973,7 @@
             },
             kth: {
                 name: 'KTH Royal Institute of Technology',
-                logo: 'kth-logo.png',
+                logo: 'kth-royal-institute-of-technology.png',
                 location: 'Stockholm, Sweden',
                 flag: 'se',
                 alumni: 3,
@@ -2983,7 +2983,7 @@
             },
             wageningen: {
                 name: 'Wageningen University & Research',
-                logo: 'wageningen-logo.png',
+                logo: 'wageningen-university.png',
                 location: 'Wageningen, Netherlands',
                 flag: 'nl',
                 alumni: 3,
@@ -2993,7 +2993,7 @@
             },
             tue: {
                 name: 'Eindhoven University of Technology',
-                logo: 'tue-logo.png',
+                logo: 'eindhoven-university.png',
                 location: 'Eindhoven, Netherlands',
                 flag: 'nl',
                 alumni: 2,
@@ -3013,7 +3013,7 @@
             },
             nova: {
                 name: 'NOVA School of Business & Economics',
-                logo: 'nova-logo.png',
+                logo: 'nova-sbe.png',
                 location: 'Lisbon, Portugal',
                 flag: 'pt',
                 alumni: 2,
@@ -3023,7 +3023,7 @@
             },
             leiden: {
                 name: 'Leiden University',
-                logo: 'leiden-logo.png',
+                logo: 'leiden-university.png',
                 location: 'Leiden, Netherlands',
                 flag: 'nl',
                 alumni: 2,
@@ -3039,14 +3039,9 @@
             
             const modal = document.getElementById('universityModal');
             
-            // Set logo
-            const logoImg = document.querySelector('#uniModalLogo img');
-            logoImg.src = `assets/logos/${uni.logo}`;
-            logoImg.alt = uni.name;
-            logoImg.onerror = function() {
-                this.parentElement.innerHTML = '<i data-lucide="graduation-cap" style="width: 32px; height: 32px; color: var(--ce-green-primary);"></i>';
-                lucide.createIcons();
-            };
+            // Reset modal content first
+            const logoContainer = document.getElementById('uniModalLogo');
+            logoContainer.innerHTML = `<img src="assets/logos/${uni.logo}" alt="${uni.name}" onerror="this.onerror=null; this.parentElement.innerHTML='<i data-lucide=\\'graduation-cap\\' style=\\'width: 32px; height: 32px; color: var(--ce-green-primary);\\'></i>'; lucide.createIcons();">`;
             
             // Set content
             document.getElementById('uniModalName').textContent = uni.name;
@@ -3077,7 +3072,9 @@
         
         function closeUniversityModal() {
             const modal = document.getElementById('universityModal');
-            modal.classList.remove('active');
+            if (modal) {
+                modal.classList.remove('active');
+            }
             document.body.style.overflow = '';
         }
         
