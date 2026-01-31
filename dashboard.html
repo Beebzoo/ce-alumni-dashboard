@@ -2181,6 +2181,194 @@
         }
         
         /* ============================================
+           CONCENTRATION PATHWAYS FLOW
+        ============================================ */
+        .pathways-section {
+            background: white;
+            padding: 80px 50px;
+        }
+        
+        .pathways-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        .pathways-flow {
+            display: flex;
+            justify-content: space-between;
+            align-items: stretch;
+            gap: 20px;
+            margin-top: 40px;
+            min-height: 500px;
+            position: relative;
+        }
+        
+        .pathways-sources {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 280px;
+            flex-shrink: 0;
+        }
+        
+        .pathway-source {
+            background: var(--gray-50);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            border-left: 4px solid;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .pathway-source:hover {
+            transform: translateX(8px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .pathway-source.active {
+            background: white;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .pathway-source-name {
+            font-weight: 600;
+            font-size: 15px;
+            color: var(--um-dark-blue);
+            margin-bottom: 4px;
+        }
+        
+        .pathway-source-count {
+            font-size: 13px;
+            color: var(--gray-500);
+        }
+        
+        .pathway-source-icon {
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.15;
+        }
+        
+        .pathway-source-icon i {
+            width: 18px;
+            height: 18px;
+        }
+        
+        .pathways-flow-svg {
+            flex: 1;
+            min-width: 200px;
+            position: relative;
+        }
+        
+        .pathways-flow-svg svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+        
+        .flow-path {
+            fill: none;
+            opacity: 0.6;
+            transition: all 0.3s ease;
+        }
+        
+        .flow-path:hover {
+            opacity: 0.9;
+        }
+        
+        .flow-path.dimmed {
+            opacity: 0.1;
+        }
+        
+        .flow-path.highlighted {
+            opacity: 0.9;
+        }
+        
+        .pathways-destinations {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            width: 280px;
+            flex-shrink: 0;
+            justify-content: center;
+        }
+        
+        .pathway-dest {
+            background: var(--gray-50);
+            border-radius: var(--radius-md);
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+        
+        .pathway-dest:hover {
+            background: var(--gray-100);
+        }
+        
+        .pathway-dest.highlighted {
+            background: white;
+            box-shadow: var(--shadow-md);
+            transform: translateX(-4px);
+        }
+        
+        .pathway-dest-name {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--um-dark-blue);
+            flex: 1;
+        }
+        
+        .pathway-dest-pct {
+            font-size: 12px;
+            font-weight: 600;
+            padding: 2px 8px;
+            border-radius: var(--radius-full);
+            background: var(--gray-200);
+            color: var(--gray-600);
+            margin-left: 8px;
+            min-width: 40px;
+            text-align: center;
+        }
+        
+        .pathway-dest.highlighted .pathway-dest-pct {
+            background: var(--ce-green-primary);
+            color: white;
+        }
+        
+        .pathways-legend {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .pathways-legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: var(--gray-600);
+        }
+        
+        .pathways-legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        /* ============================================
            GROWTH & GENDER CHARTS
         ============================================ */
         .charts-section {
@@ -2975,6 +3163,47 @@
         </div>
     </section>
     
+    <!-- Concentration Pathways Section -->
+    <section class="pathways-section" id="pathways">
+        <div class="pathways-container">
+            <div class="section-header">
+                <h2>Where Each Track Leads</h2>
+                <p>See which Master's programmes CE alumni pursue based on their concentration. Hover over a track to highlight its pathways.</p>
+            </div>
+            
+            <div class="pathways-flow">
+                <div class="pathways-sources" id="pathwaySources">
+                    <!-- Populated by JS -->
+                </div>
+                
+                <div class="pathways-flow-svg">
+                    <svg id="pathwaysSvg" viewBox="0 0 200 500" preserveAspectRatio="none">
+                        <!-- Flow paths drawn by JS -->
+                    </svg>
+                </div>
+                
+                <div class="pathways-destinations" id="pathwayDests">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+            
+            <div class="pathways-legend">
+                <div class="pathways-legend-item">
+                    <span class="pathways-legend-dot" style="background: #10B981;"></span>
+                    Sustainable Biotechnology
+                </div>
+                <div class="pathways-legend-item">
+                    <span class="pathways-legend-dot" style="background: #14B8A6;"></span>
+                    Circular Chemical Engineering
+                </div>
+                <div class="pathways-legend-item">
+                    <span class="pathways-legend-dot" style="background: #0EA5E9;"></span>
+                    Engineering Physics
+                </div>
+            </div>
+        </div>
+    </section>
+    
     <!-- Destinations Section -->
     <section class="destinations" id="destinations">
         <div class="section-header">
@@ -3700,6 +3929,133 @@
             const workingPct = CE_DATA.employment.workingPercent;
             outcomeCards[0].querySelector('.outcome-percentage').textContent = studyingPct + '%';
             outcomeCards[1].querySelector('.outcome-percentage').textContent = workingPct + '%';
+        }
+        
+        // ==========================================
+        // CONCENTRATION PATHWAYS FLOW
+        // ==========================================
+        const pathwayData = CE_DATA.concentrationPathways;
+        if (pathwayData) {
+            const sourcesContainer = document.getElementById('pathwaySources');
+            const destsContainer = document.getElementById('pathwayDests');
+            const svg = document.getElementById('pathwaysSvg');
+            
+            // Get all unique universities across all concentrations
+            const allUnis = new Map();
+            Object.entries(pathwayData).forEach(([concName, data]) => {
+                data.universities.slice(0, 4).forEach(uni => { // Top 4 per concentration
+                    if (!allUnis.has(uni.name)) {
+                        allUnis.set(uni.name, { total: 0, sources: [] });
+                    }
+                    allUnis.get(uni.name).total += uni.count;
+                    allUnis.get(uni.name).sources.push({ conc: concName, percent: uni.percent, color: data.color });
+                });
+            });
+            
+            // Sort universities by total count
+            const sortedUnis = Array.from(allUnis.entries())
+                .sort((a, b) => b[1].total - a[1].total)
+                .slice(0, 8); // Top 8 universities
+            
+            // Render source nodes (concentrations)
+            const concOrder = ["Sustainable Biotechnology", "Circular Chemical Engineering", "Engineering Physics for Sustainable Manufacturing"];
+            const shortNames = {
+                "Sustainable Biotechnology": "Sustainable Biotechnology",
+                "Circular Chemical Engineering": "Circular Chemical Engineering", 
+                "Engineering Physics for Sustainable Manufacturing": "Engineering Physics"
+            };
+            const icons = {
+                "Sustainable Biotechnology": "flask-conical",
+                "Circular Chemical Engineering": "atom",
+                "Engineering Physics for Sustainable Manufacturing": "cpu"
+            };
+            
+            sourcesContainer.innerHTML = concOrder.map(concName => {
+                const data = pathwayData[concName];
+                return `
+                    <div class="pathway-source" data-conc="${concName}" style="border-color: ${data.color};">
+                        <div class="pathway-source-name">${shortNames[concName]}</div>
+                        <div class="pathway-source-count">${data.total} pursuing Master's</div>
+                        <div class="pathway-source-icon" style="background: ${data.color};">
+                            <i data-lucide="${icons[concName]}"></i>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            
+            // Render destination nodes (universities)
+            destsContainer.innerHTML = sortedUnis.map(([uniName, data]) => `
+                <div class="pathway-dest" data-uni="${uniName}">
+                    <span class="pathway-dest-name">${uniName.replace(' & Research', '').replace('Royal Institute of Technology', '(KTH)')}</span>
+                    <span class="pathway-dest-pct">${data.total}</span>
+                </div>
+            `).join('');
+            
+            // Draw flow paths
+            setTimeout(() => {
+                const sourceEls = sourcesContainer.querySelectorAll('.pathway-source');
+                const destEls = destsContainer.querySelectorAll('.pathway-dest');
+                const svgRect = svg.getBoundingClientRect();
+                
+                let pathsHtml = '';
+                
+                sourceEls.forEach((sourceEl, sIdx) => {
+                    const concName = sourceEl.dataset.conc;
+                    const concData = pathwayData[concName];
+                    const sourceRect = sourceEl.getBoundingClientRect();
+                    const sy = sourceRect.top + sourceRect.height/2 - svgRect.top;
+                    
+                    destEls.forEach((destEl, dIdx) => {
+                        const uniName = destEl.dataset.uni;
+                        const uniData = concData.universities.find(u => u.name === uniName);
+                        
+                        if (uniData) {
+                            const destRect = destEl.getBoundingClientRect();
+                            const dy = destRect.top + destRect.height/2 - svgRect.top;
+                            
+                            const strokeWidth = Math.max(2, uniData.percent / 5);
+                            
+                            pathsHtml += `
+                                <path class="flow-path" 
+                                    data-source="${concName}" 
+                                    data-dest="${uniName}"
+                                    d="M 0 ${sy} C 100 ${sy}, 100 ${dy}, 200 ${dy}" 
+                                    stroke="${concData.color}" 
+                                    stroke-width="${strokeWidth}"
+                                />
+                            `;
+                        }
+                    });
+                });
+                
+                svg.innerHTML = pathsHtml;
+                
+                // Add hover interactivity
+                sourceEls.forEach(sourceEl => {
+                    sourceEl.addEventListener('mouseenter', () => {
+                        const concName = sourceEl.dataset.conc;
+                        svg.querySelectorAll('.flow-path').forEach(path => {
+                            path.classList.toggle('highlighted', path.dataset.source === concName);
+                            path.classList.toggle('dimmed', path.dataset.source !== concName);
+                        });
+                        destEls.forEach(destEl => {
+                            const hasConnection = pathwayData[concName].universities.some(u => u.name === destEl.dataset.uni);
+                            destEl.classList.toggle('highlighted', hasConnection);
+                        });
+                        sourceEls.forEach(s => s.classList.toggle('active', s === sourceEl));
+                    });
+                    
+                    sourceEl.addEventListener('mouseleave', () => {
+                        svg.querySelectorAll('.flow-path').forEach(path => {
+                            path.classList.remove('highlighted', 'dimmed');
+                        });
+                        destEls.forEach(d => d.classList.remove('highlighted'));
+                        sourceEls.forEach(s => s.classList.remove('active'));
+                    });
+                });
+                
+                lucide.createIcons();
+            }, 100);
         }
         
         // ==========================================
