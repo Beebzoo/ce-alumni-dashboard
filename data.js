@@ -1,7 +1,7 @@
 // ============================================
 // CE ALUMNI DATA - SINGLE SOURCE OF TRUTH
 // ============================================
-// Last updated: January 2026
+// Last updated: January 2025
 // 
 // HOW TO UPDATE:
 // 1. Scroll to the section you need to update
