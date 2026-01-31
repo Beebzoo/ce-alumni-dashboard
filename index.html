@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CE Alumni Network | Circular Engineering</title>
+    <link rel="icon" type="image/png" href="assets/logos/ce-logo.png">
     <meta name="description" content="Explore where 46 Circular Engineering alumni from 15 nationalities are building sustainable futures across 10 countries and 22+ universities worldwide.">
     
     <!-- Fonts -->
@@ -141,36 +142,10 @@
             gap: 14px;
         }
         
-        .logo-icon {
-            width: 44px;
+        .logo-img {
             height: 44px;
-            background: linear-gradient(135deg, var(--ce-green-primary), var(--ce-teal));
-            border-radius: var(--radius-md);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-        
-        .logo-icon::before {
-            content: '';
-            width: 24px;
-            height: 24px;
-            border: 3px solid white;
-            border-radius: 50%;
-            position: relative;
-        }
-        
-        .logo-icon::after {
-            content: '';
-            position: absolute;
-            width: 8px;
-            height: 8px;
-            background: white;
-            border-radius: 50%;
-            top: 50%;
-            right: 8px;
-            transform: translateY(-50%);
+            width: auto;
+            object-fit: contain;
         }
         
         .logo-text h1 {
@@ -866,6 +841,19 @@
             gap: 60px;
         }
         
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        
+        .footer-logo {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
+            align-self: flex-start;
+        }
+        
         .footer-brand h3 {
             font-size: 20px;
             font-weight: 600;
@@ -998,7 +986,7 @@
     <!-- Header -->
     <header id="header">
         <a href="index.html" class="logo">
-            <div class="logo-icon"></div>
+            <img src="assets/logos/ce-logo.png" alt="CE Logo" class="logo-img">
             <div class="logo-text">
                 <h1>CE Alumni Network</h1>
                 <p>Faculty of Science and Engineering</p>
@@ -1277,6 +1265,7 @@
     <footer>
         <div class="footer-content">
             <div class="footer-brand">
+                <img src="assets/logos/ce-logo.png" alt="CE Logo" class="footer-logo">
                 <h3>CE Alumni Network</h3>
                 <p>Tracking the journeys of Circular Engineering graduates as they build sustainable solutions across the globe.</p>
             </div>
