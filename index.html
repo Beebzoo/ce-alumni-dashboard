@@ -190,6 +190,11 @@
             background: var(--gray-100);
         }
         
+        .header-nav a.active {
+            color: var(--ce-green-primary);
+            font-weight: 600;
+        }
+        
         .header-nav .btn-cta {
             background: linear-gradient(135deg, var(--ce-green-primary), var(--ce-green-dark));
             color: white;
@@ -209,6 +214,10 @@
         header.scrolled .header-nav a:hover {
             color: white;
             background: rgba(255,255,255,0.1);
+        }
+        
+        header.scrolled .header-nav a.active {
+            color: var(--ce-green-light);
         }
         
         /* ============================================
@@ -1180,9 +1189,9 @@
             </div>
         </a>
         <nav class="header-nav">
-            <a href="#concentrations">Pathways</a>
-            <a href="#destinations">Destinations</a>
-            <a href="#community" class="btn-cta">Join the Loop</a>
+            <a href="index.html" class="active">Home</a>
+            <a href="community.html">Community</a>
+            <a href="considering-ce.html" class="btn-cta">Considering CE?</a>
         </nav>
     </header>
     
