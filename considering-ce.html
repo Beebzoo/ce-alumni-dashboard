@@ -796,9 +796,8 @@
         ============================================ */
         .universities-section {
             background: var(--ce-sand);
-            margin: 0 -50px;
-            padding: 80px 50px;
-            margin-bottom: 80px;
+            padding: 50px;
+            margin-bottom: 0;
         }
         
         .universities-grid {
@@ -1317,7 +1316,7 @@
         ============================================ */
         .journey-section {
             background: linear-gradient(180deg, white 0%, var(--gray-50) 100%);
-            padding: 100px 50px;
+            padding: 50px 50px;
             overflow: hidden;
         }
         
@@ -1760,7 +1759,7 @@
            5 RS CIRCULAR LOOP SECTION
         ============================================ */
         .five-rs-section {
-            padding: 80px 50px;
+            padding: 50px 50px;
             background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
             position: relative;
             overflow: hidden;
@@ -1908,7 +1907,7 @@
            PBL/RBL EVOLUTION SECTION
         ============================================ */
         .learning-evolution-section {
-            padding: 80px 50px;
+            padding: 50px 50px;
             background: white;
         }
         
@@ -2049,7 +2048,7 @@
            BRIGHTLANDS ECOSYSTEM MAP
         ============================================ */
         .brightlands-section {
-            padding: 80px 50px;
+            padding: 50px 50px;
             background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
         }
         
@@ -2170,7 +2169,7 @@
            CAREER PATHWAYS SECTION
         ============================================ */
         .career-pathways-section {
-            padding: 80px 50px;
+            padding: 50px 50px;
             background: white;
         }
         
@@ -2487,19 +2486,6 @@
     <div class="main-content">
 
     <div class="main-content">
-        <!-- Notable Employers -->
-        <section class="employers-section">
-            <div class="section-header">
-                <h2>Where CE Alumni Work</h2>
-                <p>33% of graduates enter the workforce directly ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â here's where</p>
-            </div>
-            
-            <div class="employers-grid" id="employersGrid">
-                <!-- Populated by JS -->
-            </div>
-        </section>
-        
-
         <!-- Career Sectors -->
         <section class="careers-section">
             <div class="section-header">
@@ -3149,7 +3135,7 @@
 
     <div class="main-content">
         <!-- Real-Life Challenges Section -->
-        <section class="challenges-section" style="margin: -80px -50px 0; padding: 80px 50px;">
+        <section class="challenges-section" style="padding: 50px 50px;">
             <div class="section-header">
                 <h2>Real-Life Challenges You'll Tackle</h2>
                 <p>From day one, you'll work on actual engineering problems ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â not hypotheticals</p>
@@ -3393,11 +3379,11 @@
         
         <div class="footer-bottom">
             <p>&copy; 2025 Maastricht University Ã‚Â· Faculty of Science and Engineering</p>
-            <a href="mailto:fse-alumni@maastrichtuniversity.nl">fse-alumni@maastrichtuniversity.nl</a>
+            <a href="/cdn-cgi/l/email-protection#8aecf9efa7ebe6ffe7e4e3cae7ebebf9fef8e3e9e2feffe4e3fceff8f9e3fef3a4e4e6"><span class="__cf_email__" data-cfemail="82e4f1e7afe3eef7efecebc2efe3e3f1f6f0ebe1eaf6f7ecebf4e7f0f1ebf6fbacecee">[email&#160;protected]</span></a>
         </div>
     </footer>
     
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         lucide.createIcons();
         
         // Header scroll
@@ -3621,14 +3607,4 @@
             employersGrid.innerHTML = CE_DATA.notableEmployment.map(emp => `
                 <div class="employer-card">
                     <div class="employer-name">${emp.company}</div>
-                    <div class="employer-role">${emp.role || 'Various roles'}</div>
-                    <span class="employer-tag">${emp.sector || 'Industry'}</span>
-                </div>
-            `).join('');
-        }
-        
-        // Re-initialize icons
-        lucide.createIcons();
-    </script>
-</body>
-</html>
+                    <div class="employer-role">${em
