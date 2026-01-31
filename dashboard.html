@@ -1638,6 +1638,173 @@
         }
 
         /* ============================================
+           UNIVERSITY MODAL
+        ============================================ */
+        .university-item {
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .university-item:hover {
+            background: rgba(16, 185, 129, 0.08);
+            transform: translateX(4px);
+        }
+        
+        .university-item:hover .university-name {
+            color: var(--ce-green-dark);
+        }
+        
+        .uni-modal-header {
+            padding: 30px;
+            background: linear-gradient(135deg, var(--um-dark-blue), #002a5c);
+            color: white;
+            border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+            position: relative;
+        }
+        
+        .uni-modal-logo {
+            width: 70px;
+            height: 70px;
+            background: white;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            padding: 10px;
+        }
+        
+        .uni-modal-logo img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        
+        .uni-modal-name {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .uni-modal-location {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        .uni-modal-location img {
+            width: 20px;
+            height: 14px;
+            border-radius: 2px;
+        }
+        
+        .uni-modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 36px;
+            height: 36px;
+            border: none;
+            background: rgba(255,255,255,0.15);
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+        
+        .uni-modal-close:hover {
+            background: rgba(255,255,255,0.25);
+        }
+        
+        .uni-modal-close i {
+            width: 20px;
+            height: 20px;
+            color: white;
+        }
+        
+        .uni-modal-body {
+            padding: 30px;
+        }
+        
+        .uni-modal-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--ce-green-dark);
+            padding: 6px 12px;
+            border-radius: var(--radius-full);
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        
+        .uni-modal-description {
+            font-size: 15px;
+            color: var(--gray-600);
+            line-height: 1.8;
+            margin-bottom: 24px;
+        }
+        
+        .uni-modal-programmes {
+            margin-bottom: 24px;
+        }
+        
+        .uni-modal-programmes h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--um-dark-blue);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+        }
+        
+        .uni-programme-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .uni-programme-tag {
+            padding: 8px 14px;
+            background: var(--gray-100);
+            color: var(--gray-700);
+            border-radius: var(--radius-full);
+            font-size: 13px;
+            font-weight: 500;
+        }
+        
+        .uni-modal-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, var(--ce-green-primary), var(--ce-green-dark));
+            color: white;
+            padding: 14px 24px;
+            border-radius: var(--radius-md);
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        
+        .uni-modal-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.35);
+            color: white;
+        }
+        
+        .uni-modal-link i {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* ============================================
            FOOTER
         ============================================ */
         footer {
@@ -2360,6 +2527,42 @@
         </div>
     </div>
     
+    <!-- University Modal -->
+    <div class="modal-overlay" id="universityModal">
+        <div class="modal-content" style="max-width: 550px;">
+            <div class="uni-modal-header">
+                <div class="uni-modal-logo" id="uniModalLogo">
+                    <img src="" alt="University Logo">
+                </div>
+                <h2 class="uni-modal-name" id="uniModalName">University Name</h2>
+                <div class="uni-modal-location" id="uniModalLocation">
+                    <img src="" alt="Flag">
+                    <span>Location</span>
+                </div>
+                <button class="uni-modal-close" onclick="closeUniversityModal()">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <div class="uni-modal-body">
+                <div class="uni-modal-badge">
+                    <i data-lucide="users" style="width: 14px; height: 14px;"></i>
+                    <span id="uniModalAlumni">3 CE Alumni</span>
+                </div>
+                <p class="uni-modal-description" id="uniModalDescription">Description goes here...</p>
+                <div class="uni-modal-programmes">
+                    <h4>Relevant Programmes for CE Graduates</h4>
+                    <div class="uni-programme-tags" id="uniModalProgrammes">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+                <a href="#" target="_blank" class="uni-modal-link" id="uniModalLink">
+                    Visit University Website
+                    <i data-lucide="external-link"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    
     <!-- Diversity Section - Flag Wave -->
     <section class="diversity-section">
         <div class="diversity-content">
@@ -2395,31 +2598,31 @@
                 <div class="universities-panel">
                     <h3><i data-lucide="graduation-cap"></i> Top Master's Destinations</h3>
                     <div class="university-list">
-                        <div class="university-item">
+                        <div class="university-item" onclick="openUniversityModal('tudelft')">
                             <span class="university-name">TU Delft</span>
                             <span class="university-count">3</span>
                         </div>
-                        <div class="university-item">
+                        <div class="university-item" onclick="openUniversityModal('kth')">
                             <span class="university-name">KTH Royal Institute of Technology</span>
                             <span class="university-count">3</span>
                         </div>
-                        <div class="university-item">
+                        <div class="university-item" onclick="openUniversityModal('wageningen')">
                             <span class="university-name">Wageningen University & Research</span>
                             <span class="university-count">3</span>
                         </div>
-                        <div class="university-item">
+                        <div class="university-item" onclick="openUniversityModal('tue')">
                             <span class="university-name">Eindhoven University of Technology</span>
                             <span class="university-count">2</span>
                         </div>
-                        <div class="university-item">
+                        <div class="university-item" onclick="openUniversityModal('maastricht')">
                             <span class="university-name">Maastricht University</span>
                             <span class="university-count">2</span>
                         </div>
-                        <div class="university-item">
+                        <div class="university-item" onclick="openUniversityModal('nova')">
                             <span class="university-name">NOVA School of Business & Economics</span>
                             <span class="university-count">2</span>
                         </div>
-                        <div class="university-item">
+                        <div class="university-item" onclick="openUniversityModal('leiden')">
                             <span class="university-name">Leiden University</span>
                             <span class="university-count">2</span>
                         </div>
@@ -2750,8 +2953,154 @@
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 closeModal();
+                closeUniversityModal();
             }
         });
+        
+        // ==========================================
+        // UNIVERSITY MODAL DATA & FUNCTIONS
+        // ==========================================
+        const universityData = {
+            tudelft: {
+                name: 'TU Delft',
+                logo: 'tudelft-logo.png',
+                location: 'Delft, Netherlands',
+                flag: 'nl',
+                alumni: 3,
+                description: 'TU Delft is a global leader in circular economy research and education. The university leads the Leiden-Delft-Erasmus Centre for Sustainability and offers pioneering programmes in circular design, sustainable engineering, and materials innovation. Their research spans from circular cities to closed-loop manufacturing systems.',
+                programmes: ['Industrial Ecology (joint with Leiden)', 'Sustainable Energy Technology', 'Materials Science & Engineering', 'Environmental Engineering'],
+                url: 'https://www.tudelft.nl/en/education/programmes/masters'
+            },
+            kth: {
+                name: 'KTH Royal Institute of Technology',
+                logo: 'kth-logo.png',
+                location: 'Stockholm, Sweden',
+                flag: 'se',
+                alumni: 3,
+                description: 'KTH is Sweden\'s largest technical university and a leader in sustainable technology education. Their programmes integrate Industrial Ecology with practical applications in circular economy, featuring real-world projects with companies like Ragn Sells and partnerships with Stockholm\'s climate initiatives.',
+                programmes: ['Sustainable Technology', 'Sustainable Energy Engineering', 'Environmental Engineering'],
+                url: 'https://www.kth.se/en/studies/master'
+            },
+            wageningen: {
+                name: 'Wageningen University & Research',
+                logo: 'wageningen-logo.png',
+                location: 'Wageningen, Netherlands',
+                flag: 'nl',
+                alumni: 3,
+                description: 'Wageningen is the world\'s leading university in agricultural and life sciences, with cutting-edge programmes focused on the biobased circular economy. Their interdisciplinary approach combines biomass production, bioconversion, and circular systems thinking to address the transition from fossil to biobased resources.',
+                programmes: ['Biobased Sciences', 'Environmental Sciences', 'Climate Studies', 'Food Technology'],
+                url: 'https://www.wur.nl/en/education-programmes/master.htm'
+            },
+            tue: {
+                name: 'Eindhoven University of Technology',
+                logo: 'tue-logo.png',
+                location: 'Eindhoven, Netherlands',
+                flag: 'nl',
+                alumni: 2,
+                description: 'Located in Europe\'s most innovative technology hub (Brainport region), TU/e offers a flexible, multidisciplinary approach to sustainable energy. Students tackle real-world challenges with industry partners, benefiting from strong connections to leading companies and cutting-edge research facilities.',
+                programmes: ['Sustainable Energy Technology', 'Chemical Engineering', 'Industrial Design'],
+                url: 'https://www.tue.nl/en/education/graduate-school'
+            },
+            maastricht: {
+                name: 'Maastricht University',
+                logo: 'maastricht-university.png',
+                location: 'Maastricht, Netherlands',
+                flag: 'nl',
+                alumni: 2,
+                description: 'UM\'s Faculty of Science and Engineering and the Maastricht Sustainability Institute offer programmes at the intersection of science, policy, and business. With a focus on transdisciplinary approaches, students learn to bridge technical solutions with stakeholder engagement and policy development.',
+                programmes: ['Biobased Materials', 'Sustainability Science, Policy & Society', 'Systems Biology'],
+                url: 'https://www.maastrichtuniversity.nl/education/master'
+            },
+            nova: {
+                name: 'NOVA School of Business & Economics',
+                logo: 'nova-logo.png',
+                location: 'Lisbon, Portugal',
+                flag: 'pt',
+                alumni: 2,
+                description: 'NOVA SBE is Portugal\'s leading business school (triple-accredited) with a strong focus on sustainability and responsible leadership. Their beachfront campus near Lisbon combines rigorous academics with entrepreneurial initiatives, preparing students for careers where business meets sustainability.',
+                programmes: ['Management', 'Economics', 'International Management (CEMS)', 'Entrepreneurship & Innovation'],
+                url: 'https://www.novasbe.unl.pt/en/programs/masters'
+            },
+            leiden: {
+                name: 'Leiden University',
+                logo: 'leiden-logo.png',
+                location: 'Leiden, Netherlands',
+                flag: 'nl',
+                alumni: 2,
+                description: 'Leiden\'s Institute of Environmental Sciences (CML) is internationally recognised for sustainability research. Together with TU Delft, they offer the pioneering Industrial Ecology programme, considered the "toolbox for sustainable development" with a focus on circular economy, life cycle assessment, and systems thinking.',
+                programmes: ['Industrial Ecology (joint with TU Delft)', 'Governance of Sustainability', 'Biodiversity & Sustainability'],
+                url: 'https://www.universiteitleiden.nl/en/education/study-programmes/master/industrial-ecology'
+            }
+        };
+        
+        function openUniversityModal(uniKey) {
+            const uni = universityData[uniKey];
+            if (!uni) return;
+            
+            const modal = document.getElementById('universityModal');
+            
+            // Set logo
+            const logoImg = document.querySelector('#uniModalLogo img');
+            logoImg.src = `assets/logos/${uni.logo}`;
+            logoImg.alt = uni.name;
+            logoImg.onerror = function() {
+                this.parentElement.innerHTML = '<i data-lucide="graduation-cap" style="width: 32px; height: 32px; color: var(--ce-green-primary);"></i>';
+                lucide.createIcons();
+            };
+            
+            // Set content
+            document.getElementById('uniModalName').textContent = uni.name;
+            document.getElementById('uniModalLocation').innerHTML = `
+                <img src="https://flagcdn.com/w40/${uni.flag}.png" alt="${uni.location}">
+                <span>${uni.location}</span>
+            `;
+            document.getElementById('uniModalAlumni').textContent = `${uni.alumni} CE Alumni`;
+            document.getElementById('uniModalDescription').textContent = uni.description;
+            
+            // Set programmes
+            const programmesContainer = document.getElementById('uniModalProgrammes');
+            programmesContainer.innerHTML = uni.programmes.map(prog => 
+                `<span class="uni-programme-tag">${prog}</span>`
+            ).join('');
+            
+            // Set link
+            const link = document.getElementById('uniModalLink');
+            link.href = uni.url;
+            
+            // Show modal
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            // Re-initialize icons
+            lucide.createIcons();
+        }
+        
+        function closeUniversityModal() {
+            const modal = document.getElementById('universityModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        // Close university modal on overlay click
+        document.getElementById('universityModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeUniversityModal();
+            }
+        });
+        
+        // ==========================================
+        // UNIVERSITY LIST - DYNAMIC GENERATION
+        // ==========================================
+        // Map university names to their modal keys
+        const uniKeyMap = {
+            'TU Delft': 'tudelft',
+            'KTH Royal Institute of Technology': 'kth',
+            'Wageningen University & Research': 'wageningen',
+            'Eindhoven University of Technology': 'tue',
+            'Maastricht University': 'maastricht',
+            'NOVA School of Business & Economics': 'nova',
+            'Leiden University': 'leiden'
+        };
         
         // Universities list with logos
         const universityList = document.querySelector('.university-list');
@@ -2762,8 +3111,10 @@
                     const logoHtml = uni.logo 
                         ? `<img src="assets/logos/${uni.logo}" alt="${uni.name}" class="university-logo" onerror="this.parentElement.innerHTML='<div class=\\'university-logo-placeholder\\'><i data-lucide=\\'graduation-cap\\'></i></div>'">`
                         : `<div class="university-logo-placeholder"><i data-lucide="graduation-cap"></i></div>`;
+                    const uniKey = uniKeyMap[uni.name] || '';
+                    const onclickAttr = uniKey ? `onclick="openUniversityModal('${uniKey}')"` : '';
                     return `
-                        <div class="university-item">
+                        <div class="university-item" ${onclickAttr}>
                             <div class="university-info">
                                 ${logoHtml}
                                 <span class="university-name">${uni.name}</span>
