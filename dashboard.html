@@ -2687,7 +2687,7 @@
         .donut-segment {
             fill: none;
             stroke-width: 24;
-            stroke-linecap: round;
+            stroke-linecap: butt;
         }
         
         .donut-center {
@@ -3576,12 +3576,14 @@
                 <div class="gender-chart">
                     <div class="donut-container">
                         <svg viewBox="0 0 100 100">
-                            <!-- Background circle -->
+                            <!-- Background circle (light grey) -->
                             <circle cx="50" cy="50" r="40" class="donut-segment" stroke="#e5e7eb" stroke-dasharray="251.2" stroke-dashoffset="0"/>
-                            <!-- Male segment (50% = 125.6) -->
-                            <circle cx="50" cy="50" r="40" class="donut-segment" stroke="#10B981" stroke-dasharray="251.2" stroke-dashoffset="125.6"/>
-                            <!-- Female segment (43% = 143.2 offset from male) -->
-                            <circle cx="50" cy="50" r="40" class="donut-segment" stroke="#00A2DB" stroke-dasharray="108" stroke-dashoffset="-125.6"/>
+                            <!-- Male segment (green, 50% = 125.6) -->
+                            <circle cx="50" cy="50" r="40" class="donut-segment" stroke="#10B981" stroke-dasharray="125.6 125.6" stroke-dashoffset="0"/>
+                            <!-- Female segment (blue, 43% = 108) -->
+                            <circle cx="50" cy="50" r="40" class="donut-segment" stroke="#00A2DB" stroke-dasharray="108 143.2" stroke-dashoffset="-125.6"/>
+                            <!-- Not disclosed segment (grey, 7% = 17.6) -->
+                            <circle cx="50" cy="50" r="40" class="donut-segment" stroke="#d1d5db" stroke-dasharray="17.6 233.6" stroke-dashoffset="-233.6"/>
                         </svg>
                         <div class="donut-center">
                             <span class="donut-center-number">46</span>
