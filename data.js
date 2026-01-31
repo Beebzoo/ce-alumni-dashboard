@@ -121,7 +121,7 @@ const CE_DATA = {
         { name: "Wageningen University & Research", count: 3, country: "Netherlands", logo: "wageningen-university.png" },
         { name: "Eindhoven University of Technology", count: 2, country: "Netherlands", logo: "eindhoven-university.png" },
         { name: "Maastricht University", count: 2, country: "Netherlands", logo: "maastricht-university.png" },
-        { name: "NOVA School of Business & Economics", count: 2, country: "Portugal", logo: null },
+        { name: "NOVA School of Business & Economics", count: 2, country: "Portugal", logo: "nova-logo.png" },
         { name: "Leiden University", count: 2, country: "Netherlands", logo: "leiden-university.png" },
         { name: "Technical University of Munich", count: 1, country: "Germany", logo: "technical-university-of-munich.png" },
         { name: "Technical University of Denmark", count: 1, country: "Denmark", logo: "technical-university-of-denmark.png" },
@@ -232,46 +232,59 @@ const CE_DATA = {
     concentrationPathways: {
         "Sustainable Biotechnology": {
             total: 11,
+            percentOfTrack: 65,  // 11 of 17 biotech grads pursuing Master's
             color: "#10B981",
             universities: [
-                { name: "Wageningen University & Research", count: 3, percent: 27 },
-                { name: "Maastricht University", count: 2, percent: 18 },
-                { name: "Instituto Superior Técnico Lisboa", count: 1, percent: 9 },
-                { name: "Université Libre de Bruxelles", count: 1, percent: 9 },
-                { name: "MCI - The Entrepreneurial School", count: 1, percent: 9 },
-                { name: "Leiden University", count: 1, percent: 9 },
-                { name: "IAAC Barcelona", count: 1, percent: 9 },
-                { name: "EU-CONEXUS", count: 1, percent: 9 }
+                { name: "Wageningen University & Research", count: 3, percent: 27, programmes: ["Biotechnology", "Food Systems", "Environmental Management"] },
+                { name: "Maastricht University", count: 2, percent: 18, programmes: ["Biobased Materials"] },
+                { name: "Instituto Superior Técnico Lisboa", count: 1, percent: 9, programmes: ["Biotechnology"] },
+                { name: "Université Libre de Bruxelles", count: 1, percent: 9, programmes: ["Biochemistry & Molecular Biology"] },
+                { name: "MCI Innsbruck", count: 1, percent: 9, programmes: ["Biotechnology"] },
+                { name: "Leiden University", count: 1, percent: 9, programmes: ["Industrial Ecology"] },
+                { name: "IAAC Barcelona", count: 1, percent: 9, programmes: ["Ecological Buildings & Biocities"] },
+                { name: "EU-CONEXUS", count: 1, percent: 9, programmes: ["Marine Biology"] }
             ]
         },
         "Circular Chemical Engineering": {
             total: 12,
+            percentOfTrack: 71,  // 12 of 17 chemical grads pursuing Master's
             color: "#14B8A6",
             universities: [
-                { name: "KTH Royal Institute of Technology", count: 3, percent: 25 },
-                { name: "Eindhoven University of Technology", count: 2, percent: 17 },
-                { name: "Technical University of Denmark", count: 1, percent: 8 },
-                { name: "NOVA School of Business & Economics", count: 1, percent: 8 },
-                { name: "University of Southern Denmark", count: 1, percent: 8 },
-                { name: "Universidad Politécnica de Madrid", count: 1, percent: 8 },
-                { name: "University of Seoul", count: 1, percent: 8 },
-                { name: "KU Leuven", count: 1, percent: 8 },
-                { name: "TU Delft", count: 1, percent: 8 }
+                { name: "KTH Royal Institute of Technology", count: 3, percent: 25, programmes: ["Chemical Engineering for Energy & Environment"] },
+                { name: "Eindhoven University of Technology", count: 2, percent: 17, programmes: ["Chemical Engineering", "Process Technology"] },
+                { name: "Technical University of Denmark", count: 1, percent: 8, programmes: ["Environmental Engineering"] },
+                { name: "NOVA School of Business & Economics", count: 1, percent: 8, programmes: ["Management (Sustainability)"] },
+                { name: "University of Southern Denmark", count: 1, percent: 8, programmes: ["Environmental Engineering"] },
+                { name: "Universidad Politécnica de Madrid", count: 1, percent: 8, programmes: ["Chemical Engineering"] },
+                { name: "University of Seoul", count: 1, percent: 8, programmes: ["Environmental Engineering"] },
+                { name: "KU Leuven", count: 1, percent: 8, programmes: ["Materials Engineering"] },
+                { name: "TU Delft", count: 1, percent: 8, programmes: ["Sustainable Energy Technology"] }
             ]
         },
         "Engineering Physics for Sustainable Manufacturing": {
             total: 8,
+            percentOfTrack: 67,  // 8 of 12 physics grads pursuing Master's
             color: "#0EA5E9",
             universities: [
-                { name: "TU Delft", count: 2, percent: 25 },
-                { name: "Technical University of Munich", count: 1, percent: 12 },
-                { name: "NOVA School of Business & Economics", count: 1, percent: 12 },
-                { name: "RWTH Aachen University", count: 1, percent: 12 },
-                { name: "Leiden University", count: 1, percent: 12 },
-                { name: "University of Groningen", count: 1, percent: 12 },
-                { name: "University of Liège", count: 1, percent: 12 }
+                { name: "TU Delft", count: 2, percent: 25, programmes: ["Mechanical Engineering"] },
+                { name: "Technical University of Munich", count: 1, percent: 12, programmes: ["Automotive Engineering"] },
+                { name: "NOVA School of Business & Economics", count: 1, percent: 12, programmes: ["Business Analytics"] },
+                { name: "RWTH Aachen University", count: 1, percent: 12, programmes: ["Automation Engineering"] },
+                { name: "Leiden University", count: 1, percent: 12, programmes: ["Industrial Ecology"] },
+                { name: "University of Groningen", count: 1, percent: 12, programmes: ["Mechanical Engineering"] },
+                { name: "University of Liège", count: 1, percent: 12, programmes: ["Engineering Physics"] }
             ]
         }
+    },
+    
+    // Programme categories for display
+    programmeCategories: {
+        "Chemical Engineering": { icon: "atom", color: "#14B8A6" },
+        "Biotechnology": { icon: "flask-conical", color: "#10B981" },
+        "Environmental": { icon: "leaf", color: "#22C55E" },
+        "Mechanical & Physics": { icon: "cpu", color: "#0EA5E9" },
+        "Business": { icon: "briefcase", color: "#8B5CF6" },
+        "Other": { icon: "graduation-cap", color: "#6B7280" }
     },
 
 
