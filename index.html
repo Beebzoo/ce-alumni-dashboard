@@ -473,11 +473,27 @@
         }
         
         .hero-logo {
-            width: 100px;
+            width: 130px;
             height: auto;
-            margin-bottom: 24px;
+            margin-bottom: 16px;
             filter: drop-shadow(0 4px 20px rgba(16, 185, 129, 0.3));
             animation: logoFloat 6s ease-in-out infinite;
+        }
+        
+        .hero-since-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(16, 185, 129, 0.15);
+            border: 1px solid rgba(16, 185, 129, 0.4);
+            padding: 6px 16px;
+            border-radius: var(--radius-full);
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--ce-green-light);
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
         
         @keyframes logoFloat {
@@ -2241,10 +2257,12 @@
         <div class="hero-content">
             <img src="assets/logos/ce-logo.png" alt="CE Logo" class="hero-logo">
             
+            <div class="hero-since-badge">Since 2023</div>
+            
             <h1>Circular Engineering<br><span>Alumni Community</span></h1>
             
             <p class="hero-subtitle">
-                From Maastricht to the world — tracking the journeys of CE alumni 
+                From Maastricht to the world â€” tracking the journeys of CE alumni 
                 as they build sustainable futures across industries and continents.
             </p>
             
@@ -2495,7 +2513,7 @@
                 </div>
                 
                 <div class="growth-increase">
-                    <span><i data-lucide="trending-up"></i> 2.5× growth year-over-year</span>
+                    <span><i data-lucide="trending-up"></i> 2.5Ã— growth year-over-year</span>
                 </div>
             </div>
             
@@ -2543,7 +2561,7 @@
     <section class="talent-flow">
         <div class="section-header">
             <h2>Regional Impact</h2>
-            <p>Tracking where CE alumni come from and where they go — measuring our contribution to the regional knowledge economy.</p>
+            <p>Tracking where CE alumni come from and where they go â€” measuring our contribution to the regional knowledge economy.</p>
         </div>
         
         <div class="flow-stats">
@@ -2637,7 +2655,7 @@
         </div>
         
         <div class="footer-bottom">
-            <p>&copy; 2025 Maastricht University · Faculty of Science and Engineering</p>
+            <p>&copy; 2025 Maastricht University Â· Faculty of Science and Engineering</p>
             <a href="mailto:fse-alumni@maastrichtuniversity.nl">fse-alumni@maastrichtuniversity.nl</a>
         </div>
     </footer>
@@ -2842,7 +2860,7 @@
         // ==========================================
         const currentYear = new Date().getFullYear();
         document.querySelector('.footer-bottom p').innerHTML = 
-            `&copy; ${currentYear} Maastricht University · Faculty of Science and Engineering`;
+            `&copy; ${currentYear} Maastricht University Â· Faculty of Science and Engineering`;
         
         // ==========================================
         // FLAG WAVE - NATIONALITIES
