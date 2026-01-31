@@ -224,6 +224,58 @@ const CE_DATA = {
 
 
     // ══════════════════════════════════════════
+    // SECTION 10: CONCENTRATION → UNIVERSITY PATHWAYS
+    // ══════════════════════════════════════════
+    // Which Master's universities alumni go to based on their CE concentration
+    // Only includes alumni currently pursuing a Master's
+    
+    concentrationPathways: {
+        "Sustainable Biotechnology": {
+            total: 11,
+            color: "#10B981",
+            universities: [
+                { name: "Wageningen University & Research", count: 3, percent: 27 },
+                { name: "Maastricht University", count: 2, percent: 18 },
+                { name: "Instituto Superior Técnico Lisboa", count: 1, percent: 9 },
+                { name: "Université Libre de Bruxelles", count: 1, percent: 9 },
+                { name: "MCI - The Entrepreneurial School", count: 1, percent: 9 },
+                { name: "Leiden University", count: 1, percent: 9 },
+                { name: "IAAC Barcelona", count: 1, percent: 9 },
+                { name: "EU-CONEXUS", count: 1, percent: 9 }
+            ]
+        },
+        "Circular Chemical Engineering": {
+            total: 12,
+            color: "#14B8A6",
+            universities: [
+                { name: "KTH Royal Institute of Technology", count: 3, percent: 25 },
+                { name: "Eindhoven University of Technology", count: 2, percent: 17 },
+                { name: "Technical University of Denmark", count: 1, percent: 8 },
+                { name: "NOVA School of Business & Economics", count: 1, percent: 8 },
+                { name: "University of Southern Denmark", count: 1, percent: 8 },
+                { name: "Universidad Politécnica de Madrid", count: 1, percent: 8 },
+                { name: "University of Seoul", count: 1, percent: 8 },
+                { name: "KU Leuven", count: 1, percent: 8 },
+                { name: "TU Delft", count: 1, percent: 8 }
+            ]
+        },
+        "Engineering Physics for Sustainable Manufacturing": {
+            total: 8,
+            color: "#0EA5E9",
+            universities: [
+                { name: "TU Delft", count: 2, percent: 25 },
+                { name: "Technical University of Munich", count: 1, percent: 12 },
+                { name: "NOVA School of Business & Economics", count: 1, percent: 12 },
+                { name: "RWTH Aachen University", count: 1, percent: 12 },
+                { name: "Leiden University", count: 1, percent: 12 },
+                { name: "University of Groningen", count: 1, percent: 12 },
+                { name: "University of Liège", count: 1, percent: 12 }
+            ]
+        }
+    },
+
+
+    // ══════════════════════════════════════════
     // SECTION 10: ORIGIN COUNTRIES
     // ══════════════════════════════════════════
     // Where alumni lived BEFORE starting CE (for Euregio stats)
