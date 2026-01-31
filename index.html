@@ -3,663 +3,1436 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Circular Engineering Alumni Dashboard</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>CE Alumni Network | Circular Engineering</title>
+    <meta name="description" content="Explore where 46 Circular Engineering alumni from 15 nationalities are building sustainable futures across 10 countries and 22+ universities worldwide.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <!-- CE Alumni Data -->
+    <script src="data.js"></script>
+    
     <style>
-        * {
+        /* ============================================
+           CSS VARIABLES - CIRCULAR ENGINEERING THEME
+        ============================================ */
+        :root {
+            /* UM Core */
+            --um-dark-blue: #001C3D;
+            --um-darker-blue: #00101f;
+            --um-light-blue: #00A2DB;
+            
+            /* Circular Engineering Greens */
+            --ce-green-primary: #10B981;
+            --ce-green-dark: #059669;
+            --ce-green-light: #34D399;
+            --ce-green-glow: rgba(16, 185, 129, 0.3);
+            --ce-teal: #14B8A6;
+            
+            /* Earth tones */
+            --ce-sand: #F5F0E8;
+            --ce-warm-white: #FDFCFA;
+            --ce-earth: #78716C;
+            
+            /* Neutrals */
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-500: #6b7280;
+            --gray-600: #4b5563;
+            --gray-800: #1f2937;
+            
+            /* Typography */
+            --font-heading: 'Outfit', sans-serif;
+            --font-body: 'DM Sans', sans-serif;
+            
+            /* Shadows */
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.04), 0 2px 8px rgba(0,0,0,0.04);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.06);
+            --shadow-lg: 0 8px 24px rgba(0,0,0,0.08), 0 16px 48px rgba(0,0,0,0.08);
+            --shadow-glow: 0 0 60px rgba(16, 185, 129, 0.15);
+            
+            /* Radii */
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --radius-xl: 28px;
+            --radius-full: 9999px;
+            
+            /* Transitions */
+            --transition-fast: 0.15s ease;
+            --transition-smooth: 0.3s ease;
+        }
+        
+        /* ============================================
+           RESET & BASE
+        ============================================ */
+        *, *::before, *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+        }
+        
         body {
-            font-family: 'Inter', 'Verdana', sans-serif;
-            background: linear-gradient(135deg, #001C3D 0%, #0a2847 100%);
-            color: #ffffff;
-            min-height: 100vh;
+            font-family: var(--font-body);
+            font-size: 16px;
             line-height: 1.6;
+            color: var(--um-dark-blue);
+            background: var(--ce-warm-white);
+            overflow-x: hidden;
         }
-
-        .container {
-            max-width: 1600px;
-            margin: 0 auto;
-            padding: 24px;
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            line-height: 1.2;
+            letter-spacing: -0.02em;
         }
-
-        .header {
-            margin-bottom: 40px;
-            padding: 40px 0;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 16px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        
+        a {
+            color: var(--ce-green-primary);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+        
+        a:hover {
+            color: var(--ce-green-dark);
+        }
+        
+        /* ============================================
+           HEADER
+        ============================================ */
+        header {
+            background: rgba(255,255,255,0.9);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0,28,61,0.06);
+            padding: 0 50px;
+            height: 72px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: all var(--transition-smooth);
+        }
+        
+        header.scrolled {
+            background: var(--um-dark-blue);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        
+        .logo-icon {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, var(--ce-green-primary), var(--ce-teal));
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .logo-icon::before {
+            content: '';
+            width: 24px;
+            height: 24px;
+            border: 3px solid white;
+            border-radius: 50%;
+            position: relative;
+        }
+        
+        .logo-icon::after {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+            top: 50%;
+            right: 8px;
+            transform: translateY(-50%);
+        }
+        
+        .logo-text h1 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--um-dark-blue);
+            transition: color var(--transition-smooth);
+        }
+        
+        .logo-text p {
+            font-size: 12px;
+            color: var(--gray-500);
+            font-weight: 500;
+            transition: color var(--transition-smooth);
+        }
+        
+        header.scrolled .logo-text h1 {
+            color: white;
+        }
+        
+        header.scrolled .logo-text p {
+            color: rgba(255,255,255,0.7);
+        }
+        
+        .header-nav {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .header-nav a {
+            padding: 10px 18px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--gray-600);
+            border-radius: var(--radius-full);
+            transition: all var(--transition-fast);
+        }
+        
+        .header-nav a:hover {
+            color: var(--um-dark-blue);
+            background: var(--gray-100);
+        }
+        
+        .header-nav .btn-cta {
+            background: linear-gradient(135deg, var(--ce-green-primary), var(--ce-green-dark));
+            color: white;
+            font-weight: 600;
+        }
+        
+        .header-nav .btn-cta:hover {
+            color: white;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px var(--ce-green-glow);
+        }
+        
+        header.scrolled .header-nav a {
+            color: rgba(255,255,255,0.8);
+        }
+        
+        header.scrolled .header-nav a:hover {
+            color: white;
+            background: rgba(255,255,255,0.1);
+        }
+        
+        /* ============================================
+           HERO SECTION
+        ============================================ */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(165deg, var(--um-dark-blue) 0%, #002952 50%, #003366 100%);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding: 120px 50px 80px;
+        }
+        
+        /* Animated circular rings background */
+        .hero-rings {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px;
+            height: 800px;
+            pointer-events: none;
+        }
+        
+        .hero-ring {
+            position: absolute;
+            border: 1px solid rgba(16, 185, 129, 0.15);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .hero-ring:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            animation: pulse-ring 4s ease-in-out infinite;
+        }
+        
+        .hero-ring:nth-child(2) {
+            width: 500px;
+            height: 500px;
+            animation: pulse-ring 4s ease-in-out infinite 0.5s;
+        }
+        
+        .hero-ring:nth-child(3) {
+            width: 700px;
+            height: 700px;
+            animation: pulse-ring 4s ease-in-out infinite 1s;
+        }
+        
+        .hero-ring:nth-child(4) {
+            width: 900px;
+            height: 900px;
+            animation: pulse-ring 4s ease-in-out infinite 1.5s;
+        }
+        
+        @keyframes pulse-ring {
+            0%, 100% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
+            50% { opacity: 0.6; transform: translate(-50%, -50%) scale(1.02); }
+        }
+        
+        /* Floating particles */
+        .hero-particles {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: var(--ce-green-primary);
+            border-radius: 50%;
+            opacity: 0.4;
+        }
+        
+        .particle:nth-child(1) { top: 20%; left: 15%; animation: float 8s ease-in-out infinite; }
+        .particle:nth-child(2) { top: 60%; left: 10%; animation: float 10s ease-in-out infinite 1s; }
+        .particle:nth-child(3) { top: 30%; right: 20%; animation: float 9s ease-in-out infinite 2s; }
+        .particle:nth-child(4) { top: 70%; right: 15%; animation: float 11s ease-in-out infinite 0.5s; }
+        .particle:nth-child(5) { top: 45%; left: 5%; animation: float 7s ease-in-out infinite 1.5s; }
+        .particle:nth-child(6) { bottom: 20%; right: 25%; animation: float 12s ease-in-out infinite 2.5s; }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(180deg); }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
             text-align: center;
+            max-width: 900px;
         }
-
-        .header h1 {
-            font-size: 3.2em;
-            font-weight: 300;
-            margin-bottom: 12px;
-            background: linear-gradient(135deg, #ffffff, #00A2DB);
+        
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(16, 185, 129, 0.15);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            padding: 8px 20px;
+            border-radius: var(--radius-full);
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--ce-green-light);
+            margin-bottom: 30px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        
+        .hero-badge i {
+            width: 16px;
+            height: 16px;
+        }
+        
+        .hero h1 {
+            font-size: clamp(42px, 6vw, 72px);
+            font-weight: 800;
+            color: white;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+        
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--ce-green-light), var(--ce-teal));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-
-        .header p {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 1.2em;
-            font-weight: 300;
+        
+        .hero-subtitle {
+            font-size: 20px;
+            color: rgba(255,255,255,0.7);
+            max-width: 600px;
+            margin: 0 auto 50px;
+            line-height: 1.7;
         }
-
-        .stats-overview {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 24px;
-            margin-bottom: 40px;
+        
+        /* Hero Stats Rings */
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
         }
-
-        .stat-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 32px 24px;
+        
+        .stat-ring {
+            position: relative;
+            width: 140px;
+            height: 140px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .stat-ring svg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transform: rotate(-90deg);
+        }
+        
+        .stat-ring circle {
+            fill: none;
+            stroke-width: 4;
+        }
+        
+        .stat-ring .ring-bg {
+            stroke: rgba(255,255,255,0.1);
+        }
+        
+        .stat-ring .ring-fill {
+            stroke: var(--ce-green-primary);
+            stroke-linecap: round;
+            stroke-dasharray: 408;
+            stroke-dashoffset: 408;
+            transition: stroke-dashoffset 2s ease-out;
+        }
+        
+        .stat-ring.animated .ring-fill {
+            stroke-dashoffset: var(--offset);
+        }
+        
+        .stat-ring .stat-value {
+            font-family: var(--font-heading);
+            font-size: 36px;
+            font-weight: 700;
+            color: white;
+        }
+        
+        .stat-ring .stat-label {
+            font-size: 12px;
+            color: rgba(255,255,255,0.6);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        /* ============================================
+           SECTION STYLES
+        ============================================ */
+        section {
+            padding: 100px 50px;
+        }
+        
+        .section-header {
             text-align: center;
-            transition: all 0.3s ease;
+            max-width: 700px;
+            margin: 0 auto 60px;
+        }
+        
+        .section-header h2 {
+            font-size: 40px;
+            font-weight: 700;
+            color: var(--um-dark-blue);
+            margin-bottom: 16px;
+        }
+        
+        .section-header p {
+            font-size: 18px;
+            color: var(--gray-500);
+            line-height: 1.7;
+        }
+        
+        /* ============================================
+           CONCENTRATIONS SECTION
+        ============================================ */
+        .concentrations {
+            background: white;
+        }
+        
+        .concentrations-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .concentration-card {
+            background: var(--gray-50);
+            border-radius: var(--radius-lg);
+            padding: 40px 30px;
+            text-align: center;
             position: relative;
             overflow: hidden;
+            transition: all var(--transition-smooth);
+            border: 1px solid var(--gray-200);
         }
-
-        .stat-card::before {
+        
+        .concentration-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--ce-green-primary);
+        }
+        
+        .concentration-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #E84E10, #00A2DB, #F39425);
+            height: 4px;
+            background: linear-gradient(90deg, var(--ce-green-primary), var(--ce-teal));
+            transform: scaleX(0);
+            transition: transform var(--transition-smooth);
         }
-
-        .stat-card:hover {
-            transform: translateY(-4px);
-            background: rgba(255, 255, 255, 0.08);
-            box-shadow: 0 20px 40px rgba(0, 162, 219, 0.2);
+        
+        .concentration-card:hover::before {
+            transform: scaleX(1);
         }
-
-        .stat-number {
-            font-size: 2.8em;
-            font-weight: 600;
-            background: linear-gradient(135deg, #00A2DB, #ffffff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 8px;
-        }
-
-        .stat-label {
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 1em;
-            font-weight: 400;
-        }
-
-        .dashboard-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 32px;
-            margin-bottom: 40px;
-        }
-
-        .chart-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 32px;
-            transition: all 0.3s ease;
-        }
-
-        .chart-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .chart-title {
-            font-size: 1.5em;
-            font-weight: 600;
-            margin-bottom: 24px;
-            color: #ffffff;
-        }
-
-        .chart-container {
-            position: relative;
-            height: 350px;
-            margin-bottom: 24px;
-        }
-
-        .chart-breakdown {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 12px;
-            margin-top: 16px;
-        }
-
-        .breakdown-item {
+        
+        .concentration-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 24px;
+            background: linear-gradient(135deg, var(--ce-green-primary), var(--ce-green-dark));
+            border-radius: 50%;
             display: flex;
             align-items: center;
-            gap: 8px;
-            padding: 8px;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px;
-            font-size: 0.9em;
+            justify-content: center;
+            position: relative;
         }
-
-        .color-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            flex-shrink: 0;
-        }
-
-        .breakdown-text {
-            color: #ffffff;
-            font-weight: 500;
-        }
-
-        .breakdown-value {
-            color: rgba(255, 255, 255, 0.7);
-            margin-left: auto;
-            font-weight: 600;
-        }
-
-        .tab-container {
-            margin-bottom: 32px;
-        }
-
-        .tab-buttons {
-            display: flex;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            padding: 6px;
-            margin-bottom: 24px;
-            overflow-x: auto;
-        }
-
-        .tab-button {
-            padding: 12px 24px;
-            background: transparent;
-            border: none;
-            color: rgba(255, 255, 255, 0.7);
-            cursor: pointer;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            white-space: nowrap;
-            font-weight: 500;
-        }
-
-        .tab-button.active {
-            background: #00A2DB;
+        
+        .concentration-icon i {
+            width: 36px;
+            height: 36px;
             color: white;
-            box-shadow: 0 4px 12px rgba(0, 162, 219, 0.3);
         }
-
-        .tab-button:hover:not(.active) {
-            background: rgba(255, 255, 255, 0.1);
-            color: #ffffff;
+        
+        /* Circular progress ring around icon */
+        .concentration-icon::after {
+            content: '';
+            position: absolute;
+            inset: -6px;
+            border: 2px dashed var(--ce-green-light);
+            border-radius: 50%;
+            opacity: 0.4;
+            animation: spin 20s linear infinite;
         }
-
-        .details-panel {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 24px;
+        
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
-
-        .details-title {
-            font-size: 1.3em;
+        
+        .concentration-card h3 {
+            font-size: 20px;
             font-weight: 600;
-            margin-bottom: 16px;
-            color: #00A2DB;
-        }
-
-        .university-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 16px;
-        }
-
-        .university-card {
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 12px;
-            padding: 16px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border-left: 4px solid transparent;
-        }
-
-        .university-card:hover {
-            background: rgba(0, 162, 219, 0.1);
-            border-left-color: #00A2DB;
-            transform: translateX(4px);
-        }
-
-        .university-name {
-            font-weight: 600;
-            color: #ffffff;
+            color: var(--um-dark-blue);
             margin-bottom: 8px;
         }
-
-        .university-students {
-            color: #00A2DB;
-            font-size: 0.9em;
-            font-weight: 500;
+        
+        .concentration-count {
+            font-family: var(--font-heading);
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--ce-green-primary);
+            line-height: 1;
+            margin-bottom: 8px;
         }
-
-        .university-programs {
-            margin-top: 8px;
+        
+        .concentration-label {
+            font-size: 14px;
+            color: var(--gray-500);
         }
-
-        .program-tag {
-            display: inline-block;
-            background: rgba(232, 78, 16, 0.2);
-            color: #E84E10;
-            padding: 2px 8px;
-            border-radius: 6px;
-            font-size: 0.75em;
-            margin-right: 6px;
-            margin-bottom: 4px;
+        
+        /* ============================================
+           DESTINATIONS SECTION
+        ============================================ */
+        .destinations {
+            background: var(--ce-sand);
         }
-
-        .full-width {
-            grid-column: 1 / -1;
+        
+        .destinations-content {
+            max-width: 1200px;
+            margin: 0 auto;
         }
-
-        .concentration-selector {
+        
+        .destinations-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        
+        /* Universities list */
+        .universities-panel {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .universities-panel h3 {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--um-dark-blue);
+            margin-bottom: 30px;
             display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .universities-panel h3 i {
+            width: 28px;
+            height: 28px;
+            color: var(--ce-green-primary);
+        }
+        
+        .university-list {
+            display: flex;
+            flex-direction: column;
             gap: 16px;
-            margin-bottom: 24px;
+        }
+        
+        .university-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 20px;
+            background: var(--gray-50);
+            border-radius: var(--radius-md);
+            transition: all var(--transition-fast);
+        }
+        
+        .university-item:hover {
+            background: var(--gray-100);
+            transform: translateX(4px);
+        }
+        
+        .university-name {
+            font-weight: 500;
+            color: var(--um-dark-blue);
+            font-size: 15px;
+        }
+        
+        .university-count {
+            background: var(--ce-green-primary);
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: var(--radius-full);
+        }
+        
+        /* Countries/Cities panel */
+        .locations-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        .location-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .location-card h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--um-dark-blue);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .location-card h3 i {
+            width: 22px;
+            height: 22px;
+            color: var(--ce-green-primary);
+        }
+        
+        .location-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .location-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            background: var(--gray-50);
+            border-radius: var(--radius-full);
+            font-size: 14px;
+            color: var(--gray-600);
+            font-weight: 500;
+            transition: all var(--transition-fast);
+        }
+        
+        .location-tag:hover {
+            background: var(--ce-green-primary);
+            color: white;
+        }
+        
+        .location-tag img {
+            width: 20px;
+            height: 15px;
+            object-fit: cover;
+            border-radius: 2px;
+        }
+        
+        /* ============================================
+           TALENT FLOW SECTION
+        ============================================ */
+        .talent-flow {
+            background: var(--um-dark-blue);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .talent-flow::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            border: 1px solid rgba(16, 185, 129, 0.1);
+            border-radius: 50%;
+        }
+        
+        .talent-flow .section-header h2 {
+            color: white;
+        }
+        
+        .talent-flow .section-header p {
+            color: rgba(255,255,255,0.6);
+        }
+        
+        .flow-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .flow-stat {
+            text-align: center;
+            padding: 30px;
+            background: rgba(255,255,255,0.05);
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .flow-stat-value {
+            font-family: var(--font-heading);
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--ce-green-light);
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+        
+        .flow-stat-label {
+            font-size: 14px;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.5;
+        }
+        
+        /* ============================================
+           CTA SECTION
+        ============================================ */
+        .cta-section {
+            background: linear-gradient(135deg, var(--ce-green-primary) 0%, var(--ce-green-dark) 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .cta-section h2 {
+            font-size: 36px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 16px;
+        }
+        
+        .cta-section p {
+            font-size: 18px;
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 30px;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
             flex-wrap: wrap;
         }
-
-        .concentration-btn {
-            padding: 12px 20px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            color: rgba(255, 255, 255, 0.8);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 500;
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 32px;
+            border-radius: var(--radius-full);
+            font-weight: 600;
+            font-size: 16px;
+            transition: all var(--transition-smooth);
         }
-
-        .concentration-btn.active {
-            background: rgba(0, 162, 219, 0.2);
-            border-color: #00A2DB;
-            color: #00A2DB;
+        
+        .btn i {
+            width: 20px;
+            height: 20px;
         }
-
-        .concentration-btn:hover {
-            background: rgba(255, 255, 255, 0.1);
-            color: #ffffff;
+        
+        .btn-white {
+            background: white;
+            color: var(--ce-green-dark);
         }
-
+        
+        .btn-white:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            color: var(--ce-green-dark);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255,255,255,0.4);
+        }
+        
+        .btn-outline:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: white;
+            color: white;
+        }
+        
+        /* ============================================
+           FOOTER
+        ============================================ */
+        footer {
+            background: var(--um-darker-blue);
+            color: white;
+            padding: 60px 50px 40px;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 60px;
+        }
+        
+        .footer-brand h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        
+        .footer-brand p {
+            font-size: 14px;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.7;
+            max-width: 300px;
+        }
+        
+        .footer-links h4 {
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 20px;
+            color: rgba(255,255,255,0.5);
+        }
+        
+        .footer-links a {
+            display: block;
+            color: rgba(255,255,255,0.7);
+            font-size: 14px;
+            padding: 6px 0;
+            transition: color var(--transition-fast);
+        }
+        
+        .footer-links a:hover {
+            color: var(--ce-green-light);
+        }
+        
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 40px auto 0;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .footer-bottom p {
+            font-size: 13px;
+            color: rgba(255,255,255,0.4);
+        }
+        
+        .footer-bottom a {
+            color: rgba(255,255,255,0.4);
+            font-size: 13px;
+        }
+        
+        .footer-bottom a:hover {
+            color: white;
+        }
+        
+        /* ============================================
+           RESPONSIVE
+        ============================================ */
         @media (max-width: 1024px) {
-            .dashboard-grid {
+            .concentrations-grid {
                 grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .stats-overview {
-                grid-template-columns: repeat(2, 1fr);
+                max-width: 400px;
             }
             
-            .header h1 {
-                font-size: 2.5em;
+            .destinations-grid {
+                grid-template-columns: 1fr;
             }
-
-            .tab-buttons {
-                flex-wrap: wrap;
+            
+            .flow-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                padding: 0 20px;
+            }
+            
+            .header-nav {
+                display: none;
+            }
+            
+            .hero {
+                padding: 100px 20px 60px;
+            }
+            
+            .hero-stats {
+                gap: 20px;
+            }
+            
+            .stat-ring {
+                width: 110px;
+                height: 110px;
+            }
+            
+            .stat-ring .stat-value {
+                font-size: 28px;
+            }
+            
+            section {
+                padding: 60px 20px;
+            }
+            
+            .section-header h2 {
+                font-size: 32px;
+            }
+            
+            .flow-stats {
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>BSc Circular Engineering Alumni</h1>
-            <p>Interactive Dashboard • Connecting with the Future • 2023-2025</p>
+    <!-- Header -->
+    <header id="header">
+        <a href="index.html" class="logo">
+            <div class="logo-icon"></div>
+            <div class="logo-text">
+                <h1>CE Alumni Network</h1>
+                <p>Faculty of Science and Engineering</p>
+            </div>
+        </a>
+        <nav class="header-nav">
+            <a href="#concentrations">Pathways</a>
+            <a href="#destinations">Destinations</a>
+            <a href="#community" class="btn-cta">Join the Loop</a>
+        </nav>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <!-- Animated rings background -->
+        <div class="hero-rings">
+            <div class="hero-ring"></div>
+            <div class="hero-ring"></div>
+            <div class="hero-ring"></div>
+            <div class="hero-ring"></div>
         </div>
-
-        <div class="stats-overview">
-            <div class="stat-card">
-                <div class="stat-number">45</div>
-                <div class="stat-label">Total Alumni</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">15</div>
-                <div class="stat-label">Countries of Origin</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">9</div>
-                <div class="stat-label">Master's Countries</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">100%</div>
-                <div class="stat-label">Continuing Education</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">37.8%</div>
-                <div class="stat-label">Chemical Engineering</div>
-            </div>
+        
+        <!-- Floating particles -->
+        <div class="hero-particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
         </div>
-
-        <div class="dashboard-grid">
-            <!-- CE Concentrations Chart -->
-            <div class="chart-card">
-                <h3 class="chart-title">CE Concentrations Distribution</h3>
-                <div class="chart-container">
-                    <canvas id="concentrationsChart"></canvas>
-                </div>
-                <div class="chart-breakdown">
-                    <div class="breakdown-item">
-                        <div class="color-dot" style="background-color: #E84E10;"></div>
-                        <span class="breakdown-text">Circular Chemical Engineering</span>
-                        <span class="breakdown-value">37.8%</span>
-                    </div>
-                    <div class="breakdown-item">
-                        <div class="color-dot" style="background-color: #001C3D;"></div>
-                        <span class="breakdown-text">Sustainable Biotechnology</span>
-                        <span class="breakdown-value">35.6%</span>
-                    </div>
-                    <div class="breakdown-item">
-                        <div class="color-dot" style="background-color: #F39425;"></div>
-                        <span class="breakdown-text">Engineering Physics</span>
-                        <span class="breakdown-value">26.7%</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Master's Destinations Chart -->
-            <div class="chart-card">
-                <h3 class="chart-title">Master's Destination Countries</h3>
-                <div class="chart-container">
-                    <canvas id="destinationsChart"></canvas>
-                </div>
-            </div>
-
-            <!-- Academic Pathways Chart -->
-            <div class="chart-card">
-                <h3 class="chart-title">Academic Pathways</h3>
-                <div class="chart-container">
-                    <canvas id="pathwaysChart"></canvas>
-                </div>
-            </div>
-
-            <!-- Top Universities Chart -->
-            <div class="chart-card">
-                <h3 class="chart-title">Top Master's Universities</h3>
-                <div class="chart-container">
-                    <canvas id="universitiesChart"></canvas>
-                </div>
-            </div>
-        </div>
-
-        <!-- Concentration Deep Dive -->
-        <div class="tab-container">
-            <div class="tab-buttons">
-                <button class="tab-button active" onclick="showConcentration('chemical')">Circular Chemical Engineering</button>
-                <button class="tab-button" onclick="showConcentration('bio')">Sustainable Biotechnology</button>
-                <button class="tab-button" onclick="showConcentration('physics')">Engineering Physics</button>
+        
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i data-lucide="recycle"></i>
+                Closing the Loop Since 2021
             </div>
             
-            <div id="concentrationContent">
-                <div class="details-panel">
-                    <div class="details-title">Circular Chemical Engineering • 17 Students • 37.8%</div>
-                    <div class="university-grid" id="universityGrid">
-                        <!-- Universities will be populated here -->
+            <h1>Where <span>Circular Engineers</span> Go Next</h1>
+            
+            <p class="hero-subtitle">
+                From Maastricht to the world — tracking the journeys of CE alumni 
+                as they build sustainable futures across industries and continents.
+            </p>
+            
+            <!-- Stats as circular rings -->
+            <div class="hero-stats">
+                <div class="stat-ring" style="--offset: 100;">
+                    <svg viewBox="0 0 140 140">
+                        <circle class="ring-bg" cx="70" cy="70" r="65"/>
+                        <circle class="ring-fill" cx="70" cy="70" r="65"/>
+                    </svg>
+                    <span class="stat-value" data-target="46">0</span>
+                    <span class="stat-label">Alumni</span>
+                </div>
+                
+                <div class="stat-ring" style="--offset: 200;">
+                    <svg viewBox="0 0 140 140">
+                        <circle class="ring-bg" cx="70" cy="70" r="65"/>
+                        <circle class="ring-fill" cx="70" cy="70" r="65"/>
+                    </svg>
+                    <span class="stat-value" data-target="15">0</span>
+                    <span class="stat-label">Nationalities</span>
+                </div>
+                
+                <div class="stat-ring" style="--offset: 280;">
+                    <svg viewBox="0 0 140 140">
+                        <circle class="ring-bg" cx="70" cy="70" r="65"/>
+                        <circle class="ring-fill" cx="70" cy="70" r="65"/>
+                    </svg>
+                    <span class="stat-value" data-target="10">0</span>
+                    <span class="stat-label">Countries</span>
+                </div>
+                
+                <div class="stat-ring" style="--offset: 320;">
+                    <svg viewBox="0 0 140 140">
+                        <circle class="ring-bg" cx="70" cy="70" r="65"/>
+                        <circle class="ring-fill" cx="70" cy="70" r="65"/>
+                    </svg>
+                    <span class="stat-value" data-target="22">0</span>
+                    <span class="stat-label">Universities</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Concentrations Section -->
+    <section class="concentrations" id="concentrations">
+        <div class="section-header">
+            <h2>Three Pathways, One Mission</h2>
+            <p>CE alumni specialise in one of three concentrations, each addressing critical aspects of the circular transition.</p>
+        </div>
+        
+        <div class="concentrations-grid">
+            <div class="concentration-card">
+                <div class="concentration-icon">
+                    <i data-lucide="flask-conical"></i>
+                </div>
+                <h3>Sustainable Biotechnology</h3>
+                <div class="concentration-count">17</div>
+                <p class="concentration-label">alumni</p>
+            </div>
+            
+            <div class="concentration-card">
+                <div class="concentration-icon">
+                    <i data-lucide="atom"></i>
+                </div>
+                <h3>Circular Chemical Engineering</h3>
+                <div class="concentration-count">17</div>
+                <p class="concentration-label">alumni</p>
+            </div>
+            
+            <div class="concentration-card">
+                <div class="concentration-icon">
+                    <i data-lucide="cpu"></i>
+                </div>
+                <h3>Engineering Physics</h3>
+                <div class="concentration-count">12</div>
+                <p class="concentration-label">alumni</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Destinations Section -->
+    <section class="destinations" id="destinations">
+        <div class="section-header">
+            <h2>Where They're Headed</h2>
+            <p>From technical universities to business schools, CE alumni are continuing their education at leading institutions.</p>
+        </div>
+        
+        <div class="destinations-content">
+            <div class="destinations-grid">
+                <div class="universities-panel">
+                    <h3><i data-lucide="graduation-cap"></i> Top Master's Destinations</h3>
+                    <div class="university-list">
+                        <div class="university-item">
+                            <span class="university-name">TU Delft</span>
+                            <span class="university-count">3</span>
+                        </div>
+                        <div class="university-item">
+                            <span class="university-name">KTH Royal Institute of Technology</span>
+                            <span class="university-count">3</span>
+                        </div>
+                        <div class="university-item">
+                            <span class="university-name">Wageningen University & Research</span>
+                            <span class="university-count">3</span>
+                        </div>
+                        <div class="university-item">
+                            <span class="university-name">Eindhoven University of Technology</span>
+                            <span class="university-count">2</span>
+                        </div>
+                        <div class="university-item">
+                            <span class="university-name">Maastricht University</span>
+                            <span class="university-count">2</span>
+                        </div>
+                        <div class="university-item">
+                            <span class="university-name">NOVA School of Business & Economics</span>
+                            <span class="university-count">2</span>
+                        </div>
+                        <div class="university-item">
+                            <span class="university-name">Leiden University</span>
+                            <span class="university-count">2</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="locations-panel">
+                    <div class="location-card">
+                        <h3><i data-lucide="globe"></i> Countries</h3>
+                        <div class="location-tags">
+                            <span class="location-tag">
+                                <img src="https://flagcdn.com/w40/nl.png" alt="Netherlands">
+                                Netherlands
+                            </span>
+                            <span class="location-tag">
+                                <img src="https://flagcdn.com/w40/pt.png" alt="Portugal">
+                                Portugal
+                            </span>
+                            <span class="location-tag">
+                                <img src="https://flagcdn.com/w40/de.png" alt="Germany">
+                                Germany
+                            </span>
+                            <span class="location-tag">
+                                <img src="https://flagcdn.com/w40/se.png" alt="Sweden">
+                                Sweden
+                            </span>
+                            <span class="location-tag">
+                                <img src="https://flagcdn.com/w40/dk.png" alt="Denmark">
+                                Denmark
+                            </span>
+                            <span class="location-tag">
+                                <img src="https://flagcdn.com/w40/be.png" alt="Belgium">
+                                Belgium
+                            </span>
+                            <span class="location-tag">
+                                <img src="https://flagcdn.com/w40/es.png" alt="Spain">
+                                Spain
+                            </span>
+                            <span class="location-tag">
+                                <img src="https://flagcdn.com/w40/fr.png" alt="France">
+                                France
+                            </span>
+                            <span class="location-tag">
+                                <img src="https://flagcdn.com/w40/kr.png" alt="South Korea">
+                                South Korea
+                            </span>
+                            <span class="location-tag">
+                                <img src="https://flagcdn.com/w40/md.png" alt="Moldova">
+                                Moldova
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="location-card">
+                        <h3><i data-lucide="map-pin"></i> Top Cities</h3>
+                        <div class="location-tags">
+                            <span class="location-tag">Maastricht (10)</span>
+                            <span class="location-tag">Lisbon (3)</span>
+                            <span class="location-tag">Stockholm (3)</span>
+                            <span class="location-tag">Wageningen (3)</span>
+                            <span class="location-tag">Delft (3)</span>
+                            <span class="location-tag">Eindhoven (2)</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <!-- Netherlands Focus -->
-        <div class="chart-card full-width">
-            <h3 class="chart-title">CE Alumni in the Netherlands • 30% of Total</h3>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center;">
-                <div class="chart-container" style="height: 300px;">
-                    <canvas id="netherlandsChart"></canvas>
-                </div>
-                <div>
-                    <div class="breakdown-item" style="margin-bottom: 12px;">
-                        <div class="color-dot" style="background-color: #E84E10;"></div>
-                        <span class="breakdown-text">Maastricht</span>
-                        <span class="breakdown-value">23.3%</span>
-                    </div>
-                    <div class="breakdown-item" style="margin-bottom: 12px;">
-                        <div class="color-dot" style="background-color: #00A2DB;"></div>
-                        <span class="breakdown-text">Wageningen</span>
-                        <span class="breakdown-value">23.1%</span>
-                    </div>
-                    <div class="breakdown-item" style="margin-bottom: 12px;">
-                        <div class="color-dot" style="background-color: #F39425;"></div>
-                        <span class="breakdown-text">Eindhoven</span>
-                        <span class="breakdown-value">15.4%</span>
-                    </div>
-                    <div class="breakdown-item" style="margin-bottom: 12px;">
-                        <div class="color-dot" style="background-color: #001C3D;"></div>
-                        <span class="breakdown-text">Delft</span>
-                        <span class="breakdown-value">15.1%</span>
-                    </div>
-                    <div class="breakdown-item" style="margin-bottom: 12px;">
-                        <div class="color-dot" style="background-color: #AE0B12;"></div>
-                        <span class="breakdown-text">Other Cities</span>
-                        <span class="breakdown-value">23.1%</span>
-                    </div>
-                </div>
+    </section>
+    
+    <!-- Talent Flow Section -->
+    <section class="talent-flow">
+        <div class="section-header">
+            <h2>Regional Impact</h2>
+            <p>Tracking where CE alumni come from and where they go — measuring our contribution to the regional knowledge economy.</p>
+        </div>
+        
+        <div class="flow-stats">
+            <div class="flow-stat">
+                <div class="flow-stat-value">22%</div>
+                <div class="flow-stat-label">Stay in Maastricht</div>
+            </div>
+            <div class="flow-stat">
+                <div class="flow-stat-value">41%</div>
+                <div class="flow-stat-label">Euregio Origin</div>
+            </div>
+            <div class="flow-stat">
+                <div class="flow-stat-value">35%</div>
+                <div class="flow-stat-label">Euregio Destination</div>
+            </div>
+            <div class="flow-stat">
+                <div class="flow-stat-value">15%</div>
+                <div class="flow-stat-label">Regional Retention</div>
             </div>
         </div>
-    </div>
-
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="cta-section" id="community">
+        <div class="cta-content">
+            <h2>Part of the Loop?</h2>
+            <p>Help us track the impact of CE alumni worldwide. Update your info or share your story.</p>
+            <div class="cta-buttons">
+                <a href="mailto:fse-alumni@maastrichtuniversity.nl?subject=CE Alumni Info Update" class="btn btn-white">
+                    <i data-lucide="mail"></i>
+                    Update Your Info
+                </a>
+                <a href="https://www.maastrichtuniversity.nl/education/bachelor/circular-engineering" target="_blank" class="btn btn-outline">
+                    <i data-lucide="external-link"></i>
+                    Learn About CE
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>CE Alumni Network</h3>
+                <p>Tracking the journeys of Circular Engineering graduates as they build sustainable solutions across the globe.</p>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <a href="#concentrations">Pathways</a>
+                <a href="#destinations">Destinations</a>
+                <a href="https://www.maastrichtuniversity.nl/education/bachelor/circular-engineering" target="_blank">About CE</a>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Faculty</h4>
+                <a href="https://www.maastrichtuniversity.nl/about-um/faculties/science-and-engineering" target="_blank">FSE Homepage</a>
+                <a href="https://www.maastrichtuniversity.nl/alumni" target="_blank">UM Alumni</a>
+                <a href="privacy.html">Privacy Policy</a>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 Maastricht University · Faculty of Science and Engineering</p>
+            <a href="mailto:fse-alumni@maastrichtuniversity.nl">fse-alumni@maastrichtuniversity.nl</a>
+        </div>
+    </footer>
+    
     <script>
-        // Data based on your official PDF
-        const concentrationData = {
-            chemical: {
-                title: 'Circular Chemical Engineering • 17 Students • 37.8%',
-                universities: [
-                    { name: 'KTH Royal Institute of Technology', country: 'Sweden', students: 3, programs: ['Chemical Engineering for Energy', 'Environmental Sustainability'] },
-                    { name: 'TU Delft', country: 'Netherlands', students: 2, programs: ['Sustainable Energy Technology'] },
-                    { name: 'Eindhoven University', country: 'Netherlands', students: 2, programs: ['Chemical Engineering', 'Process Technology'] },
-                    { name: 'Technical University of Denmark', country: 'Denmark', students: 1, programs: ['Environmental Engineering Technology'] },
-                    { name: 'Universidad Politécnica Madrid', country: 'Spain', students: 1, programs: ['Chemical Engineering'] },
-                    { name: 'University of Seoul', country: 'South Korea', students: 1, programs: ['Environmental Engineering'] },
-                    { name: 'NOVA School Lisbon', country: 'Portugal', students: 1, programs: ['Management (Sustainability)'] }
-                ]
-            },
-            bio: {
-                title: 'Sustainable Biotechnology • 16 Students • 35.6%',
-                universities: [
-                    { name: 'Wageningen University', country: 'Netherlands', students: 4, programs: ['Biotechnology', 'Urban Management', 'Farming Systems'] },
-                    { name: 'Maastricht University', country: 'Netherlands', students: 2, programs: ['Biobased Materials'] },
-                    { name: 'Instituto Superior Técnico', country: 'Portugal', students: 1, programs: ['Biotechnology'] },
-                    { name: 'Université Libre de Bruxelles', country: 'Belgium', students: 1, programs: ['Biochemistry'] },
-                    { name: 'IAAC Barcelona', country: 'Spain', students: 1, programs: ['Ecological Buildings'] },
-                    { name: 'ENO Conexus Valencia', country: 'Spain', students: 1, programs: ['Marine Biology'] }
-                ]
-            },
-            physics: {
-                title: 'Engineering Physics for Sustainable Manufacturing • 12 Students • 26.7%',
-                universities: [
-                    { name: 'TU Delft', country: 'Netherlands', students: 2, programs: ['Mechanical Engineering'] },
-                    { name: 'Technical University Munich', country: 'Germany', students: 1, programs: ['Automotive Engineering'] },
-                    { name: 'RWTH Aachen', country: 'Germany', students: 1, programs: ['Automation Engineering'] },
-                    { name: 'University of Liège', country: 'Belgium', students: 1, programs: ['Engineering Physics'] },
-                    { name: 'NOVA School Lisbon', country: 'Portugal', students: 1, programs: ['Business Analytics'] },
-                    { name: 'University of Groningen', country: 'Netherlands', students: 1, programs: ['Mechanical Engineering'] }
-                ]
-            }
-        };
-
-        let charts = {};
-
-        function initializeCharts() {
-            if (typeof Chart === 'undefined') {
-                console.error('Chart.js not loaded');
-                return;
-            }
-
-            const chartOptions = {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: { display: false }
-                }
-            };
-
-            // CE Concentrations Chart
-            charts.concentrations = new Chart(document.getElementById('concentrationsChart'), {
-                type: 'doughnut',
-                data: {
-                    labels: ['Circular Chemical Engineering', 'Sustainable Biotechnology', 'Engineering Physics'],
-                    datasets: [{
-                        data: [17, 16, 12],
-                        backgroundColor: ['#E84E10', '#001C3D', '#F39425'],
-                        borderWidth: 0,
-                        cutout: '65%'
-                    }]
-                },
-                options: chartOptions
-            });
-
-            // Master's Destinations Chart
-            charts.destinations = new Chart(document.getElementById('destinationsChart'), {
-                type: 'bar',
-                data: {
-                    labels: ['Netherlands', 'Germany', 'Belgium', 'Sweden', 'Portugal', 'Spain', 'Denmark', 'S.Korea'],
-                    datasets: [{
-                        data: [30, 8, 8, 8, 6, 5, 3, 3],
-                        backgroundColor: ['#E84E10', '#00A2DB', '#F39425', '#001C3D', '#AE0B12', '#0a2847', '#ff6b9d', '#45b7d1'],
-                        borderRadius: 6
-                    }]
-                },
-                options: {
-                    ...chartOptions,
-                    scales: {
-                        y: { 
-                            beginAtZero: true,
-                            grid: { color: 'rgba(255,255,255,0.1)' },
-                            ticks: { color: '#ffffff' }
-                        },
-                        x: { 
-                            grid: { display: false },
-                            ticks: { color: '#ffffff' }
-                        }
-                    }
-                }
-            });
-
-            // Academic Pathways Chart
-            charts.pathways = new Chart(document.getElementById('pathwaysChart'), {
-                type: 'doughnut',
-                data: {
-                    labels: ['Chemical & Environmental', 'Work/Gap Year', 'Life Sciences', 'Physical Sciences', 'Business'],
-                    datasets: [{
-                        data: [29.7, 24.3, 18.9, 18.9, 5.4],
-                        backgroundColor: ['#E84E10', '#001C3D', '#00A2DB', '#F39425', '#AE0B12'],
-                        borderWidth: 0,
-                        cutout: '60%'
-                    }]
-                },
-                options: chartOptions
-            });
-
-            // Top Universities Chart
-            charts.universities = new Chart(document.getElementById('universitiesChart'), {
-                type: 'bar',
-                data: {
-                    labels: ['Wageningen', 'KTH Stockholm', 'Eindhoven', 'Maastricht', 'TU Delft'],
-                    datasets: [{
-                        data: [10.8, 8.1, 5.4, 5.4, 5.4],
-                        backgroundColor: ['#00A2DB', '#E84E10', '#F39425', '#001C3D', '#AE0B12'],
-                        borderRadius: 6
-                    }]
-                },
-                options: {
-                    ...chartOptions,
-                    scales: {
-                        y: { 
-                            beginAtZero: true,
-                            max: 12,
-                            grid: { color: 'rgba(255,255,255,0.1)' },
-                            ticks: { color: '#ffffff', callback: value => value + '%' }
-                        },
-                        x: { 
-                            grid: { display: false },
-                            ticks: { color: '#ffffff' }
-                        }
-                    }
-                }
-            });
-
-            // Netherlands Chart
-            charts.netherlands = new Chart(document.getElementById('netherlandsChart'), {
-                type: 'doughnut',
-                data: {
-                    labels: ['Maastricht', 'Wageningen', 'Eindhoven', 'Delft', 'Other Cities'],
-                    datasets: [{
-                        data: [23.3, 23.1, 15.4, 15.1, 23.1],
-                        backgroundColor: ['#E84E10', '#00A2DB', '#F39425', '#001C3D', '#AE0B12'],
-                        borderWidth: 0,
-                        cutout: '60%'
-                    }]
-                },
-                options: chartOptions
-            });
-        }
-
-        function showConcentration(type) {
-            // Update active tab
-            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-
-            const data = concentrationData[type];
-            const content = document.getElementById('concentrationContent');
-            
-            content.innerHTML = `
-                <div class="details-panel">
-                    <div class="details-title">${data.title}</div>
-                    <div class="university-grid">
-                        ${data.universities.map(uni => `
-                            <div class="university-card">
-                                <div class="university-name">${uni.name}</div>
-                                <div class="university-students">${uni.students} student${uni.students > 1 ? 's' : ''} • ${uni.country}</div>
-                                <div class="university-programs">
-                                    ${uni.programs.map(program => `<span class="program-tag">${program}</span>`).join('')}
-                                </div>
-                            </div>
-                        `).join('')}
-                    </div>
-                </div>
-            `;
-        }
-
-        // Initialize everything
-        document.addEventListener('DOMContentLoaded', function() {
-            if (typeof Chart === 'undefined') {
-                const script = document.createElement('script');
-                script.src = 'https://unpkg.com/chart.js@4.4.0/dist/chart.min.js';
-                script.onload = () => {
-                    setTimeout(initializeCharts, 100);
-                    showConcentration('chemical');
-                };
-                document.head.appendChild(script);
-            } else {
-                initializeCharts();
-                showConcentration('chemical');
+        // Initialize Lucide icons
+        lucide.createIcons();
+        
+        // ==========================================
+        // POPULATE PAGE FROM DATA.JS
+        // ==========================================
+        
+        // Hero stats - set data targets from CE_DATA
+        document.querySelectorAll('.stat-ring').forEach((ring, index) => {
+            const valueEl = ring.querySelector('.stat-value');
+            const targets = [
+                CE_DATA.summary.totalAlumni,
+                CE_DATA.summary.nationalities,
+                CE_DATA.summary.countriesLivingIn,
+                CE_DATA.summary.universitiesAttended
+            ];
+            valueEl.dataset.target = targets[index];
+        });
+        
+        // Concentration cards
+        const concentrationCards = document.querySelectorAll('.concentration-card');
+        CE_DATA.concentrations.forEach((conc, index) => {
+            if (concentrationCards[index]) {
+                concentrationCards[index].querySelector('.concentration-count').textContent = conc.count;
             }
         });
+        
+        // Universities list
+        const universityList = document.querySelector('.university-list');
+        if (universityList) {
+            universityList.innerHTML = CE_DATA.topUniversities
+                .filter(uni => uni.count >= 2)
+                .map(uni => `
+                    <div class="university-item">
+                        <span class="university-name">${uni.name}</span>
+                        <span class="university-count">${uni.count}</span>
+                    </div>
+                `).join('');
+        }
+        
+        // Countries tags
+        const countriesContainer = document.querySelector('.location-card:first-child .location-tags');
+        if (countriesContainer) {
+            countriesContainer.innerHTML = CE_DATA.countriesLivingIn.map(country => `
+                <span class="location-tag">
+                    <img src="https://flagcdn.com/w40/${country.code}.png" alt="${country.name}">
+                    ${country.name}
+                </span>
+            `).join('');
+        }
+        
+        // Cities tags
+        const citiesContainer = document.querySelector('.location-card:last-child .location-tags');
+        if (citiesContainer) {
+            citiesContainer.innerHTML = CE_DATA.topCities.map(city => `
+                <span class="location-tag">${city.name} (${city.count})</span>
+            `).join('');
+        }
+        
+        // Talent flow stats
+        const flowStats = document.querySelectorAll('.flow-stat');
+        const flowData = [
+            { value: CE_DATA.regionalData.stayInMaastrichtPercent + '%', label: 'Stay in Maastricht' },
+            { value: CE_DATA.regionalData.euregioOriginPercent + '%', label: 'Euregio Origin' },
+            { value: CE_DATA.regionalData.euregioDestinationPercent + '%', label: 'Euregio Destination' },
+            { value: CE_DATA.regionalData.regionalRetentionPercent + '%', label: 'Regional Retention' }
+        ];
+        flowStats.forEach((stat, index) => {
+            if (flowData[index]) {
+                stat.querySelector('.flow-stat-value').textContent = flowData[index].value;
+                stat.querySelector('.flow-stat-label').textContent = flowData[index].label;
+            }
+        });
+        
+        // ==========================================
+        // HEADER SCROLL EFFECT
+        // ==========================================
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // ==========================================
+        // ANIMATED COUNTERS
+        // ==========================================
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px'
+        };
+        
+        const animateValue = (element, start, end, duration) => {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                const easeOut = 1 - Math.pow(1 - progress, 3);
+                element.textContent = Math.floor(easeOut * (end - start) + start);
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        };
+        
+        // Observe stat rings
+        const statRings = document.querySelectorAll('.stat-ring');
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                    const valueEl = entry.target.querySelector('.stat-value');
+                    const target = parseInt(valueEl.dataset.target);
+                    animateValue(valueEl, 0, target, 2000);
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        statRings.forEach(ring => statsObserver.observe(ring));
+        
+        // ==========================================
+        // UPDATE FOOTER YEAR
+        // ==========================================
+        const currentYear = new Date().getFullYear();
+        document.querySelector('.footer-bottom p').innerHTML = 
+            `&copy; ${currentYear} Maastricht University · Faculty of Science and Engineering`;
     </script>
 </body>
 </html>
