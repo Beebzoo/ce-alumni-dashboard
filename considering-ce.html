@@ -1644,7 +1644,7 @@
         }
         
         .semester-visual::before {
-            content: 'Ã— 2 semesters = 1 year';
+            content: '× 2 semesters = 1 year';
             position: absolute;
             bottom: -30px;
             left: 50%;
@@ -2455,7 +2455,7 @@
                     For Prospective Students
                 </div>
                 <h1>Where Will <span>CE</span> Take You?</h1>
-                <p>Circular Engineering graduates are building sustainable futures at top universities and companies worldwide. See where they've gone Ã¢â‚¬â€ and where you could go.</p>
+                <p>Circular Engineering graduates are building sustainable futures at top universities and companies worldwide. See where they've gone — and where you could go.</p>
                 <a href="https://www.maastrichtuniversity.nl/education/bachelor/circular-engineering" target="_blank" class="hero-cta">
                     <i data-lucide="external-link"></i>
                     Explore the Programme
@@ -2486,20 +2486,7 @@
     <div class="main-content">
 
     <div class="main-content">
-        <!-- Notable Employers -->
-        <section class="employers-section">
-            <div class="section-header">
-                <h2>Where CE Alumni Work</h2>
-                <p>33% of graduates enter the workforce directly ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â here's where</p>
-            </div>
-            
-            <div class="employers-grid" id="employersGrid">
-                <!-- Populated by JS -->
-            </div>
-        </section>
-        
-
-        <!-- Career Sectors -->
+                <!-- Career Sectors -->
         <section class="careers-section">
             <div class="section-header">
                 <h2>Career Opportunities</h2>
@@ -3040,29 +3027,6 @@
                         </div>
                     </div>
                     
-                    <!-- Future -->
-                    <div class="journey-stage future">
-                        <div class="stage-year">
-                            <i data-lucide="rocket"></i>
-                            Future
-                        </div>
-                        <h3 class="stage-title">Your Career</h3>
-                        <p class="stage-subtitle">Make an Impact</p>
-                        <p class="stage-content">
-                            Where CE graduates go next:
-                        </p>
-                        <div class="future-paths">
-                            <div class="future-path">
-                                <i data-lucide="graduation-cap"></i>
-                                <span>Master's Degree</span>
-                                <span class="path-percent">67%</span>
-                            </div>
-                            <div class="future-path">
-                                <i data-lucide="briefcase"></i>
-                                <span>Industry Career</span>
-                                <span class="path-percent">33%</span>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -3151,7 +3115,7 @@
         <section class="challenges-section" style="padding: 50px 50px;">
             <div class="section-header">
                 <h2>Real-Life Challenges You'll Tackle</h2>
-                <p>From day one, you'll work on actual engineering problems ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â not hypotheticals</p>
+                <p>From day one, you'll work on actual engineering problems — not hypotheticals</p>
             </div>
             
             <div class="challenges-grid" id="challengesGrid">
@@ -3160,8 +3124,8 @@
                         <i data-lucide="heart-pulse"></i>
                     </div>
                     <h3>Disposable Medical Sensors</h3>
-                    <p>Analyse pressure sensors used in Intensive Care units from a circularity perspective. Determine which parts can be reused, remade, or recycled ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â and design a technical solution to increase their circularity.</p>
-                    <span class="challenge-tag">Healthcare ÃƒÆ’Ã¢â‚¬â€ Sustainability</span>
+                    <p>Analyse pressure sensors used in Intensive Care units from a circularity perspective. Determine which parts can be reused, remade, or recycled — and design a technical solution to increase their circularity.</p>
+                    <span class="challenge-tag">Healthcare & Sustainability</span>
                 </div>
                 
                 <div class="challenge-card">
@@ -3391,7 +3355,7 @@
         </div>
         
         <div class="footer-bottom">
-            <p>&copy; 2025 Maastricht University Ã‚Â· Faculty of Science and Engineering</p>
+            <p>&copy; 2025 Maastricht University · Faculty of Science and Engineering</p>
             <a href="mailto:fse-alumni@maastrichtuniversity.nl">fse-alumni@maastrichtuniversity.nl</a>
         </div>
     </footer>
@@ -3613,18 +3577,6 @@
                 <p>${sector.description}</p>
             </div>
         `).join('');
-        
-        // Notable employers
-        const employersGrid = document.getElementById('employersGrid');
-        if (employersGrid) {
-            employersGrid.innerHTML = CE_DATA.notableEmployment.map(emp => `
-                <div class="employer-card">
-                    <div class="employer-name">${emp.company}</div>
-                    <div class="employer-role">${emp.role || 'Various roles'}</div>
-                    <span class="employer-tag">${emp.sector || 'Industry'}</span>
-                </div>
-            `).join('');
-        }
         
         // Re-initialize icons
         lucide.createIcons();
