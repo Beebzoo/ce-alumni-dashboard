@@ -606,6 +606,39 @@
             transform: translateX(4px);
         }
         
+        .university-info {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        
+        .university-logo {
+            width: 36px;
+            height: 36px;
+            object-fit: contain;
+            border-radius: 6px;
+            background: white;
+            padding: 4px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .university-logo-placeholder {
+            width: 36px;
+            height: 36px;
+            border-radius: 6px;
+            background: linear-gradient(135deg, var(--ce-green-primary), var(--ce-teal));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .university-logo-placeholder i {
+            width: 18px;
+            height: 18px;
+            color: white;
+        }
+        
         .university-name {
             font-weight: 500;
             color: var(--um-dark-blue);
@@ -1319,17 +1352,27 @@
             }
         });
         
-        // Universities list
+        // Universities list with logos
         const universityList = document.querySelector('.university-list');
         if (universityList) {
             universityList.innerHTML = CE_DATA.topUniversities
                 .filter(uni => uni.count >= 2)
-                .map(uni => `
-                    <div class="university-item">
-                        <span class="university-name">${uni.name}</span>
-                        <span class="university-count">${uni.count}</span>
-                    </div>
-                `).join('');
+                .map(uni => {
+                    const logoHtml = uni.logo 
+                        ? `<img src="assets/logos/${uni.logo}" alt="${uni.name}" class="university-logo" onerror="this.parentElement.innerHTML='<div class=\\'university-logo-placeholder\\'><i data-lucide=\\'graduation-cap\\'></i></div>'">`
+                        : `<div class="university-logo-placeholder"><i data-lucide="graduation-cap"></i></div>`;
+                    return `
+                        <div class="university-item">
+                            <div class="university-info">
+                                ${logoHtml}
+                                <span class="university-name">${uni.name}</span>
+                            </div>
+                            <span class="university-count">${uni.count}</span>
+                        </div>
+                    `;
+                }).join('');
+            // Re-initialize icons for any placeholders
+            lucide.createIcons();
         }
         
         // Countries tags
