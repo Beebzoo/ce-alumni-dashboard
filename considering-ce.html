@@ -451,7 +451,7 @@
         .main-content {
             max-width: 1100px;
             margin: 0 auto;
-            padding: 80px 50px;
+            padding: 50px 50px;
         }
         
         .section-header {
@@ -477,7 +477,7 @@
         ============================================ */
         .um-links-section {
             background: linear-gradient(180deg, var(--gray-50) 0%, white 100%);
-            padding: 80px 50px;
+            padding: 50px 50px;
         }
         
         .um-links-header {
@@ -616,7 +616,7 @@
         ============================================ */
         .challenges-section {
             background: white;
-            padding: 80px 50px;
+            padding: 50px 50px;
             margin-bottom: 0;
         }
         
@@ -796,7 +796,7 @@
         ============================================ */
         .universities-section {
             background: var(--ce-sand);
-            padding: 50px;
+            padding: 50px 50px;
             margin-bottom: 0;
         }
         
@@ -933,7 +933,7 @@
         ============================================ */
         .employers-section {
             background: white;
-            padding: 80px 50px;
+            padding: 50px 50px;
         }
         
         .employers-grid {
@@ -2486,6 +2486,19 @@
     <div class="main-content">
 
     <div class="main-content">
+        <!-- Notable Employers -->
+        <section class="employers-section">
+            <div class="section-header">
+                <h2>Where CE Alumni Work</h2>
+                <p>33% of graduates enter the workforce directly ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â here's where</p>
+            </div>
+            
+            <div class="employers-grid" id="employersGrid">
+                <!-- Populated by JS -->
+            </div>
+        </section>
+        
+
         <!-- Career Sectors -->
         <section class="careers-section">
             <div class="section-header">
@@ -3379,11 +3392,11 @@
         
         <div class="footer-bottom">
             <p>&copy; 2025 Maastricht University Ã‚Â· Faculty of Science and Engineering</p>
-            <a href="/cdn-cgi/l/email-protection#8aecf9efa7ebe6ffe7e4e3cae7ebebf9fef8e3e9e2feffe4e3fceff8f9e3fef3a4e4e6"><span class="__cf_email__" data-cfemail="82e4f1e7afe3eef7efecebc2efe3e3f1f6f0ebe1eaf6f7ecebf4e7f0f1ebf6fbacecee">[email&#160;protected]</span></a>
+            <a href="mailto:fse-alumni@maastrichtuniversity.nl">fse-alumni@maastrichtuniversity.nl</a>
         </div>
     </footer>
     
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
         lucide.createIcons();
         
         // Header scroll
@@ -3607,4 +3620,14 @@
             employersGrid.innerHTML = CE_DATA.notableEmployment.map(emp => `
                 <div class="employer-card">
                     <div class="employer-name">${emp.company}</div>
-                    <div class="employer-role">${em
+                    <div class="employer-role">${emp.role || 'Various roles'}</div>
+                    <span class="employer-tag">${emp.sector || 'Industry'}</span>
+                </div>
+            `).join('');
+        }
+        
+        // Re-initialize icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>
