@@ -1645,7 +1645,7 @@
         }
         
         .semester-visual::before {
-            content: '× 2 semesters = 1 year';
+            content: 'Ã— 2 semesters = 1 year';
             position: absolute;
             bottom: -30px;
             left: 50%;
@@ -1757,6 +1757,584 @@
         }
         
         /* ============================================
+           5 RS CIRCULAR LOOP SECTION
+        ============================================ */
+        .five-rs-section {
+            padding: 80px 50px;
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .five-rs-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .five-rs-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .five-rs-header h2 {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--um-dark-blue);
+            margin-bottom: 12px;
+        }
+        
+        .five-rs-header p {
+            font-size: 16px;
+            color: var(--gray-600);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .circular-loop {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            margin: 0 auto;
+        }
+        
+        .loop-svg {
+            width: 100%;
+            height: 100%;
+            transform: rotate(-90deg);
+        }
+        
+        .loop-circle {
+            fill: none;
+            stroke: var(--ce-green-primary);
+            stroke-width: 3;
+            opacity: 0.2;
+        }
+        
+        .loop-arrow {
+            fill: none;
+            stroke: var(--ce-green-primary);
+            stroke-width: 3;
+            stroke-linecap: round;
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: drawArrow 3s ease-in-out infinite;
+        }
+        
+        @keyframes drawArrow {
+            to { stroke-dashoffset: 0; }
+        }
+        
+        .r-node {
+            position: absolute;
+            width: 90px;
+            height: 90px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+            border: 3px solid var(--ce-green-primary);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .r-node:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 24px rgba(16, 185, 129, 0.3);
+            background: var(--ce-green-primary);
+            color: white;
+        }
+        
+        .r-node i {
+            width: 28px;
+            height: 28px;
+            color: var(--ce-green-primary);
+            margin-bottom: 4px;
+            transition: color 0.3s ease;
+        }
+        
+        .r-node:hover i {
+            color: white;
+        }
+        
+        .r-node span {
+            font-size: 11px;
+            font-weight: 700;
+            text-align: center;
+            color: var(--um-dark-blue);
+            transition: color 0.3s ease;
+        }
+        
+        .r-node:hover span {
+            color: white;
+        }
+        
+        .r-node.reduce { top: 0; left: 50%; transform: translateX(-50%); }
+        .r-node.reuse { top: 15%; right: 10%; }
+        .r-node.remake { bottom: 30%; right: 0; }
+        .r-node.repair { bottom: 30%; left: 0; }
+        .r-node.recycle { top: 15%; left: 10%; }
+        
+        .loop-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+        
+        .loop-center-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 8px;
+            color: var(--ce-green-primary);
+        }
+        
+        .loop-center h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--um-dark-blue);
+            margin-bottom: 4px;
+        }
+        
+        .loop-center p {
+            font-size: 13px;
+            color: var(--gray-500);
+        }
+        
+        /* ============================================
+           PBL/RBL EVOLUTION SECTION
+        ============================================ */
+        .learning-evolution-section {
+            padding: 80px 50px;
+            background: white;
+        }
+        
+        .evolution-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .evolution-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .evolution-header h2 {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--um-dark-blue);
+            margin-bottom: 12px;
+        }
+        
+        .evolution-header p {
+            font-size: 16px;
+            color: var(--gray-600);
+        }
+        
+        .evolution-timeline {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            position: relative;
+        }
+        
+        .evolution-timeline::before {
+            content: '';
+            position: absolute;
+            top: 60px;
+            left: 16.666%;
+            right: 16.666%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--ce-green-primary), var(--ce-green-dark));
+            z-index: 0;
+        }
+        
+        .evolution-stage {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .evolution-stage-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+        
+        .evolution-year {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--ce-green-primary), var(--ce-green-dark));
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            margin-bottom: 16px;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        }
+        
+        .evolution-year-num {
+            font-size: 24px;
+            line-height: 1;
+        }
+        
+        .evolution-year-label {
+            font-size: 11px;
+            opacity: 0.9;
+        }
+        
+        .evolution-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--um-dark-blue);
+            margin-bottom: 8px;
+            text-align: center;
+        }
+        
+        .evolution-methods {
+            background: var(--gray-50);
+            border-radius: var(--radius-md);
+            padding: 20px;
+        }
+        
+        .evolution-method {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        
+        .evolution-method:last-child {
+            margin-bottom: 0;
+        }
+        
+        .evolution-method-icon {
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .evolution-method-icon i {
+            width: 20px;
+            height: 20px;
+            color: var(--ce-green-primary);
+        }
+        
+        .evolution-method-content h4 {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--um-dark-blue);
+            margin-bottom: 4px;
+        }
+        
+        .evolution-method-content p {
+            font-size: 13px;
+            color: var(--gray-600);
+            line-height: 1.5;
+        }
+        
+        /* ============================================
+           BRIGHTLANDS ECOSYSTEM MAP
+        ============================================ */
+        .brightlands-section {
+            padding: 80px 50px;
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+        }
+        
+        .brightlands-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .brightlands-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .brightlands-header h2 {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--um-dark-blue);
+            margin-bottom: 12px;
+        }
+        
+        .brightlands-header p {
+            font-size: 16px;
+            color: var(--gray-600);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .brightlands-map {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        
+        .campus-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            box-shadow: var(--shadow-md);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .campus-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--ce-green-primary);
+        }
+        
+        .campus-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+        
+        .campus-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--ce-green-primary), var(--ce-green-dark));
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .campus-icon i {
+            width: 32px;
+            height: 32px;
+            color: white;
+        }
+        
+        .campus-title h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--um-dark-blue);
+            margin-bottom: 2px;
+        }
+        
+        .campus-title .campus-location {
+            font-size: 13px;
+            color: var(--gray-500);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        
+        .campus-title .campus-location i {
+            width: 14px;
+            height: 14px;
+        }
+        
+        .campus-focus {
+            font-size: 14px;
+            color: var(--gray-600);
+            line-height: 1.6;
+        }
+        
+        .campus-connection {
+            position: absolute;
+            width: 2px;
+            background: var(--ce-green-primary);
+            opacity: 0.3;
+            z-index: 1;
+        }
+        
+        .brightlands-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        /* ============================================
+           CAREER PATHWAYS SECTION
+        ============================================ */
+        .career-pathways-section {
+            padding: 80px 50px;
+            background: white;
+        }
+        
+        .pathways-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .pathways-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .pathways-header h2 {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--um-dark-blue);
+            margin-bottom: 12px;
+        }
+        
+        .pathways-header p {
+            font-size: 16px;
+            color: var(--gray-600);
+        }
+        
+        .pathway-flow {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 40px;
+            align-items: center;
+            margin-bottom: 50px;
+            padding-bottom: 50px;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        
+        .pathway-flow:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .pathway-source {
+            background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+            border-radius: var(--radius-xl);
+            padding: 32px;
+            text-align: center;
+            border: 2px solid var(--ce-green-primary);
+        }
+        
+        .pathway-source-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 16px;
+            background: var(--ce-green-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .pathway-source-icon i {
+            width: 32px;
+            height: 32px;
+            color: white;
+        }
+        
+        .pathway-source h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--um-dark-blue);
+            margin-bottom: 8px;
+        }
+        
+        .pathway-source-count {
+            font-size: 14px;
+            color: var(--gray-600);
+            font-weight: 600;
+        }
+        
+        .pathway-arrow {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .pathway-arrow i {
+            width: 32px;
+            height: 32px;
+            color: var(--ce-green-primary);
+        }
+        
+        .pathway-arrow span {
+            font-size: 12px;
+            color: var(--gray-500);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .pathway-destinations {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+        
+        .pathway-destination {
+            background: white;
+            border-radius: var(--radius-md);
+            padding: 20px;
+            border: 2px solid var(--gray-200);
+            transition: all 0.3s ease;
+        }
+        
+        .pathway-destination:hover {
+            border-color: var(--ce-green-primary);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+        
+        .pathway-destination-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        
+        .pathway-destination-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gray-50);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .pathway-destination-icon i {
+            width: 20px;
+            height: 20px;
+            color: var(--ce-green-primary);
+        }
+        
+        .pathway-destination h4 {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--um-dark-blue);
+        }
+        
+        .pathway-destination-examples {
+            font-size: 13px;
+            color: var(--gray-600);
+            line-height: 1.6;
+        }
+        
+        .pathway-destination-count {
+            font-size: 12px;
+            color: var(--gray-500);
+            font-weight: 600;
+            margin-top: 8px;
+        }
+        
+        /* ============================================
            RESPONSIVE
         ============================================ */
         @media (max-width: 1024px) {
@@ -1769,6 +2347,12 @@
             .concentration-cards { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
             .universities-grid { grid-template-columns: repeat(2, 1fr); }
             .careers-grid { grid-template-columns: 1fr; }
+            .evolution-timeline { grid-template-columns: 1fr; gap: 40px; }
+            .evolution-timeline::before { display: none; }
+            .brightlands-grid { grid-template-columns: 1fr; }
+            .pathway-flow { grid-template-columns: 1fr; }
+            .pathway-arrow { transform: rotate(90deg); }
+            .pathway-destinations { grid-template-columns: 1fr; }
         }
         
         @media (max-width: 768px) {
@@ -1788,6 +2372,14 @@
             .semester-visual { flex-direction: column; }
             .period-block.period-1, .period-block.period-2, .period-block.period-3 { flex: none; }
             .semester-visual::before { position: static; transform: none; margin-top: 20px; text-align: center; }
+            .five-rs-section { padding: 60px 20px; }
+            .circular-loop { width: 100%; max-width: 350px; height: 350px; }
+            .r-node { width: 70px; height: 70px; }
+            .r-node i { width: 24px; height: 24px; }
+            .r-node span { font-size: 10px; }
+            .learning-evolution-section { padding: 60px 20px; }
+            .brightlands-section { padding: 60px 20px; }
+            .career-pathways-section { padding: 60px 20px; }
         }
     </style>
 </head>
@@ -1864,7 +2456,7 @@
                     For Prospective Students
                 </div>
                 <h1>Where Will <span>CE</span> Take You?</h1>
-                <p>Circular Engineering graduates are building sustainable futures at top universities and companies worldwide. See where they've gone â€” and where you could go.</p>
+                <p>Circular Engineering graduates are building sustainable futures at top universities and companies worldwide. See where they've gone Ã¢â‚¬â€ and where you could go.</p>
                 <a href="https://www.maastrichtuniversity.nl/education/bachelor/circular-engineering" target="_blank" class="hero-cta">
                     <i data-lucide="external-link"></i>
                     Explore the Programme
@@ -1875,6 +2467,55 @@
                 <h3>CE Alumni at a Glance</h3>
                 <div class="hero-stat-grid" id="heroStatGrid">
                     <!-- Populated by JS -->
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 5 Rs Circular Loop Section -->
+    <section class="five-rs-section">
+        <div class="five-rs-container">
+            <div class="five-rs-header">
+                <h2>The 5 Rs of Circularity</h2>
+                <p>At the heart of CE is a simple yet powerful philosophy: design out waste and keep resources in use</p>
+            </div>
+            
+            <div class="circular-loop">
+                <svg class="loop-svg" viewBox="0 0 200 200">
+                    <circle class="loop-circle" cx="100" cy="100" r="80"/>
+                    <path class="loop-arrow" d="M 100,20 A 80,80 0 1,1 99.9,20" marker-end="url(#arrowhead)"/>
+                    <defs>
+                        <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="5" refY="3" orient="auto">
+                            <polygon points="0 0, 10 3, 0 6" fill="#10B981" />
+                        </marker>
+                    </defs>
+                </svg>
+                
+                <div class="r-node reduce">
+                    <i data-lucide="minimize-2"></i>
+                    <span>Reduce</span>
+                </div>
+                <div class="r-node reuse">
+                    <i data-lucide="repeat"></i>
+                    <span>Reuse</span>
+                </div>
+                <div class="r-node remake">
+                    <i data-lucide="package"></i>
+                    <span>Remake</span>
+                </div>
+                <div class="r-node repair">
+                    <i data-lucide="wrench"></i>
+                    <span>Repair</span>
+                </div>
+                <div class="r-node recycle">
+                    <i data-lucide="recycle"></i>
+                    <span>Recycle</span>
+                </div>
+                
+                <div class="loop-center">
+                    <i data-lucide="globe" class="loop-center-icon"></i>
+                    <h3>Circular<br>Economy</h3>
+                    <p>Close the Loop</p>
                 </div>
             </div>
         </div>
@@ -1984,7 +2625,7 @@
         <div class="journey-container">
             <div class="journey-header">
                 <h2>Your 3-Year Journey</h2>
-                <p>From foundational STEM to specialized expertise — see how CE transforms you into a circular engineer</p>
+                <p>From foundational STEM to specialized expertise â€” see how CE transforms you into a circular engineer</p>
             </div>
             
             <div class="journey-visual">
@@ -2125,7 +2766,7 @@
                         </div>
                     </div>
                     
-                    <div class="period-connector">→</div>
+                    <div class="period-connector">â†’</div>
                     
                     <div class="period-block period-2">
                         <div class="period-weeks">
@@ -2149,7 +2790,7 @@
                         </div>
                     </div>
                     
-                    <div class="period-connector">→</div>
+                    <div class="period-connector">â†’</div>
                     
                     <div class="period-block period-3">
                         <div class="period-weeks">
@@ -2173,13 +2814,121 @@
         </div>
     </section>
     
+    <!-- PBL/RBL Learning Evolution Section -->
+    <section class="learning-evolution-section">
+        <div class="evolution-container">
+            <div class="evolution-header">
+                <h2>How You Learn in CE</h2>
+                <p>Your learning style evolves from structured guidance to independent research across three years</p>
+            </div>
+            
+            <div class="evolution-timeline">
+                <!-- Year 1 -->
+                <div class="evolution-stage">
+                    <div class="evolution-stage-header">
+                        <div class="evolution-year">
+                            <div class="evolution-year-num">1</div>
+                            <div class="evolution-year-label">YEAR</div>
+                        </div>
+                        <h3 class="evolution-title">Guided Discovery</h3>
+                    </div>
+                    
+                    <div class="evolution-methods">
+                        <div class="evolution-method">
+                            <div class="evolution-method-icon">
+                                <i data-lucide="users"></i>
+                            </div>
+                            <div class="evolution-method-content">
+                                <h4>PBL Tutorial Groups</h4>
+                                <p>Work in groups of ~15 on case studies. Learn to formulate questions and exchange knowledge.</p>
+                            </div>
+                        </div>
+                        <div class="evolution-method">
+                            <div class="evolution-method-icon">
+                                <i data-lucide="flask-conical"></i>
+                            </div>
+                            <div class="evolution-method-content">
+                                <h4>Skills Labs</h4>
+                                <p>Hands-on training in physics, electronics, chemistry, and biology labs.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Year 2 -->
+                <div class="evolution-stage">
+                    <div class="evolution-stage-header">
+                        <div class="evolution-year">
+                            <div class="evolution-year-num">2</div>
+                            <div class="evolution-year-label">YEAR</div>
+                        </div>
+                        <h3 class="evolution-title">Applied Engineering</h3>
+                    </div>
+                    
+                    <div class="evolution-methods">
+                        <div class="evolution-method">
+                            <div class="evolution-method-icon">
+                                <i data-lucide="lightbulb"></i>
+                            </div>
+                            <div class="evolution-method-content">
+                                <h4>Design Projects</h4>
+                                <p>Solve real challenges from Brightlands partners. Follow the engineering design cycle.</p>
+                            </div>
+                        </div>
+                        <div class="evolution-method">
+                            <div class="evolution-method-icon">
+                                <i data-lucide="git-branch"></i>
+                            </div>
+                            <div class="evolution-method-content">
+                                <h4>Elective Specialization</h4>
+                                <p>Choose courses matching your interests. Shape your academic profile.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Year 3 -->
+                <div class="evolution-stage">
+                    <div class="evolution-stage-header">
+                        <div class="evolution-year">
+                            <div class="evolution-year-num">3</div>
+                            <div class="evolution-year-label">YEAR</div>
+                        </div>
+                        <h3 class="evolution-title">Independent Research</h3>
+                    </div>
+                    
+                    <div class="evolution-methods">
+                        <div class="evolution-method">
+                            <div class="evolution-method-icon">
+                                <i data-lucide="file-text"></i>
+                            </div>
+                            <div class="evolution-method-content">
+                                <h4>Bachelor Thesis (25 ECTS)</h4>
+                                <p>Conduct original research or design-based engineering. Your proof-of-capability.</p>
+                            </div>
+                        </div>
+                        <div class="evolution-method">
+                            <div class="evolution-method-icon">
+                                <i data-lucide="building"></i>
+                            </div>
+                            <div class="evolution-method-content">
+                                <h4>Industry Collaboration</h4>
+                                <p>Work at Brightlands campuses with companies on real circularity challenges.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
     <!-- Main Content -->
     <div class="main-content">
         <!-- Real-Life Challenges Section -->
         <section class="challenges-section" style="margin: -80px -50px 0; padding: 80px 50px;">
             <div class="section-header">
                 <h2>Real-Life Challenges You'll Tackle</h2>
-                <p>From day one, you'll work on actual engineering problems Ã¢â‚¬â€ not hypotheticals</p>
+                <p>From day one, you'll work on actual engineering problems ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â not hypotheticals</p>
             </div>
             
             <div class="challenges-grid" id="challengesGrid">
@@ -2188,8 +2937,8 @@
                         <i data-lucide="heart-pulse"></i>
                     </div>
                     <h3>Disposable Medical Sensors</h3>
-                    <p>Analyse pressure sensors used in Intensive Care units from a circularity perspective. Determine which parts can be reused, remade, or recycled Ã¢â‚¬â€ and design a technical solution to increase their circularity.</p>
-                    <span class="challenge-tag">Healthcare Ãƒâ€” Sustainability</span>
+                    <p>Analyse pressure sensors used in Intensive Care units from a circularity perspective. Determine which parts can be reused, remade, or recycled ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â and design a technical solution to increase their circularity.</p>
+                    <span class="challenge-tag">Healthcare ÃƒÆ’Ã¢â‚¬â€ Sustainability</span>
                 </div>
                 
                 <div class="challenge-card">
@@ -2221,6 +2970,72 @@
             </div>
         </section>
         
+        <!-- Brightlands Ecosystem Section -->
+        <section class="brightlands-section">
+            <div class="brightlands-container">
+                <div class="brightlands-header">
+                    <h2>The Brightlands Ecosystem</h2>
+                    <p>CE is uniquely connected to three regional innovation campuses where research, education, and industry come together</p>
+                </div>
+                
+                <div class="brightlands-grid">
+                    <div class="campus-card">
+                        <div class="campus-header">
+                            <div class="campus-icon">
+                                <i data-lucide="flask-conical"></i>
+                            </div>
+                            <div class="campus-title">
+                                <h3>Brightlands Chemelot Campus</h3>
+                                <div class="campus-location">
+                                    <i data-lucide="map-pin"></i>
+                                    Geleen
+                                </div>
+                            </div>
+                        </div>
+                        <p class="campus-focus">
+                            Europe's largest circular materials & chemistry hub. Work on bio-based plastics, sustainable polymers, and chemical process optimization.
+                        </p>
+                    </div>
+                    
+                    <div class="campus-card">
+                        <div class="campus-header">
+                            <div class="campus-icon">
+                                <i data-lucide="dna"></i>
+                            </div>
+                            <div class="campus-title">
+                                <h3>Brightlands Maastricht Health Campus</h3>
+                                <div class="campus-location">
+                                    <i data-lucide="map-pin"></i>
+                                    Maastricht
+                                </div>
+                            </div>
+                        </div>
+                        <p class="campus-focus">
+                            Life sciences and biotechnology innovation. Research sustainable food production, biopharmaceuticals, and medical device circularity.
+                        </p>
+                    </div>
+                    
+                    <div class="campus-card">
+                        <div class="campus-header">
+                            <div class="campus-icon">
+                                <i data-lucide="cpu"></i>
+                            </div>
+                            <div class="campus-title">
+                                <h3>Brightlands Smart Services Campus</h3>
+                                <div class="campus-location">
+                                    <i data-lucide="map-pin"></i>
+                                    Heerlen
+                                </div>
+                            </div>
+                        </div>
+                        <p class="campus-focus">
+                            Digital innovation for sustainable systems. Apply AI and sensor technology to optimize resource use and circular processes.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
         <!-- Concentrations -->
         <section class="concentrations-section">
             <div class="section-header">
@@ -2233,6 +3048,214 @@
             </div>
         </section>
     </div>
+    
+    <!-- Career Pathways Section -->
+    <section class="career-pathways-section">
+        <div class="pathways-container">
+            <div class="pathways-header">
+                <h2>From Concentration to Career</h2>
+                <p>Each specialization opens distinct career paths in industry and research</p>
+            </div>
+            
+            <!-- Sustainable Biotechnology Pathway -->
+            <div class="pathway-flow">
+                <div class="pathway-source">
+                    <div class="pathway-source-icon">
+                        <i data-lucide="flask-conical"></i>
+                    </div>
+                    <h3>Sustainable<br>Biotechnology</h3>
+                    <p class="pathway-source-count">37% of CE students</p>
+                </div>
+                
+                <div class="pathway-arrow">
+                    <i data-lucide="arrow-right"></i>
+                    <span>Lead to</span>
+                </div>
+                
+                <div class="pathway-destinations">
+                    <div class="pathway-destination">
+                        <div class="pathway-destination-header">
+                            <div class="pathway-destination-icon">
+                                <i data-lucide="sprout"></i>
+                            </div>
+                            <h4>Sustainable Food & Ag</h4>
+                        </div>
+                        <p class="pathway-destination-examples">
+                            Bioreactor design, fermentation processes, plant breeding technology
+                        </p>
+                    </div>
+                    
+                    <div class="pathway-destination">
+                        <div class="pathway-destination-header">
+                            <div class="pathway-destination-icon">
+                                <i data-lucide="pill"></i>
+                            </div>
+                            <h4>Biopharmaceuticals</h4>
+                        </div>
+                        <p class="pathway-destination-examples">
+                            Drug production, bioprocess engineering, quality control
+                        </p>
+                    </div>
+                    
+                    <div class="pathway-destination">
+                        <div class="pathway-destination-header">
+                            <div class="pathway-destination-icon">
+                                <i data-lucide="leaf"></i>
+                            </div>
+                            <h4>Bio-based Materials</h4>
+                        </div>
+                        <p class="pathway-destination-examples">
+                            Bioplastics development, biomaterials engineering, green chemistry
+                        </p>
+                    </div>
+                    
+                    <div class="pathway-destination">
+                        <div class="pathway-destination-header">
+                            <div class="pathway-destination-icon">
+                                <i data-lucide="microscope"></i>
+                            </div>
+                            <h4>Research & Development</h4>
+                        </div>
+                        <p class="pathway-destination-examples">
+                            Academic research, industrial R&D, biotech startups
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Circular Chemical Engineering Pathway -->
+            <div class="pathway-flow">
+                <div class="pathway-source">
+                    <div class="pathway-source-icon">
+                        <i data-lucide="atom"></i>
+                    </div>
+                    <h3>Circular Chemical<br>Engineering</h3>
+                    <p class="pathway-source-count">20% of CE students</p>
+                </div>
+                
+                <div class="pathway-arrow">
+                    <i data-lucide="arrow-right"></i>
+                    <span>Lead to</span>
+                </div>
+                
+                <div class="pathway-destinations">
+                    <div class="pathway-destination">
+                        <div class="pathway-destination-header">
+                            <div class="pathway-destination-icon">
+                                <i data-lucide="factory"></i>
+                            </div>
+                            <h4>Chemical Industry</h4>
+                        </div>
+                        <p class="pathway-destination-examples">
+                            Process engineering, plant design, production optimization at BASF, DSM, etc.
+                        </p>
+                    </div>
+                    
+                    <div class="pathway-destination">
+                        <div class="pathway-destination-header">
+                            <div class="pathway-destination-icon">
+                                <i data-lucide="battery-charging"></i>
+                            </div>
+                            <h4>Energy & Sustainability</h4>
+                        </div>
+                        <p class="pathway-destination-examples">
+                            Carbon capture, hydrogen production, renewable energy systems
+                        </p>
+                    </div>
+                    
+                    <div class="pathway-destination">
+                        <div class="pathway-destination-header">
+                            <div class="pathway-destination-icon">
+                                <i data-lucide="recycle"></i>
+                            </div>
+                            <h4>Circular Economy</h4>
+                        </div>
+                        <p class="pathway-destination-examples">
+                            Waste-to-value processes, recycling technology, circular supply chains
+                        </p>
+                    </div>
+                    
+                    <div class="pathway-destination">
+                        <div class="pathway-destination-header">
+                            <div class="pathway-destination-icon">
+                                <i data-lucide="briefcase"></i>
+                            </div>
+                            <h4>Consulting & Policy</h4>
+                        </div>
+                        <p class="pathway-destination-examples">
+                            Sustainability consulting, environmental policy, LCA analysis
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Engineering Physics & Mechanical Pathway -->
+            <div class="pathway-flow">
+                <div class="pathway-source">
+                    <div class="pathway-source-icon">
+                        <i data-lucide="cpu"></i>
+                    </div>
+                    <h3>Engineering Physics &<br>Mechanical Engineering</h3>
+                    <p class="pathway-source-count">43% of CE students</p>
+                </div>
+                
+                <div class="pathway-arrow">
+                    <i data-lucide="arrow-right"></i>
+                    <span>Lead to</span>
+                </div>
+                
+                <div class="pathway-destinations">
+                    <div class="pathway-destination">
+                        <div class="pathway-destination-header">
+                            <div class="pathway-destination-icon">
+                                <i data-lucide="package"></i>
+                            </div>
+                            <h4>Product Development</h4>
+                        </div>
+                        <p class="pathway-destination-examples">
+                            Design for circularity, product lifecycle management, sustainable manufacturing
+                        </p>
+                    </div>
+                    
+                    <div class="pathway-destination">
+                        <div class="pathway-destination-header">
+                            <div class="pathway-destination-icon">
+                                <i data-lucide="gauge"></i>
+                            </div>
+                            <h4>Sensor Technology</h4>
+                        </div>
+                        <p class="pathway-destination-examples">
+                            IoT systems, smart manufacturing, measurement & control engineering
+                        </p>
+                    </div>
+                    
+                    <div class="pathway-destination">
+                        <div class="pathway-destination-header">
+                            <div class="pathway-destination-icon">
+                                <i data-lucide="car"></i>
+                            </div>
+                            <h4>Automotive & Mobility</h4>
+                        </div>
+                        <p class="pathway-destination-examples">
+                            Electric vehicles, sustainable transport, automotive engineering
+                        </p>
+                    </div>
+                    
+                    <div class="pathway-destination">
+                        <div class="pathway-destination-header">
+                            <div class="pathway-destination-icon">
+                                <i data-lucide="cog"></i>
+                            </div>
+                            <h4>Advanced Manufacturing</h4>
+                        </div>
+                        <p class="pathway-destination-examples">
+                            Automation, robotics, production technology, quality engineering
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     
     <!-- Universities Section -->
     <section class="universities-section">
@@ -2263,7 +3286,7 @@
         <section class="employers-section">
             <div class="section-header">
                 <h2>Where CE Alumni Work</h2>
-                <p>33% of graduates enter the workforce directly Ã¢â‚¬â€ here's where</p>
+                <p>33% of graduates enter the workforce directly ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â here's where</p>
             </div>
             
             <div class="employers-grid" id="employersGrid">
@@ -2351,7 +3374,7 @@
         </div>
         
         <div class="footer-bottom">
-            <p>&copy; 2025 Maastricht University Â· Faculty of Science and Engineering</p>
+            <p>&copy; 2025 Maastricht University Ã‚Â· Faculty of Science and Engineering</p>
             <a href="mailto:fse-alumni@maastrichtuniversity.nl">fse-alumni@maastrichtuniversity.nl</a>
         </div>
     </footer>
