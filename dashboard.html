@@ -1946,6 +1946,146 @@
         }
 
         /* ============================================
+           CITY MODAL
+        ============================================ */
+        .city-modal-header {
+            padding: 30px;
+            background: linear-gradient(135deg, #065f46, #10b981);
+            color: white;
+            border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+            position: relative;
+            text-align: center;
+        }
+        
+        .city-modal-icon {
+            width: 72px;
+            height: 72px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+        }
+        
+        .city-modal-icon i {
+            width: 36px;
+            height: 36px;
+            color: white;
+        }
+        
+        .city-modal-name {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        
+        .city-modal-country {
+            font-size: 14px;
+            opacity: 0.85;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .city-modal-country img {
+            width: 20px;
+            height: 14px;
+            border-radius: 2px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+        
+        .city-modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 36px;
+            height: 36px;
+            border: none;
+            background: rgba(255,255,255,0.15);
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+        
+        .city-modal-close:hover {
+            background: rgba(255,255,255,0.25);
+        }
+        
+        .city-modal-close i {
+            width: 20px;
+            height: 20px;
+            color: white;
+        }
+        
+        .city-modal-body {
+            padding: 30px;
+        }
+        
+        .city-info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .city-info-item {
+            background: var(--gray-50);
+            padding: 16px;
+            border-radius: var(--radius-md);
+            text-align: center;
+        }
+        
+        .city-info-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--gray-500);
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+        
+        .city-info-value {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--um-dark-blue);
+        }
+        
+        .city-fun-fact {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(20, 184, 166, 0.08));
+            border-left: 4px solid var(--ce-green-primary);
+            padding: 16px 20px;
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+        }
+        
+        .city-fun-fact-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--ce-green-dark);
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .city-fun-fact-label i {
+            width: 14px;
+            height: 14px;
+        }
+        
+        .city-fun-fact-text {
+            font-size: 14px;
+            color: var(--gray-700);
+            line-height: 1.6;
+        }
+
+        /* ============================================
            FOOTER
         ============================================ */
         footer {
@@ -2746,6 +2886,54 @@
         </div>
     </div>
     
+    <!-- City Modal -->
+    <div class="modal-overlay" id="cityModal">
+        <div class="modal-content" style="max-width: 480px;">
+            <div class="city-modal-header" id="cityModalHeader">
+                <div class="city-modal-icon">
+                    <i data-lucide="building-2"></i>
+                </div>
+                <h2 class="city-modal-name" id="cityModalName">City Name</h2>
+                <div class="city-modal-country" id="cityModalCountry">
+                    <img src="" alt="Flag" id="cityModalFlag">
+                    <span id="cityModalCountryName">Country</span>
+                </div>
+                <button class="city-modal-close" onclick="closeCityModal()">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <div class="city-modal-body">
+                <div class="city-info-grid">
+                    <div class="city-info-item">
+                        <div class="city-info-label">Population</div>
+                        <div class="city-info-value" id="cityModalPopulation">-</div>
+                    </div>
+                    <div class="city-info-item">
+                        <div class="city-info-label">Province</div>
+                        <div class="city-info-value" id="cityModalProvince">-</div>
+                    </div>
+                    <div class="city-info-item">
+                        <div class="city-info-label">Known For</div>
+                        <div class="city-info-value" id="cityModalKnownFor">-</div>
+                    </div>
+                    <div class="city-info-item">
+                        <div class="city-info-label">Founded</div>
+                        <div class="city-info-value" id="cityModalFounded">-</div>
+                    </div>
+                </div>
+                <div class="city-fun-fact">
+                    <div class="city-fun-fact-label">
+                        <i data-lucide="sparkles"></i>
+                        Fun Fact
+                    </div>
+                    <div class="city-fun-fact-text" id="cityModalFunFact">
+                        Interesting fact about this city...
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <!-- Diversity Section - Flag Wave -->
     <section class="diversity-section">
         <div class="diversity-content">
@@ -3009,7 +3197,7 @@
             <h2>Part of the Loop?</h2>
             <p>Help us track the impact of CE alumni worldwide. Update your info or share your story.</p>
             <div class="cta-buttons">
-                <a href="mailto:fse-alumni@maastrichtuniversity.nl?subject=CE Alumni Info Update" class="btn btn-white">
+                <a href="/cdn-cgi/l/email-protection#513722347c303d243c3f38113c303022252338323925243f38273423223825287f3f3d6e2224333b3432256c121471103d243c3f3871183f373e71042135302534" class="btn btn-white">
                     <i data-lucide="mail"></i>
                     Update Your Info
                 </a>
@@ -3047,11 +3235,11 @@
         
         <div class="footer-bottom">
             <p>&copy; 2025 Maastricht University Â· Faculty of Science and Engineering</p>
-            <a href="mailto:fse-alumni@maastrichtuniversity.nl">fse-alumni@maastrichtuniversity.nl</a>
+            <a href="/cdn-cgi/l/email-protection#4523362068242930282b2c052824243631372c262d31302b2c332037362c313c6b2b29"><span class="__cf_email__" data-cfemail="2d4b5e48004c41584043446d404c4c5e595f444e45595843445b485f5e445954034341">[email&#160;protected]</span></a>
         </div>
     </footer>
     
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Initialize Lucide icons
         lucide.createIcons();
         
@@ -3483,6 +3671,119 @@
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 closeCountryModal();
+                closeCityModal();
+            }
+        });
+        
+        // ==========================================
+        // CITY MODAL DATA & FUNCTIONS
+        // ==========================================
+        const cityData = {
+            maastricht: {
+                name: 'Maastricht',
+                country: 'Netherlands',
+                countryCode: 'nl',
+                population: '126,000',
+                province: 'Limburg',
+                knownFor: 'EU Treaty & University',
+                founded: 'Roman Era (~50 AD)',
+                funFact: 'Maastricht is the birthplace of the European Union — the Maastricht Treaty was signed here in 1992, creating the EU and the Euro! The city has 1,677 national heritage buildings (second only to Amsterdam) and features underground caves with over 200 km of tunnels used since Roman times.'
+            },
+            lisbon: {
+                name: 'Lisbon',
+                country: 'Portugal',
+                countryCode: 'pt',
+                population: '545,000',
+                province: 'Lisbon District',
+                knownFor: 'Trams & Pastéis de Nata',
+                founded: '~1200 BC',
+                funFact: 'Lisbon is Europe\'s second-oldest capital (after Athens) and is 400 years older than Rome! Built on seven hills like Rome, its iconic yellow Tram 28 has been operating since 1901. The city was almost entirely rebuilt after a devastating earthquake in 1755.'
+            },
+            stockholm: {
+                name: 'Stockholm',
+                country: 'Sweden',
+                countryCode: 'se',
+                population: '1 million',
+                province: 'Stockholm County',
+                knownFor: 'Nobel Prize & Islands',
+                founded: '1252 AD',
+                funFact: 'Stockholm is built on 14 islands connected by 57 bridges, earning it the nickname "Venice of the North." The water is so clean you can swim and fish in the city center! Stockholm hosts the annual Nobel Prize ceremony and has more museums per capita than almost any other city.'
+            },
+            wageningen: {
+                name: 'Wageningen',
+                country: 'Netherlands',
+                countryCode: 'nl',
+                population: '40,000',
+                province: 'Gelderland',
+                knownFor: 'Food Science & WUR',
+                founded: '828 AD',
+                funFact: 'Wageningen is the center of "Food Valley" — the world\'s largest food & nutrition R&D cluster with 15,000+ researchers. WWII officially ended in the Netherlands when German forces surrendered here on May 5, 1945. The city now celebrates Liberation Day annually with 120,000 visitors!'
+            },
+            delft: {
+                name: 'Delft',
+                country: 'Netherlands',
+                countryCode: 'nl',
+                population: '104,000',
+                province: 'South Holland',
+                knownFor: 'Blue Pottery & Vermeer',
+                founded: '~1075 AD',
+                funFact: 'Delft is the birthplace of painter Johannes Vermeer ("Girl with a Pearl Earring") and the famous Delft Blue pottery. In 1654, a massive gunpowder explosion called "The Thunderclap" destroyed much of the city — but the pottery industry thrived by taking over abandoned breweries!'
+            },
+            eindhoven: {
+                name: 'Eindhoven',
+                country: 'Netherlands',
+                countryCode: 'nl',
+                population: '240,000',
+                province: 'North Brabant',
+                knownFor: 'Tech Hub & Design',
+                founded: '1232 AD',
+                funFact: 'Eindhoven is the birthplace of Philips electronics and is now called "Brainport" — Europe\'s leading technology region. The city hosts Dutch Design Week, the largest design event in Northern Europe, and has more patents per capita than almost anywhere in the world!'
+            }
+        };
+        
+        function openCityModal(cityKey) {
+            const city = cityData[cityKey];
+            if (!city) return;
+            
+            const modal = document.getElementById('cityModal');
+            
+            // Set name
+            document.getElementById('cityModalName').textContent = city.name;
+            
+            // Set country flag and name
+            document.getElementById('cityModalFlag').src = `https://flagcdn.com/w40/${city.countryCode}.png`;
+            document.getElementById('cityModalFlag').alt = city.country;
+            document.getElementById('cityModalCountryName').textContent = city.country;
+            
+            // Set info
+            document.getElementById('cityModalPopulation').textContent = city.population;
+            document.getElementById('cityModalProvince').textContent = city.province;
+            document.getElementById('cityModalKnownFor').textContent = city.knownFor;
+            document.getElementById('cityModalFounded').textContent = city.founded;
+            
+            // Set fun fact
+            document.getElementById('cityModalFunFact').textContent = city.funFact;
+            
+            // Show modal
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            // Re-initialize icons
+            lucide.createIcons();
+        }
+        
+        function closeCityModal() {
+            const modal = document.getElementById('cityModal');
+            if (modal) {
+                modal.classList.remove('active');
+            }
+            document.body.style.overflow = '';
+        }
+        
+        // Close city modal on overlay click
+        document.getElementById('cityModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeCityModal();
             }
         });
         
@@ -3536,12 +3837,25 @@
             `).join('');
         }
         
-        // Cities tags
+        // Cities tags - now clickable
         const citiesContainer = document.querySelector('.location-card:last-child .location-tags');
         if (citiesContainer) {
-            citiesContainer.innerHTML = CE_DATA.topCities.map(city => `
-                <span class="location-tag">${city.name} (${city.count})</span>
-            `).join('');
+            // Map city names to modal keys
+            const cityKeyMap = {
+                'Maastricht': 'maastricht',
+                'Lisbon': 'lisbon',
+                'Stockholm': 'stockholm',
+                'Wageningen': 'wageningen',
+                'Delft': 'delft',
+                'Eindhoven': 'eindhoven'
+            };
+            
+            citiesContainer.innerHTML = CE_DATA.topCities.map(city => {
+                const cityKey = cityKeyMap[city.name];
+                const clickableClass = cityKey ? ' clickable' : '';
+                const onclickAttr = cityKey ? ` onclick="openCityModal('${cityKey}')"` : '';
+                return `<span class="location-tag${clickableClass}"${onclickAttr}>${city.name} (${city.count})</span>`;
+            }).join('');
         }
         
         // Talent flow stats
@@ -3661,14 +3975,4 @@
         
         const growthChart = document.querySelector('.growth-chart');
         if (growthChart) {
-            // Reset initial state
-            const bar2024 = document.querySelector('.bar-2024');
-            const bar2025 = document.querySelector('.bar-2025');
-            if (bar2024) bar2024.style.height = '0';
-            if (bar2025) bar2025.style.height = '0';
-            
-            growthBarsObserver.observe(growthChart);
-        }
-    </script>
-</body>
-</html>
+            // Re
