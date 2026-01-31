@@ -37,7 +37,10 @@ const CE_DATA = {
             percentage: 37,
             icon: "flask-conical",
             color: "#10B981",
-            description: "Biotechnological solutions for sustainability challenges"
+            description: "Explore how cells, genes, enzymes, and microbes can be engineered to produce food, materials, energy, and pharmaceuticals sustainably.",
+            fullDescription: "Build a strong foundation in molecular and cellular biology, and gain hands-on experience with biotechnological tools, fermentation, and bioprocess design. Emphasis is placed on the development of scalable, low-impact biotechnologies that close resource loops and reduce dependence on fossil-based systems.",
+            careers: ["Life sciences", "Bio-based industries", "Environmental biotechnology", "Pharmaceutical production"],
+            courses: ["Gene Technology", "Plant Biotechnology", "Bioreactors", "Microbiology & Fermentations", "Biotechnology for Sustainable Processes"]
         },
         {
             name: "Circular Chemical Engineering",
@@ -46,7 +49,10 @@ const CE_DATA = {
             percentage: 37,
             icon: "atom",
             color: "#14B8A6",
-            description: "Chemical processes for circular economy"
+            description: "Develop a deep understanding of how energy and materials flow through chemical systems, and how these systems can be redesigned for efficiency.",
+            fullDescription: "Learn to model, analyse, and optimise industrial processes, from molecular-level transformations to full-scale production systems, while gaining practical skills in system design, operational control, and sustainability assessment. This track prepares you to lead change in the chemical industry and beyond.",
+            careers: ["Chemical industry", "Process engineering", "Sustainability consulting", "Industrial optimization"],
+            courses: ["Chemical Engineering Thermodynamics", "Reactor Engineering", "Separations Processes", "Chemical Plant Design", "Circular Process Design"]
         },
         {
             name: "Engineering Physics for Sustainable Manufacturing",
@@ -55,7 +61,10 @@ const CE_DATA = {
             percentage: 26,
             icon: "cpu",
             color: "#0EA5E9",
-            description: "Physics-based solutions for sustainable production"
+            description: "Design and optimise technologies that make production more efficient, intelligent, and circular.",
+            fullDescription: "Build strong foundations in mechanics, materials, and electronics, learning how to sense, measure, and control physical systems with precision. Through applied design and advanced technical skills, you develop the capacity to engineer sustainable products and processes that reduce waste, extend product lifecycles, and enable smarter use of resources.",
+            careers: ["Sensor-driven manufacturing", "Sustainable product development", "Smart systems", "Industrial automation"],
+            courses: ["Mechanical Physics", "Sensors & Instrumentation", "Advanced Electronics", "Materials Engineering", "Product & Process Design"]
         }
     ],
 

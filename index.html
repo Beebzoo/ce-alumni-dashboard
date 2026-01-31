@@ -472,6 +472,19 @@
             max-width: 900px;
         }
         
+        .hero-logo {
+            width: 100px;
+            height: auto;
+            margin-bottom: 24px;
+            filter: drop-shadow(0 4px 20px rgba(16, 185, 129, 0.3));
+            animation: logoFloat 6s ease-in-out infinite;
+        }
+        
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
         .hero-badge {
             display: inline-flex;
             align-items: center;
@@ -1029,12 +1042,37 @@
             overflow: hidden;
             transition: all var(--transition-smooth);
             border: 1px solid var(--gray-200);
+            cursor: pointer;
         }
         
         .concentration-card:hover {
             transform: translateY(-8px);
             box-shadow: var(--shadow-lg);
             border-color: var(--ce-green-primary);
+        }
+        
+        .concentration-card .click-hint {
+            position: absolute;
+            bottom: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 12px;
+            color: var(--gray-400);
+            opacity: 0;
+            transition: opacity var(--transition-fast);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        
+        .concentration-card .click-hint i {
+            width: 14px;
+            height: 14px;
+        }
+        
+        .concentration-card:hover .click-hint {
+            opacity: 1;
+            color: var(--ce-green-primary);
         }
         
         .concentration-card::before {
@@ -1422,6 +1460,162 @@
             color: white;
         }
         
+        /* ============================================
+           CONCENTRATION MODAL
+        ============================================ */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 28, 61, 0.85);
+            backdrop-filter: blur(8px);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: var(--radius-xl);
+            max-width: 600px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            transform: scale(0.9) translateY(20px);
+            transition: all 0.3s ease;
+        }
+        
+        .modal-overlay.active .modal-content {
+            transform: scale(1) translateY(0);
+        }
+        
+        .modal-header {
+            padding: 30px 30px 20px;
+            border-bottom: 1px solid var(--gray-200);
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+        
+        .modal-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .modal-icon i {
+            width: 28px;
+            height: 28px;
+            color: white;
+        }
+        
+        .modal-title-group {
+            flex: 1;
+        }
+        
+        .modal-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--um-dark-blue);
+            margin-bottom: 8px;
+        }
+        
+        .modal-stat {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--gray-100);
+            padding: 6px 14px;
+            border-radius: var(--radius-full);
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--gray-600);
+        }
+        
+        .modal-close {
+            width: 36px;
+            height: 36px;
+            border: none;
+            background: var(--gray-100);
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--transition-fast);
+        }
+        
+        .modal-close:hover {
+            background: var(--gray-200);
+        }
+        
+        .modal-close i {
+            width: 20px;
+            height: 20px;
+            color: var(--gray-600);
+        }
+        
+        .modal-body {
+            padding: 30px;
+        }
+        
+        .modal-description {
+            font-size: 16px;
+            color: var(--gray-600);
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+        
+        .modal-section {
+            margin-bottom: 24px;
+        }
+        
+        .modal-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .modal-section-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--um-dark-blue);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+        }
+        
+        .modal-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .modal-tag {
+            padding: 8px 14px;
+            background: var(--gray-100);
+            color: var(--gray-600);
+            border-radius: var(--radius-full);
+            font-size: 13px;
+            font-weight: 500;
+        }
+        
+        .modal-tag.course {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--ce-green-dark);
+        }
+
         /* ============================================
            FOOTER
         ============================================ */
@@ -2045,12 +2239,9 @@
         </div>
         
         <div class="hero-content">
-            <div class="hero-badge">
-                <i data-lucide="recycle"></i>
-                Closing the Loop Since 2021
-            </div>
+            <img src="assets/logos/ce-logo.png" alt="CE Logo" class="hero-logo">
             
-            <h1>Where <span>Circular Engineers</span> Go Next</h1>
+            <h1>Circular Engineering<br><span>Alumni Community</span></h1>
             
             <p class="hero-subtitle">
                 From Maastricht to the world — tracking the journeys of CE alumni 
@@ -2102,38 +2293,49 @@
     <section class="concentrations" id="concentrations">
         <div class="section-header">
             <h2>Three Pathways, One Mission</h2>
-            <p>CE alumni specialise in one of three concentrations, each addressing critical aspects of the circular transition.</p>
+            <p>CE alumni specialise in one of three concentrations, each addressing critical aspects of the circular transition. Click to learn more.</p>
         </div>
         
-        <div class="concentrations-grid">
-            <div class="concentration-card">
-                <div class="concentration-icon">
-                    <i data-lucide="flask-conical"></i>
-                </div>
-                <h3>Sustainable Biotechnology</h3>
-                <div class="concentration-count">17</div>
-                <p class="concentration-label">alumni</p>
-            </div>
-            
-            <div class="concentration-card">
-                <div class="concentration-icon">
-                    <i data-lucide="atom"></i>
-                </div>
-                <h3>Circular Chemical Engineering</h3>
-                <div class="concentration-count">17</div>
-                <p class="concentration-label">alumni</p>
-            </div>
-            
-            <div class="concentration-card">
-                <div class="concentration-icon">
-                    <i data-lucide="cpu"></i>
-                </div>
-                <h3>Engineering Physics</h3>
-                <div class="concentration-count">12</div>
-                <p class="concentration-label">alumni</p>
-            </div>
+        <div class="concentrations-grid" id="concentrationsGrid">
+            <!-- Populated by JavaScript -->
         </div>
     </section>
+    
+    <!-- Concentration Modal -->
+    <div class="modal-overlay" id="concentrationModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-icon" id="modalIcon">
+                    <i data-lucide="flask-conical"></i>
+                </div>
+                <div class="modal-title-group">
+                    <h2 class="modal-title" id="modalTitle">Concentration Name</h2>
+                    <span class="modal-stat" id="modalStat">17 alumni</span>
+                </div>
+                <button class="modal-close" onclick="closeModal()">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p class="modal-description" id="modalDescription">Description goes here...</p>
+                <p class="modal-description" id="modalFullDescription" style="margin-bottom: 24px;">Full description...</p>
+                
+                <div class="modal-section">
+                    <h4 class="modal-section-title">Career Paths</h4>
+                    <div class="modal-tags" id="modalCareers">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+                
+                <div class="modal-section">
+                    <h4 class="modal-section-title">Key Courses</h4>
+                    <div class="modal-tags" id="modalCourses">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     
     <!-- Diversity Section - Flag Wave -->
     <section class="diversity-section">
@@ -2460,11 +2662,71 @@
             valueEl.dataset.target = targets[index];
         });
         
-        // Concentration cards
-        const concentrationCards = document.querySelectorAll('.concentration-card');
-        CE_DATA.concentrations.forEach((conc, index) => {
-            if (concentrationCards[index]) {
-                concentrationCards[index].querySelector('.concentration-count').textContent = conc.count;
+        // ==========================================
+        // CONCENTRATION CARDS - GENERATE & MODAL
+        // ==========================================
+        const concentrationsGrid = document.getElementById('concentrationsGrid');
+        if (concentrationsGrid) {
+            concentrationsGrid.innerHTML = CE_DATA.concentrations.map((conc, index) => `
+                <div class="concentration-card" data-index="${index}" onclick="openConcentrationModal(${index})">
+                    <div class="concentration-icon" style="background: linear-gradient(135deg, ${conc.color}, ${conc.color}dd);">
+                        <i data-lucide="${conc.icon}"></i>
+                    </div>
+                    <h3>${conc.name}</h3>
+                    <div class="concentration-count">${conc.count}</div>
+                    <p class="concentration-label">alumni</p>
+                    <span class="click-hint"><i data-lucide="info"></i> Click for details</span>
+                </div>
+            `).join('');
+            lucide.createIcons();
+        }
+        
+        // Modal functions
+        function openConcentrationModal(index) {
+            const conc = CE_DATA.concentrations[index];
+            const modal = document.getElementById('concentrationModal');
+            
+            // Update modal content
+            document.getElementById('modalIcon').style.background = `linear-gradient(135deg, ${conc.color}, ${conc.color}dd)`;
+            document.getElementById('modalIcon').innerHTML = `<i data-lucide="${conc.icon}"></i>`;
+            document.getElementById('modalTitle').textContent = conc.name;
+            document.getElementById('modalStat').textContent = `${conc.count} alumni (${conc.percentage}%)`;
+            document.getElementById('modalDescription').textContent = conc.description;
+            document.getElementById('modalFullDescription').textContent = conc.fullDescription || '';
+            
+            // Careers
+            document.getElementById('modalCareers').innerHTML = (conc.careers || []).map(career => 
+                `<span class="modal-tag">${career}</span>`
+            ).join('');
+            
+            // Courses
+            document.getElementById('modalCourses').innerHTML = (conc.courses || []).map(course => 
+                `<span class="modal-tag course">${course}</span>`
+            ).join('');
+            
+            // Show modal
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            lucide.createIcons();
+        }
+        
+        function closeModal() {
+            const modal = document.getElementById('concentrationModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        // Close modal on overlay click
+        document.getElementById('concentrationModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+        
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
             }
         });
         

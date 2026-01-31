@@ -470,6 +470,145 @@
         }
         
         /* ============================================
+           UM LINKS SECTION
+        ============================================ */
+        .um-links-section {
+            background: linear-gradient(180deg, var(--gray-50) 0%, white 100%);
+            padding: 80px 50px;
+        }
+        
+        .um-links-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .um-links-logo {
+            height: 60px;
+            margin-bottom: 24px;
+        }
+        
+        .um-links-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--um-dark-blue);
+            margin-bottom: 12px;
+        }
+        
+        .um-links-subtitle {
+            font-size: 16px;
+            color: var(--gray-500);
+        }
+        
+        .um-links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .um-link-card {
+            background: white;
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-lg);
+            padding: 28px;
+            display: flex;
+            align-items: flex-start;
+            gap: 18px;
+            transition: all var(--transition-smooth);
+            text-decoration: none;
+            color: var(--um-dark-blue);
+        }
+        
+        .um-link-card:hover {
+            border-color: var(--ce-green-primary);
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px);
+            color: var(--um-dark-blue);
+        }
+        
+        .um-link-card.featured {
+            background: linear-gradient(135deg, var(--um-dark-blue) 0%, #002b5c 100%);
+            border-color: transparent;
+            color: white;
+            grid-column: span 2;
+        }
+        
+        .um-link-card.featured:hover {
+            box-shadow: 0 12px 40px rgba(0,28,61,0.3);
+            color: white;
+        }
+        
+        .um-link-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--gray-100);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .um-link-card.featured .um-link-icon {
+            background: rgba(255,255,255,0.15);
+        }
+        
+        .um-link-icon i {
+            width: 24px;
+            height: 24px;
+            color: var(--ce-green-primary);
+        }
+        
+        .um-link-card.featured .um-link-icon i {
+            color: white;
+        }
+        
+        .um-link-content {
+            flex: 1;
+        }
+        
+        .um-link-title {
+            font-family: var(--font-heading);
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        
+        .um-link-desc {
+            font-size: 14px;
+            color: var(--gray-500);
+            line-height: 1.5;
+        }
+        
+        .um-link-card.featured .um-link-desc {
+            color: rgba(255,255,255,0.7);
+        }
+        
+        .um-link-arrow {
+            color: var(--gray-300);
+            transition: all var(--transition-smooth);
+        }
+        
+        .um-link-card:hover .um-link-arrow {
+            color: var(--ce-green-primary);
+            transform: translateX(4px);
+        }
+        
+        .um-link-card.featured .um-link-arrow {
+            color: rgba(255,255,255,0.5);
+        }
+        
+        .um-link-card.featured:hover .um-link-arrow {
+            color: white;
+        }
+        
+        .um-link-arrow i {
+            width: 20px;
+            height: 20px;
+        }
+        
+        /* ============================================
            REAL-LIFE CHALLENGES SECTION
         ============================================ */
         .challenges-section {
@@ -1151,6 +1290,105 @@
                     <!-- Populated by JS -->
                 </div>
             </div>
+        </div>
+    </section>
+    
+    <!-- UM Official Links Section -->
+    <section class="um-links-section">
+        <div class="um-links-header">
+            <img src="assets/logos/maastricht-university.png" alt="Maastricht University" class="um-links-logo">
+            <h2 class="um-links-title">Official Programme Information</h2>
+            <p class="um-links-subtitle">Everything you need to know from Maastricht University</p>
+        </div>
+        
+        <div class="um-links-grid">
+            <a href="https://www.maastrichtuniversity.nl/nl/onderwijs/bachelor/programmas/circular-engineering" target="_blank" class="um-link-card featured">
+                <div class="um-link-icon">
+                    <i data-lucide="home"></i>
+                </div>
+                <div class="um-link-content">
+                    <h3 class="um-link-title">CE Programme Homepage</h3>
+                    <p class="um-link-desc">The official starting point for all information about Circular Engineering at Maastricht University.</p>
+                </div>
+                <span class="um-link-arrow"><i data-lucide="arrow-right"></i></span>
+            </a>
+            
+            <a href="https://www.maastrichtuniversity.nl/education/bachelor/programmes/circular-engineering/why-this-programme" target="_blank" class="um-link-card">
+                <div class="um-link-icon">
+                    <i data-lucide="lightbulb"></i>
+                </div>
+                <div class="um-link-content">
+                    <h3 class="um-link-title">Why This Programme</h3>
+                    <p class="um-link-desc">Discover what makes CE unique and why it's the right choice.</p>
+                </div>
+                <span class="um-link-arrow"><i data-lucide="arrow-right"></i></span>
+            </a>
+            
+            <a href="https://www.maastrichtuniversity.nl/education/bachelor/programmes/circular-engineering/courses-and-curriculum" target="_blank" class="um-link-card">
+                <div class="um-link-icon">
+                    <i data-lucide="book-open"></i>
+                </div>
+                <div class="um-link-content">
+                    <h3 class="um-link-title">Courses & Curriculum</h3>
+                    <p class="um-link-desc">Explore the full 3-year curriculum and course details.</p>
+                </div>
+                <span class="um-link-arrow"><i data-lucide="arrow-right"></i></span>
+            </a>
+            
+            <a href="https://www.maastrichtuniversity.nl/education/bachelor/programmes/circular-engineering/your-future" target="_blank" class="um-link-card">
+                <div class="um-link-icon">
+                    <i data-lucide="rocket"></i>
+                </div>
+                <div class="um-link-content">
+                    <h3 class="um-link-title">Your Future</h3>
+                    <p class="um-link-desc">Career paths and Master's opportunities after CE.</p>
+                </div>
+                <span class="um-link-arrow"><i data-lucide="arrow-right"></i></span>
+            </a>
+            
+            <a href="https://www.maastrichtuniversity.nl/education/bachelor/programmes/circular-engineering/admission-requirements" target="_blank" class="um-link-card">
+                <div class="um-link-icon">
+                    <i data-lucide="clipboard-check"></i>
+                </div>
+                <div class="um-link-content">
+                    <h3 class="um-link-title">Admission Requirements</h3>
+                    <p class="um-link-desc">Check what you need to apply.</p>
+                </div>
+                <span class="um-link-arrow"><i data-lucide="arrow-right"></i></span>
+            </a>
+            
+            <a href="https://www.maastrichtuniversity.nl/education/bachelor/programmes/circular-engineering/admission-and-enrolment" target="_blank" class="um-link-card">
+                <div class="um-link-icon">
+                    <i data-lucide="user-plus"></i>
+                </div>
+                <div class="um-link-content">
+                    <h3 class="um-link-title">Admission & Enrolment</h3>
+                    <p class="um-link-desc">The application process explained.</p>
+                </div>
+                <span class="um-link-arrow"><i data-lucide="arrow-right"></i></span>
+            </a>
+            
+            <a href="https://www.maastrichtuniversity.nl/education/bachelor/programmes/circular-engineering/tuition-fees" target="_blank" class="um-link-card">
+                <div class="um-link-icon">
+                    <i data-lucide="euro"></i>
+                </div>
+                <div class="um-link-content">
+                    <h3 class="um-link-title">Tuition Fees</h3>
+                    <p class="um-link-desc">Costs and financial information.</p>
+                </div>
+                <span class="um-link-arrow"><i data-lucide="arrow-right"></i></span>
+            </a>
+            
+            <a href="https://www.maastrichtuniversity.nl/education/bachelor/programmes/circular-engineering/contact" target="_blank" class="um-link-card">
+                <div class="um-link-icon">
+                    <i data-lucide="mail"></i>
+                </div>
+                <div class="um-link-content">
+                    <h3 class="um-link-title">Contact</h3>
+                    <p class="um-link-desc">Get in touch with the CE team.</p>
+                </div>
+                <span class="um-link-arrow"><i data-lucide="arrow-right"></i></span>
+            </a>
         </div>
     </section>
     
