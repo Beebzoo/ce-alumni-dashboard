@@ -1804,6 +1804,7 @@
             height: 18px;
         }
 
+
         /* ============================================
            COUNTRY MODAL
         ============================================ */
@@ -1921,19 +1922,6 @@
             line-height: 1.6;
         }
         
-        /* Clickable flags in flag wave */
-        .flag-wave img {
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .flag-wave img:hover {
-            transform: scale(1.15) translateY(-4px);
-            box-shadow: 0 6px 16px rgba(0,0,0,0.2);
-            z-index: 10;
-        }
-        
-        /* Clickable country tags */
         .location-tag.clickable {
             cursor: pointer;
             transition: all 0.2s ease;
@@ -1946,6 +1934,146 @@
         }
 
         /* ============================================
+           CITY MODAL
+        ============================================ */
+        .city-modal-header {
+            padding: 30px;
+            background: linear-gradient(135deg, #065f46, #10b981);
+            color: white;
+            border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+            position: relative;
+            text-align: center;
+        }
+        
+        .city-modal-icon {
+            width: 72px;
+            height: 72px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+        }
+        
+        .city-modal-icon i {
+            width: 36px;
+            height: 36px;
+            color: white;
+        }
+        
+        .city-modal-name {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        
+        .city-modal-country {
+            font-size: 14px;
+            opacity: 0.85;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .city-modal-country img {
+            width: 20px;
+            height: 14px;
+            border-radius: 2px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+        
+        .city-modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 36px;
+            height: 36px;
+            border: none;
+            background: rgba(255,255,255,0.15);
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+        
+        .city-modal-close:hover {
+            background: rgba(255,255,255,0.25);
+        }
+        
+        .city-modal-close i {
+            width: 20px;
+            height: 20px;
+            color: white;
+        }
+        
+        .city-modal-body {
+            padding: 30px;
+        }
+        
+        .city-info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .city-info-item {
+            background: var(--gray-50);
+            padding: 16px;
+            border-radius: var(--radius-md);
+            text-align: center;
+        }
+        
+        .city-info-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--gray-500);
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+        
+        .city-info-value {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--um-dark-blue);
+        }
+        
+        .city-fun-fact {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(20, 184, 166, 0.08));
+            border-left: 4px solid var(--ce-green-primary);
+            padding: 16px 20px;
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+        }
+        
+        .city-fun-fact-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--ce-green-dark);
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .city-fun-fact-label i {
+            width: 14px;
+            height: 14px;
+        }
+        
+        .city-fun-fact-text {
+            font-size: 14px;
+            color: var(--gray-700);
+            line-height: 1.6;
+        }
+
+        /* ============================================
            FOOTER
         ============================================ */
         footer {
@@ -1955,10 +2083,10 @@
         }
         
         /* ============================================
-           NATIONALITY FLAG WAVE
+           NATIONALITY FLAG GRID (Static with Hover)
         ============================================ */
         .diversity-section {
-            background: white;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
             padding: 80px 50px;
         }
         
@@ -1968,10 +2096,10 @@
         }
         
         .diversity-stats {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 60px;
+            display: flex;
+            flex-direction: column;
             align-items: center;
+            gap: 40px;
         }
         
         .diversity-numbers {
@@ -1992,34 +2120,64 @@
             margin-top: 8px;
         }
         
-        .flag-wave-container {
-            position: relative;
-            overflow: hidden;
-            padding: 20px 0;
+        .flag-grid-container {
+            width: 100%;
+            max-width: 900px;
         }
         
-        .flag-wave {
+        .flag-grid {
             display: flex;
-            gap: 12px;
-            animation: scroll-flags 20s linear infinite;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
+            padding: 20px;
         }
         
-        .flag-wave img {
-            width: 48px;
-            height: 32px;
+        .flag-item {
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .flag-item img {
+            width: 64px;
+            height: 44px;
             object-fit: cover;
-            border-radius: 4px;
+            border-radius: 6px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
-        .flag-wave img:hover {
-            transform: scale(1.15);
+        .flag-item:hover {
+            transform: translateY(-8px) scale(1.1);
+            z-index: 10;
         }
         
-        @keyframes scroll-flags {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+        .flag-item:hover img {
+            box-shadow: 0 12px 28px rgba(0,0,0,0.2);
+        }
+        
+        .flag-item::after {
+            content: attr(data-country);
+            position: absolute;
+            bottom: -28px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--um-dark-blue);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 500;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.2s ease;
+        }
+        
+        .flag-item:hover::after {
+            opacity: 1;
+            visibility: visible;
         }
         
         /* ============================================
@@ -2707,7 +2865,7 @@
     <!-- Country Modal -->
     <div class="modal-overlay" id="countryModal">
         <div class="modal-content" style="max-width: 480px;">
-            <div class="country-modal-header" id="countryModalHeader">
+            <div class="country-modal-header">
                 <img src="" alt="Flag" class="country-modal-flag" id="countryModalFlag">
                 <h2 class="country-modal-name" id="countryModalName">Country Name</h2>
                 <button class="country-modal-close" onclick="closeCountryModal()">
@@ -2746,6 +2904,54 @@
         </div>
     </div>
     
+    <!-- City Modal -->
+    <div class="modal-overlay" id="cityModal">
+        <div class="modal-content" style="max-width: 480px;">
+            <div class="city-modal-header">
+                <div class="city-modal-icon">
+                    <i data-lucide="building-2"></i>
+                </div>
+                <h2 class="city-modal-name" id="cityModalName">City Name</h2>
+                <div class="city-modal-country">
+                    <img src="" alt="Flag" id="cityModalFlag">
+                    <span id="cityModalCountryName">Country</span>
+                </div>
+                <button class="city-modal-close" onclick="closeCityModal()">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <div class="city-modal-body">
+                <div class="city-info-grid">
+                    <div class="city-info-item">
+                        <div class="city-info-label">Population</div>
+                        <div class="city-info-value" id="cityModalPopulation">-</div>
+                    </div>
+                    <div class="city-info-item">
+                        <div class="city-info-label">Province</div>
+                        <div class="city-info-value" id="cityModalProvince">-</div>
+                    </div>
+                    <div class="city-info-item">
+                        <div class="city-info-label">Known For</div>
+                        <div class="city-info-value" id="cityModalKnownFor">-</div>
+                    </div>
+                    <div class="city-info-item">
+                        <div class="city-info-label">Founded</div>
+                        <div class="city-info-value" id="cityModalFounded">-</div>
+                    </div>
+                </div>
+                <div class="city-fun-fact">
+                    <div class="city-fun-fact-label">
+                        <i data-lucide="sparkles"></i>
+                        Fun Fact
+                    </div>
+                    <div class="city-fun-fact-text" id="cityModalFunFact">
+                        Interesting fact about this city...
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <!-- Diversity Section - Flag Wave -->
     <section class="diversity-section">
         <div class="diversity-content">
@@ -2760,8 +2966,8 @@
                     <div class="diversity-label">nationalities</div>
                 </div>
                 
-                <div class="flag-wave-container">
-                    <div class="flag-wave" id="flagWave">
+                <div class="flag-grid-container">
+                    <div class="flag-grid" id="flagGrid">
                         <!-- Populated by JS -->
                     </div>
                 </div>
@@ -3046,7 +3252,7 @@
         </div>
         
         <div class="footer-bottom">
-            <p>&copy; 2025 Maastricht University Â· Faculty of Science and Engineering</p>
+            <p>&copy; 2025 Maastricht University · Faculty of Science and Engineering</p>
             <a href="mailto:fse-alumni@maastrichtuniversity.nl">fse-alumni@maastrichtuniversity.nl</a>
         </div>
     </footer>
@@ -3267,224 +3473,102 @@
                 closeUniversityModal();
             }
         });
-        
+
         // ==========================================
         // COUNTRY MODAL DATA & FUNCTIONS
         // ==========================================
         const countryData = {
-            be: {
-                name: 'Belgium',
-                capital: 'Brussels',
-                population: '11.8 million',
-                language: 'Dutch, French, German',
-                currency: 'Euro (€)',
-                funFact: 'Belgium produces over 220,000 tonnes of chocolate per year and invented the praline. The country also has more comic artists per square kilometre than anywhere else in the world — The Smurfs and Tintin were both created here!'
-            },
-            nl: {
-                name: 'Netherlands',
-                capital: 'Amsterdam',
-                population: '18 million',
-                language: 'Dutch',
-                currency: 'Euro (€)',
-                funFact: 'The Dutch are the tallest people in the world on average. Amsterdam has more bicycles than people, with 18 million bikes nationwide — that\'s more than one per person! The country also has 1,281 bridges in Amsterdam alone.'
-            },
-            de: {
-                name: 'Germany',
-                capital: 'Berlin',
-                population: '84 million',
-                language: 'German',
-                currency: 'Euro (€)',
-                funFact: 'Germany has over 1,500 different types of sausages and more than 1,200 breweries. Berlin is 9 times bigger than Paris and has more bridges than Venice! The Autobahn has no speed limit on about 65% of its length.'
-            },
-            se: {
-                name: 'Sweden',
-                capital: 'Stockholm',
-                population: '10.5 million',
-                language: 'Swedish',
-                currency: 'Swedish Krona (kr)',
-                funFact: 'Sweden was the first country in the world to have a phone number (+46 771 793 336) anyone can call to talk to a random Swede. IKEA, Spotify, and Minecraft all originated here. The country is home to the world\'s first ice hotel!'
-            },
-            pt: {
-                name: 'Portugal',
-                capital: 'Lisbon',
-                population: '10.7 million',
-                language: 'Portuguese',
-                currency: 'Euro (€)',
-                funFact: 'Portugal is the oldest nation-state in Europe (established 1139) and Lisbon is older than Rome by 400 years! The Portuguese invented Pastel de Nata and the original recipe from Belém is still a closely guarded secret.'
-            },
-            dk: {
-                name: 'Denmark',
-                capital: 'Copenhagen',
-                population: '5.9 million',
-                language: 'Danish',
-                currency: 'Danish Krone (kr)',
-                funFact: 'Denmark is consistently ranked as one of the happiest countries in the world. LEGO was invented here (the name comes from "leg godt" meaning "play well"). Copenhagen has more bikes than cars and was the first city to be certified carbon-neutral.'
-            },
-            it: {
-                name: 'Italy',
-                capital: 'Rome',
-                population: '59 million',
-                language: 'Italian',
-                currency: 'Euro (€)',
-                funFact: 'Italy has the most UNESCO World Heritage Sites in the world (59). The country has more masterpieces per square kilometre than any other nation, and Italians invented the piano, thermometer, and eyeglasses!'
-            },
-            fr: {
-                name: 'France',
-                capital: 'Paris',
-                population: '68 million',
-                language: 'French',
-                currency: 'Euro (€)',
-                funFact: 'France is the most visited country in the world with 90+ million tourists yearly. French law states that radio stations must play at least 40% French music. The Eiffel Tower was originally meant to be temporary!'
-            },
-            es: {
-                name: 'Spain',
-                capital: 'Madrid',
-                population: '48 million',
-                language: 'Spanish',
-                currency: 'Euro (€)',
-                funFact: 'Spain has a tomato-throwing festival (La Tomatina) where 150,000 tomatoes are thrown in one hour! Spanish is the second most spoken native language in the world, and Spain gave the world the first modern novel: Don Quixote.'
-            },
-            at: {
-                name: 'Austria',
-                capital: 'Vienna',
-                population: '9.1 million',
-                language: 'German',
-                currency: 'Euro (€)',
-                funFact: 'Vienna has been ranked the world\'s most liveable city multiple times. Austria is the birthplace of Mozart, Freud, and the croissant (which was invented in Vienna, not France!). The country has one of the oldest ski schools in the world.'
-            },
-            ro: {
-                name: 'Romania',
-                capital: 'Bucharest',
-                population: '19 million',
-                language: 'Romanian',
-                currency: 'Romanian Leu (lei)',
-                funFact: 'Romania is home to the heaviest building in the world: the Palace of Parliament. Transylvania\'s Bran Castle inspired the legend of Dracula. Romanians invented the fountain pen and the jet engine!'
-            },
-            hu: {
-                name: 'Hungary',
-                capital: 'Budapest',
-                population: '9.6 million',
-                language: 'Hungarian',
-                currency: 'Hungarian Forint (Ft)',
-                funFact: 'Hungary has the oldest underground railway in continental Europe and Lake Hévíz, the world\'s largest thermal lake. Hungarians have won 177 Olympic medals in swimming and invented the Rubik\'s Cube and ballpoint pen!'
-            },
-            ie: {
-                name: 'Ireland',
-                capital: 'Dublin',
-                population: '5.1 million',
-                language: 'English, Irish',
-                currency: 'Euro (€)',
-                funFact: 'Ireland has no native snakes — legend says St. Patrick drove them out! Halloween originated from the Celtic festival of Samhain in Ireland. The country has more pubs per capita than any other EU nation.'
-            },
-            bg: {
-                name: 'Bulgaria',
-                capital: 'Sofia',
-                population: '6.5 million',
-                language: 'Bulgarian',
-                currency: 'Bulgarian Lev (лв)',
-                funFact: 'Bulgaria is the only country whose name hasn\'t changed since it was first established in 681 AD. Bulgarians shake their heads to mean "yes" and nod for "no"! The Cyrillic alphabet was created here.'
-            },
-            in: {
-                name: 'India',
-                capital: 'New Delhi',
-                population: '1.4 billion',
-                language: 'Hindi, English',
-                currency: 'Indian Rupee (₹)',
-                funFact: 'India invented chess, the number zero, and shampoo! The country has 22 official languages and the world\'s largest postal network with over 150,000 post offices. Bollywood produces more films annually than Hollywood!'
-            },
-            lb: {
-                name: 'Lebanon',
-                capital: 'Beirut',
-                population: '5.3 million',
-                language: 'Arabic',
-                currency: 'Lebanese Pound (L£)',
-                funFact: 'Lebanon has been making wine for over 5,000 years — it\'s one of the oldest wine-producing regions in the world! The famous cedar tree on its flag has been a symbol of the country for millennia. Lebanon is the only Arab country with no desert!'
-            },
-            ec: {
-                name: 'Ecuador',
-                capital: 'Quito',
-                population: '18 million',
-                language: 'Spanish',
-                currency: 'US Dollar ($)',
-                funFact: 'Ecuador is named after the equator that runs through it. The Galápagos Islands belong to Ecuador and inspired Darwin\'s theory of evolution. Ecuador was the first country to grant constitutional rights to nature!'
-            },
-            tt: {
-                name: 'Trinidad and Tobago',
-                capital: 'Port of Spain',
-                population: '1.4 million',
-                language: 'English',
-                currency: 'Trinidad Dollar (TT$)',
-                funFact: 'Trinidad invented the steel pan drum, the only acoustic musical instrument invented in the 20th century! The country has the largest natural deposit of asphalt in the world (the Pitch Lake) and hosts one of the world\'s biggest Carnival celebrations.'
-            },
-            kr: {
-                name: 'South Korea',
-                capital: 'Seoul',
-                population: '52 million',
-                language: 'Korean',
-                currency: 'South Korean Won (₩)',
-                funFact: 'South Korea has the fastest average internet speed in the world! K-pop and Korean dramas have created a global "Hallyu" wave. Koreans celebrate their birthdays on New Year\'s Day — everyone turns a year older together!'
-            },
-            md: {
-                name: 'Moldova',
-                capital: 'Chișinău',
-                population: '2.6 million',
-                language: 'Romanian',
-                currency: 'Moldovan Leu (lei)',
-                funFact: 'Moldova has the highest density of vineyards in the world! The Mileștii Mici wine cellar is the largest in the world, with underground galleries stretching 200 km. The country was the first post-Soviet state to elect a Communist president democratically.'
-            }
+            be: { name: 'Belgium', capital: 'Brussels', population: '11.8 million', language: 'Dutch, French, German', currency: 'Euro (€)', funFact: 'Belgium produces over 220,000 tonnes of chocolate per year and invented the praline. The Smurfs and Tintin were both created here!' },
+            nl: { name: 'Netherlands', capital: 'Amsterdam', population: '18 million', language: 'Dutch', currency: 'Euro (€)', funFact: 'The Dutch are the tallest people in the world on average. Amsterdam has more bicycles than people — 18 million bikes nationwide!' },
+            de: { name: 'Germany', capital: 'Berlin', population: '84 million', language: 'German', currency: 'Euro (€)', funFact: 'Germany has over 1,500 different types of sausages and more than 1,200 breweries. Berlin is 9 times bigger than Paris!' },
+            se: { name: 'Sweden', capital: 'Stockholm', population: '10.5 million', language: 'Swedish', currency: 'Swedish Krona (kr)', funFact: 'Sweden was the first country to have a phone number anyone can call to talk to a random Swede. IKEA, Spotify, and Minecraft all originated here!' },
+            pt: { name: 'Portugal', capital: 'Lisbon', population: '10.7 million', language: 'Portuguese', currency: 'Euro (€)', funFact: 'Portugal is the oldest nation-state in Europe (established 1139) and Lisbon is older than Rome by 400 years!' },
+            dk: { name: 'Denmark', capital: 'Copenhagen', population: '5.9 million', language: 'Danish', currency: 'Danish Krone (kr)', funFact: 'Denmark is consistently ranked as one of the happiest countries in the world. LEGO was invented here — the name means "play well" in Danish!' },
+            it: { name: 'Italy', capital: 'Rome', population: '59 million', language: 'Italian', currency: 'Euro (€)', funFact: 'Italy has the most UNESCO World Heritage Sites in the world (59). Italians invented the piano, thermometer, and eyeglasses!' },
+            fr: { name: 'France', capital: 'Paris', population: '68 million', language: 'French', currency: 'Euro (€)', funFact: 'France is the most visited country in the world with 90+ million tourists yearly. The Eiffel Tower was originally meant to be temporary!' },
+            es: { name: 'Spain', capital: 'Madrid', population: '48 million', language: 'Spanish', currency: 'Euro (€)', funFact: 'Spain has a tomato-throwing festival (La Tomatina) where 150,000 tomatoes are thrown in one hour! Spain gave the world the first modern novel: Don Quixote.' },
+            at: { name: 'Austria', capital: 'Vienna', population: '9.1 million', language: 'German', currency: 'Euro (€)', funFact: 'Vienna has been ranked the world\'s most liveable city multiple times. The croissant was invented in Vienna, not France!' },
+            ro: { name: 'Romania', capital: 'Bucharest', population: '19 million', language: 'Romanian', currency: 'Romanian Leu (lei)', funFact: 'Romania is home to the heaviest building in the world: the Palace of Parliament. Bran Castle inspired the legend of Dracula!' },
+            hu: { name: 'Hungary', capital: 'Budapest', population: '9.6 million', language: 'Hungarian', currency: 'Hungarian Forint (Ft)', funFact: 'Hungary has the oldest underground railway in continental Europe. Hungarians invented the Rubik\'s Cube and the ballpoint pen!' },
+            ie: { name: 'Ireland', capital: 'Dublin', population: '5.1 million', language: 'English, Irish', currency: 'Euro (€)', funFact: 'Ireland has no native snakes — legend says St. Patrick drove them out! Halloween originated from the Celtic festival of Samhain here.' },
+            bg: { name: 'Bulgaria', capital: 'Sofia', population: '6.5 million', language: 'Bulgarian', currency: 'Bulgarian Lev (лв)', funFact: 'Bulgaria\'s name hasn\'t changed since 681 AD. Bulgarians shake their heads to mean "yes" and nod for "no"!' },
+            in: { name: 'India', capital: 'New Delhi', population: '1.4 billion', language: 'Hindi, English', currency: 'Indian Rupee (₹)', funFact: 'India invented chess, the number zero, and shampoo! The country has the world\'s largest postal network with over 150,000 post offices.' },
+            lb: { name: 'Lebanon', capital: 'Beirut', population: '5.3 million', language: 'Arabic', currency: 'Lebanese Pound (L£)', funFact: 'Lebanon has been making wine for over 5,000 years — one of the oldest wine regions in the world! It\'s the only Arab country with no desert.' },
+            ec: { name: 'Ecuador', capital: 'Quito', population: '18 million', language: 'Spanish', currency: 'US Dollar ($)', funFact: 'Ecuador is named after the equator. The Galápagos Islands inspired Darwin\'s theory of evolution. Ecuador was the first country to grant constitutional rights to nature!' },
+            tt: { name: 'Trinidad and Tobago', capital: 'Port of Spain', population: '1.4 million', language: 'English', currency: 'Trinidad Dollar (TT$)', funFact: 'Trinidad invented the steel pan drum — the only acoustic musical instrument invented in the 20th century!' },
+            kr: { name: 'South Korea', capital: 'Seoul', population: '52 million', language: 'Korean', currency: 'South Korean Won (₩)', funFact: 'South Korea has the fastest average internet speed in the world! Koreans celebrate their birthdays on New Year\'s Day — everyone turns a year older together!' },
+            md: { name: 'Moldova', capital: 'Chișinău', population: '2.6 million', language: 'Romanian', currency: 'Moldovan Leu (lei)', funFact: 'Moldova has the highest density of vineyards in the world! The Mileștii Mici wine cellar has underground galleries stretching 200 km.' }
         };
         
         function openCountryModal(countryCode) {
             const country = countryData[countryCode];
             if (!country) return;
-            
-            const modal = document.getElementById('countryModal');
-            
-            // Set flag
-            document.getElementById('countryModalFlag').src = `https://flagcdn.com/w160/${countryCode}.png`;
-            document.getElementById('countryModalFlag').alt = country.name;
-            
-            // Set name
+            document.getElementById('countryModalFlag').src = 'https://flagcdn.com/w160/' + countryCode + '.png';
             document.getElementById('countryModalName').textContent = country.name;
-            
-            // Set info
             document.getElementById('countryModalCapital').textContent = country.capital;
             document.getElementById('countryModalPopulation').textContent = country.population;
             document.getElementById('countryModalLanguage').textContent = country.language;
             document.getElementById('countryModalCurrency').textContent = country.currency;
-            
-            // Set fun fact
             document.getElementById('countryModalFunFact').textContent = country.funFact;
-            
-            // Show modal
-            modal.classList.add('active');
+            document.getElementById('countryModal').classList.add('active');
             document.body.style.overflow = 'hidden';
-            
-            // Re-initialize icons
             lucide.createIcons();
         }
         
         function closeCountryModal() {
-            const modal = document.getElementById('countryModal');
-            if (modal) {
-                modal.classList.remove('active');
-            }
+            document.getElementById('countryModal').classList.remove('active');
             document.body.style.overflow = '';
         }
         
-        // Close country modal on overlay click
         document.getElementById('countryModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeCountryModal();
-            }
+            if (e.target === this) closeCountryModal();
         });
         
-        // Close country modal on Escape key
+        // ==========================================
+        // CITY MODAL DATA & FUNCTIONS
+        // ==========================================
+        const cityData = {
+            maastricht: { name: 'Maastricht', country: 'Netherlands', countryCode: 'nl', population: '126,000', province: 'Limburg', knownFor: 'EU Treaty & University', founded: 'Roman Era (~50 AD)', funFact: 'Maastricht is the birthplace of the European Union — the Maastricht Treaty was signed here in 1992! The city has 1,677 national heritage buildings and underground caves with over 200 km of tunnels.' },
+            lisbon: { name: 'Lisbon', country: 'Portugal', countryCode: 'pt', population: '545,000', province: 'Lisbon District', knownFor: 'Trams & Pastéis de Nata', founded: '~1200 BC', funFact: 'Lisbon is Europe\'s second-oldest capital (after Athens) and is 400 years older than Rome! Its iconic yellow Tram 28 has been operating since 1901.' },
+            stockholm: { name: 'Stockholm', country: 'Sweden', countryCode: 'se', population: '1 million', province: 'Stockholm County', knownFor: 'Nobel Prize & Islands', founded: '1252 AD', funFact: 'Stockholm is built on 14 islands connected by 57 bridges, earning it the nickname "Venice of the North." The water is so clean you can swim in the city center!' },
+            wageningen: { name: 'Wageningen', country: 'Netherlands', countryCode: 'nl', population: '40,000', province: 'Gelderland', knownFor: 'Food Science & WUR', founded: '828 AD', funFact: 'Wageningen is the center of "Food Valley" — the world\'s largest food R&D cluster. WWII officially ended in the Netherlands when German forces surrendered here on May 5, 1945.' },
+            delft: { name: 'Delft', country: 'Netherlands', countryCode: 'nl', population: '104,000', province: 'South Holland', knownFor: 'Blue Pottery & Vermeer', founded: '~1075 AD', funFact: 'Delft is the birthplace of painter Johannes Vermeer and the famous Delft Blue pottery. In 1654, a massive gunpowder explosion called "The Thunderclap" destroyed much of the city!' },
+            eindhoven: { name: 'Eindhoven', country: 'Netherlands', countryCode: 'nl', population: '240,000', province: 'North Brabant', knownFor: 'Tech Hub & Design', founded: '1232 AD', funFact: 'Eindhoven is the birthplace of Philips electronics and is now called "Brainport" — Europe\'s leading technology region with more patents per capita than almost anywhere!' }
+        };
+        
+        function openCityModal(cityKey) {
+            const city = cityData[cityKey];
+            if (!city) return;
+            document.getElementById('cityModalName').textContent = city.name;
+            document.getElementById('cityModalFlag').src = 'https://flagcdn.com/w40/' + city.countryCode + '.png';
+            document.getElementById('cityModalCountryName').textContent = city.country;
+            document.getElementById('cityModalPopulation').textContent = city.population;
+            document.getElementById('cityModalProvince').textContent = city.province;
+            document.getElementById('cityModalKnownFor').textContent = city.knownFor;
+            document.getElementById('cityModalFounded').textContent = city.founded;
+            document.getElementById('cityModalFunFact').textContent = city.funFact;
+            document.getElementById('cityModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+            lucide.createIcons();
+        }
+        
+        function closeCityModal() {
+            document.getElementById('cityModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        document.getElementById('cityModal').addEventListener('click', function(e) {
+            if (e.target === this) closeCityModal();
+        });
+        
+        // Close modals with Escape key
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 closeCountryModal();
+                closeCityModal();
             }
         });
+
         
         // ==========================================
         // UNIVERSITY LIST - DYNAMIC GENERATION
@@ -3525,7 +3609,6 @@
             lucide.createIcons();
         }
         
-        // Countries tags
         // Countries tags - now clickable
         const countriesContainer = document.querySelector('.location-card:first-child .location-tags');
         if (countriesContainer) {
@@ -3537,12 +3620,16 @@
             `).join('');
         }
         
-        // Cities tags
+        // Cities tags - now clickable
         const citiesContainer = document.querySelector('.location-card:last-child .location-tags');
         if (citiesContainer) {
-            citiesContainer.innerHTML = CE_DATA.topCities.map(city => `
-                <span class="location-tag">${city.name} (${city.count})</span>
-            `).join('');
+            const cityKeys = { 'Maastricht': 'maastricht', 'Lisbon': 'lisbon', 'Stockholm': 'stockholm', 'Wageningen': 'wageningen', 'Delft': 'delft', 'Eindhoven': 'eindhoven' };
+            citiesContainer.innerHTML = CE_DATA.topCities.map(city => {
+                const key = cityKeys[city.name];
+                return key 
+                    ? `<span class="location-tag clickable" onclick="openCityModal('${key}')">${city.name} (${city.count})</span>`
+                    : `<span class="location-tag">${city.name} (${city.count})</span>`;
+            }).join('');
         }
         
         // Talent flow stats
@@ -3618,16 +3705,23 @@
             `&copy; ${currentYear} Maastricht University · Faculty of Science and Engineering`;
         
         // ==========================================
-        // FLAG WAVE - NATIONALITIES (now clickable)
+        // FLAG GRID - NATIONALITIES (clickable)
         // ==========================================
-        const flagWave = document.getElementById('flagWave');
-        if (flagWave) {
-            // Create double set for seamless loop
+        const flagGrid = document.getElementById('flagGrid');
+        if (flagGrid) {
+            const countryNames = {
+                be: 'Belgium', nl: 'Netherlands', de: 'Germany', se: 'Sweden', pt: 'Portugal',
+                dk: 'Denmark', it: 'Italy', fr: 'France', es: 'Spain', at: 'Austria',
+                ro: 'Romania', hu: 'Hungary', ie: 'Ireland', bg: 'Bulgaria', in: 'India',
+                lb: 'Lebanon', ec: 'Ecuador', tt: 'Trinidad', kr: 'South Korea', md: 'Moldova'
+            };
             const flags = CE_DATA.allNationalityFlags;
-            const flagsHtml = [...flags, ...flags].map(code => 
-                `<img src="https://flagcdn.com/w80/${code}.png" alt="Flag" loading="lazy" onclick="openCountryModal('${code}')" title="Click for info">`
+            const flagsHtml = flags.map(code => 
+                `<div class="flag-item" data-country="${countryNames[code] || code.toUpperCase()}" onclick="openCountryModal('${code}')">
+                    <img src="https://flagcdn.com/w80/${code}.png" alt="${countryNames[code] || code}">
+                </div>`
             ).join('');
-            flagWave.innerHTML = flagsHtml;
+            flagGrid.innerHTML = flagsHtml;
         }
         
         // Update nationality count
