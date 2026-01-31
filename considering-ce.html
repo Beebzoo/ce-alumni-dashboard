@@ -129,10 +129,17 @@
         header.scrolled .header-nav a.active { background: var(--ce-green-primary); color: white; }
         
         /* ============================================
-           HERO
+           HERO - IMMERSIVE CIRCULAR ECONOMY LANDSCAPE
         ============================================ */
         .hero {
-            background: linear-gradient(165deg, #000408 0%, #000a15 20%, #001020 40%, var(--um-dark-blue) 70%, #001530 100%);
+            background: linear-gradient(180deg, 
+                #000408 0%, 
+                #000a15 15%, 
+                #001020 30%, 
+                #001530 50%,
+                #002040 70%,
+                #0a3050 85%,
+                #154060 100%);
             padding: 140px 50px 80px;
             position: relative;
             overflow: hidden;
@@ -141,49 +148,157 @@
             align-items: center;
         }
         
-        /* Animated background rings */
-        .hero-bg-rings {
+        /* Starfield canvas */
+        #ceCanvas {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 1000px;
-            height: 1000px;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        /* Aurora/Northern lights effect */
+        .aurora {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60%;
+            background: 
+                radial-gradient(ellipse 100% 50% at 20% 0%, rgba(16, 185, 129, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse 80% 40% at 70% 10%, rgba(20, 184, 166, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse 60% 30% at 40% 5%, rgba(52, 211, 153, 0.08) 0%, transparent 50%);
+            animation: aurora-shift 15s ease-in-out infinite;
+            z-index: 2;
+        }
+        
+        @keyframes aurora-shift {
+            0%, 100% { opacity: 0.6; transform: translateX(0); }
+            50% { opacity: 1; transform: translateX(20px); }
+        }
+        
+        /* Landscape container */
+        .landscape {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 45%;
+            z-index: 3;
             pointer-events: none;
         }
         
-        .bg-ring {
+        /* Rolling hills silhouette */
+        .hills {
             position: absolute;
-            border: 1px solid rgba(16, 185, 129, 0.1);
-            border-radius: 50%;
-            top: 50%;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+        }
+        
+        .hill {
+            position: absolute;
+            bottom: 0;
+            border-radius: 50% 50% 0 0;
+        }
+        
+        .hill-1 {
+            left: -10%;
+            width: 50%;
+            height: 70%;
+            background: linear-gradient(180deg, #0a2a40 0%, #082030 100%);
+        }
+        
+        .hill-2 {
+            left: 30%;
+            width: 60%;
+            height: 55%;
+            background: linear-gradient(180deg, #0d3550 0%, #0a2a40 100%);
+        }
+        
+        .hill-3 {
+            right: -5%;
+            width: 45%;
+            height: 65%;
+            background: linear-gradient(180deg, #0a2a40 0%, #082030 100%);
+        }
+        
+        /* Forest silhouette */
+        .forest {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 35%;
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-end;
+        }
+        
+        .tree {
+            position: relative;
+            opacity: 0.8;
+        }
+        
+        .tree-trunk {
+            position: absolute;
+            bottom: 0;
             left: 50%;
-            transform: translate(-50%, -50%);
+            transform: translateX(-50%);
+            background: #0a2535;
+            border-radius: 2px;
         }
         
-        .bg-ring:nth-child(1) { width: 400px; height: 400px; animation: ring-pulse 5s ease-in-out infinite; }
-        .bg-ring:nth-child(2) { width: 600px; height: 600px; animation: ring-pulse 5s ease-in-out infinite 1s; }
-        .bg-ring:nth-child(3) { width: 800px; height: 800px; animation: ring-pulse 5s ease-in-out infinite 2s; }
-        .bg-ring:nth-child(4) { width: 1000px; height: 1000px; animation: ring-pulse 5s ease-in-out infinite 3s; }
-        
-        @keyframes ring-pulse {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 0.6; }
-        }
-        
-        /* Sustainability elements container */
-        .hero-visuals {
+        .tree-crown {
             position: absolute;
-            inset: 0;
-            pointer-events: none;
-            overflow: hidden;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-left: solid transparent;
+            border-right: solid transparent;
+            border-bottom: solid #0d3045;
         }
         
-        /* Wind turbine */
-        .wind-turbine {
+        .tree.t1 { left: 3%; }
+        .tree.t1 .tree-trunk { width: 8px; height: 40px; }
+        .tree.t1 .tree-crown { border-left-width: 25px; border-right-width: 25px; border-bottom-width: 60px; bottom: 35px; }
+        
+        .tree.t2 { left: 8%; }
+        .tree.t2 .tree-trunk { width: 10px; height: 50px; }
+        .tree.t2 .tree-crown { border-left-width: 30px; border-right-width: 30px; border-bottom-width: 75px; bottom: 45px; }
+        
+        .tree.t3 { left: 14%; }
+        .tree.t3 .tree-trunk { width: 7px; height: 35px; }
+        .tree.t3 .tree-crown { border-left-width: 20px; border-right-width: 20px; border-bottom-width: 50px; bottom: 30px; }
+        
+        .tree.t4 { right: 12%; }
+        .tree.t4 .tree-trunk { width: 9px; height: 45px; }
+        .tree.t4 .tree-crown { border-left-width: 28px; border-right-width: 28px; border-bottom-width: 70px; bottom: 40px; }
+        
+        .tree.t5 { right: 5%; }
+        .tree.t5 .tree-trunk { width: 11px; height: 55px; }
+        .tree.t5 .tree-crown { border-left-width: 35px; border-right-width: 35px; border-bottom-width: 85px; bottom: 50px; }
+        
+        .tree.t6 { right: 18%; }
+        .tree.t6 .tree-trunk { width: 6px; height: 30px; }
+        .tree.t6 .tree-crown { border-left-width: 18px; border-right-width: 18px; border-bottom-width: 45px; bottom: 25px; }
+        
+        /* Wind turbines - larger and more prominent */
+        .wind-farm {
             position: absolute;
-            width: 100px;
-            height: 150px;
+            bottom: 25%;
+            left: 0;
+            right: 0;
+            height: 50%;
+            z-index: 4;
+        }
+        
+        .turbine {
+            position: absolute;
+            bottom: 0;
         }
         
         .turbine-tower {
@@ -191,63 +306,124 @@
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 8px;
-            height: 80px;
-            background: linear-gradient(to bottom, rgba(16, 185, 129, 0.5), rgba(16, 185, 129, 0.2));
-            border-radius: 4px;
+            background: linear-gradient(180deg, rgba(16, 185, 129, 0.7) 0%, rgba(16, 185, 129, 0.3) 100%);
+            clip-path: polygon(40% 0%, 60% 0%, 55% 100%, 45% 100%);
         }
         
-        .turbine-hub {
+        .turbine-nacelle {
             position: absolute;
-            top: 35px;
             left: 50%;
             transform: translateX(-50%);
-            width: 14px;
-            height: 14px;
-            background: rgba(16, 185, 129, 0.6);
-            border-radius: 50%;
+            background: rgba(16, 185, 129, 0.8);
+            border-radius: 4px;
         }
         
         .turbine-blades {
             position: absolute;
-            top: 42px;
             left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 80px;
-            animation: spin-turbine 8s linear infinite;
+            transform-origin: center center;
         }
         
         .turbine-blade {
             position: absolute;
-            width: 5px;
-            height: 35px;
-            background: linear-gradient(to top, rgba(16, 185, 129, 0.6), rgba(16, 185, 129, 0.2));
-            border-radius: 3px;
-            top: 50%;
             left: 50%;
+            top: 50%;
             transform-origin: center top;
+            background: linear-gradient(180deg, rgba(16, 185, 129, 0.9) 0%, rgba(16, 185, 129, 0.4) 100%);
+            border-radius: 3px;
         }
         
-        .turbine-blade:nth-child(1) { transform: translate(-50%, 0) rotate(0deg); }
-        .turbine-blade:nth-child(2) { transform: translate(-50%, 0) rotate(120deg); }
-        .turbine-blade:nth-child(3) { transform: translate(-50%, 0) rotate(240deg); }
+        /* Turbine 1 - large, left side */
+        .turbine.tb1 { left: 20%; }
+        .turbine.tb1 .turbine-tower { width: 20px; height: 180px; }
+        .turbine.tb1 .turbine-nacelle { top: -190px; width: 30px; height: 16px; }
+        .turbine.tb1 .turbine-blades { top: -185px; width: 120px; height: 120px; transform: translateX(-50%); animation: spin-blades 6s linear infinite; }
+        .turbine.tb1 .turbine-blade { width: 8px; height: 55px; }
         
-        @keyframes spin-turbine {
+        /* Turbine 2 - medium, left */
+        .turbine.tb2 { left: 12%; }
+        .turbine.tb2 .turbine-tower { width: 14px; height: 130px; }
+        .turbine.tb2 .turbine-nacelle { top: -138px; width: 22px; height: 12px; }
+        .turbine.tb2 .turbine-blades { top: -134px; width: 90px; height: 90px; transform: translateX(-50%); animation: spin-blades 8s linear infinite; }
+        .turbine.tb2 .turbine-blade { width: 6px; height: 40px; }
+        
+        /* Turbine 3 - small, far left */
+        .turbine.tb3 { left: 5%; opacity: 0.6; }
+        .turbine.tb3 .turbine-tower { width: 10px; height: 90px; }
+        .turbine.tb3 .turbine-nacelle { top: -96px; width: 16px; height: 9px; }
+        .turbine.tb3 .turbine-blades { top: -93px; width: 60px; height: 60px; transform: translateX(-50%); animation: spin-blades 10s linear infinite; }
+        .turbine.tb3 .turbine-blade { width: 5px; height: 26px; }
+        
+        /* Turbine 4 - large, right side */
+        .turbine.tb4 { right: 22%; }
+        .turbine.tb4 .turbine-tower { width: 18px; height: 160px; }
+        .turbine.tb4 .turbine-nacelle { top: -168px; width: 28px; height: 14px; }
+        .turbine.tb4 .turbine-blades { top: -163px; width: 110px; height: 110px; transform: translateX(-50%); animation: spin-blades 7s linear infinite reverse; }
+        .turbine.tb4 .turbine-blade { width: 7px; height: 50px; }
+        
+        /* Turbine 5 - medium, right */
+        .turbine.tb5 { right: 10%; opacity: 0.7; }
+        .turbine.tb5 .turbine-tower { width: 12px; height: 110px; }
+        .turbine.tb5 .turbine-nacelle { top: -117px; width: 20px; height: 11px; }
+        .turbine.tb5 .turbine-blades { top: -113px; width: 80px; height: 80px; transform: translateX(-50%); animation: spin-blades 9s linear infinite; }
+        .turbine.tb5 .turbine-blade { width: 5px; height: 35px; }
+        
+        @keyframes spin-blades {
             from { transform: translateX(-50%) rotate(0deg); }
             to { transform: translateX(-50%) rotate(360deg); }
         }
         
-        .wind-turbine.wt1 { bottom: 10%; left: 5%; opacity: 0.7; }
-        .wind-turbine.wt1 .turbine-blades { animation-duration: 6s; }
-        .wind-turbine.wt2 { bottom: 15%; left: 12%; opacity: 0.5; transform: scale(0.7); }
-        .wind-turbine.wt2 .turbine-blades { animation-duration: 9s; }
-        .wind-turbine.wt3 { bottom: 8%; right: 8%; opacity: 0.6; transform: scale(0.8); }
-        .wind-turbine.wt3 .turbine-blades { animation-duration: 7s; }
-        .wind-turbine.wt4 { bottom: 12%; right: 15%; opacity: 0.4; transform: scale(0.5); }
-        .wind-turbine.wt4 .turbine-blades { animation-duration: 11s; }
+        /* Solar panel field */
+        .solar-field {
+            position: absolute;
+            bottom: 8%;
+            left: 35%;
+            width: 30%;
+            height: 15%;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+            perspective: 500px;
+            z-index: 5;
+        }
         
-        /* Molecule/atom */
+        .solar-panel {
+            width: 40px;
+            height: 25px;
+            background: linear-gradient(135deg, #1a5070 0%, #0d3550 50%, #1a5070 100%);
+            border: 1px solid rgba(16, 185, 129, 0.4);
+            border-radius: 2px;
+            transform: rotateX(30deg);
+            position: relative;
+        }
+        
+        .solar-panel::before {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            right: 2px;
+            bottom: 2px;
+            background: linear-gradient(135deg, transparent 45%, rgba(16, 185, 129, 0.3) 50%, transparent 55%);
+            animation: solar-glint 4s ease-in-out infinite;
+        }
+        
+        @keyframes solar-glint {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+        
+        .solar-panel:nth-child(odd)::before { animation-delay: -2s; }
+        
+        /* Floating molecules */
+        .molecules {
+            position: absolute;
+            inset: 0;
+            z-index: 6;
+            pointer-events: none;
+        }
+        
         .molecule {
             position: absolute;
             animation: float-molecule 20s ease-in-out infinite;
@@ -256,74 +432,112 @@
         .atom {
             position: absolute;
             border-radius: 50%;
-            background: radial-gradient(circle at 30% 30%, rgba(16, 185, 129, 0.7), rgba(16, 185, 129, 0.2));
+            background: radial-gradient(circle at 30% 30%, rgba(16, 185, 129, 0.8), rgba(16, 185, 129, 0.2));
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
         }
         
         .bond {
             position: absolute;
-            height: 2px;
-            background: linear-gradient(90deg, rgba(16, 185, 129, 0.5), rgba(20, 184, 166, 0.5));
+            height: 3px;
+            background: linear-gradient(90deg, rgba(16, 185, 129, 0.6), rgba(20, 184, 166, 0.6));
+            border-radius: 2px;
             transform-origin: left center;
         }
         
-        .molecule.mol1 { top: 15%; right: 10%; opacity: 0.6; }
-        .molecule.mol2 { top: 40%; left: 8%; opacity: 0.4; animation-delay: -7s; }
-        .molecule.mol3 { bottom: 35%; right: 5%; opacity: 0.5; animation-delay: -14s; transform: scale(0.8); }
+        .molecule.m1 { top: 15%; right: 15%; opacity: 0.7; }
+        .molecule.m1 .atom.a1 { width: 20px; height: 20px; top: 0; left: 30px; }
+        .molecule.m1 .atom.a2 { width: 14px; height: 14px; top: 25px; left: 0; }
+        .molecule.m1 .atom.a3 { width: 14px; height: 14px; top: 25px; left: 60px; }
+        .molecule.m1 .bond.b1 { width: 35px; top: 18px; left: 12px; transform: rotate(35deg); }
+        .molecule.m1 .bond.b2 { width: 35px; top: 18px; left: 42px; transform: rotate(-35deg); }
+        
+        .molecule.m2 { top: 35%; left: 8%; opacity: 0.5; animation-delay: -7s; transform: scale(0.8); }
+        .molecule.m2 .atom.a1 { width: 18px; height: 18px; top: 0; left: 25px; }
+        .molecule.m2 .atom.a2 { width: 12px; height: 12px; top: 22px; left: 0; }
+        .molecule.m2 .atom.a3 { width: 12px; height: 12px; top: 22px; left: 50px; }
+        .molecule.m2 .bond.b1 { width: 30px; top: 15px; left: 10px; transform: rotate(35deg); }
+        .molecule.m2 .bond.b2 { width: 30px; top: 15px; left: 35px; transform: rotate(-35deg); }
+        
+        .molecule.m3 { bottom: 55%; right: 8%; opacity: 0.6; animation-delay: -14s; }
+        .molecule.m3 .atom.a1 { width: 16px; height: 16px; top: 0; left: 20px; }
+        .molecule.m3 .atom.a2 { width: 10px; height: 10px; top: 20px; left: 0; }
+        .molecule.m3 .atom.a3 { width: 10px; height: 10px; top: 20px; left: 40px; }
+        .molecule.m3 .bond.b1 { width: 25px; top: 13px; left: 8px; transform: rotate(35deg); }
+        .molecule.m3 .bond.b2 { width: 25px; top: 13px; left: 28px; transform: rotate(-35deg); }
         
         @keyframes float-molecule {
             0%, 100% { transform: translateY(0) rotate(0deg); }
-            25% { transform: translateY(-20px) rotate(10deg); }
+            25% { transform: translateY(-25px) rotate(10deg); }
             50% { transform: translateY(5px) rotate(0deg); }
-            75% { transform: translateY(15px) rotate(-10deg); }
+            75% { transform: translateY(20px) rotate(-10deg); }
         }
         
-        /* Leaf */
-        .leaf {
+        /* Circular economy symbol - large rotating */
+        .circular-symbol {
             position: absolute;
-            width: 40px;
-            height: 50px;
-            animation: sway 8s ease-in-out infinite;
+            top: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 200px;
+            opacity: 0.08;
+            animation: rotate-symbol 60s linear infinite;
+            z-index: 2;
         }
         
-        .leaf svg {
-            width: 100%;
-            height: 100%;
-            fill: rgba(16, 185, 129, 0.4);
-        }
-        
-        .leaf.lf1 { top: 25%; left: 18%; opacity: 0.5; }
-        .leaf.lf2 { top: 60%; right: 15%; opacity: 0.4; transform: scale(0.7) rotate(20deg); animation-delay: -3s; }
-        .leaf.lf3 { bottom: 40%; left: 5%; opacity: 0.3; transform: scale(0.6) rotate(-15deg); animation-delay: -6s; }
-        
-        @keyframes sway {
-            0%, 100% { transform: rotate(0deg) translateY(0); }
-            25% { transform: rotate(15deg) translateY(-10px); }
-            75% { transform: rotate(-15deg) translateY(10px); }
-        }
-        
-        /* Circular economy arrows */
-        .circular-arrows {
-            position: absolute;
-            width: 150px;
-            height: 150px;
-            opacity: 0.15;
-            animation: rotate-arrows 40s linear infinite;
-        }
-        
-        .circular-arrows svg {
+        .circular-symbol svg {
             width: 100%;
             height: 100%;
             stroke: var(--ce-green-light);
             fill: none;
-            stroke-width: 2;
+            stroke-width: 3;
         }
         
-        .circular-arrows.ca1 { top: 10%; left: 30%; }
-        .circular-arrows.ca2 { bottom: 20%; right: 20%; animation-direction: reverse; }
+        @keyframes rotate-symbol {
+            from { transform: translateX(-50%) rotate(0deg); }
+            to { transform: translateX(-50%) rotate(360deg); }
+        }
         
-        @keyframes rotate-arrows {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+        /* Floating leaves */
+        .floating-leaves {
+            position: absolute;
+            inset: 0;
+            z-index: 6;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        
+        .leaf {
+            position: absolute;
+            opacity: 0.5;
+        }
+        
+        .leaf svg {
+            fill: rgba(16, 185, 129, 0.6);
+        }
+        
+        .leaf.lf1 { top: 20%; left: 25%; width: 30px; animation: leaf-float 12s ease-in-out infinite; }
+        .leaf.lf2 { top: 40%; right: 20%; width: 25px; animation: leaf-float 15s ease-in-out infinite -5s; transform: rotate(30deg); }
+        .leaf.lf3 { top: 30%; left: 10%; width: 20px; animation: leaf-float 18s ease-in-out infinite -10s; opacity: 0.3; }
+        .leaf.lf4 { bottom: 60%; right: 30%; width: 22px; animation: leaf-float 14s ease-in-out infinite -3s; transform: rotate(-20deg); }
+        
+        @keyframes leaf-float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-30px) rotate(15deg); }
+            50% { transform: translateY(-10px) rotate(0deg); }
+            75% { transform: translateY(20px) rotate(-15deg); }
+        }
+        
+        /* Ground glow */
+        .ground-glow {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 30%;
+            background: linear-gradient(180deg, transparent 0%, rgba(16, 185, 129, 0.05) 100%);
+            z-index: 7;
+            pointer-events: none;
         }
         
         .hero-content {
@@ -1161,82 +1375,48 @@
     
     <!-- Hero -->
     <section class="hero">
-        <!-- Background rings -->
-        <div class="hero-bg-rings">
-            <div class="bg-ring"></div>
-            <div class="bg-ring"></div>
-            <div class="bg-ring"></div>
-            <div class="bg-ring"></div>
+        <!-- Canvas for animated particles -->
+        <canvas id="ceCanvas"></canvas>
+        
+        <!-- Aurora effect -->
+        <div class="aurora"></div>
+        
+        <!-- Large circular economy symbol -->
+        <div class="circular-symbol">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <path d="M50 10 A40 40 0 0 1 85 65 L75 60 L90 75 L80 55 L70 60 A30 30 0 0 0 50 20 Z"/>
+                <path d="M85 65 A40 40 0 0 1 25 80 L30 70 L10 80 L25 90 L30 80 A30 30 0 0 0 75 65 Z"/>
+                <path d="M25 80 A40 40 0 0 1 50 10 L45 20 L60 5 L40 5 L45 15 A30 30 0 0 0 30 70 Z"/>
+            </svg>
         </div>
         
-        <!-- Sustainability visuals -->
-        <div class="hero-visuals">
-            <!-- Wind turbines -->
-            <div class="wind-turbine wt1">
-                <div class="turbine-tower"></div>
-                <div class="turbine-hub"></div>
-                <div class="turbine-blades">
-                    <div class="turbine-blade"></div>
-                    <div class="turbine-blade"></div>
-                    <div class="turbine-blade"></div>
-                </div>
+        <!-- Floating molecules -->
+        <div class="molecules">
+            <div class="molecule m1">
+                <div class="atom a1"></div>
+                <div class="atom a2"></div>
+                <div class="atom a3"></div>
+                <div class="bond b1"></div>
+                <div class="bond b2"></div>
             </div>
-            <div class="wind-turbine wt2">
-                <div class="turbine-tower"></div>
-                <div class="turbine-hub"></div>
-                <div class="turbine-blades">
-                    <div class="turbine-blade"></div>
-                    <div class="turbine-blade"></div>
-                    <div class="turbine-blade"></div>
-                </div>
+            <div class="molecule m2">
+                <div class="atom a1"></div>
+                <div class="atom a2"></div>
+                <div class="atom a3"></div>
+                <div class="bond b1"></div>
+                <div class="bond b2"></div>
             </div>
-            <div class="wind-turbine wt3">
-                <div class="turbine-tower"></div>
-                <div class="turbine-hub"></div>
-                <div class="turbine-blades">
-                    <div class="turbine-blade"></div>
-                    <div class="turbine-blade"></div>
-                    <div class="turbine-blade"></div>
-                </div>
+            <div class="molecule m3">
+                <div class="atom a1"></div>
+                <div class="atom a2"></div>
+                <div class="atom a3"></div>
+                <div class="bond b1"></div>
+                <div class="bond b2"></div>
             </div>
-            <div class="wind-turbine wt4">
-                <div class="turbine-tower"></div>
-                <div class="turbine-hub"></div>
-                <div class="turbine-blades">
-                    <div class="turbine-blade"></div>
-                    <div class="turbine-blade"></div>
-                    <div class="turbine-blade"></div>
-                </div>
-            </div>
-            
-            <!-- Molecules -->
-            <div class="molecule mol1">
-                <div class="atom" style="width: 18px; height: 18px; top: 0; left: 25px;"></div>
-                <div class="atom" style="width: 14px; height: 14px; top: 35px; left: 0;"></div>
-                <div class="atom" style="width: 14px; height: 14px; top: 35px; left: 50px;"></div>
-                <div class="bond" style="width: 30px; top: 14px; left: 15px; transform: rotate(50deg);"></div>
-                <div class="bond" style="width: 30px; top: 14px; left: 38px; transform: rotate(130deg);"></div>
-            </div>
-            <div class="molecule mol2">
-                <div class="atom" style="width: 16px; height: 16px; top: 20px; left: 20px;"></div>
-                <div class="atom" style="width: 12px; height: 12px; top: 0; left: 0;"></div>
-                <div class="atom" style="width: 12px; height: 12px; top: 0; left: 45px;"></div>
-                <div class="atom" style="width: 12px; height: 12px; top: 45px; left: 0;"></div>
-                <div class="atom" style="width: 12px; height: 12px; top: 45px; left: 45px;"></div>
-                <div class="bond" style="width: 25px; top: 10px; left: 10px; transform: rotate(-45deg);"></div>
-                <div class="bond" style="width: 25px; top: 10px; left: 32px; transform: rotate(45deg);"></div>
-                <div class="bond" style="width: 25px; top: 32px; left: 10px; transform: rotate(45deg);"></div>
-                <div class="bond" style="width: 25px; top: 32px; left: 32px; transform: rotate(-45deg);"></div>
-            </div>
-            <div class="molecule mol3">
-                <div class="atom" style="width: 14px; height: 14px; top: 15px; left: 15px;"></div>
-                <div class="atom" style="width: 10px; height: 10px; top: 0; left: 30px;"></div>
-                <div class="atom" style="width: 10px; height: 10px; top: 35px; left: 0;"></div>
-                <div class="bond" style="width: 20px; top: 10px; left: 22px; transform: rotate(-50deg);"></div>
-                <div class="bond" style="width: 20px; top: 22px; left: 8px; transform: rotate(50deg);"></div>
-            </div>
-            
-            <!-- Leaves -->
+        </div>
+        
+        <!-- Floating leaves -->
+        <div class="floating-leaves">
             <div class="leaf lf1">
                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
@@ -1252,23 +1432,100 @@
                     <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
                 </svg>
             </div>
-            
-            <!-- Circular economy symbol -->
-            <div class="circular-arrows ca1">
-                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M50 10 A40 40 0 0 1 85 65 L75 60 L90 75 L80 55 L70 60 A30 30 0 0 0 50 20 Z"/>
-                    <path d="M85 65 A40 40 0 0 1 25 80 L30 70 L10 80 L25 90 L30 80 A30 30 0 0 0 75 65 Z"/>
-                    <path d="M25 80 A40 40 0 0 1 50 10 L45 20 L60 5 L40 5 L45 15 A30 30 0 0 0 30 70 Z"/>
-                </svg>
-            </div>
-            <div class="circular-arrows ca2">
-                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M50 10 A40 40 0 0 1 85 65 L75 60 L90 75 L80 55 L70 60 A30 30 0 0 0 50 20 Z"/>
-                    <path d="M85 65 A40 40 0 0 1 25 80 L30 70 L10 80 L25 90 L30 80 A30 30 0 0 0 75 65 Z"/>
-                    <path d="M25 80 A40 40 0 0 1 50 10 L45 20 L60 5 L40 5 L45 15 A30 30 0 0 0 30 70 Z"/>
+            <div class="leaf lf4">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
                 </svg>
             </div>
         </div>
+        
+        <!-- Wind farm -->
+        <div class="wind-farm">
+            <div class="turbine tb1">
+                <div class="turbine-tower"></div>
+                <div class="turbine-nacelle"></div>
+                <div class="turbine-blades">
+                    <div class="turbine-blade" style="transform: translate(-50%, -50%) rotate(0deg);"></div>
+                    <div class="turbine-blade" style="transform: translate(-50%, -50%) rotate(120deg);"></div>
+                    <div class="turbine-blade" style="transform: translate(-50%, -50%) rotate(240deg);"></div>
+                </div>
+            </div>
+            <div class="turbine tb2">
+                <div class="turbine-tower"></div>
+                <div class="turbine-nacelle"></div>
+                <div class="turbine-blades">
+                    <div class="turbine-blade" style="transform: translate(-50%, -50%) rotate(30deg);"></div>
+                    <div class="turbine-blade" style="transform: translate(-50%, -50%) rotate(150deg);"></div>
+                    <div class="turbine-blade" style="transform: translate(-50%, -50%) rotate(270deg);"></div>
+                </div>
+            </div>
+            <div class="turbine tb3">
+                <div class="turbine-tower"></div>
+                <div class="turbine-nacelle"></div>
+                <div class="turbine-blades">
+                    <div class="turbine-blade" style="transform: translate(-50%, -50%) rotate(60deg);"></div>
+                    <div class="turbine-blade" style="transform: translate(-50%, -50%) rotate(180deg);"></div>
+                    <div class="turbine-blade" style="transform: translate(-50%, -50%) rotate(300deg);"></div>
+                </div>
+            </div>
+            <div class="turbine tb4">
+                <div class="turbine-tower"></div>
+                <div class="turbine-nacelle"></div>
+                <div class="turbine-blades">
+                    <div class="turbine-blade" style="transform: translate(-50%, -50%) rotate(15deg);"></div>
+                    <div class="turbine-blade" style="transform: translate(-50%, -50%) rotate(135deg);"></div>
+                    <div class="turbine-blade" style="transform: translate(-50%, -50%) rotate(255deg);"></div>
+                </div>
+            </div>
+            <div class="turbine tb5">
+                <div class="turbine-tower"></div>
+                <div class="turbine-nacelle"></div>
+                <div class="turbine-blades">
+                    <div class="turbine-blade" style="transform: translate(-50%, -50%) rotate(45deg);"></div>
+                    <div class="turbine-blade" style="transform: translate(-50%, -50%) rotate(165deg);"></div>
+                    <div class="turbine-blade" style="transform: translate(-50%, -50%) rotate(285deg);"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Landscape -->
+        <div class="landscape">
+            <!-- Hills -->
+            <div class="hills">
+                <div class="hill hill-1"></div>
+                <div class="hill hill-2"></div>
+                <div class="hill hill-3"></div>
+            </div>
+            
+            <!-- Forest silhouette -->
+            <div class="forest">
+                <div class="tree t1"><div class="tree-trunk"></div><div class="tree-crown"></div></div>
+                <div class="tree t2"><div class="tree-trunk"></div><div class="tree-crown"></div></div>
+                <div class="tree t3"><div class="tree-trunk"></div><div class="tree-crown"></div></div>
+                <div class="tree t4"><div class="tree-trunk"></div><div class="tree-crown"></div></div>
+                <div class="tree t5"><div class="tree-trunk"></div><div class="tree-crown"></div></div>
+                <div class="tree t6"><div class="tree-trunk"></div><div class="tree-crown"></div></div>
+            </div>
+        </div>
+        
+        <!-- Solar field -->
+        <div class="solar-field">
+            <div class="solar-panel"></div>
+            <div class="solar-panel"></div>
+            <div class="solar-panel"></div>
+            <div class="solar-panel"></div>
+            <div class="solar-panel"></div>
+            <div class="solar-panel"></div>
+            <div class="solar-panel"></div>
+            <div class="solar-panel"></div>
+            <div class="solar-panel"></div>
+            <div class="solar-panel"></div>
+            <div class="solar-panel"></div>
+            <div class="solar-panel"></div>
+        </div>
+        
+        <!-- Ground glow -->
+        <div class="ground-glow"></div>
         
         <div class="hero-content">
             <div class="hero-text">
@@ -1293,6 +1550,7 @@
         </div>
     </section>
     
+    <!-- UM Official Links Section -->
     <!-- UM Official Links Section -->
     <section class="um-links-section">
         <div class="um-links-header">
@@ -1398,7 +1656,7 @@
         <section class="challenges-section" style="margin: -80px -50px 0; padding: 80px 50px;">
             <div class="section-header">
                 <h2>Real-Life Challenges You'll Tackle</h2>
-                <p>From day one, you'll work on actual engineering problems — not hypotheticals</p>
+                <p>From day one, you'll work on actual engineering problems â€” not hypotheticals</p>
             </div>
             
             <div class="challenges-grid" id="challengesGrid">
@@ -1407,8 +1665,8 @@
                         <i data-lucide="heart-pulse"></i>
                     </div>
                     <h3>Disposable Medical Sensors</h3>
-                    <p>Analyse pressure sensors used in Intensive Care units from a circularity perspective. Determine which parts can be reused, remade, or recycled — and design a technical solution to increase their circularity.</p>
-                    <span class="challenge-tag">Healthcare × Sustainability</span>
+                    <p>Analyse pressure sensors used in Intensive Care units from a circularity perspective. Determine which parts can be reused, remade, or recycled â€” and design a technical solution to increase their circularity.</p>
+                    <span class="challenge-tag">Healthcare Ã— Sustainability</span>
                 </div>
                 
                 <div class="challenge-card">
@@ -1482,7 +1740,7 @@
         <section class="employers-section">
             <div class="section-header">
                 <h2>Where CE Alumni Work</h2>
-                <p>33% of graduates enter the workforce directly — here's where</p>
+                <p>33% of graduates enter the workforce directly â€” here's where</p>
             </div>
             
             <div class="employers-grid" id="employersGrid">
@@ -1534,7 +1792,7 @@
         </div>
         
         <div class="footer-bottom">
-            <p>&copy; 2025 Maastricht University · Faculty of Science and Engineering</p>
+            <p>&copy; 2025 Maastricht University Â· Faculty of Science and Engineering</p>
             <a href="mailto:fse-alumni@maastrichtuniversity.nl">fse-alumni@maastrichtuniversity.nl</a>
         </div>
     </footer>
