@@ -578,6 +578,408 @@
         }
         
         /* ============================================
+           NATIONALITY FLAG WAVE
+        ============================================ */
+        .diversity-section {
+            background: white;
+            padding: 80px 50px;
+        }
+        
+        .diversity-content {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        .diversity-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .flag-wave-container {
+            background: var(--gray-50);
+            border-radius: var(--radius-xl);
+            padding: 40px;
+            overflow: hidden;
+        }
+        
+        .flag-wave-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+        }
+        
+        .flag-wave-header h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--um-dark-blue);
+        }
+        
+        .flag-count {
+            background: var(--ce-green-primary);
+            color: white;
+            padding: 6px 16px;
+            border-radius: var(--radius-full);
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .flag-wave {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        
+        .flag-wave img {
+            width: 48px;
+            height: 32px;
+            object-fit: cover;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform var(--transition-fast);
+        }
+        
+        .flag-wave img:hover {
+            transform: scale(1.15) translateY(-4px);
+        }
+        
+        /* Gender balance donut */
+        .gender-card {
+            background: var(--gray-50);
+            border-radius: var(--radius-xl);
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .gender-card h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--um-dark-blue);
+            margin-bottom: 30px;
+        }
+        
+        .gender-donut {
+            position: relative;
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 24px;
+        }
+        
+        .gender-donut svg {
+            width: 100%;
+            height: 100%;
+            transform: rotate(-90deg);
+        }
+        
+        .gender-donut circle {
+            fill: none;
+            stroke-width: 24;
+        }
+        
+        .gender-donut .donut-bg {
+            stroke: var(--gray-200);
+        }
+        
+        .gender-donut .donut-male {
+            stroke: var(--um-light-blue);
+            stroke-dasharray: 314;
+            stroke-dashoffset: 157;
+        }
+        
+        .gender-donut .donut-female {
+            stroke: var(--ce-green-primary);
+            stroke-dasharray: 314;
+            stroke-dashoffset: 179;
+        }
+        
+        .gender-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+        
+        .gender-center span {
+            display: block;
+            font-family: var(--font-heading);
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--um-dark-blue);
+        }
+        
+        .gender-center small {
+            font-size: 12px;
+            color: var(--gray-500);
+        }
+        
+        .gender-legend {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+        }
+        
+        .gender-legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: var(--gray-600);
+        }
+        
+        .gender-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        
+        .gender-dot.male { background: var(--um-light-blue); }
+        .gender-dot.female { background: var(--ce-green-primary); }
+        
+        /* ============================================
+           GROWTH CHART SECTION
+        ============================================ */
+        .growth-section {
+            background: var(--um-dark-blue);
+            padding: 80px 50px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .growth-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            border: 1px solid rgba(16, 185, 129, 0.1);
+            border-radius: 50%;
+        }
+        
+        .growth-section .section-header h2 {
+            color: white;
+        }
+        
+        .growth-section .section-header p {
+            color: rgba(255,255,255,0.6);
+        }
+        
+        .growth-content {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .growth-stat-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: var(--radius-xl);
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .growth-multiplier {
+            font-family: var(--font-heading);
+            font-size: 72px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--ce-green-light), var(--ce-teal));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+        }
+        
+        .growth-stat-card p {
+            font-size: 16px;
+            color: rgba(255,255,255,0.7);
+            margin-top: 8px;
+        }
+        
+        .growth-years {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 24px;
+            align-items: center;
+        }
+        
+        .growth-year {
+            text-align: center;
+        }
+        
+        .growth-year-num {
+            font-family: var(--font-heading);
+            font-size: 28px;
+            font-weight: 700;
+            color: white;
+        }
+        
+        .growth-year-label {
+            font-size: 12px;
+            color: rgba(255,255,255,0.5);
+        }
+        
+        .growth-arrow {
+            color: var(--ce-green-light);
+        }
+        
+        .growth-arrow i {
+            width: 24px;
+            height: 24px;
+        }
+        
+        /* Growth bars */
+        .growth-chart {
+            background: rgba(255,255,255,0.05);
+            border-radius: var(--radius-xl);
+            padding: 30px;
+        }
+        
+        .growth-bars {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            gap: 40px;
+            height: 200px;
+        }
+        
+        .growth-bar {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .growth-bar-fill {
+            width: 80px;
+            background: linear-gradient(to top, var(--ce-green-dark), var(--ce-green-light));
+            border-radius: 8px 8px 0 0;
+            position: relative;
+            transition: height 1.5s ease-out;
+        }
+        
+        .growth-bar-value {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: var(--font-heading);
+            font-size: 20px;
+            font-weight: 700;
+            color: white;
+        }
+        
+        .growth-bar-label {
+            font-size: 14px;
+            color: rgba(255,255,255,0.6);
+            font-weight: 500;
+        }
+        
+        /* ============================================
+           WORK VS STUDY SECTION
+        ============================================ */
+        .outcomes-section {
+            background: var(--ce-sand);
+            padding: 80px 50px;
+        }
+        
+        .outcomes-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        
+        .outcome-card {
+            background: white;
+            border-radius: var(--radius-xl);
+            padding: 40px;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-smooth);
+        }
+        
+        .outcome-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .outcome-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, var(--ce-green-primary), var(--ce-teal));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .outcome-icon i {
+            width: 32px;
+            height: 32px;
+            color: white;
+        }
+        
+        .outcome-card h3 {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--um-dark-blue);
+            margin-bottom: 8px;
+        }
+        
+        .outcome-card h4 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--um-dark-blue);
+            margin-bottom: 12px;
+        }
+        
+        .outcome-card p {
+            font-size: 14px;
+            color: var(--gray-500);
+            line-height: 1.6;
+        }
+        
+        .outcome-examples {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--gray-200);
+        }
+        
+        .outcome-examples h5 {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--gray-500);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+        }
+        
+        .example-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+        }
+        
+        .example-tag {
+            font-size: 12px;
+            padding: 6px 12px;
+            background: var(--gray-100);
+            color: var(--gray-600);
+            border-radius: var(--radius-full);
+        }
+
+        /* ============================================
            SECTION STYLES
         ============================================ */
         section {
@@ -1029,6 +1431,353 @@
             padding: 60px 50px 40px;
         }
         
+        /* ============================================
+           NATIONALITY FLAG WAVE
+        ============================================ */
+        .diversity-section {
+            background: white;
+            padding: 80px 50px;
+        }
+        
+        .diversity-content {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        .diversity-stats {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .diversity-numbers {
+            text-align: center;
+        }
+        
+        .diversity-big-number {
+            font-family: var(--font-heading);
+            font-size: 80px;
+            font-weight: 700;
+            color: var(--ce-green-primary);
+            line-height: 1;
+        }
+        
+        .diversity-label {
+            font-size: 18px;
+            color: var(--gray-500);
+            margin-top: 8px;
+        }
+        
+        .flag-wave-container {
+            position: relative;
+            overflow: hidden;
+            padding: 20px 0;
+        }
+        
+        .flag-wave {
+            display: flex;
+            gap: 12px;
+            animation: scroll-flags 20s linear infinite;
+        }
+        
+        .flag-wave img {
+            width: 48px;
+            height: 32px;
+            object-fit: cover;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .flag-wave img:hover {
+            transform: scale(1.15);
+        }
+        
+        @keyframes scroll-flags {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        
+        /* ============================================
+           GROWTH & GENDER CHARTS
+        ============================================ */
+        .charts-section {
+            background: var(--ce-sand);
+            padding: 80px 50px;
+        }
+        
+        .charts-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        .chart-card {
+            background: white;
+            border-radius: var(--radius-xl);
+            padding: 40px;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .chart-card h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--um-dark-blue);
+            margin-bottom: 8px;
+        }
+        
+        .chart-card .chart-subtitle {
+            font-size: 14px;
+            color: var(--gray-500);
+            margin-bottom: 30px;
+        }
+        
+        /* Growth bar chart */
+        .growth-chart {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            gap: 40px;
+            height: 200px;
+            padding-top: 30px;
+        }
+        
+        .growth-bar {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .growth-bar-fill {
+            width: 80px;
+            background: linear-gradient(to top, var(--ce-green-primary), var(--ce-green-light));
+            border-radius: 8px 8px 0 0;
+            position: relative;
+            transition: height 1.5s ease-out;
+        }
+        
+        .growth-bar-fill.bar-2024 {
+            height: 0;
+        }
+        
+        .growth-bar-fill.bar-2025 {
+            height: 0;
+            background: linear-gradient(to top, var(--ce-teal), #5EEAD4);
+        }
+        
+        .growth-bar-value {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: var(--font-heading);
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--um-dark-blue);
+        }
+        
+        .growth-bar-label {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--gray-600);
+        }
+        
+        .growth-increase {
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--gray-200);
+        }
+        
+        .growth-increase span {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--ce-green-dark);
+            padding: 8px 16px;
+            border-radius: var(--radius-full);
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .growth-increase i {
+            width: 18px;
+            height: 18px;
+        }
+        
+        /* Gender donut chart */
+        .gender-chart {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+        }
+        
+        .donut-container {
+            position: relative;
+            width: 160px;
+            height: 160px;
+        }
+        
+        .donut-container svg {
+            width: 100%;
+            height: 100%;
+            transform: rotate(-90deg);
+        }
+        
+        .donut-segment {
+            fill: none;
+            stroke-width: 24;
+            stroke-linecap: round;
+        }
+        
+        .donut-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+        
+        .donut-center-number {
+            font-family: var(--font-heading);
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--um-dark-blue);
+        }
+        
+        .donut-center-label {
+            font-size: 12px;
+            color: var(--gray-500);
+        }
+        
+        .gender-legend {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .legend-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+        }
+        
+        .legend-dot.male { background: var(--ce-green-primary); }
+        .legend-dot.female { background: var(--ce-teal); }
+        .legend-dot.other { background: var(--gray-300); }
+        
+        .legend-text {
+            font-size: 14px;
+            color: var(--gray-600);
+        }
+        
+        .legend-text strong {
+            color: var(--um-dark-blue);
+            font-weight: 600;
+        }
+        
+        /* ============================================
+           WORK VS STUDY SECTION
+        ============================================ */
+        .outcomes-section {
+            background: var(--um-dark-blue);
+            padding: 80px 50px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .outcomes-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            border: 1px solid rgba(16, 185, 129, 0.1);
+            border-radius: 50%;
+        }
+        
+        .outcomes-section .section-header h2 {
+            color: white;
+        }
+        
+        .outcomes-section .section-header p {
+            color: rgba(255,255,255,0.6);
+        }
+        
+        .outcomes-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .outcome-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: var(--radius-xl);
+            padding: 40px;
+            text-align: center;
+            transition: all var(--transition-smooth);
+        }
+        
+        .outcome-card:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-4px);
+        }
+        
+        .outcome-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, var(--ce-green-primary), var(--ce-teal));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .outcome-icon i {
+            width: 28px;
+            height: 28px;
+            color: white;
+        }
+        
+        .outcome-percentage {
+            font-family: var(--font-heading);
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--ce-green-light);
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+        
+        .outcome-label {
+            font-size: 18px;
+            color: white;
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+        
+        .outcome-description {
+            font-size: 14px;
+            color: rgba(255,255,255,0.5);
+            line-height: 1.5;
+        }
+        
         .footer-content {
             max-width: 1200px;
             margin: 0 auto;
@@ -1386,6 +2135,29 @@
         </div>
     </section>
     
+    <!-- Diversity Section - Flag Wave -->
+    <section class="diversity-section">
+        <div class="diversity-content">
+            <div class="section-header">
+                <h2>A Global Community</h2>
+                <p>CE alumni represent nationalities from across the world</p>
+            </div>
+            
+            <div class="diversity-stats">
+                <div class="diversity-numbers">
+                    <div class="diversity-big-number" id="nationalityCount">15</div>
+                    <div class="diversity-label">nationalities</div>
+                </div>
+                
+                <div class="flag-wave-container">
+                    <div class="flag-wave" id="flagWave">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
     <!-- Destinations Section -->
     <section class="destinations" id="destinations">
         <div class="section-header">
@@ -1492,6 +2264,79 @@
         </div>
     </section>
     
+    <!-- Charts Section - Growth & Gender -->
+    <section class="charts-section">
+        <div class="section-header">
+            <h2>Programme Growth</h2>
+            <p>A young programme with momentum</p>
+        </div>
+        
+        <div class="charts-grid">
+            <!-- Growth Chart -->
+            <div class="chart-card">
+                <h3>Graduates per Year</h3>
+                <p class="chart-subtitle">The programme is growing rapidly</p>
+                
+                <div class="growth-chart">
+                    <div class="growth-bar">
+                        <div class="growth-bar-fill bar-2024" style="height: 80px;">
+                            <span class="growth-bar-value">13</span>
+                        </div>
+                        <span class="growth-bar-label">2024</span>
+                    </div>
+                    <div class="growth-bar">
+                        <div class="growth-bar-fill bar-2025" style="height: 160px;">
+                            <span class="growth-bar-value">33</span>
+                        </div>
+                        <span class="growth-bar-label">2025</span>
+                    </div>
+                </div>
+                
+                <div class="growth-increase">
+                    <span><i data-lucide="trending-up"></i> 2.5× growth year-over-year</span>
+                </div>
+            </div>
+            
+            <!-- Gender Chart -->
+            <div class="chart-card">
+                <h3>Gender Balance</h3>
+                <p class="chart-subtitle">Breaking engineering stereotypes</p>
+                
+                <div class="gender-chart">
+                    <div class="donut-container">
+                        <svg viewBox="0 0 100 100">
+                            <!-- Background circle -->
+                            <circle cx="50" cy="50" r="40" class="donut-segment" stroke="#e5e7eb" stroke-dasharray="251.2" stroke-dashoffset="0"/>
+                            <!-- Male segment (50% = 125.6) -->
+                            <circle cx="50" cy="50" r="40" class="donut-segment" stroke="#10B981" stroke-dasharray="251.2" stroke-dashoffset="125.6"/>
+                            <!-- Female segment (43% = 143.2 offset from male) -->
+                            <circle cx="50" cy="50" r="40" class="donut-segment" stroke="#14B8A6" stroke-dasharray="108" stroke-dashoffset="-125.6"/>
+                        </svg>
+                        <div class="donut-center">
+                            <span class="donut-center-number">46</span>
+                            <span class="donut-center-label">alumni</span>
+                        </div>
+                    </div>
+                    
+                    <div class="gender-legend">
+                        <div class="legend-item">
+                            <span class="legend-dot male"></span>
+                            <span class="legend-text"><strong>50%</strong> Male (23)</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-dot female"></span>
+                            <span class="legend-text"><strong>43%</strong> Female (20)</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-dot other"></span>
+                            <span class="legend-text"><strong>7%</strong> Not disclosed (3)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
     <!-- Talent Flow Section -->
     <section class="talent-flow">
         <div class="section-header">
@@ -1515,6 +2360,34 @@
             <div class="flow-stat">
                 <div class="flow-stat-value">15%</div>
                 <div class="flow-stat-label">Regional Retention</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Outcomes Section - Work vs Study -->
+    <section class="outcomes-section">
+        <div class="section-header">
+            <h2>What Happens After CE?</h2>
+            <p>Two paths, both leading to impact</p>
+        </div>
+        
+        <div class="outcomes-grid">
+            <div class="outcome-card">
+                <div class="outcome-icon">
+                    <i data-lucide="graduation-cap"></i>
+                </div>
+                <div class="outcome-percentage">67%</div>
+                <div class="outcome-label">Pursue a Master's</div>
+                <p class="outcome-description">Continuing to specialise at top universities across Europe and beyond</p>
+            </div>
+            
+            <div class="outcome-card">
+                <div class="outcome-icon">
+                    <i data-lucide="briefcase"></i>
+                </div>
+                <div class="outcome-percentage">33%</div>
+                <div class="outcome-label">Enter the Workforce</div>
+                <p class="outcome-description">Working at companies like BASF, Lithium Ark, and Verdalia Bioenergy</p>
             </div>
         </div>
     </section>
@@ -1708,6 +2581,60 @@
         const currentYear = new Date().getFullYear();
         document.querySelector('.footer-bottom p').innerHTML = 
             `&copy; ${currentYear} Maastricht University · Faculty of Science and Engineering`;
+        
+        // ==========================================
+        // FLAG WAVE - NATIONALITIES
+        // ==========================================
+        const flagWave = document.getElementById('flagWave');
+        if (flagWave) {
+            // Create double set for seamless loop
+            const flags = CE_DATA.allNationalityFlags;
+            const flagsHtml = [...flags, ...flags].map(code => 
+                `<img src="https://flagcdn.com/w80/${code}.png" alt="Flag" loading="lazy">`
+            ).join('');
+            flagWave.innerHTML = flagsHtml;
+        }
+        
+        // Update nationality count
+        const nationalityCount = document.getElementById('nationalityCount');
+        if (nationalityCount) {
+            nationalityCount.textContent = CE_DATA.summary.nationalities;
+        }
+        
+        // ==========================================
+        // ANIMATED GROWTH BARS
+        // ==========================================
+        const growthBarsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Animate the bars
+                    const bar2024 = document.querySelector('.bar-2024');
+                    const bar2025 = document.querySelector('.bar-2025');
+                    
+                    if (bar2024 && bar2025) {
+                        setTimeout(() => {
+                            bar2024.style.height = '80px';
+                        }, 200);
+                        setTimeout(() => {
+                            bar2025.style.height = '160px';
+                        }, 400);
+                    }
+                    
+                    growthBarsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+        
+        const growthChart = document.querySelector('.growth-chart');
+        if (growthChart) {
+            // Reset initial state
+            const bar2024 = document.querySelector('.bar-2024');
+            const bar2025 = document.querySelector('.bar-2025');
+            if (bar2024) bar2024.style.height = '0';
+            if (bar2025) bar2025.style.height = '0';
+            
+            growthBarsObserver.observe(growthChart);
+        }
     </script>
 </body>
 </html>

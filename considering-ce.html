@@ -788,6 +788,60 @@
         }
         
         /* ============================================
+           NOTABLE EMPLOYERS SECTION
+        ============================================ */
+        .employers-section {
+            background: white;
+            padding: 80px 50px;
+        }
+        
+        .employers-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .employer-card {
+            background: var(--gray-50);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            text-align: center;
+            border: 1px solid var(--gray-200);
+            transition: all var(--transition-smooth);
+        }
+        
+        .employer-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--ce-green-primary);
+        }
+        
+        .employer-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--um-dark-blue);
+            margin-bottom: 6px;
+        }
+        
+        .employer-role {
+            font-size: 13px;
+            color: var(--gray-500);
+        }
+        
+        .employer-tag {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 4px 12px;
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--ce-green-dark);
+            font-size: 11px;
+            font-weight: 600;
+            border-radius: var(--radius-full);
+        }
+        
+        /* ============================================
            CTA SECTION
         ============================================ */
         .cta-section {
@@ -1186,6 +1240,18 @@
             </div>
         </section>
         
+        <!-- Notable Employers -->
+        <section class="employers-section">
+            <div class="section-header">
+                <h2>Where CE Alumni Work</h2>
+                <p>33% of graduates enter the workforce directly — here's where</p>
+            </div>
+            
+            <div class="employers-grid" id="employersGrid">
+                <!-- Populated by JS -->
+            </div>
+        </section>
+        
         <!-- CTA -->
         <section class="cta-section">
             <div class="cta-content">
@@ -1323,6 +1389,18 @@
                 <p>${sector.description}</p>
             </div>
         `).join('');
+        
+        // Notable employers
+        const employersGrid = document.getElementById('employersGrid');
+        if (employersGrid) {
+            employersGrid.innerHTML = CE_DATA.notableEmployment.map(emp => `
+                <div class="employer-card">
+                    <div class="employer-name">${emp.company}</div>
+                    <div class="employer-role">${emp.role || 'Various roles'}</div>
+                    <span class="employer-tag">${emp.sector || 'Industry'}</span>
+                </div>
+            `).join('');
+        }
         
         // Re-initialize icons
         lucide.createIcons();
