@@ -1,40 +1,80 @@
 // ============================================
 // CE ALUMNI DATA - SINGLE SOURCE OF TRUTH
 // ============================================
-// Last updated: January 2025
-// Update this file annually - all pages pull from here
+// Last updated: January 2026
+// 
+// HOW TO UPDATE:
+// 1. Scroll to the section you need to update
+// 2. Change the numbers
+// 3. Save the file
+// 4. All pages will automatically reflect the changes
+//
+// NOTE: Also update the meta description in dashboard.html
+//       (line 8) when you change the summary numbers.
 // ============================================
 
+
+// ╔═══════════════════════════════════════════════════════════════╗
+// ║                                                               ║
+// ║              📊 UPDATE THESE NUMBERS ANNUALLY 📊              ║
+// ║                                                               ║
+// ╚═══════════════════════════════════════════════════════════════╝
+
 const CE_DATA = {
-    // ==========================================
-    // SUMMARY STATISTICS
-    // ==========================================
+
+    // ══════════════════════════════════════════
+    // SECTION 1: SUMMARY STATISTICS
+    // ══════════════════════════════════════════
+    // These appear in the hero sections across all pages
+    
     summary: {
-        totalAlumni: 46,
-        nationalities: 15,
-        countriesLivingIn: 10,
-        universitiesAttended: 22,
-        programmeStartYear: 2021,
-        firstGraduationYear: 2024
+        totalAlumni: 46,           // Total number of CE graduates
+        nationalities: 15,         // Number of different nationalities
+        countriesLivingIn: 10,     // Countries where alumni currently live
+        universitiesAttended: 22,  // Master's universities attended
+        programmeStartYear: 2021,  // Year CE programme started
+        firstGraduationYear: 2024  // Year of first graduating class
     },
 
-    // ==========================================
-    // GRADUATION BY YEAR
-    // ==========================================
+
+    // ══════════════════════════════════════════
+    // SECTION 2: GRADUATION BY YEAR
+    // ══════════════════════════════════════════
+    // Add new years as cohorts graduate
+    
     graduationByYear: [
         { year: 2024, count: 13 },
         { year: 2025, count: 33 }
+        // { year: 2026, count: ?? },  // ← Add future years here
     ],
 
-    // ==========================================
-    // CONCENTRATIONS
-    // ==========================================
+
+    // ══════════════════════════════════════════
+    // SECTION 3: GENDER BREAKDOWN
+    // ══════════════════════════════════════════
+    // Updates the donut chart on the dashboard
+    
+    gender: {
+        male: 23,
+        malePercent: 50,
+        female: 20,
+        femalePercent: 43,
+        notDisclosed: 3,
+        notDisclosedPercent: 7
+    },
+
+
+    // ══════════════════════════════════════════
+    // SECTION 4: CONCENTRATION BREAKDOWN
+    // ══════════════════════════════════════════
+    // Update the count and percentage for each track
+    
     concentrations: [
         {
             name: "Sustainable Biotechnology",
             shortName: "Biotech",
-            count: 17,
-            percentage: 37,
+            count: 17,           // ← Update this
+            percentage: 37,      // ← Update this
             icon: "flask-conical",
             color: "#10B981",
             description: "Explore how cells, genes, enzymes, and microbes can be engineered to produce food, materials, energy, and pharmaceuticals sustainably.",
@@ -45,8 +85,8 @@ const CE_DATA = {
         {
             name: "Circular Chemical Engineering",
             shortName: "Chemical",
-            count: 17,
-            percentage: 37,
+            count: 17,           // ← Update this
+            percentage: 37,      // ← Update this
             icon: "atom",
             color: "#14B8A6",
             description: "Develop a deep understanding of how energy and materials flow through chemical systems, and how these systems can be redesigned for efficiency.",
@@ -57,8 +97,8 @@ const CE_DATA = {
         {
             name: "Engineering Physics for Sustainable Manufacturing",
             shortName: "Physics",
-            count: 12,
-            percentage: 26,
+            count: 12,           // ← Update this
+            percentage: 26,      // ← Update this
             icon: "cpu",
             color: "#0EA5E9",
             description: "Design and optimise technologies that make production more efficient, intelligent, and circular.",
@@ -68,9 +108,13 @@ const CE_DATA = {
         }
     ],
 
-    // ==========================================
-    // TOP MASTER'S UNIVERSITIES
-    // ==========================================
+
+    // ══════════════════════════════════════════
+    // SECTION 5: TOP MASTER'S UNIVERSITIES
+    // ══════════════════════════════════════════
+    // Reorder by count (highest first), update counts
+    // logo: null means no logo file (will show placeholder)
+    
     topUniversities: [
         { name: "TU Delft", count: 3, country: "Netherlands", logo: "tu-delft.png" },
         { name: "KTH Royal Institute of Technology", count: 3, country: "Sweden", logo: "kth-royal-institute-of-technology.png" },
@@ -95,9 +139,12 @@ const CE_DATA = {
         { name: "EU-CONEXUS", count: 1, country: "France", logo: null }
     ],
 
-    // ==========================================
-    // MASTER'S PROGRAMMES (What they're studying)
-    // ==========================================
+
+    // ══════════════════════════════════════════
+    // SECTION 6: MASTER'S PROGRAMMES
+    // ══════════════════════════════════════════
+    // What programmes alumni are studying
+    
     mastersProgrammes: [
         { name: "Biotechnology", count: 3 },
         { name: "Biobased Materials", count: 2 },
@@ -113,9 +160,12 @@ const CE_DATA = {
         { name: "Biochemistry and Molecular Biology", count: 1 }
     ],
 
-    // ==========================================
-    // COUNTRIES WHERE ALUMNI CURRENTLY LIVE
-    // ==========================================
+
+    // ══════════════════════════════════════════
+    // SECTION 7: COUNTRIES WHERE ALUMNI LIVE
+    // ══════════════════════════════════════════
+    // Update counts and cities list
+    
     countriesLivingIn: [
         { name: "Netherlands", code: "nl", count: 19, cities: ["Maastricht", "Delft", "Wageningen", "Eindhoven", "Groningen", "Amsterdam", "Sittard"] },
         { name: "Portugal", code: "pt", count: 3, cities: ["Lisbon"] },
@@ -129,9 +179,12 @@ const CE_DATA = {
         { name: "Moldova", code: "md", count: 1, cities: ["Chișinău"] }
     ],
 
-    // ==========================================
-    // TOP CITIES
-    // ==========================================
+
+    // ══════════════════════════════════════════
+    // SECTION 8: TOP CITIES
+    // ══════════════════════════════════════════
+    // Cities with most alumni (for dashboard display)
+    
     topCities: [
         { name: "Maastricht", country: "Netherlands", code: "nl", count: 10 },
         { name: "Lisbon", country: "Portugal", code: "pt", count: 3 },
@@ -141,9 +194,12 @@ const CE_DATA = {
         { name: "Eindhoven", country: "Netherlands", code: "nl", count: 2 }
     ],
 
-    // ==========================================
-    // NATIONALITIES OF ALUMNI
-    // ==========================================
+
+    // ══════════════════════════════════════════
+    // SECTION 9: NATIONALITIES
+    // ══════════════════════════════════════════
+    // Where alumni are originally from (citizenship)
+    
     nationalities: [
         { name: "Belgium", code: "be", count: 8 },
         { name: "Netherlands", code: "nl", count: 6 },
@@ -162,12 +218,16 @@ const CE_DATA = {
         { name: "Austria", code: "at", count: 1 }
     ],
 
-    // All nationality flags for display
+    // All nationality flag codes for the flag display
+    // Add new codes when new nationalities join
     allNationalityFlags: ["be", "nl", "de", "it", "fr", "ro", "ec", "lb", "ie", "in", "hu", "es", "tt", "bg", "at"],
 
-    // ==========================================
-    // ORIGIN COUNTRIES (Where alumni came from)
-    // ==========================================
+
+    // ══════════════════════════════════════════
+    // SECTION 10: ORIGIN COUNTRIES
+    // ══════════════════════════════════════════
+    // Where alumni lived BEFORE starting CE (for Euregio stats)
+    
     originCountries: [
         { name: "Belgium", code: "be", count: 14 },
         { name: "Netherlands", code: "nl", count: 8 },
@@ -187,66 +247,41 @@ const CE_DATA = {
         { name: "Austria", code: "at", count: 1 }
     ],
 
-    // ==========================================
-    // REGIONAL / TALENT FLOW DATA
-    // ==========================================
+
+    // ══════════════════════════════════════════
+    // SECTION 11: REGIONAL / EUREGIO DATA
+    // ══════════════════════════════════════════
+    // Talent flow and regional retention statistics
+    
     regionalData: {
-        // Where alumni are currently
         stayInMaastricht: 10,
         stayInMaastrichtPercent: 22,
         
-        // Euregio metrics
         euregioOrigin: 19,
         euregioOriginPercent: 41,
         euregioDestination: 16,
         euregioDestinationPercent: 35,
         
-        // Regional retention
         regionalRetention: 7,
         regionalRetentionPercent: 15,
         
-        // Netherlands distribution
         stayInNetherlands: 19,
         stayInNetherlandsPercent: 41
     },
 
-    // Talent flow breakdown
-    talentFlow: [
-        { flow: "International → International", count: 6 },
-        { flow: "Euregio → International", count: 6 },
-        { flow: "International → Limburg", count: 4 },
-        { flow: "Euregio → Limburg", count: 4 },
-        { flow: "Euregio → Euregio", count: 3 },
-        { flow: "Netherlands → Limburg", count: 3 },
-        { flow: "International → Netherlands", count: 3 },
-        { flow: "Euregio → Netherlands", count: 2 },
-        { flow: "Netherlands → Netherlands", count: 2 },
-        { flow: "International → Euregio", count: 1 },
-        { flow: "Limburg → Netherlands", count: 1 }
-    ],
 
-    // ==========================================
-    // GENDER BREAKDOWN
-    // ==========================================
-    gender: {
-        male: 23,
-        malePercent: 50,
-        female: 20,
-        femalePercent: 43,
-        notDisclosed: 3,
-        notDisclosedPercent: 7
-    },
-
-    // ==========================================
-    // EMPLOYMENT DATA (Alumni working vs studying)
-    // ==========================================
+    // ══════════════════════════════════════════
+    // SECTION 12: EMPLOYMENT DATA
+    // ══════════════════════════════════════════
+    // Alumni working vs. studying
+    
     employment: {
-        studying: 31,  // Pursuing Master's
-        working: 15,   // In employment
+        studying: 31,
+        working: 15,
         workingPercent: 33
     },
 
-    // Notable employers/roles
+    // Notable employers (for considering-ce page)
     notableEmployment: [
         { company: "Lithium Ark", role: "Junior Engineer", sector: "Energy/Sustainability" },
         { company: "BASF", role: "Intern", sector: "Chemical Industry" },
@@ -256,9 +291,19 @@ const CE_DATA = {
         { company: "Maastricht University", role: "Research Intern", sector: "Academia" }
     ],
 
-    // ==========================================
-    // PROGRAMME INFO
-    // ==========================================
+
+// ╔═══════════════════════════════════════════════════════════════╗
+// ║                                                               ║
+// ║     📚 REFERENCE DATA (Rarely needs updating)                 ║
+// ║                                                               ║
+// ╚═══════════════════════════════════════════════════════════════╝
+
+
+    // ══════════════════════════════════════════
+    // PROGRAMME INFORMATION
+    // ══════════════════════════════════════════
+    // General info about the CE programme
+    
     programmeInfo: {
         name: "Circular Engineering",
         faculty: "Faculty of Science and Engineering",
@@ -270,7 +315,6 @@ const CE_DATA = {
         email: "fse-admissions@maastrichtuniversity.nl",
         alumniEmail: "fse-alumni@maastrichtuniversity.nl",
         
-        // Key programme features
         highlights: [
             "Problem-Based Learning (PBL) in small groups of ~15 students",
             "Research-Based Learning (RBL) with real engineering challenges",
@@ -280,7 +324,6 @@ const CE_DATA = {
             "Design projects with industry partners"
         ],
         
-        // Brightlands campuses connection
         brightlandsCampuses: [
             {
                 name: "Brightlands Chemelot Campus",
@@ -299,13 +342,15 @@ const CE_DATA = {
             }
         ],
         
-        // Core principles
         circularPrinciples: ["Reduce", "Reuse", "Remake", "Repair", "Recycle"]
     },
 
-    // ==========================================
-    // REAL-LIFE CHALLENGES (for prospective students)
-    // ==========================================
+
+    // ══════════════════════════════════════════
+    // REAL-LIFE CHALLENGES
+    // ══════════════════════════════════════════
+    // Example projects for prospective students page
+    
     realLifeChallenges: [
         {
             title: "Disposable Medical Sensors",
@@ -333,9 +378,12 @@ const CE_DATA = {
         }
     ],
 
-    // ==========================================
-    // CAREER SECTORS (from CE programme info)
-    // ==========================================
+
+    // ══════════════════════════════════════════
+    // CAREER SECTORS
+    // ══════════════════════════════════════════
+    // Potential career paths for CE graduates
+    
     careerSectors: [
         { 
             name: "Sustainable Technology Development", 
@@ -369,9 +417,12 @@ const CE_DATA = {
         }
     ],
 
-    // ==========================================
-    // EXAMPLE MASTER'S PATHWAYS BY CONCENTRATION
-    // ==========================================
+
+    // ══════════════════════════════════════════
+    // MASTER'S PATHWAYS BY CONCENTRATION
+    // ══════════════════════════════════════════
+    // Suggested Master's programmes for each track
+    
     mastersPathways: {
         "Sustainable Biotechnology": [
             "Biotechnology",
@@ -393,6 +444,7 @@ const CE_DATA = {
         ]
     }
 };
+
 
 // ============================================
 // HELPER FUNCTIONS
@@ -419,7 +471,10 @@ function formatNumber(num) {
     return num.toLocaleString();
 }
 
-// ============================================
-// EXPORT FOR USE IN HTML
-// ============================================
-// Access via CE_DATA.summary.totalAlumni, CE_DATA.topUniversities, etc.
+/**
+ * Calculate SVG stroke-dashoffset for donut charts
+ * circumference = 2 * PI * radius (for r=40, circumference ≈ 251.2)
+ */
+function getDonutOffset(percent, circumference = 251.2) {
+    return circumference - (percent / 100) * circumference;
+}
