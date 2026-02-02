@@ -19,7 +19,7 @@
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     
     <!-- CE Alumni Data -->
-    <script src="data.js?v=3"></script>
+    <script src="data.js?v=4"></script>
     
     <style>
         /* ============================================
@@ -2740,6 +2740,66 @@
             margin: 0 auto;
         }
         
+        .universities-preview {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+            max-width: 1200px;
+            margin: 0 auto 30px;
+        }
+        
+        .universities-expand-container {
+            text-align: center;
+            margin: 0 auto 30px;
+        }
+        
+        .universities-expand-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--ce-green-primary), var(--ce-green-dark));
+            color: white;
+            border: none;
+            padding: 14px 32px;
+            border-radius: var(--radius-full);
+            font-size: 16px;
+            font-weight: 600;
+            font-family: var(--font-body);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .universities-expand-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(16, 185, 129, 0.35);
+        }
+        
+        .expand-icon {
+            width: 20px;
+            height: 20px;
+            transition: transform 0.3s ease;
+        }
+        
+        .universities-expand-btn.expanded .expand-icon {
+            transform: rotate(180deg);
+        }
+        
+        .universities-grid-collapsed {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+        
+        .universities-grid-collapsed.expanded {
+            max-height: 3000px;
+        }
+        
         .uni-card {
             background: white;
             border: 1px solid var(--gray-200);
@@ -3997,11 +4057,22 @@
     <section class="all-universities-section" id="all-universities">
         <div class="section-header">
             <h2>All Master's Destinations</h2>
-            <p>Explore the 22 universities where CE alumni are pursuing their Master's degrees — click any card to learn more about the institution.</p>
+            <p>Explore the 22 universities where CE alumni are pursuing their Master's degrees.</p>
         </div>
         
-        <div class="universities-grid" id="universitiesGrid">
-            <!-- Populated by JavaScript -->
+        <div class="universities-preview" id="universitiesPreview">
+            <!-- First 6 cards populated by JavaScript -->
+        </div>
+        
+        <div class="universities-expand-container">
+            <button class="universities-expand-btn" id="expandUniversitiesBtn" onclick="toggleAllUniversities()">
+                <span class="expand-text">View All 22 Universities</span>
+                <i data-lucide="chevron-down" class="expand-icon"></i>
+            </button>
+        </div>
+        
+        <div class="universities-grid-collapsed" id="universitiesGridCollapsed">
+            <!-- Remaining cards populated by JavaScript -->
         </div>
     </section>
     
@@ -5093,20 +5164,16 @@
         
         
         // ==========================================
-        // ALL UNIVERSITIES GRID
+        // ALL UNIVERSITIES GRID (COLLAPSIBLE)
         // ==========================================
-        const universitiesGrid = document.getElementById('universitiesGrid');
-        console.log('Universities Grid element:', universitiesGrid);
-        console.log('CE_DATA.universityDetails exists?', !!CE_DATA.universityDetails);
-        console.log('CE_DATA.topUniversities length:', CE_DATA.topUniversities.length);
+        const universitiesPreview = document.getElementById('universitiesPreview');
+        const universitiesCollapsed = document.getElementById('universitiesGridCollapsed');
         
-        if (universitiesGrid && CE_DATA.universityDetails) {
-            universitiesGrid.innerHTML = CE_DATA.topUniversities.map(uni => {
+        if (universitiesPreview && universitiesCollapsed && CE_DATA.universityDetails) {
+            // Function to create university card HTML
+            const createUniCard = (uni) => {
                 const details = CE_DATA.universityDetails[uni.name];
-                if (!details) {
-                    console.warn('No details found for:', uni.name);
-                    return '';
-                }
+                if (!details) return '';
                 
                 return `
                     <div class="uni-card" onclick="openUniDetailModal('${uni.name.replace(/'/g, "\\'")}')">
@@ -5122,14 +5189,35 @@
                         </div>
                     </div>
                 `;
-            }).join('');
-            console.log('Universities grid populated with', CE_DATA.topUniversities.length, 'cards');
+            };
+            
+            // Show first 6 universities
+            const previewUniversities = CE_DATA.topUniversities.slice(0, 6);
+            universitiesPreview.innerHTML = previewUniversities.map(createUniCard).join('');
+            
+            // Put remaining universities in collapsible section
+            const remainingUniversities = CE_DATA.topUniversities.slice(6);
+            universitiesCollapsed.innerHTML = remainingUniversities.map(createUniCard).join('');
+            
             lucide.createIcons();
-        } else {
-            console.error('Cannot populate universities grid:', {
-                gridExists: !!universitiesGrid,
-                detailsExists: !!CE_DATA.universityDetails
-            });
+        }
+        
+        // Toggle universities expand/collapse
+        function toggleAllUniversities() {
+            const collapsedSection = document.getElementById('universitiesGridCollapsed');
+            const expandBtn = document.getElementById('expandUniversitiesBtn');
+            const expandText = expandBtn.querySelector('.expand-text');
+            
+            collapsedSection.classList.toggle('expanded');
+            expandBtn.classList.toggle('expanded');
+            
+            if (collapsedSection.classList.contains('expanded')) {
+                expandText.textContent = 'Show Less';
+            } else {
+                expandText.textContent = 'View All 22 Universities';
+            }
+            
+            lucide.createIcons();
         }
         
         // Open university detail modal
