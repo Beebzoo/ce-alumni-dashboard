@@ -2725,6 +2725,250 @@
         }
 
         /* ============================================
+           ALL UNIVERSITIES SECTION
+        ============================================ */
+        .all-universities-section {
+            background: white;
+            padding: 80px 50px;
+        }
+        
+        .universities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .uni-card {
+            background: white;
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .uni-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--ce-green-primary);
+        }
+        
+        .uni-card-logo-container {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            padding: 12px;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .uni-card-logo {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        
+        .uni-card-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--um-dark-blue);
+            margin-bottom: 4px;
+            line-height: 1.3;
+        }
+        
+        .uni-card-location {
+            font-size: 13px;
+            color: var(--gray-500);
+            margin-bottom: 12px;
+        }
+        
+        .uni-card-alumni-count {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--ce-green-dark);
+            padding: 4px 12px;
+            border-radius: var(--radius-full);
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .uni-card-alumni-count i {
+            width: 14px;
+            height: 14px;
+        }
+        
+        /* University Detail Modal */
+        .uni-detail-modal-header {
+            padding: 40px 30px 30px;
+            background: linear-gradient(135deg, var(--um-dark-blue), #1e3a8a);
+            color: white;
+            border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+            position: relative;
+            text-align: center;
+        }
+        
+        .uni-detail-logo-big {
+            width: 100px;
+            height: 100px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            padding: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        .uni-detail-logo-big img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        
+        .uni-detail-name {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .uni-detail-location {
+            font-size: 15px;
+            opacity: 0.9;
+            margin-bottom: 16px;
+        }
+        
+        .uni-detail-founded {
+            display: inline-block;
+            background: rgba(255,255,255,0.15);
+            padding: 6px 16px;
+            border-radius: var(--radius-full);
+            font-size: 13px;
+            font-weight: 500;
+        }
+        
+        .uni-detail-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 36px;
+            height: 36px;
+            border: none;
+            background: rgba(255,255,255,0.15);
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+        
+        .uni-detail-close:hover {
+            background: rgba(255,255,255,0.25);
+        }
+        
+        .uni-detail-close i {
+            width: 20px;
+            height: 20px;
+            color: white;
+        }
+        
+        .uni-detail-body {
+            padding: 30px;
+        }
+        
+        .uni-detail-section {
+            margin-bottom: 24px;
+        }
+        
+        .uni-detail-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .uni-detail-section-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--um-dark-blue);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .uni-detail-section-title i {
+            width: 16px;
+            height: 16px;
+            color: var(--ce-green-primary);
+        }
+        
+        .uni-detail-fun-fact {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(20, 184, 166, 0.08));
+            border-left: 4px solid var(--ce-green-primary);
+            padding: 16px 20px;
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            font-size: 15px;
+            color: var(--gray-700);
+            line-height: 1.7;
+        }
+        
+        .uni-detail-alumni-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--ce-green-dark);
+            padding: 10px 18px;
+            border-radius: var(--radius-md);
+            font-size: 15px;
+            font-weight: 600;
+        }
+        
+        .uni-detail-alumni-badge i {
+            width: 18px;
+            height: 18px;
+        }
+        
+        .uni-detail-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, var(--ce-green-primary), var(--ce-green-dark));
+            color: white;
+            padding: 12px 24px;
+            border-radius: var(--radius-md);
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            margin-top: 8px;
+        }
+        
+        .uni-detail-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.35);
+            color: white;
+        }
+        
+        .uni-detail-link i {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* ============================================
            GROWTH & GENDER CHARTS
         ============================================ */
         .charts-section {
@@ -3748,6 +3992,65 @@
         </div>
     </section>
     
+    
+    <!-- All Universities Section -->
+    <section class="all-universities-section" id="all-universities">
+        <div class="section-header">
+            <h2>All Master's Destinations</h2>
+            <p>Explore the 22 universities where CE alumni are pursuing their Master's degrees — click any card to learn more about the institution.</p>
+        </div>
+        
+        <div class="universities-grid" id="universitiesGrid">
+            <!-- Populated by JavaScript -->
+        </div>
+    </section>
+    
+    <!-- University Detail Modal -->
+    <div class="modal-overlay" id="uniDetailModal">
+        <div class="modal-content" style="max-width: 600px;">
+            <div class="uni-detail-modal-header">
+                <div class="uni-detail-logo-big" id="uniDetailLogoBig">
+                    <img src="" alt="University Logo">
+                </div>
+                <h2 class="uni-detail-name" id="uniDetailName">University Name</h2>
+                <div class="uni-detail-location" id="uniDetailLocation">City, Country</div>
+                <div class="uni-detail-founded" id="uniDetailFounded">Founded 1900</div>
+                <button class="uni-detail-close" onclick="closeUniDetailModal()">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <div class="uni-detail-body">
+                <div class="uni-detail-section">
+                    <div class="uni-detail-section-title">
+                        <i data-lucide="users"></i>
+                        CE Alumni
+                    </div>
+                    <div class="uni-detail-alumni-badge" id="uniDetailAlumni">
+                        <i data-lucide="graduation-cap"></i>
+                        <span>0 alumni</span>
+                    </div>
+                </div>
+                
+                <div class="uni-detail-section">
+                    <div class="uni-detail-section-title">
+                        <i data-lucide="sparkles"></i>
+                        Did You Know?
+                    </div>
+                    <div class="uni-detail-fun-fact" id="uniDetailFunFact">
+                        Interesting fact about this university...
+                    </div>
+                </div>
+                
+                <div class="uni-detail-section">
+                    <a href="#" target="_blank" class="uni-detail-link" id="uniDetailLink">
+                        Visit University Website
+                        <i data-lucide="external-link"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <!-- Charts Section - Growth & Gender -->
     <section class="charts-section">
         <div class="section-header">
@@ -4241,6 +4544,7 @@
                 closeCountryModal();
                 closeCityModal();
                 closePathwayUniModal();
+                closeUniDetailModal();
             }
         });
 
@@ -4786,6 +5090,76 @@
         function closeMapPopup() {
             alumniMap.closePopup();
         }
+        
+        
+        // ==========================================
+        // ALL UNIVERSITIES GRID
+        // ==========================================
+        const universitiesGrid = document.getElementById('universitiesGrid');
+        if (universitiesGrid && CE_DATA.universityDetails) {
+            universitiesGrid.innerHTML = CE_DATA.topUniversities.map(uni => {
+                const details = CE_DATA.universityDetails[uni.name];
+                if (!details) return '';
+                
+                return `
+                    <div class="uni-card" onclick="openUniDetailModal('${uni.name.replace(/'/g, "\\'")}')">
+                        <div class="uni-card-logo-container">
+                            <img src="assets/logos/${uni.logo}" alt="${uni.name}" class="uni-card-logo" 
+                                 onerror="this.parentElement.innerHTML='<i data-lucide=\\'graduation-cap\\' style=\\'width: 36px; height: 36px; color: var(--ce-green-primary);\\'></i>'; lucide.createIcons();">
+                        </div>
+                        <div class="uni-card-name">${uni.name}</div>
+                        <div class="uni-card-location">${details.city}, ${details.country}</div>
+                        <div class="uni-card-alumni-count">
+                            <i data-lucide="users"></i>
+                            ${uni.count} ${uni.count === 1 ? 'alumnus' : 'alumni'}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            lucide.createIcons();
+        }
+        
+        // Open university detail modal
+        function openUniDetailModal(uniName) {
+            const uni = CE_DATA.topUniversities.find(u => u.name === uniName);
+            const details = CE_DATA.universityDetails[uniName];
+            if (!uni || !details) return;
+            
+            // Set logo
+            const logoBig = document.querySelector('#uniDetailLogoBig img');
+            if (logoBig) {
+                logoBig.src = `assets/logos/${uni.logo}`;
+                logoBig.alt = uni.name;
+            }
+            
+            // Set content
+            document.getElementById('uniDetailName').textContent = details.fullName || uni.name;
+            document.getElementById('uniDetailLocation').textContent = `${details.city}, ${details.country}`;
+            document.getElementById('uniDetailFounded').textContent = `Founded ${details.founded}`;
+            document.getElementById('uniDetailAlumni').querySelector('span').textContent = 
+                `${uni.count} CE ${uni.count === 1 ? 'alumnus' : 'alumni'}`;
+            document.getElementById('uniDetailFunFact').textContent = details.funFact;
+            
+            // Set link
+            const link = document.getElementById('uniDetailLink');
+            link.href = details.website;
+            
+            // Show modal
+            document.getElementById('uniDetailModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+            lucide.createIcons();
+        }
+        
+        // Close university detail modal
+        function closeUniDetailModal() {
+            document.getElementById('uniDetailModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        // Close on overlay click
+        document.getElementById('uniDetailModal').addEventListener('click', function(e) {
+            if (e.target === this) closeUniDetailModal();
+        });
         
         // ==========================================
         // ANIMATED GROWTH BARS
