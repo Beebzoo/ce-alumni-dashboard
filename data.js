@@ -167,16 +167,16 @@ const CE_DATA = {
     // Update counts and cities list
     
     countriesLivingIn: [
-        { name: "Netherlands", code: "nl", count: 19, cities: ["Maastricht", "Delft", "Wageningen", "Eindhoven", "Groningen", "Amsterdam", "Sittard"] },
-        { name: "Portugal", code: "pt", count: 3, cities: ["Lisbon"] },
-        { name: "Sweden", code: "se", count: 3, cities: ["Stockholm"] },
-        { name: "Germany", code: "de", count: 2, cities: ["Munich", "Aachen"] },
-        { name: "Denmark", code: "dk", count: 2, cities: ["Copenhagen", "Odense"] },
-        { name: "Belgium", code: "be", count: 3, cities: ["Brussels", "Leuven", "Liège"] },
-        { name: "Spain", code: "es", count: 2, cities: ["Madrid", "Barcelona"] },
-        { name: "France", code: "fr", count: 1, cities: ["La Rochelle"] },
-        { name: "South Korea", code: "kr", count: 1, cities: ["Seoul"] },
-        { name: "Moldova", code: "md", count: 1, cities: ["Chișinău"] }
+        { name: "Netherlands", code: "nl", count: 19, cities: ["Maastricht", "Delft", "Wageningen", "Eindhoven", "Groningen", "Amsterdam", "Sittard"], coords: [52.1326, 5.2913] },
+        { name: "Portugal", code: "pt", count: 3, cities: ["Lisbon"], coords: [38.7223, -9.1393] },
+        { name: "Sweden", code: "se", count: 3, cities: ["Stockholm"], coords: [59.3293, 18.0686] },
+        { name: "Germany", code: "de", count: 2, cities: ["Munich", "Aachen"], coords: [51.1657, 10.4515] },
+        { name: "Denmark", code: "dk", count: 2, cities: ["Copenhagen", "Odense"], coords: [56.2639, 9.5018] },
+        { name: "Belgium", code: "be", count: 3, cities: ["Brussels", "Leuven", "Liège"], coords: [50.5039, 4.4699] },
+        { name: "Spain", code: "es", count: 2, cities: ["Madrid", "Barcelona"], coords: [40.4637, -3.7492] },
+        { name: "France", code: "fr", count: 1, cities: ["La Rochelle"], coords: [46.2276, 2.2137] },
+        { name: "South Korea", code: "kr", count: 1, cities: ["Seoul"], coords: [37.5665, 126.9780] },
+        { name: "Moldova", code: "md", count: 1, cities: ["Chișinău"], coords: [47.4116, 28.3699] }
     ],
 
 
