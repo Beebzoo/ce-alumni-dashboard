@@ -1354,14 +1354,14 @@
         .journey-line {
             position: absolute;
             top: 50%;
-            left: 0;
-            right: 0;
+            left: 5%;
+            right: 5%;
             height: 4px;
             background: linear-gradient(90deg, 
                 var(--gray-200) 0%, 
-                var(--ce-green-primary) 20%, 
-                var(--ce-green-primary) 80%, 
-                var(--gray-200) 100%);
+                var(--ce-green-primary) 15%, 
+                var(--ce-green-primary) 85%, 
+                var(--ce-green-primary) 100%);
             transform: translateY(-50%);
             z-index: 1;
         }
@@ -1375,8 +1375,8 @@
             height: 20px;
             background: linear-gradient(90deg, 
                 transparent 0%, 
-                rgba(16, 185, 129, 0.15) 20%, 
-                rgba(16, 185, 129, 0.15) 80%, 
+                rgba(16, 185, 129, 0.15) 10%, 
+                rgba(16, 185, 129, 0.15) 90%, 
                 transparent 100%);
             transform: translateY(-50%);
             filter: blur(10px);
@@ -1385,8 +1385,8 @@
         /* Year stages container */
         .journey-stages {
             display: grid;
-            grid-template-columns: 1fr 1fr 1.5fr 1fr;
-            gap: 20px;
+            grid-template-columns: 1fr 1fr 1.5fr;
+            gap: 32px;
             position: relative;
             z-index: 2;
         }
@@ -1644,7 +1644,7 @@
         }
         
         .semester-visual::before {
-            content: 'Ã— 2 semesters = 1 year';
+            content: '\00D7  2 semesters = 1 year';
             position: absolute;
             bottom: -30px;
             left: 50%;
@@ -2093,17 +2093,12 @@
             cursor: pointer;
             position: relative;
             z-index: 2;
-            display: block;
-            text-decoration: none;
-            color: inherit;
         }
         
         .campus-card:hover {
             transform: translateY(-4px);
             box-shadow: var(--shadow-lg);
             border-color: var(--ce-green-primary);
-            text-decoration: none;
-            color: inherit;
         }
         
         .campus-header {
@@ -2460,7 +2455,7 @@
                     For Prospective Students
                 </div>
                 <h1>Where Will <span>CE</span> Take You?</h1>
-                <p>Circular Engineering graduates are building sustainable futures at top universities and companies worldwide. See where they've gone â€”Â and where you could go.</p>
+                <p>Circular Engineering graduates are building sustainable futures at top universities and companies worldwide. See where they've gone &mdash; and where you could go.</p>
                 <a href="https://www.maastrichtuniversity.nl/education/bachelor/circular-engineering" target="_blank" class="hero-cta">
                     <i data-lucide="external-link"></i>
                     Explore the Programme
@@ -2774,7 +2769,7 @@
                 </div>
                 
                 <div class="brightlands-grid">
-                    <a href="https://www.brightlands.com/en/chemelot-campus/labs?gad_campaignid=22835375751" target="_blank" rel="noopener noreferrer" class="campus-card">
+                    <a href="https://www.brightlands.com/en/chemelot-campus" target="_blank" rel="noopener noreferrer" class="campus-card">
                         <div class="campus-header">
                             <div class="campus-icon">
                                 <i data-lucide="flask-conical"></i>
@@ -2788,9 +2783,9 @@
                             </div>
                         </div>
                         <p class="campus-focus">
-                            Europe's largest circular materials & chemistry hub. Work on bio-based plastics, sustainable polymers, and chemical process optimization.
+                            Europe's largest circular materials &amp; chemistry hub. Work on bio-based plastics, sustainable polymers, and chemical process optimization.
                         </p>
-                    </div>
+                    </a>
                     
                     <a href="https://www.brightlands.com/en/brightlands-maastricht-health-campus" target="_blank" rel="noopener noreferrer" class="campus-card">
                         <div class="campus-header">
@@ -2948,7 +2943,7 @@
         <div class="journey-container">
             <div class="journey-header">
                 <h2>Your 3-Year Journey</h2>
-                <p>From foundational STEM to specialized expertise Ã¢â‚¬â€ see how CE transforms you into a circular engineer</p>
+                <p>From foundational STEM to specialized expertise &mdash; see how CE transforms you into a circular engineer</p>
             </div>
             
             <div class="journey-visual">
@@ -3066,7 +3061,7 @@
                         </div>
                     </div>
                     
-                    <div class="period-connector">Ã¢â€ â€™</div>
+                    <div class="period-connector">&rarr;</div>
                     
                     <div class="period-block period-2">
                         <div class="period-weeks">
@@ -3090,7 +3085,7 @@
                         </div>
                     </div>
                     
-                    <div class="period-connector">Ã¢â€ â€™</div>
+                    <div class="period-connector">&rarr;</div>
                     
                     <div class="period-block period-3">
                         <div class="period-weeks">
@@ -3120,7 +3115,7 @@
         <section class="challenges-section" style="padding: 50px 50px;">
             <div class="section-header">
                 <h2>Real-Life Challenges You'll Tackle</h2>
-                <p>From day one, you'll work on actual engineering problems â€”Â not hypotheticals</p>
+                <p>From day one, you'll work on actual engineering problems &mdash; not hypotheticals</p>
             </div>
             
             <div class="challenges-grid" id="challengesGrid">
@@ -3129,7 +3124,7 @@
                         <i data-lucide="heart-pulse"></i>
                     </div>
                     <h3>Disposable Medical Sensors</h3>
-                    <p>Analyse pressure sensors used in Intensive Care units from a circularity perspective. Determine which parts can be reused, remade, or recycled â€”Â and design a technical solution to increase their circularity.</p>
+                    <p>Analyse pressure sensors used in Intensive Care units from a circularity perspective. Determine which parts can be reused, remade, or recycled &mdash; and design a technical solution to increase their circularity.</p>
                     <span class="challenge-tag">Healthcare & Sustainability</span>
                 </div>
                 
@@ -3360,7 +3355,7 @@
         </div>
         
         <div class="footer-bottom">
-            <p>&copy; 2025 Maastricht University Â· Faculty of Science and Engineering</p>
+            <p>&copy; 2025 Maastricht University &middot; Faculty of Science and Engineering</p>
             <a href="mailto:fse-alumni@maastrichtuniversity.nl">fse-alumni@maastrichtuniversity.nl</a>
         </div>
     </footer>
