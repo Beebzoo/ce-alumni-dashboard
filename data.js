@@ -125,19 +125,217 @@ const CE_DATA = {
         { name: "Leiden University", count: 2, country: "Netherlands", logo: "leiden-university.png" },
         { name: "Technical University of Munich", count: 1, country: "Germany", logo: "technical-university-of-munich.png" },
         { name: "Technical University of Denmark", count: 1, country: "Denmark", logo: "technical-university-of-denmark.png" },
-        { name: "RWTH Aachen University", count: 1, country: "Germany", logo: null },
-        { name: "University of Southern Denmark", count: 1, country: "Denmark", logo: null },
-        { name: "Instituto Superior Técnico Lisboa", count: 1, country: "Portugal", logo: null },
+        { name: "RWTH Aachen University", count: 1, country: "Germany", logo: "aachen-university.png" },
+        { name: "University of Southern Denmark", count: 1, country: "Denmark", logo: "university-of-southern-denmark.png" },
+        { name: "Instituto Superior Técnico Lisboa", count: 1, country: "Portugal", logo: "institute-superior-tecnico-lisboae.png" },
         { name: "Université Libre de Bruxelles", count: 1, country: "Belgium", logo: "universite-libre-de-bruxelles.png" },
-        { name: "MCI - The Entrepreneurial School", count: 1, country: "Austria", logo: null },
-        { name: "Universidad Politécnica de Madrid", count: 1, country: "Spain", logo: null },
-        { name: "University of Seoul", count: 1, country: "South Korea", logo: null },
+        { name: "MCI - The Entrepreneurial School", count: 1, country: "Austria", logo: "mci.png" },
+        { name: "Universidad Politécnica de Madrid", count: 1, country: "Spain", logo: "universidad-de-madrid.png" },
+        { name: "University of Seoul", count: 1, country: "South Korea", logo: "University-of-Seoul.png" },
         { name: "University of Groningen", count: 1, country: "Netherlands", logo: "university-of-groningen.png" },
         { name: "KU Leuven", count: 1, country: "Belgium", logo: "ku-leuven.png" },
         { name: "University of Liège", count: 1, country: "Belgium", logo: "university-of-liege.png" },
-        { name: "Institute for Advanced Architecture of Catalonia", count: 1, country: "Spain", logo: null },
-        { name: "EU-CONEXUS", count: 1, country: "France", logo: null }
+        { name: "Institute for Advanced Architecture of Catalonia", count: 1, country: "Spain", logo: "institute-architecture-catalonia.jpg" },
+        { name: "EU-CONEXUS", count: 1, country: "France", logo: "eu-conexus.png" }
     ],
+
+
+    // ══════════════════════════════════════════
+    // SECTION 5B: UNIVERSITY DETAILS DATABASE
+    // ══════════════════════════════════════════
+    // Detailed info for "All Universities" section
+    
+    universityDetails: {
+        "TU Delft": {
+            fullName: "Delft University of Technology",
+            city: "Delft",
+            country: "Netherlands",
+            founded: 1842,
+            funFact: "Europe's largest technical university and birthplace of innovations like Bluetooth and countless sustainable technologies. The campus has its own nuclear reactor for research!",
+            website: "https://www.tudelft.nl",
+            logo: "tu-delft.png"
+        },
+        "KTH Royal Institute of Technology": {
+            fullName: "KTH Royal Institute of Technology",
+            city: "Stockholm",
+            country: "Sweden",
+            founded: 1827,
+            funFact: "Sweden's largest technical university, founded by King Karl XIV Johan. One-third of Sweden's engineering research happens here, and it has produced groundbreaking inventions like the computer mouse and Skype.",
+            website: "https://www.kth.se",
+            logo: "kth-royal-institute-of-technology.png"
+        },
+        "Wageningen University & Research": {
+            fullName: "Wageningen University & Research",
+            city: "Wageningen",
+            country: "Netherlands",
+            founded: 1876,
+            funFact: "World's #1 university for agriculture and forestry. Their motto is 'To explore the potential of nature to improve the quality of life' — and they helped feed the Netherlands during WWII occupation.",
+            website: "https://www.wur.nl",
+            logo: "wageningen-university.png"
+        },
+        "Eindhoven University of Technology": {
+            fullName: "Eindhoven University of Technology",
+            city: "Eindhoven",
+            country: "Netherlands",
+            founded: 1956,
+            funFact: "Located in Europe's smartest region (Brainport), home to Philips and ASML. TU/e graduates founded companies generating over €60 billion in annual revenue — more per student than MIT!",
+            website: "https://www.tue.nl",
+            logo: "eindhoven-university.png"
+        },
+        "Maastricht University": {
+            fullName: "Maastricht University",
+            city: "Maastricht",
+            country: "Netherlands",
+            founded: 1976,
+            funFact: "The Netherlands' most international university (over 50% international students) and pioneer of Problem-Based Learning. The city is where the European Union was born with the Maastricht Treaty in 1992!",
+            website: "https://www.maastrichtuniversity.nl",
+            logo: "maastricht-university.png"
+        },
+        "NOVA School of Business & Economics": {
+            fullName: "NOVA School of Business & Economics",
+            city: "Lisbon",
+            country: "Portugal",
+            founded: 1978,
+            funFact: "Portugal's top business school with triple accreditation (AACSB, AMBA, EQUIS) — only 1% of business schools worldwide achieve this. Their beachfront campus overlooks the Atlantic Ocean!",
+            website: "https://www.novasbe.unl.pt",
+            logo: "nova-logo.png"
+        },
+        "Leiden University": {
+            fullName: "Leiden University",
+            city: "Leiden",
+            country: "Netherlands",
+            founded: 1575,
+            funFact: "The Netherlands' oldest university, founded during the Dutch Revolt as a gift from William of Orange. Sixteen Nobel Prize winners studied or taught here, including Einstein as a visiting professor!",
+            website: "https://www.universiteitleiden.nl",
+            logo: "leiden-university.png"
+        },
+        "Technical University of Munich": {
+            fullName: "Technical University of Munich",
+            city: "Munich",
+            country: "Germany",
+            founded: 1868,
+            funFact: "Germany's #1 technical university with 17 Nobel laureates. The only German university to be named 'University of Excellence' three times. Famous alumni include Rudolf Diesel (inventor of the diesel engine)!",
+            website: "https://www.tum.de",
+            logo: "technical-university-of-munich.png"
+        },
+        "Technical University of Denmark": {
+            fullName: "Technical University of Denmark",
+            city: "Kongens Lyngby",
+            country: "Denmark",
+            founded: 1829,
+            funFact: "DTU invented the Bluetooth technology that connects your devices! The university collaborates with over 200 companies and produces more patents per researcher than any other Danish university.",
+            website: "https://www.dtu.dk",
+            logo: "technical-university-of-denmark.png"
+        },
+        "RWTH Aachen University": {
+            fullName: "RWTH Aachen University",
+            city: "Aachen",
+            country: "Germany",
+            founded: 1870,
+            funFact: "Europe's largest technical university in terms of students and Germany's #1 engineering school. RWTH receives more industry research funding than any other German university — over €400 million annually!",
+            website: "https://www.rwth-aachen.de",
+            logo: "aachen-university.png"
+        },
+        "University of Southern Denmark": {
+            fullName: "University of Southern Denmark",
+            city: "Odense",
+            country: "Denmark",
+            founded: 1966,
+            funFact: "Home to Denmark's only space research center and the birthplace of the humanoid robot 'iCub'. Located in Hans Christian Andersen's hometown of Odense!",
+            website: "https://www.sdu.dk",
+            logo: "university-of-southern-denmark.png"
+        },
+        "Instituto Superior Técnico Lisboa": {
+            fullName: "Instituto Superior Técnico",
+            city: "Lisbon",
+            country: "Portugal",
+            founded: 1911,
+            funFact: "Portugal's largest engineering school and the country's most prestigious technical institution. IST manages one of Europe's largest solar power test facilities and runs its own nuclear reactor for research!",
+            website: "https://tecnico.ulisboa.pt",
+            logo: "institute-superior-tecnico-lisboae.png"
+        },
+        "Université Libre de Bruxelles": {
+            fullName: "Université Libre de Bruxelles",
+            city: "Brussels",
+            country: "Belgium",
+            founded: 1834,
+            funFact: "Belgium's largest French-speaking university with 5 Nobel Prize winners! Located in the EU capital, ULB has strong ties to European institutions and trains many EU policymakers.",
+            website: "https://www.ulb.be",
+            logo: "universite-libre-de-bruxelles.png"
+        },
+        "MCI - The Entrepreneurial School": {
+            fullName: "MCI Management Center Innsbruck",
+            city: "Innsbruck",
+            country: "Austria",
+            founded: 1995,
+            funFact: "Austria's leading entrepreneurial university, ranked #1 in Austria for student satisfaction. Located in the heart of the Alps with stunning mountain views from classrooms — study and ski in the same day!",
+            website: "https://www.mci.edu",
+            logo: "mci.png"
+        },
+        "Universidad Politécnica de Madrid": {
+            fullName: "Universidad Politécnica de Madrid",
+            city: "Madrid",
+            country: "Spain",
+            founded: 1971,
+            funFact: "Spain's largest technical university with alumni including 15% of Spanish engineers. UPM led the design of Madrid's impressive metro system and Spain's high-speed rail network!",
+            website: "https://www.upm.es",
+            logo: "universidad-de-madrid.png"
+        },
+        "University of Seoul": {
+            fullName: "University of Seoul",
+            city: "Seoul",
+            country: "South Korea",
+            founded: 1918,
+            funFact: "One of Korea's leading public universities, originally founded as the Kyungsung Public Agriculture and Commerce School. Located in the world's most wired city with average internet speeds of 29 Mbps!",
+            website: "https://www.uos.ac.kr",
+            logo: "University-of-Seoul.png"
+        },
+        "University of Groningen": {
+            fullName: "University of Groningen",
+            city: "Groningen",
+            country: "Netherlands",
+            founded: 1614,
+            funFact: "The Netherlands' second-oldest university with 4 Nobel Prize winners, including the first female Nobel laureate in chemistry (2009). Half the city's population are students — true college town vibes!",
+            website: "https://www.rug.nl",
+            logo: "university-of-groningen.png"
+        },
+        "KU Leuven": {
+            fullName: "KU Leuven",
+            city: "Leuven",
+            country: "Belgium",
+            founded: 1425,
+            funFact: "Belgium's oldest and largest university, and consistently Europe's most innovative university (Reuters ranking). The Stella Artois brewery was founded by KU Leuven students in 1366!",
+            website: "https://www.kuleuven.be",
+            logo: "ku-leuven.png"
+        },
+        "University of Liège": {
+            fullName: "University of Liège",
+            city: "Liège",
+            country: "Belgium",
+            founded: 1817,
+            funFact: "Belgium's first public university, known as 'the university of revolution' for its role in Belgian independence. Home to Europe's strongest electromagnet and pioneering research in astrophysics!",
+            website: "https://www.uliege.be",
+            logo: "university-of-liege.png"
+        },
+        "Institute for Advanced Architecture of Catalonia": {
+            fullName: "Institute for Advanced Architecture of Catalonia",
+            city: "Barcelona",
+            country: "Spain",
+            founded: 2001,
+            funFact: "IAAC pioneered digital fabrication in architecture and created the world's first 3D-printed building in Barcelona. They're pushing the boundaries of ecological buildings and biocities!",
+            website: "https://iaac.net",
+            logo: "institute-architecture-catalonia.jpg"
+        },
+        "EU-CONEXUS": {
+            fullName: "European University for Smart Urban Coastal Sustainability",
+            city: "La Rochelle",
+            country: "France",
+            founded: 2019,
+            funFact: "A unique alliance of 10 universities across Europe focused on smart, sustainable coastal cities. Students can study at multiple universities and earn joint degrees — truly European education!",
+            website: "https://www.euconexus.eu",
+            logo: "eu-conexus.png"
+        }
+    },
 
 
     // ══════════════════════════════════════════
