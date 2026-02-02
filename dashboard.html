@@ -19,7 +19,7 @@
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     
     <!-- CE Alumni Data -->
-    <script src="data.js?v=2"></script>
+    <script src="data.js?v=3"></script>
     
     <style>
         /* ============================================
@@ -5096,10 +5096,17 @@
         // ALL UNIVERSITIES GRID
         // ==========================================
         const universitiesGrid = document.getElementById('universitiesGrid');
+        console.log('Universities Grid element:', universitiesGrid);
+        console.log('CE_DATA.universityDetails exists?', !!CE_DATA.universityDetails);
+        console.log('CE_DATA.topUniversities length:', CE_DATA.topUniversities.length);
+        
         if (universitiesGrid && CE_DATA.universityDetails) {
             universitiesGrid.innerHTML = CE_DATA.topUniversities.map(uni => {
                 const details = CE_DATA.universityDetails[uni.name];
-                if (!details) return '';
+                if (!details) {
+                    console.warn('No details found for:', uni.name);
+                    return '';
+                }
                 
                 return `
                     <div class="uni-card" onclick="openUniDetailModal('${uni.name.replace(/'/g, "\\'")}')">
@@ -5116,7 +5123,13 @@
                     </div>
                 `;
             }).join('');
+            console.log('Universities grid populated with', CE_DATA.topUniversities.length, 'cards');
             lucide.createIcons();
+        } else {
+            console.error('Cannot populate universities grid:', {
+                gridExists: !!universitiesGrid,
+                detailsExists: !!CE_DATA.universityDetails
+            });
         }
         
         // Open university detail modal
