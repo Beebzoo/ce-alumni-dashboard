@@ -19,7 +19,7 @@
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     
     <!-- CE Alumni Data -->
-    <script src="data.js"></script>
+    <script src="data.js?v=2"></script>
     
     <style>
         /* ============================================
@@ -4712,6 +4712,12 @@
         
         // Add markers for each country
         CE_DATA.countriesLivingIn.forEach(country => {
+            // Skip if no coordinates
+            if (!country.coords || !Array.isArray(country.coords) || country.coords.length !== 2) {
+                console.warn('Missing or invalid coords for', country.name);
+                return;
+            }
+            
             // Determine marker size based on alumni count
             let radius = 8;
             let fillColor = '#00A2DB'; // um-light-blue for small
