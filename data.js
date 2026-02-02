@@ -127,7 +127,7 @@ const CE_DATA = {
         { name: "Technical University of Denmark", count: 1, country: "Denmark", logo: "technical-university-of-denmark.png" },
         { name: "RWTH Aachen University", count: 1, country: "Germany", logo: "aachen-university.png" },
         { name: "University of Southern Denmark", count: 1, country: "Denmark", logo: "university-of-southern-denmark.png" },
-        { name: "Instituto Superior Técnico Lisboa", count: 1, country: "Portugal", logo: "institute-superior-tecnico-lisboae.png" },
+        { name: "Instituto Superior Técnico Lisboa", count: 1, country: "Portugal", logo: "instituto-superior-tecnico-lisboae.png" },
         { name: "Université Libre de Bruxelles", count: 1, country: "Belgium", logo: "universite-libre-de-bruxelles.png" },
         { name: "MCI - The Entrepreneurial School", count: 1, country: "Austria", logo: "mci.png" },
         { name: "Universidad Politécnica de Madrid", count: 1, country: "Spain", logo: "universidad-de-madrid.png" },
@@ -252,7 +252,7 @@ const CE_DATA = {
             founded: 1911,
             funFact: "Portugal's largest engineering school and the country's most prestigious technical institution. IST manages one of Europe's largest solar power test facilities and runs its own nuclear reactor for research!",
             website: "https://tecnico.ulisboa.pt",
-            logo: "institute-superior-tecnico-lisboae.png"
+            logo: "instituto-superior-tecnico-lisboae.png"
         },
         "Université Libre de Bruxelles": {
             fullName: "Université Libre de Bruxelles",
