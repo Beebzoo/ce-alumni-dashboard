@@ -1054,9 +1054,9 @@
         
         .concentrations-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            max-width: 1200px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            max-width: 1300px;
             margin: 0 auto;
         }
         
@@ -1156,21 +1156,18 @@
             font-size: 20px;
             font-weight: 600;
             color: var(--um-dark-blue);
-            margin-bottom: 8px;
+            margin-bottom: 12px;
         }
         
-        .concentration-count {
-            font-family: var(--font-heading);
-            font-size: 48px;
-            font-weight: 700;
-            color: var(--ce-green-primary);
-            line-height: 1;
-            margin-bottom: 8px;
-        }
-        
-        .concentration-label {
-            font-size: 14px;
+        .concentration-description {
+            font-size: 13px;
             color: var(--gray-500);
+            line-height: 1.5;
+            margin-bottom: 16px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
         
         /* ============================================
@@ -2922,8 +2919,8 @@
         ============================================ */
         @media (max-width: 1024px) {
             .concentrations-grid {
-                grid-template-columns: 1fr;
-                max-width: 400px;
+                grid-template-columns: repeat(2, 1fr);
+                max-width: 700px;
             }
             
             .destinations-grid {
@@ -2936,6 +2933,11 @@
         }
         
         @media (max-width: 768px) {
+            .concentrations-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+            }
+            
             header {
                 padding: 0 20px;
             }
@@ -3949,8 +3951,7 @@
                         <i data-lucide="${conc.icon}"></i>
                     </div>
                     <h3>${conc.name}</h3>
-                    <div class="concentration-count">${conc.count}</div>
-                    <p class="concentration-label">alumni</p>
+                    <p class="concentration-description">${conc.description}</p>
                     <span class="click-hint"><i data-lucide="info"></i> Click for details</span>
                 </div>
             `).join('');
@@ -3966,7 +3967,7 @@
             document.getElementById('modalIcon').style.background = `linear-gradient(135deg, ${conc.color}, ${conc.color}dd)`;
             document.getElementById('modalIcon').innerHTML = `<i data-lucide="${conc.icon}"></i>`;
             document.getElementById('modalTitle').textContent = conc.name;
-            document.getElementById('modalStat').textContent = `${conc.count} alumni (${conc.percentage}%)`;
+            document.getElementById('modalStat').style.display = 'none';
             document.getElementById('modalDescription').textContent = conc.description;
             document.getElementById('modalFullDescription').textContent = conc.fullDescription || '';
             
