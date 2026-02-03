@@ -3935,24 +3935,26 @@
     </footer>
     
     <script>
-        // Initialize Lucide icons
-        lucide.createIcons();
-        
-        // ==========================================
-        // POPULATE PAGE FROM DATA.JS
-        // ==========================================
-        
-        // Hero stats - set data targets from CE_DATA
-        document.querySelectorAll('.stat-ring').forEach((ring, index) => {
-            const valueEl = ring.querySelector('.stat-value');
-            const targets = [
-                CE_DATA.summary.totalAlumni,
-                CE_DATA.summary.nationalities,
-                CE_DATA.summary.countriesLivingIn,
-                CE_DATA.summary.universitiesAttended
-            ];
-            valueEl.dataset.target = targets[index];
-        });
+        // Wait for DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Lucide icons
+            lucide.createIcons();
+            
+            // ==========================================
+            // POPULATE PAGE FROM DATA.JS
+            // ==========================================
+            
+            // Hero stats - set data targets from CE_DATA
+            document.querySelectorAll('.stat-ring').forEach((ring, index) => {
+                const valueEl = ring.querySelector('.stat-value');
+                const targets = [
+                    CE_DATA.summary.totalAlumni,
+                    CE_DATA.summary.nationalities,
+                    CE_DATA.summary.countriesLivingIn,
+                    CE_DATA.summary.universitiesAttended
+                ];
+                valueEl.dataset.target = targets[index];
+            });
         
         // ==========================================
         // CONCENTRATION CARDS - GENERATE & MODAL
@@ -4738,6 +4740,8 @@
         
         // Initialize all Lucide icons after DOM is ready
         lucide.createIcons();
+        
+        }); // End of DOMContentLoaded
     </script>
     
     <!-- Leaflet JS -->
@@ -4745,13 +4749,15 @@
     
     <!-- Map Initialization -->
     <script>
-        // ==========================================
-        // WORLD MAP
-        // ==========================================
-        const map = L.map('worldMap', {
-            zoomControl: true,
-            scrollWheelZoom: true
-        }).setView([50, 10], 4); // Center on Europe since most alumni are there
+        // Wait for everything including Leaflet to load
+        window.addEventListener('load', function() {
+            // ==========================================
+            // WORLD MAP
+            // ==========================================
+            const map = L.map('worldMap', {
+                zoomControl: true,
+                scrollWheelZoom: true
+            }).setView([50, 10], 4); // Center on Europe since most alumni are there
         
         L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
             attribution: 'OpenStreetMap, CartoDB',
@@ -4819,6 +4825,8 @@
         
         // Initialize all Lucide icons
         lucide.createIcons();
+        
+        }); // End of window load event
     </script>
 </body>
 </html>
