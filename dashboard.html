@@ -4735,6 +4735,9 @@
             
             growthBarsObserver.observe(growthChart);
         }
+        
+        // Initialize all Lucide icons after DOM is ready
+        lucide.createIcons();
     </script>
     
     <!-- Leaflet JS -->
@@ -4813,6 +4816,9 @@
                 this.setStyle({ fillOpacity: 0.85, radius: radius });
             });
         });
+        
+        // Initialize all Lucide icons
+        lucide.createIcons();
     </script>
 </body>
 </html>
