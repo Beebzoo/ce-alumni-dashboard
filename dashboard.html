@@ -1054,9 +1054,9 @@
         
         .concentrations-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
-            max-width: 1300px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1200px;
             margin: 0 auto;
         }
         
@@ -1156,18 +1156,21 @@
             font-size: 20px;
             font-weight: 600;
             color: var(--um-dark-blue);
-            margin-bottom: 12px;
+            margin-bottom: 8px;
         }
         
-        .concentration-description {
-            font-size: 13px;
+        .concentration-count {
+            font-family: var(--font-heading);
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--ce-green-primary);
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+        
+        .concentration-label {
+            font-size: 14px;
             color: var(--gray-500);
-            line-height: 1.5;
-            margin-bottom: 16px;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
         }
         
         /* ============================================
@@ -2919,8 +2922,8 @@
         ============================================ */
         @media (max-width: 1024px) {
             .concentrations-grid {
-                grid-template-columns: repeat(2, 1fr);
-                max-width: 700px;
+                grid-template-columns: 1fr;
+                max-width: 400px;
             }
             
             .destinations-grid {
@@ -2933,11 +2936,6 @@
         }
         
         @media (max-width: 768px) {
-            .concentrations-grid {
-                grid-template-columns: 1fr;
-                max-width: 400px;
-            }
-            
             header {
                 padding: 0 20px;
             }
@@ -3284,7 +3282,7 @@
             <h1>Circular Engineering<br><span>Alumni Community</span></h1>
             
             <p class="hero-subtitle">
-                From Maastricht to the world â€” tracking the journeys of CE alumni 
+                From Maastricht to the world - tracking the journeys of CE alumni 
                 as they build sustainable futures across industries and continents.
             </p>
             
@@ -3821,7 +3819,7 @@
     <section class="talent-flow">
         <div class="section-header">
             <h2>Regional Impact</h2>
-            <p>Tracking where CE alumni come from and where they go â€” measuring our contribution to the regional knowledge economy.</p>
+            <p>Tracking where CE alumni come from and where they go - measuring our contribution to the regional knowledge economy.</p>
         </div>
         
         <div class="flow-stats">
@@ -3915,7 +3913,7 @@
         </div>
         
         <div class="footer-bottom">
-            <p>&copy; 2025 Maastricht University Â· Faculty of Science and Engineering</p>
+            <p>&copy; 2025 Maastricht University  -  Faculty of Science and Engineering</p>
             <a href="mailto:fse-alumni@maastrichtuniversity.nl">fse-alumni@maastrichtuniversity.nl</a>
         </div>
     </footer>
@@ -3951,7 +3949,8 @@
                         <i data-lucide="${conc.icon}"></i>
                     </div>
                     <h3>${conc.name}</h3>
-                    <p class="concentration-description">${conc.description}</p>
+                    <div class="concentration-count">${conc.count}</div>
+                    <p class="concentration-label">alumni</p>
                     <span class="click-hint"><i data-lucide="info"></i> Click for details</span>
                 </div>
             `).join('');
@@ -3967,7 +3966,7 @@
             document.getElementById('modalIcon').style.background = `linear-gradient(135deg, ${conc.color}, ${conc.color}dd)`;
             document.getElementById('modalIcon').innerHTML = `<i data-lucide="${conc.icon}"></i>`;
             document.getElementById('modalTitle').textContent = conc.name;
-            document.getElementById('modalStat').style.display = 'none';
+            document.getElementById('modalStat').textContent = `${conc.count} alumni (${conc.percentage}%)`;
             document.getElementById('modalDescription').textContent = conc.description;
             document.getElementById('modalFullDescription').textContent = conc.fullDescription || '';
             
@@ -4140,26 +4139,26 @@
         // COUNTRY MODAL DATA & FUNCTIONS
         // ==========================================
         const countryData = {
-            be: { name: 'Belgium', capital: 'Brussels', population: '11.8 million', language: 'Dutch, French, German', currency: 'Euro (â‚¬)', funFact: 'Belgium produces over 220,000 tonnes of chocolate per year and invented the praline. The Smurfs and Tintin were both created here!' },
-            nl: { name: 'Netherlands', capital: 'Amsterdam', population: '18 million', language: 'Dutch', currency: 'Euro (â‚¬)', funFact: 'The Dutch are the tallest people in the world on average. Amsterdam has more bicycles than people  â€”  18 million bikes nationwide!' },
-            de: { name: 'Germany', capital: 'Berlin', population: '84 million', language: 'German', currency: 'Euro (â‚¬)', funFact: 'Germany has over 1,500 different types of sausages and more than 1,200 breweries. Berlin is 9 times bigger than Paris!' },
+            be: { name: 'Belgium', capital: 'Brussels', population: '11.8 million', language: 'Dutch, French, German', currency: 'Euro (EUR)', funFact: 'Belgium produces over 220,000 tonnes of chocolate per year and invented the praline. The Smurfs and Tintin were both created here!' },
+            nl: { name: 'Netherlands', capital: 'Amsterdam', population: '18 million', language: 'Dutch', currency: 'Euro (EUR)', funFact: 'The Dutch are the tallest people in the world on average. Amsterdam has more bicycles than people  -  18 million bikes nationwide!' },
+            de: { name: 'Germany', capital: 'Berlin', population: '84 million', language: 'German', currency: 'Euro (EUR)', funFact: 'Germany has over 1,500 different types of sausages and more than 1,200 breweries. Berlin is 9 times bigger than Paris!' },
             se: { name: 'Sweden', capital: 'Stockholm', population: '10.5 million', language: 'Swedish', currency: 'Swedish Krona (kr)', funFact: 'Sweden was the first country to have a phone number anyone can call to talk to a random Swede. IKEA, Spotify, and Minecraft all originated here!' },
-            pt: { name: 'Portugal', capital: 'Lisbon', population: '10.7 million', language: 'Portuguese', currency: 'Euro (â‚¬)', funFact: 'Portugal is the oldest nation-state in Europe (established 1139) and Lisbon is older than Rome by 400 years!' },
-            dk: { name: 'Denmark', capital: 'Copenhagen', population: '5.9 million', language: 'Danish', currency: 'Danish Krone (kr)', funFact: 'Denmark is consistently ranked as one of the happiest countries in the world. LEGO was invented here  â€”  the name means "play well" in Danish!' },
-            it: { name: 'Italy', capital: 'Rome', population: '59 million', language: 'Italian', currency: 'Euro (â‚¬)', funFact: 'Italy has the most UNESCO World Heritage Sites in the world (59). Italians invented the piano, thermometer, and eyeglasses!' },
-            fr: { name: 'France', capital: 'Paris', population: '68 million', language: 'French', currency: 'Euro (â‚¬)', funFact: 'France is the most visited country in the world with 90+ million tourists yearly. The Eiffel Tower was originally meant to be temporary!' },
-            es: { name: 'Spain', capital: 'Madrid', population: '48 million', language: 'Spanish', currency: 'Euro (â‚¬)', funFact: 'Spain has a tomato-throwing festival (La Tomatina) where 150,000 tomatoes are thrown in one hour! Spain gave the world the first modern novel: Don Quixote.' },
-            at: { name: 'Austria', capital: 'Vienna', population: '9.1 million', language: 'German', currency: 'Euro (â‚¬)', funFact: 'Vienna has been ranked the world\'s most liveable city multiple times. The croissant was invented in Vienna, not France!' },
+            pt: { name: 'Portugal', capital: 'Lisbon', population: '10.7 million', language: 'Portuguese', currency: 'Euro (EUR)', funFact: 'Portugal is the oldest nation-state in Europe (established 1139) and Lisbon is older than Rome by 400 years!' },
+            dk: { name: 'Denmark', capital: 'Copenhagen', population: '5.9 million', language: 'Danish', currency: 'Danish Krone (kr)', funFact: 'Denmark is consistently ranked as one of the happiest countries in the world. LEGO was invented here  -  the name means "play well" in Danish!' },
+            it: { name: 'Italy', capital: 'Rome', population: '59 million', language: 'Italian', currency: 'Euro (EUR)', funFact: 'Italy has the most UNESCO World Heritage Sites in the world (59). Italians invented the piano, thermometer, and eyeglasses!' },
+            fr: { name: 'France', capital: 'Paris', population: '68 million', language: 'French', currency: 'Euro (EUR)', funFact: 'France is the most visited country in the world with 90+ million tourists yearly. The Eiffel Tower was originally meant to be temporary!' },
+            es: { name: 'Spain', capital: 'Madrid', population: '48 million', language: 'Spanish', currency: 'Euro (EUR)', funFact: 'Spain has a tomato-throwing festival (La Tomatina) where 150,000 tomatoes are thrown in one hour! Spain gave the world the first modern novel: Don Quixote.' },
+            at: { name: 'Austria', capital: 'Vienna', population: '9.1 million', language: 'German', currency: 'Euro (EUR)', funFact: 'Vienna has been ranked the world\'s most liveable city multiple times. The croissant was invented in Vienna, not France!' },
             ro: { name: 'Romania', capital: 'Bucharest', population: '19 million', language: 'Romanian', currency: 'Romanian Leu (lei)', funFact: 'Romania is home to the heaviest building in the world: the Palace of Parliament. Bran Castle inspired the legend of Dracula!' },
             hu: { name: 'Hungary', capital: 'Budapest', population: '9.6 million', language: 'Hungarian', currency: 'Hungarian Forint (Ft)', funFact: 'Hungary has the oldest underground railway in continental Europe. Hungarians invented the Rubik\'s Cube and the ballpoint pen!' },
-            ie: { name: 'Ireland', capital: 'Dublin', population: '5.1 million', language: 'English, Irish', currency: 'Euro (â‚¬)', funFact: 'Ireland has no native snakes  â€”  legend says St. Patrick drove them out! Halloween originated from the Celtic festival of Samhain here.' },
-            bg: { name: 'Bulgaria', capital: 'Sofia', population: '6.5 million', language: 'Bulgarian', currency: 'Bulgarian Lev (Ð»Ð²)', funFact: 'Bulgaria\'s name hasn\'t changed since 681 AD. Bulgarians shake their heads to mean "yes" and nod for "no"!' },
-            in: { name: 'India', capital: 'New Delhi', population: '1.4 billion', language: 'Hindi, English', currency: 'Indian Rupee (â‚¹)', funFact: 'India invented chess, the number zero, and shampoo! The country has the world\'s largest postal network with over 150,000 post offices.' },
-            lb: { name: 'Lebanon', capital: 'Beirut', population: '5.3 million', language: 'Arabic', currency: 'Lebanese Pound (LÂ£)', funFact: 'Lebanon has been making wine for over 5,000 years  â€”  one of the oldest wine regions in the world! It\'s the only Arab country with no desert.' },
-            ec: { name: 'Ecuador', capital: 'Quito', population: '18 million', language: 'Spanish', currency: 'US Dollar ($)', funFact: 'Ecuador is named after the equator. The GalÃ¡pagos Islands inspired Darwin\'s theory of evolution. Ecuador was the first country to grant constitutional rights to nature!' },
-            tt: { name: 'Trinidad and Tobago', capital: 'Port of Spain', population: '1.4 million', language: 'English', currency: 'Trinidad Dollar (TT$)', funFact: 'Trinidad invented the steel pan drum  â€”  the only acoustic musical instrument invented in the 20th century!' },
-            kr: { name: 'South Korea', capital: 'Seoul', population: '52 million', language: 'Korean', currency: 'South Korean Won (â‚©)', funFact: 'South Korea has the fastest average internet speed in the world! Koreans celebrate their birthdays on New Year\'s Day  â€”  everyone turns a year older together!' },
-            md: { name: 'Moldova', capital: 'ChiÈ™inÄƒu', population: '2.6 million', language: 'Romanian', currency: 'Moldovan Leu (lei)', funFact: 'Moldova has the highest density of vineyards in the world! The MileÈ™ti Mici wine cellar has underground galleries stretching 200 km.' }
+            ie: { name: 'Ireland', capital: 'Dublin', population: '5.1 million', language: 'English, Irish', currency: 'Euro (EUR)', funFact: 'Ireland has no native snakes  -  legend says St. Patrick drove them out! Halloween originated from the Celtic festival of Samhain here.' },
+            bg: { name: 'Bulgaria', capital: 'Sofia', population: '6.5 million', language: 'Bulgarian', currency: 'Bulgarian Lev (lv)', funFact: 'Bulgaria\'s name hasn\'t changed since 681 AD. Bulgarians shake their heads to mean "yes" and nod for "no"!' },
+            in: { name: 'India', capital: 'New Delhi', population: '1.4 billion', language: 'Hindi, English', currency: 'Indian Rupee (Rs)', funFact: 'India invented chess, the number zero, and shampoo! The country has the world\'s largest postal network with over 150,000 post offices.' },
+            lb: { name: 'Lebanon', capital: 'Beirut', population: '5.3 million', language: 'Arabic', currency: 'Lebanese Pound (LBP)', funFact: 'Lebanon has been making wine for over 5,000 years  -  one of the oldest wine regions in the world! It\'s the only Arab country with no desert.' },
+            ec: { name: 'Ecuador', capital: 'Quito', population: '18 million', language: 'Spanish', currency: 'US Dollar ($)', funFact: 'Ecuador is named after the equator. The Galapagos Islands inspired Darwin\'s theory of evolution. Ecuador was the first country to grant constitutional rights to nature!' },
+            tt: { name: 'Trinidad and Tobago', capital: 'Port of Spain', population: '1.4 million', language: 'English', currency: 'Trinidad Dollar (TT$)', funFact: 'Trinidad invented the steel pan drum  -  the only acoustic musical instrument invented in the 20th century!' },
+            kr: { name: 'South Korea', capital: 'Seoul', population: '52 million', language: 'Korean', currency: 'South Korean Won (W)', funFact: 'South Korea has the fastest average internet speed in the world! Koreans celebrate their birthdays on New Year\'s Day  -  everyone turns a year older together!' },
+            md: { name: 'Moldova', capital: 'Chisinau', population: '2.6 million', language: 'Romanian', currency: 'Moldovan Leu (lei)', funFact: 'Moldova has the highest density of vineyards in the world! The Milesti Mici wine cellar has underground galleries stretching 200 km.' }
         };
         
         function openCountryModal(countryCode) {
@@ -4192,12 +4191,12 @@
         // CITY MODAL DATA & FUNCTIONS
         // ==========================================
         const cityData = {
-            maastricht: { name: 'Maastricht', country: 'Netherlands', countryCode: 'nl', population: '126,000', province: 'Limburg', knownFor: 'EU Treaty & University', founded: 'Roman Era (~50 AD)', funFact: 'Maastricht is the birthplace of the European Union  â€”  the Maastricht Treaty was signed here in 1992! The city has 1,677 national heritage buildings and underground caves with over 200 km of tunnels.' },
-            lisbon: { name: 'Lisbon', country: 'Portugal', countryCode: 'pt', population: '545,000', province: 'Lisbon District', knownFor: 'Trams & PastÃ©is de Nata', founded: '~1200 BC', funFact: 'Lisbon is Europe\'s second-oldest capital (after Athens) and is 400 years older than Rome! Its iconic yellow Tram 28 has been operating since 1901.' },
+            maastricht: { name: 'Maastricht', country: 'Netherlands', countryCode: 'nl', population: '126,000', province: 'Limburg', knownFor: 'EU Treaty & University', founded: 'Roman Era (~50 AD)', funFact: 'Maastricht is the birthplace of the European Union  -  the Maastricht Treaty was signed here in 1992! The city has 1,677 national heritage buildings and underground caves with over 200 km of tunnels.' },
+            lisbon: { name: 'Lisbon', country: 'Portugal', countryCode: 'pt', population: '545,000', province: 'Lisbon District', knownFor: 'Trams & Pasteis de Nata', founded: '~1200 BC', funFact: 'Lisbon is Europe\'s second-oldest capital (after Athens) and is 400 years older than Rome! Its iconic yellow Tram 28 has been operating since 1901.' },
             stockholm: { name: 'Stockholm', country: 'Sweden', countryCode: 'se', population: '1 million', province: 'Stockholm County', knownFor: 'Nobel Prize & Islands', founded: '1252 AD', funFact: 'Stockholm is built on 14 islands connected by 57 bridges, earning it the nickname "Venice of the North." The water is so clean you can swim in the city center!' },
-            wageningen: { name: 'Wageningen', country: 'Netherlands', countryCode: 'nl', population: '40,000', province: 'Gelderland', knownFor: 'Food Science & WUR', founded: '828 AD', funFact: 'Wageningen is the center of "Food Valley"  â€”  the world\'s largest food R&D cluster. WWII officially ended in the Netherlands when German forces surrendered here on May 5, 1945.' },
+            wageningen: { name: 'Wageningen', country: 'Netherlands', countryCode: 'nl', population: '40,000', province: 'Gelderland', knownFor: 'Food Science & WUR', founded: '828 AD', funFact: 'Wageningen is the center of "Food Valley"  -  the world\'s largest food R&D cluster. WWII officially ended in the Netherlands when German forces surrendered here on May 5, 1945.' },
             delft: { name: 'Delft', country: 'Netherlands', countryCode: 'nl', population: '104,000', province: 'South Holland', knownFor: 'Blue Pottery & Vermeer', founded: '~1075 AD', funFact: 'Delft is the birthplace of painter Johannes Vermeer and the famous Delft Blue pottery. In 1654, a massive gunpowder explosion called "The Thunderclap" destroyed much of the city!' },
-            eindhoven: { name: 'Eindhoven', country: 'Netherlands', countryCode: 'nl', population: '240,000', province: 'North Brabant', knownFor: 'Tech Hub & Design', founded: '1232 AD', funFact: 'Eindhoven is the birthplace of Philips electronics and is now called "Brainport"  â€”  Europe\'s leading technology region with more patents per capita than almost anywhere!' }
+            eindhoven: { name: 'Eindhoven', country: 'Netherlands', countryCode: 'nl', population: '240,000', province: 'North Brabant', knownFor: 'Tech Hub & Design', founded: '1232 AD', funFact: 'Eindhoven is the birthplace of Philips electronics and is now called "Brainport"  -  Europe\'s leading technology region with more patents per capita than almost anywhere!' }
         };
         
         function openCityModal(cityKey) {
@@ -4423,7 +4422,7 @@
                         <div class="pathway-source-header">
                             <div>
                                 <div class="pathway-source-name">${shortNames[concName]}</div>
-                                <div class="pathway-source-sub">${data.total} alumni Â· ${pctOfMasters}% of Master's students</div>
+                                <div class="pathway-source-sub">${data.total} alumni  -  ${pctOfMasters}% of Master's students</div>
                             </div>
                             <div class="pathway-source-pct">${data.percentOfTrack || pctOfMasters}%</div>
                         </div>
@@ -4442,8 +4441,8 @@
                 'Technical University of Denmark': 'DTU Copenhagen',
                 'NOVA School of Business & Economics': 'NOVA Lisbon',
                 'Technical University of Munich': 'TU Munich',
-                'Instituto Superior TÃ©cnico Lisboa': 'IST Lisbon',
-                'UniversitÃ© Libre de Bruxelles': 'ULB Brussels'
+                'Instituto Superior Tecnico Lisboa': 'IST Lisbon',
+                'Universite Libre de Bruxelles': 'ULB Brussels'
             };
             
             // University country mapping
@@ -4459,13 +4458,13 @@
                 'RWTH Aachen University': 'Germany',
                 'Leiden University': 'Netherlands',
                 'University of Groningen': 'Netherlands',
-                'University of LiÃ¨ge': 'Belgium',
-                'Instituto Superior TÃ©cnico Lisboa': 'Portugal',
-                'UniversitÃ© Libre de Bruxelles': 'Belgium',
+                'University of Liege': 'Belgium',
+                'Instituto Superior Tecnico Lisboa': 'Portugal',
+                'Universite Libre de Bruxelles': 'Belgium',
                 'KU Leuven': 'Belgium',
                 'University of Seoul': 'South Korea',
                 'University of Southern Denmark': 'Denmark',
-                'Universidad PolitÃ©cnica de Madrid': 'Spain',
+                'Universidad Politecnica de Madrid': 'Spain',
                 'MCI Innsbruck': 'Austria',
                 'IAAC Barcelona': 'Spain',
                 'EU-CONEXUS': 'France'
@@ -4656,7 +4655,7 @@
         // ==========================================
         const currentYear = new Date().getFullYear();
         document.querySelector('.footer-bottom p').innerHTML = 
-            `&copy; ${currentYear} Maastricht University Â· Faculty of Science and Engineering`;
+            `&copy; ${currentYear} Maastricht University  -  Faculty of Science and Engineering`;
         
         // ==========================================
         // ALUMNI WORLD MAP (Leaflet)
@@ -4677,7 +4676,7 @@
                 { name: 'Belgium', code: 'be', coords: [50.5039, 4.4699], count: 4, cities: [
                     { name: 'Brussels', count: 1 },
                     { name: 'Leuven', count: 1 },
-                    { name: 'LiÃ¨ge', count: 1 }
+                    { name: 'Liege', count: 1 }
                 ]},
                 { name: 'Germany', code: 'de', coords: [51.1657, 10.4515], count: 3, cities: [
                     { name: 'Munich', count: 1 },
@@ -4704,7 +4703,7 @@
                     { name: 'Seoul', count: 1 }
                 ]},
                 { name: 'Moldova', code: 'md', coords: [47.4116, 28.3699], count: 1, cities: [
-                    { name: 'ChiÈ™inÄƒu', count: 1 }
+                    { name: 'Chisinau', count: 1 }
                 ]}
             ];
             
@@ -4716,7 +4715,7 @@
             
             // Add tile layer (CartoDB light style)
             L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-                attribution: 'Â© OpenStreetMap, Â© CartoDB',
+                attribution: '(c) OpenStreetMap, (c) CartoDB',
                 maxZoom: 18
             }).addTo(alumniMap);
             
