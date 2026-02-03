@@ -14,17 +14,17 @@
 // ============================================
 
 
-// ╔═══════════════════════════════════════════════════════════════╗
-// ║                                                               ║
-// ║              📊 UPDATE THESE NUMBERS ANNUALLY 📊              ║
-// ║                                                               ║
-// ╚═══════════════════════════════════════════════════════════════╝
+// â•”â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•—
+// â•‘                                                               â•‘
+// â•‘              ðŸ“Š UPDATE THESE NUMBERS ANNUALLY ðŸ“Š              â•‘
+// â•‘                                                               â•‘
+// â•šâ•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 
 const CE_DATA = {
 
-    // ══════════════════════════════════════════
+    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
     // SECTION 1: SUMMARY STATISTICS
-    // ══════════════════════════════════════════
+    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
     // These appear in the hero sections across all pages
     
     summary: {
@@ -37,21 +37,21 @@ const CE_DATA = {
     },
 
 
-    // ══════════════════════════════════════════
+    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
     // SECTION 2: GRADUATION BY YEAR
-    // ══════════════════════════════════════════
+    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
     // Add new years as cohorts graduate
     
     graduationByYear: [
         { year: 2024, count: 13 },
         { year: 2025, count: 33 }
-        // { year: 2026, count: ?? },  // ← Add future years here
+        // { year: 2026, count: ?? },  // â† Add future years here
     ],
 
 
-    // ══════════════════════════════════════════
+    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
     // SECTION 3: GENDER BREAKDOWN
-    // ══════════════════════════════════════════
+    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
     // Updates the donut chart on the dashboard
     
     gender: {
@@ -64,17 +64,17 @@ const CE_DATA = {
     },
 
 
-    // ══════════════════════════════════════════
+    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
     // SECTION 4: CONCENTRATION BREAKDOWN
-    // ══════════════════════════════════════════
+    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
     // Update the count and percentage for each track
     
     concentrations: [
         {
             name: "Sustainable Biotechnology",
             shortName: "Biotech",
-            count: 17,           // ← Update this
-            percentage: 37,      // ← Update this
+            count: 17,           // â† Update this
+            percentage: 37,      // â† Update this
             icon: "flask-conical",
             color: "#10B981",
             description: "Explore how cells, genes, enzymes, and microbes can be engineered to produce food, materials, energy, and pharmaceuticals sustainably.",
@@ -85,8 +85,8 @@ const CE_DATA = {
         {
             name: "Circular Chemical Engineering",
             shortName: "Chemical",
-            count: 17,           // ← Update this
-            percentage: 37,      // ← Update this
+            count: 17,           // â† Update this
+            percentage: 37,      // â† Update this
             icon: "atom",
             color: "#14B8A6",
             description: "Develop a deep understanding of how energy and materials flow through chemical systems, and how these systems can be redesigned for efficiency.",
@@ -97,21 +97,33 @@ const CE_DATA = {
         {
             name: "Engineering Physics for Sustainable Manufacturing",
             shortName: "Physics",
-            count: 12,           // ← Update this
-            percentage: 26,      // ← Update this
+            count: 12,           // â† Update this
+            percentage: 26,      // â† Update this
             icon: "cpu",
             color: "#0EA5E9",
             description: "Design and optimise technologies that make production more efficient, intelligent, and circular.",
             fullDescription: "Build strong foundations in mechanics, materials, and electronics, learning how to sense, measure, and control physical systems with precision. Through applied design and advanced technical skills, you develop the capacity to engineer sustainable products and processes that reduce waste, extend product lifecycles, and enable smarter use of resources.",
             careers: ["Sensor-driven manufacturing", "Sustainable product development", "Smart systems", "Industrial automation"],
             courses: ["Mechanical Physics", "Sensors & Instrumentation", "Advanced Electronics", "Materials Engineering", "Product & Process Design"]
+        },
+        {
+            name: "Sustainable Mechanical Engineering",
+            shortName: "Mechanical",
+            count: 0,
+            percentage: 0,
+            icon: "cog",
+            color: "#8B5CF6",
+            description: "Focus on the physical performance, durability, and redesign of products and processes for reuse, repair, and material recovery.",
+            fullDescription: "Develop deep expertise in mechanics, structural analysis, and mechanical design, with a strong emphasis on manufacturability and lifecycle thinking. Through applied skills in simulation, materials selection, and system-level design, you will learn to engineer solutions that extend product lifespans and reduce environmental impact.",
+            careers: ["Product design", "Lifecycle engineering", "Remanufacturing", "Structural analysis"],
+            courses: ["Mechanics", "Structural Analysis", "Mechanical Design", "Materials Selection", "Lifecycle Assessment"]
         }
     ],
 
 
-    // ══════════════════════════════════════════
+    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
     // SECTION 5: TOP MASTER'S UNIVERSITIES
-    // ══════════════════════════════════════════
+    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
     // Reorder by count (highest first), update counts
     // logo: null means no logo file (will show placeholder)
     
@@ -127,22 +139,22 @@ const CE_DATA = {
         { name: "Technical University of Denmark", count: 1, country: "Denmark", logo: "technical-university-of-denmark.png" },
         { name: "RWTH Aachen University", count: 1, country: "Germany", logo: "aachen-university.png" },
         { name: "University of Southern Denmark", count: 1, country: "Denmark", logo: "university-of-southern-denmark.png" },
-        { name: "Instituto Superior Técnico Lisboa", count: 1, country: "Portugal", logo: "instituto-superior-tecnico-lisboae.png" },
-        { name: "Université Libre de Bruxelles", count: 1, country: "Belgium", logo: "universite-libre-de-bruxelles.png" },
+        { name: "Instituto Superior TÃ©cnico Lisboa", count: 1, country: "Portugal", logo: "instituto-superior-tecnico-lisboae.png" },
+        { name: "UniversitÃ© Libre de Bruxelles", count: 1, country: "Belgium", logo: "universite-libre-de-bruxelles.png" },
         { name: "MCI - The Entrepreneurial School", count: 1, country: "Austria", logo: "mci.png" },
-        { name: "Universidad Politécnica de Madrid", count: 1, country: "Spain", logo: "universidad-de-madrid.png" },
+        { name: "Universidad PolitÃ©cnica de Madrid", count: 1, country: "Spain", logo: "universidad-de-madrid.png" },
         { name: "University of Seoul", count: 1, country: "South Korea", logo: "University-of-Seoul.png" },
         { name: "University of Groningen", count: 1, country: "Netherlands", logo: "university-of-groningen.png" },
         { name: "KU Leuven", count: 1, country: "Belgium", logo: "ku-leuven.png" },
-        { name: "University of Liège", count: 1, country: "Belgium", logo: "university-of-liege.png" },
+        { name: "University of LiÃ¨ge", count: 1, country: "Belgium", logo: "university-of-liege.png" },
         { name: "Institute for Advanced Architecture of Catalonia", count: 1, country: "Spain", logo: "institute-architecture-catalonia.jpg" },
         { name: "EU-CONEXUS", count: 1, country: "France", logo: "eu-conexus.png" }
     ],
 
 
-    // ══════════════════════════════════════════
+    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
     // SECTION 5B: UNIVERSITY DETAILS DATABASE
-    // ══════════════════════════════════════════
+    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
     // Detailed info for "All Universities" section
     
     universityDetails: {
@@ -169,7 +181,7 @@ const CE_DATA = {
             city: "Wageningen",
             country: "Netherlands",
             founded: 1876,
-            funFact: "World's #1 university for agriculture and forestry. Their motto is 'To explore the potential of nature to improve the quality of life' — and they helped feed the Netherlands during WWII occupation.",
+            funFact: "World's #1 university for agriculture and forestry. Their motto is 'To explore the potential of nature to improve the quality of life' â€” and they helped feed the Netherlands during WWII occupation.",
             website: "https://www.wur.nl",
             logo: "wageningen-university.png"
         },
@@ -178,7 +190,7 @@ const CE_DATA = {
             city: "Eindhoven",
             country: "Netherlands",
             founded: 1956,
-            funFact: "Located in Europe's smartest region (Brainport), home to Philips and ASML. TU/e graduates founded companies generating over €60 billion in annual revenue — more per student than MIT!",
+            funFact: "Located in Europe's smartest region (Brainport), home to Philips and ASML. TU/e graduates founded companies generating over â‚¬60 billion in annual revenue â€” more per student than MIT!",
             website: "https://www.tue.nl",
             logo: "eindhoven-university.png"
         },
@@ -196,7 +208,7 @@ const CE_DATA = {
             city: "Lisbon",
             country: "Portugal",
             founded: 1978,
-            funFact: "Portugal's top business school with triple accreditation (AACSB, AMBA, EQUIS) — only 1% of business schools worldwide achieve this. Their beachfront campus overlooks the Atlantic Ocean!",
+            funFact: "Portugal's top business school with triple accreditation (AACSB, AMBA, EQUIS) â€” only 1% of business schools worldwide achieve this. Their beachfront campus overlooks the Atlantic Ocean!",
             website: "https://www.novasbe.unl.pt",
             logo: "nova-logo.png"
         },
@@ -232,7 +244,7 @@ const CE_DATA = {
             city: "Aachen",
             country: "Germany",
             founded: 1870,
-            funFact: "Europe's largest technical university in terms of students and Germany's #1 engineering school. RWTH receives more industry research funding than any other German university — over €400 million annually!",
+            funFact: "Europe's largest technical university in terms of students and Germany's #1 engineering school. RWTH receives more industry research funding than any other German university â€” over â‚¬400 million annually!",
             website: "https://www.rwth-aachen.de",
             logo: "aachen-university.png"
         },
@@ -245,8 +257,8 @@ const CE_DATA = {
             website: "https://www.sdu.dk",
             logo: "university-of-southern-denmark.png"
         },
-        "Instituto Superior Técnico Lisboa": {
-            fullName: "Instituto Superior Técnico",
+        "Instituto Superior TÃ©cnico Lisboa": {
+            fullName: "Instituto Superior TÃ©cnico",
             city: "Lisbon",
             country: "Portugal",
             founded: 1911,
@@ -254,8 +266,8 @@ const CE_DATA = {
             website: "https://tecnico.ulisboa.pt",
             logo: "instituto-superior-tecnico-lisboae.png"
         },
-        "Université Libre de Bruxelles": {
-            fullName: "Université Libre de Bruxelles",
+        "UniversitÃ© Libre de Bruxelles": {
+            fullName: "UniversitÃ© Libre de Bruxelles",
             city: "Brussels",
             country: "Belgium",
             founded: 1834,
@@ -268,12 +280,12 @@ const CE_DATA = {
             city: "Innsbruck",
             country: "Austria",
             founded: 1995,
-            funFact: "Austria's leading entrepreneurial university, ranked #1 in Austria for student satisfaction. Located in the heart of the Alps with stunning mountain views from classrooms — study and ski in the same day!",
+            funFact: "Austria's leading entrepreneurial university, ranked #1 in Austria for student satisfaction. Located in the heart of the Alps with stunning mountain views from classrooms â€” study and ski in the same day!",
             website: "https://www.mci.edu",
             logo: "mci.png"
         },
-        "Universidad Politécnica de Madrid": {
-            fullName: "Universidad Politécnica de Madrid",
+        "Universidad PolitÃ©cnica de Madrid": {
+            fullName: "Universidad PolitÃ©cnica de Madrid",
             city: "Madrid",
             country: "Spain",
             founded: 1971,
@@ -295,7 +307,7 @@ const CE_DATA = {
             city: "Groningen",
             country: "Netherlands",
             founded: 1614,
-            funFact: "The Netherlands' second-oldest university with 4 Nobel Prize winners, including the first female Nobel laureate in chemistry (2009). Half the city's population are students — true college town vibes!",
+            funFact: "The Netherlands' second-oldest university with 4 Nobel Prize winners, including the first female Nobel laureate in chemistry (2009). Half the city's population are students â€” true college town vibes!",
             website: "https://www.rug.nl",
             logo: "university-of-groningen.png"
         },
@@ -308,9 +320,9 @@ const CE_DATA = {
             website: "https://www.kuleuven.be",
             logo: "ku-leuven.png"
         },
-        "University of Liège": {
-            fullName: "University of Liège",
-            city: "Liège",
+        "University of LiÃ¨ge": {
+            fullName: "University of LiÃ¨ge",
+            city: "LiÃ¨ge",
             country: "Belgium",
             founded: 1817,
             funFact: "Belgium's first public university, known as 'the university of revolution' for its role in Belgian independence. Home to Europe's strongest electromagnet and pioneering research in astrophysics!",
@@ -331,16 +343,16 @@ const CE_DATA = {
             city: "La Rochelle",
             country: "France",
             founded: 2019,
-            funFact: "A unique alliance of 10 universities across Europe focused on smart, sustainable coastal cities. Students can study at multiple universities and earn joint degrees — truly European education!",
+            funFact: "A unique alliance of 10 universities across Europe focused on smart, sustainable coastal cities. Students can study at multiple universities and earn joint degrees â€” truly European education!",
             website: "https://www.euconexus.eu",
             logo: "eu-conexus.png"
         }
     },
 
 
-    // ══════════════════════════════════════════
+    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
     // SECTION 6: MASTER'S PROGRAMMES
-    // ══════════════════════════════════════════
+    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
     // What programmes alumni are studying
     
     mastersProgrammes: [
@@ -359,9 +371,9 @@ const CE_DATA = {
     ],
 
 
-    // ══════════════════════════════════════════
+    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
     // SECTION 7: COUNTRIES WHERE ALUMNI LIVE
-    // ══════════════════════════════════════════
+    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
     // Update counts and cities list
     
     countriesLivingIn: [
@@ -370,17 +382,17 @@ const CE_DATA = {
         { name: "Sweden", code: "se", count: 3, cities: ["Stockholm"], coords: [59.3293, 18.0686] },
         { name: "Germany", code: "de", count: 2, cities: ["Munich", "Aachen"], coords: [51.1657, 10.4515] },
         { name: "Denmark", code: "dk", count: 2, cities: ["Copenhagen", "Odense"], coords: [56.2639, 9.5018] },
-        { name: "Belgium", code: "be", count: 3, cities: ["Brussels", "Leuven", "Liège"], coords: [50.5039, 4.4699] },
+        { name: "Belgium", code: "be", count: 3, cities: ["Brussels", "Leuven", "LiÃ¨ge"], coords: [50.5039, 4.4699] },
         { name: "Spain", code: "es", count: 2, cities: ["Madrid", "Barcelona"], coords: [40.4637, -3.7492] },
         { name: "France", code: "fr", count: 1, cities: ["La Rochelle"], coords: [46.2276, 2.2137] },
         { name: "South Korea", code: "kr", count: 1, cities: ["Seoul"], coords: [37.5665, 126.9780] },
-        { name: "Moldova", code: "md", count: 1, cities: ["Chișinău"], coords: [47.4116, 28.3699] }
+        { name: "Moldova", code: "md", count: 1, cities: ["ChiÈ™inÄƒu"], coords: [47.4116, 28.3699] }
     ],
 
 
-    // ══════════════════════════════════════════
+    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
     // SECTION 8: TOP CITIES
-    // ══════════════════════════════════════════
+    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
     // Cities with most alumni (for dashboard display)
     
     topCities: [
@@ -393,9 +405,9 @@ const CE_DATA = {
     ],
 
 
-    // ══════════════════════════════════════════
+    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
     // SECTION 9: NATIONALITIES
-    // ══════════════════════════════════════════
+    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
     // Where alumni are originally from (citizenship)
     
     nationalities: [
@@ -421,9 +433,9 @@ const CE_DATA = {
     allNationalityFlags: ["be", "nl", "de", "it", "fr", "ro", "ec", "lb", "ie", "in", "hu", "es", "tt", "bg", "at"],
 
 
-    // ══════════════════════════════════════════
-    // SECTION 10: CONCENTRATION → UNIVERSITY PATHWAYS
-    // ══════════════════════════════════════════
+    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    // SECTION 10: CONCENTRATION â†’ UNIVERSITY PATHWAYS
+    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
     // Which Master's universities alumni go to based on their CE concentration
     // Only includes alumni currently pursuing a Master's
     
@@ -435,8 +447,8 @@ const CE_DATA = {
             universities: [
                 { name: "Wageningen University & Research", count: 3, percent: 27, programmes: ["Biotechnology", "Food Systems", "Environmental Management"] },
                 { name: "Maastricht University", count: 2, percent: 18, programmes: ["Biobased Materials"] },
-                { name: "Instituto Superior Técnico Lisboa", count: 1, percent: 9, programmes: ["Biotechnology"] },
-                { name: "Université Libre de Bruxelles", count: 1, percent: 9, programmes: ["Biochemistry & Molecular Biology"] },
+                { name: "Instituto Superior TÃ©cnico Lisboa", count: 1, percent: 9, programmes: ["Biotechnology"] },
+                { name: "UniversitÃ© Libre de Bruxelles", count: 1, percent: 9, programmes: ["Biochemistry & Molecular Biology"] },
                 { name: "MCI Innsbruck", count: 1, percent: 9, programmes: ["Biotechnology"] },
                 { name: "Leiden University", count: 1, percent: 9, programmes: ["Industrial Ecology"] },
                 { name: "IAAC Barcelona", count: 1, percent: 9, programmes: ["Ecological Buildings & Biocities"] },
@@ -453,7 +465,7 @@ const CE_DATA = {
                 { name: "Technical University of Denmark", count: 1, percent: 8, programmes: ["Environmental Engineering"] },
                 { name: "NOVA School of Business & Economics", count: 1, percent: 8, programmes: ["Management (Sustainability)"] },
                 { name: "University of Southern Denmark", count: 1, percent: 8, programmes: ["Environmental Engineering"] },
-                { name: "Universidad Politécnica de Madrid", count: 1, percent: 8, programmes: ["Chemical Engineering"] },
+                { name: "Universidad PolitÃ©cnica de Madrid", count: 1, percent: 8, programmes: ["Chemical Engineering"] },
                 { name: "University of Seoul", count: 1, percent: 8, programmes: ["Environmental Engineering"] },
                 { name: "KU Leuven", count: 1, percent: 8, programmes: ["Materials Engineering"] },
                 { name: "TU Delft", count: 1, percent: 8, programmes: ["Sustainable Energy Technology"] }
@@ -470,7 +482,7 @@ const CE_DATA = {
                 { name: "RWTH Aachen University", count: 1, percent: 12, programmes: ["Automation Engineering"] },
                 { name: "Leiden University", count: 1, percent: 12, programmes: ["Industrial Ecology"] },
                 { name: "University of Groningen", count: 1, percent: 12, programmes: ["Mechanical Engineering"] },
-                { name: "University of Liège", count: 1, percent: 12, programmes: ["Engineering Physics"] }
+                { name: "University of LiÃ¨ge", count: 1, percent: 12, programmes: ["Engineering Physics"] }
             ]
         }
     },
@@ -486,9 +498,9 @@ const CE_DATA = {
     },
 
 
-    // ══════════════════════════════════════════
+    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
     // SECTION 10: ORIGIN COUNTRIES
-    // ══════════════════════════════════════════
+    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
     // Where alumni lived BEFORE starting CE (for Euregio stats)
     
     originCountries: [
@@ -511,9 +523,9 @@ const CE_DATA = {
     ],
 
 
-    // ══════════════════════════════════════════
+    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
     // SECTION 11: REGIONAL / EUREGIO DATA
-    // ══════════════════════════════════════════
+    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
     // Talent flow and regional retention statistics
     
     regionalData: {
@@ -533,9 +545,9 @@ const CE_DATA = {
     },
 
 
-    // ══════════════════════════════════════════
+    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
     // SECTION 12: EMPLOYMENT DATA
-    // ══════════════════════════════════════════
+    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
     // Alumni working vs. studying
     
     employment: {
@@ -555,16 +567,16 @@ const CE_DATA = {
     ],
 
 
-// ╔═══════════════════════════════════════════════════════════════╗
-// ║                                                               ║
-// ║     📚 REFERENCE DATA (Rarely needs updating)                 ║
-// ║                                                               ║
-// ╚═══════════════════════════════════════════════════════════════╝
+// â•”â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•—
+// â•‘                                                               â•‘
+// â•‘     ðŸ“š REFERENCE DATA (Rarely needs updating)                 â•‘
+// â•‘                                                               â•‘
+// â•šâ•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 
 
-    // ══════════════════════════════════════════
+    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
     // PROGRAMME INFORMATION
-    // ══════════════════════════════════════════
+    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
     // General info about the CE programme
     
     programmeInfo: {
@@ -609,17 +621,17 @@ const CE_DATA = {
     },
 
 
-    // ══════════════════════════════════════════
+    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
     // REAL-LIFE CHALLENGES
-    // ══════════════════════════════════════════
+    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
     // Example projects for prospective students page
     
     realLifeChallenges: [
         {
             title: "Disposable Medical Sensors",
-            description: "Analyse pressure sensors used in Intensive Care units from a circularity perspective. Determine which parts can be reused, remade, or recycled — and design a technical solution to increase their circularity.",
+            description: "Analyse pressure sensors used in Intensive Care units from a circularity perspective. Determine which parts can be reused, remade, or recycled â€” and design a technical solution to increase their circularity.",
             icon: "heart-pulse",
-            tag: "Healthcare × Sustainability"
+            tag: "Healthcare Ã— Sustainability"
         },
         {
             title: "Plastic Food Packaging",
@@ -642,9 +654,9 @@ const CE_DATA = {
     ],
 
 
-    // ══════════════════════════════════════════
+    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
     // CAREER SECTORS
-    // ══════════════════════════════════════════
+    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
     // Potential career paths for CE graduates
     
     careerSectors: [
@@ -681,9 +693,9 @@ const CE_DATA = {
     ],
 
 
-    // ══════════════════════════════════════════
+    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
     // MASTER'S PATHWAYS BY CONCENTRATION
-    // ══════════════════════════════════════════
+    // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
     // Suggested Master's programmes for each track
     
     mastersPathways: {
@@ -736,7 +748,7 @@ function formatNumber(num) {
 
 /**
  * Calculate SVG stroke-dashoffset for donut charts
- * circumference = 2 * PI * radius (for r=40, circumference ≈ 251.2)
+ * circumference = 2 * PI * radius (for r=40, circumference â‰ˆ 251.2)
  */
 function getDonutOffset(percent, circumference = 251.2) {
     return circumference - (percent / 100) * circumference;
