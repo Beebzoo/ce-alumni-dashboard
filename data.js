@@ -526,22 +526,37 @@ const CE_DATA = {
     // =========================================
     // SECTION 11: REGIONAL / EUREGIO DATA
     // =========================================
-    // Talent flow and regional retention statistics
+    // Talent flow and regional impact statistics
+    // 
+    // DEFINITIONS:
+    // - Limburg: Dutch province of Limburg (Maastricht, Sittard, etc.)
+    // - Euregio Meuse-Rhine: Cross-border region including Dutch Limburg, 
+    //   Belgian areas (Liège, Hasselt), and German areas (Aachen)
+    // - These numbers count ALL alumni currently living in these regions,
+    //   regardless of where they originally came from
     
     regionalData: {
+        // Maastricht city specifically
         stayInMaastricht: 10,
         stayInMaastrichtPercent: 22,
         
+        // Province of Limburg (Netherlands)
+        limburgImpact: 11,
+        limburgImpactPercent: 24,
+        
+        // Euregio Meuse-Rhine region (cross-border)
         euregioOrigin: 19,
         euregioOriginPercent: 41,
-        euregioDestination: 16,
-        euregioDestinationPercent: 35,
+        euregioImpact: 13,              // Updated from 16 (corrected classification)
+        euregioImpactPercent: 28,       // Updated from 35 (corrected classification)
         
-        regionalRetention: 7,
-        regionalRetentionPercent: 15,
+        // Alumni who came FROM Euregio and STAYED in Euregio
+        euregioRetention: 7,
+        euregioRetentionPercent: 15,
         
-        stayInNetherlands: 19,
-        stayInNetherlandsPercent: 41
+        // Netherlands overall
+        stayInNetherlands: 23,          // Updated from 19 (recounted)
+        stayInNetherlandsPercent: 50    // Updated from 41 (recounted)
     },
 
 
