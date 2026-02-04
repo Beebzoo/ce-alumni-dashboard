@@ -1831,6 +1831,283 @@
 
 
         /* ============================================
+           STUDENT STORY PHOTO MARKERS (for map)
+        ============================================ */
+        .story-photo-marker {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            background: white;
+        }
+        
+        .story-photo-marker:hover {
+            transform: scale(1.15);
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+            border-color: var(--ce-green-primary);
+            z-index: 1000 !important;
+        }
+        
+        .story-photo-marker img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .story-photo-marker::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            border: 2px solid rgba(16, 185, 129, 0.3);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .story-photo-marker:hover::after {
+            opacity: 1;
+        }
+        
+        /* Leaflet custom icon for story markers */
+        .leaflet-marker-icon.story-marker {
+            border: none !important;
+            background: transparent !important;
+        }
+        
+        /* Story marker pulse animation */
+        @keyframes story-pulse {
+            0%, 100% {
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+            }
+            50% {
+                box-shadow: 0 0 0 10px rgba(16, 185, 129, 0);
+            }
+        }
+        
+        .story-photo-marker.pulse {
+            animation: story-pulse 2s infinite;
+        }
+
+
+        /* ============================================
+           STUDENT STORY MODAL
+        ============================================ */
+        .story-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 28, 61, 0.8);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            padding: 20px;
+        }
+        
+        .story-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .story-modal-content {
+            background: white;
+            border-radius: var(--radius-xl);
+            max-width: 700px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        .story-modal.active .story-modal-content {
+            transform: scale(1);
+        }
+        
+        .story-modal-header {
+            position: relative;
+            padding: 40px 30px 30px;
+            background: linear-gradient(135deg, var(--ce-green-primary), var(--ce-green-dark));
+            border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+            color: white;
+        }
+        
+        .story-modal-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 36px;
+            height: 36px;
+            border: none;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+        
+        .story-modal-close:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        
+        .story-modal-close i {
+            width: 20px;
+            height: 20px;
+            color: white;
+        }
+        
+        .story-profile-section {
+            display: flex;
+            gap: 20px;
+            align-items: start;
+        }
+        
+        .story-profile-photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 4px solid rgba(255,255,255,0.3);
+            overflow: hidden;
+            flex-shrink: 0;
+            background: white;
+        }
+        
+        .story-profile-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .story-profile-info h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: white;
+        }
+        
+        .story-concentration-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255,255,255,0.2);
+            padding: 6px 12px;
+            border-radius: var(--radius-full);
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        
+        .story-concentration-badge i {
+            width: 14px;
+            height: 14px;
+        }
+        
+        .story-current-status {
+            font-size: 16px;
+            font-weight: 600;
+            opacity: 0.95;
+            margin-bottom: 4px;
+        }
+        
+        .story-university {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        
+        .story-modal-body {
+            padding: 30px;
+        }
+        
+        .story-quote {
+            background: var(--ce-sand);
+            padding: 20px 24px;
+            border-left: 4px solid var(--ce-green-primary);
+            border-radius: var(--radius-md);
+            margin-bottom: 30px;
+            font-style: italic;
+            color: var(--gray-700);
+            font-size: 15px;
+            line-height: 1.7;
+        }
+        
+        .story-detail {
+            margin-bottom: 24px;
+        }
+        
+        .story-detail h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--ce-green-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .story-detail h4 i {
+            width: 16px;
+            height: 16px;
+        }
+        
+        .story-detail p {
+            font-size: 15px;
+            color: var(--gray-600);
+            line-height: 1.7;
+        }
+        
+        .story-location {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px;
+            background: var(--gray-50);
+            border-radius: var(--radius-md);
+            margin-top: 30px;
+        }
+        
+        .story-location-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--ce-green-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .story-location-icon i {
+            width: 20px;
+            height: 20px;
+            color: white;
+        }
+        
+        .story-location-text {
+            font-size: 14px;
+            color: var(--gray-600);
+        }
+        
+        .story-location-text strong {
+            color: var(--um-dark-blue);
+            display: block;
+            margin-bottom: 2px;
+        }
+
+
+        /* ============================================
            COUNTRY MODAL
         ============================================ */
         .country-modal-header {
@@ -3653,6 +3930,62 @@
         </div>
     </div>
     
+    <!-- Student Story Modal -->
+    <div class="story-modal" id="storyModal">
+        <div class="story-modal-content">
+            <div class="story-modal-header">
+                <button class="story-modal-close" onclick="closeStoryModal()">
+                    <i data-lucide="x"></i>
+                </button>
+                <div class="story-profile-section">
+                    <div class="story-profile-photo" id="storyPhoto">
+                        <img src="" alt="Alumni photo">
+                    </div>
+                    <div class="story-profile-info">
+                        <h2 id="storyName">Alumni Name</h2>
+                        <div class="story-concentration-badge" id="storyConcentration">
+                            <i data-lucide="circle"></i>
+                            <span>Concentration</span>
+                        </div>
+                        <div class="story-current-status" id="storyStatus">Current Status</div>
+                        <div class="story-university" id="storyUniversity">University</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="story-modal-body">
+                <div class="story-quote" id="storyQuote">
+                    <!-- Quote text -->
+                </div>
+                
+                <div class="story-detail">
+                    <h4><i data-lucide="heart"></i> Why Circular Engineering?</h4>
+                    <p id="storyWhyCE"><!-- Why CE text --></p>
+                </div>
+                
+                <div class="story-detail">
+                    <h4><i data-lucide="book-open"></i> Favorite Course at CE</h4>
+                    <p id="storyFavoriteCourse"><!-- Favorite course text --></p>
+                </div>
+                
+                <div class="story-detail" id="storyThesisSection">
+                    <h4><i data-lucide="file-text"></i> Master's Thesis</h4>
+                    <p id="storyThesis"><!-- Thesis title --></p>
+                </div>
+                
+                <div class="story-location">
+                    <div class="story-location-icon">
+                        <i data-lucide="map-pin"></i>
+                    </div>
+                    <div class="story-location-text">
+                        <strong id="storyCity">City</strong>
+                        <span id="storyCountry">Country</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <!-- Destinations Section -->
     <section class="destinations" id="destinations">
         <div class="section-header">
@@ -4810,7 +5143,113 @@
                     this.setStyle({ fillOpacity: 0.85, radius: radius });
                 });
             });
+            
+            // ==========================================
+            // STUDENT STORY PHOTO MARKERS
+            // ==========================================
+            // Add photo markers for featured student stories
+            if (CE_DATA.studentStories && CE_DATA.studentStories.length > 0) {
+                CE_DATA.studentStories.forEach(story => {
+                    // Create custom icon with photo
+                    const storyIcon = L.divIcon({
+                        className: 'story-marker',
+                        html: `<div class="story-photo-marker pulse" data-story-id="${story.id}">
+                                <img src="${story.photo}" alt="${story.name}" onerror="this.src='https://via.placeholder.com/100x100/10B981/ffffff?text=${story.name.charAt(0)}'">
+                            </div>`,
+                        iconSize: [50, 50],
+                        iconAnchor: [25, 25]
+                    });
+                    
+                    // Create marker at story location
+                    const storyMarker = L.marker(story.location.coords, {
+                        icon: storyIcon,
+                        zIndexOffset: 1000  // Ensure stories appear above circle markers
+                    }).addTo(alumniMap);
+                    
+                    // Click event to open story modal
+                    storyMarker.on('click', function() {
+                        openStoryModal(story);
+                    });
+                    
+                    // Hover tooltip
+                    storyMarker.bindTooltip(`
+                        <div style="text-align: center;">
+                            <strong>${story.name}</strong><br>
+                            <span style="font-size: 12px;">${story.location.city}, ${story.location.country}</span>
+                        </div>
+                    `, {
+                        direction: 'top',
+                        offset: [0, -25]
+                    });
+                });
+            }
         }
+        
+        // ==========================================
+        // STUDENT STORY MODAL FUNCTIONS
+        // ==========================================
+        function openStoryModal(story) {
+            const modal = document.getElementById('storyModal');
+            
+            // Populate modal with story data
+            document.getElementById('storyPhoto').querySelector('img').src = story.photo;
+            document.getElementById('storyPhoto').querySelector('img').alt = story.name;
+            document.getElementById('storyPhoto').querySelector('img').onerror = function() {
+                this.src = `https://via.placeholder.com/100x100/${story.concentrationColor.replace('#', '')}/ffffff?text=${story.name.charAt(0)}`;
+            };
+            
+            document.getElementById('storyName').textContent = story.name;
+            
+            const concentrationBadge = document.getElementById('storyConcentration');
+            concentrationBadge.style.background = `${story.concentrationColor}20`;
+            concentrationBadge.style.color = story.concentrationColor;
+            concentrationBadge.querySelector('span').textContent = story.concentration;
+            
+            document.getElementById('storyStatus').textContent = story.currentStatus;
+            document.getElementById('storyUniversity').textContent = story.university;
+            document.getElementById('storyQuote').textContent = `"${story.quote}"`;
+            document.getElementById('storyWhyCE').textContent = story.whyCircularEngineering;
+            document.getElementById('storyFavoriteCourse').textContent = story.favoriteCoursesAtCE;
+            
+            // Handle thesis (optional field)
+            const thesisSection = document.getElementById('storyThesisSection');
+            if (story.thesisTitle) {
+                thesisSection.style.display = 'block';
+                document.getElementById('storyThesis').textContent = story.thesisTitle;
+            } else {
+                thesisSection.style.display = 'none';
+            }
+            
+            document.getElementById('storyCity').textContent = story.location.city;
+            document.getElementById('storyCountry').textContent = story.location.country;
+            
+            // Show modal
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            // Reinitialize icons in modal
+            lucide.createIcons();
+        }
+        
+        function closeStoryModal() {
+            const modal = document.getElementById('storyModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        // Close modal on overlay click
+        document.getElementById('storyModal')?.addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeStoryModal();
+            }
+        });
+        
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeStoryModal();
+            }
+        });
         
         // ==========================================
         // FLAG GRID - NATIONALITIES (clickable)
