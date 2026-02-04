@@ -1406,6 +1406,23 @@
             line-height: 1.5;
         }
         
+        .info-tooltip {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            font-size: 12px;
+            font-weight: 600;
+            color: rgba(255,255,255,0.4);
+            cursor: help;
+            margin-left: 4px;
+            vertical-align: middle;
+            transition: color var(--transition-fast);
+        }
+        
+        .info-tooltip:hover {
+            color: var(--ce-green-light);
+        }
+        
         /* ============================================
            CTA SECTION
         ============================================ */
@@ -3821,25 +3838,37 @@
     <section class="talent-flow">
         <div class="section-header">
             <h2>Regional Impact</h2>
-            <p>Tracking where CE alumni come from and where they go - measuring our contribution to the regional knowledge economy.</p>
+            <p>CE alumni contribute to the regional knowledge economy - attracting talent to the Euregio Meuse-Rhine and keeping it here.</p>
         </div>
         
         <div class="flow-stats">
             <div class="flow-stat">
-                <div class="flow-stat-value">22%</div>
-                <div class="flow-stat-label">Stay in Maastricht</div>
+                <div class="flow-stat-value">24%</div>
+                <div class="flow-stat-label">
+                    Living in Limburg
+                    <span class="info-tooltip" title="11 alumni currently living in the Dutch province of Limburg (Maastricht, Sittard, etc.)">ⓘ</span>
+                </div>
+            </div>
+            <div class="flow-stat">
+                <div class="flow-stat-value">28%</div>
+                <div class="flow-stat-label">
+                    Euregio Impact
+                    <span class="info-tooltip" title="13 alumni currently living in the Euregio Meuse-Rhine region (Dutch Limburg, Aachen area, Liège area) - regardless of where they came from">ⓘ</span>
+                </div>
             </div>
             <div class="flow-stat">
                 <div class="flow-stat-value">41%</div>
-                <div class="flow-stat-label">Euregio Origin</div>
+                <div class="flow-stat-label">
+                    From Euregio
+                    <span class="info-tooltip" title="19 alumni originally came from the Euregio region">ⓘ</span>
+                </div>
             </div>
             <div class="flow-stat">
-                <div class="flow-stat-value">35%</div>
-                <div class="flow-stat-label">Euregio Destination</div>
-            </div>
-            <div class="flow-stat">
-                <div class="flow-stat-value">15%</div>
-                <div class="flow-stat-label">Regional Retention</div>
+                <div class="flow-stat-value">50%</div>
+                <div class="flow-stat-label">
+                    Stay in Netherlands
+                    <span class="info-tooltip" title="23 alumni currently living anywhere in the Netherlands">ⓘ</span>
+                </div>
             </div>
         </div>
     </section>
@@ -4301,15 +4330,16 @@
         // Talent flow stats
         const flowStats = document.querySelectorAll('.flow-stat');
         const flowData = [
-            { value: CE_DATA.regionalData.stayInMaastrichtPercent + '%', label: 'Stay in Maastricht' },
-            { value: CE_DATA.regionalData.euregioOriginPercent + '%', label: 'Euregio Origin' },
-            { value: CE_DATA.regionalData.euregioDestinationPercent + '%', label: 'Euregio Destination' },
-            { value: CE_DATA.regionalData.regionalRetentionPercent + '%', label: 'Regional Retention' }
+            { value: CE_DATA.regionalData.limburgImpactPercent + '%', label: 'Living in Limburg', tooltip: '11 alumni currently living in the Dutch province of Limburg (Maastricht, Sittard, etc.)' },
+            { value: CE_DATA.regionalData.euregioImpactPercent + '%', label: 'Euregio Impact', tooltip: '13 alumni currently living in the Euregio Meuse-Rhine region (Dutch Limburg, Aachen area, Liège area)' },
+            { value: CE_DATA.regionalData.euregioOriginPercent + '%', label: 'From Euregio', tooltip: '19 alumni originally came from the Euregio region' },
+            { value: CE_DATA.regionalData.stayInNetherlandsPercent + '%', label: 'Stay in Netherlands', tooltip: '23 alumni currently living anywhere in the Netherlands' }
         ];
         flowStats.forEach((stat, index) => {
             if (flowData[index]) {
                 stat.querySelector('.flow-stat-value').textContent = flowData[index].value;
-                stat.querySelector('.flow-stat-label').textContent = flowData[index].label;
+                const labelEl = stat.querySelector('.flow-stat-label');
+                labelEl.innerHTML = flowData[index].label + ' <span class="info-tooltip" title="' + flowData[index].tooltip + '">ⓘ</span>';
             }
         });
         
