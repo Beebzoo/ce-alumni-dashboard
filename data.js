@@ -749,85 +749,85 @@ const CE_DATA = {
     studentStories: [
         {
             id: "story-1",
-            name: "Sofia M.",  // Use first name + last initial for privacy
+            name: "[Alumni Name]",
             photo: "assets/stories/placeholder-biotech.jpg",  // PLACEHOLDER - add real photo
             concentration: "Sustainable Biotechnology",
             concentrationColor: "#10B981",
             location: {
-                city: "Wageningen",
-                country: "Netherlands",
-                coords: [51.9692, 5.6654]  // Wageningen coordinates
+                city: "[City]",
+                country: "[Country]",
+                coords: [51.9692, 5.6654]  // Update with actual coordinates
             },
-            currentStatus: "MSc Biotechnology",
-            university: "Wageningen University & Research",
+            currentStatus: "[Current Master's Programme]",
+            university: "[University Name]",
             
             // Story details
-            favoriteCoursesAtCE: "Gene Technology - I loved learning how we can engineer organisms to solve real-world problems sustainably.",
-            whyCircularEngineering: "I wanted to combine my passion for biology with engineering thinking. CE showed me how biotechnology can close material loops and create truly circular systems.",
-            thesisTitle: "Developing Microbial Production Systems for Bio-based Materials",  // Optional
+            favoriteCoursesAtCE: "[Alumnus would explain their favorite course and why they enjoyed it]",
+            whyCircularEngineering: "[Alumnus would share why they chose Circular Engineering and what drew them to the programme]",
+            thesisTitle: "[Master's thesis title would go here]",
             
             // Short quote for preview
-            quote: "CE taught me to think in systems - not just about the technology, but about how it fits into a circular economy."
+            quote: "[A quote from this alumnus about their CE experience would appear here]"
         },
         {
             id: "story-2",
-            name: "Marcus K.",
+            name: "[Alumni Name]",
             photo: "assets/stories/placeholder-chemical.jpg",  // PLACEHOLDER - add real photo
             concentration: "Circular Chemical Engineering",
             concentrationColor: "#14B8A6",
             location: {
-                city: "Stockholm",
-                country: "Sweden",
-                coords: [59.3293, 18.0686]  // Stockholm coordinates
+                city: "[City]",
+                country: "[Country]",
+                coords: [59.3293, 18.0686]  // Update with actual coordinates
             },
-            currentStatus: "MSc Chemical Engineering for Energy & Environment",
-            university: "KTH Royal Institute of Technology",
+            currentStatus: "[Current Master's Programme]",
+            university: "[University Name]",
             
-            favoriteCoursesAtCE: "Circular Process Design - It completely changed how I think about chemical engineering. We learned to design processes that don't create waste.",
-            whyCircularEngineering: "Traditional chemical engineering felt outdated. I wanted to be part of the solution, not the problem. CE gave me the tools to redesign industrial processes for a circular economy.",
-            thesisTitle: "Optimizing Energy Recovery in Bio-refineries",
+            favoriteCoursesAtCE: "[Alumnus would explain their favorite course and why they enjoyed it]",
+            whyCircularEngineering: "[Alumnus would share why they chose Circular Engineering and what drew them to the programme]",
+            thesisTitle: "[Master's thesis title would go here]",
             
-            quote: "The 5 Rs (Reduce, Reuse, Remake, Repair, Recycle) became my framework for solving engineering problems."
+            quote: "[A quote from this alumnus about their CE experience would appear here]"
         },
         {
             id: "story-3",
-            name: "Elena R.",
+            name: "[Alumni Name]",
             photo: "assets/stories/placeholder-physics.jpg",  // PLACEHOLDER - add real photo
             concentration: "Engineering Physics for Sustainable Manufacturing",
             concentrationColor: "#0EA5E9",
             location: {
-                city: "Delft",
-                country: "Netherlands",
-                coords: [52.0116, 4.3571]  // Delft coordinates
+                city: "[City]",
+                country: "[Country]",
+                coords: [52.0116, 4.3571]  // Update with actual coordinates
             },
-            currentStatus: "MSc Mechanical Engineering",
-            university: "TU Delft",
+            currentStatus: "[Current Master's Programme]",
+            university: "[University Name]",
             
-            favoriteCoursesAtCE: "Product & Process Design - We designed actual products using circular principles. It was hands-on, collaborative, and incredibly practical.",
-            whyCircularEngineering: "I've always been good at physics and math, but I wanted to apply them to something meaningful. CE showed me how engineering can help solve the climate crisis.",
-            thesisTitle: "Modular Design for Product Lifecycle Extension",
+            favoriteCoursesAtCE: "[Alumnus would explain their favorite course and why they enjoyed it]",
+            whyCircularEngineering: "[Alumnus would share why they chose Circular Engineering and what drew them to the programme]",
+            thesisTitle: "[Master's thesis title would go here]",
             
-            quote: "Problem-Based Learning at CE prepared me perfectly for working on complex, real-world engineering challenges."
+            quote: "[A quote from this alumnus about their CE experience would appear here]"
         },
         {
             id: "story-4",
-            name: "Thomas B.",
+            name: "[Alumni Name]",
             photo: "assets/stories/placeholder-biotech2.jpg",  // PLACEHOLDER - add real photo
             concentration: "Sustainable Biotechnology",
             concentrationColor: "#10B981",
             location: {
-                city: "Lisbon",
-                country: "Portugal",
-                coords: [38.7223, -9.1393]  // Lisbon coordinates
+                city: "[City]",
+                country: "[Country]",
+                coords: [38.7223, -9.1393]  // Update with actual coordinates
             },
-            currentStatus: "MSc Management (Sustainability Track)",
-            university: "NOVA School of Business & Economics",
+            currentStatus: "[Current Master's Programme]",
+            university: "[University Name]",
             
-            favoriteCoursesAtCE: "Biotechnology for Sustainable Processes - It opened my eyes to how biotech companies can be economically viable while being sustainable.",
-            whyCircularEngineering: "I wanted technical skills but also business thinking. CE gave me both, and I realized I wanted to bridge the gap between technology and business strategy.",
-            thesisTitle: null,  // Not started yet or not applicable
+            favoriteCoursesAtCE: "[Alumnus would explain their favorite course and why they enjoyed it]",
+            whyCircularEngineering: "[Alumnus would share why they chose Circular Engineering and what drew them to the programme]",
+            thesisTitle: null,  // Can be null if not applicable
             
-            quote: "CE's international environment and PBL approach taught me how to work across disciplines and cultures - essential for a career in sustainability consulting."
+            quote: "[A quote from this alumnus about their CE experience would appear here]"
         }
     ]
 };
