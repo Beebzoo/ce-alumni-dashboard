@@ -1831,66 +1831,153 @@
 
 
         /* ============================================
-           STUDENT STORY PHOTO MARKERS (for map)
+           ALUMNI STORIES SECTION
         ============================================ */
-        .story-photo-marker {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            border: 3px solid white;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            overflow: hidden;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
+        .stories-section {
             background: white;
+            padding: 80px 50px;
         }
         
-        .story-photo-marker:hover {
-            transform: scale(1.15);
-            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+        .stories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .story-card {
+            background: var(--gray-50);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            transition: all var(--transition-smooth);
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+        
+        .story-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
             border-color: var(--ce-green-primary);
-            z-index: 1000 !important;
         }
         
-        .story-photo-marker img {
+        .story-card-header {
+            padding: 30px 30px 20px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .story-card-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 16px;
+            overflow: hidden;
+            border: 4px solid white;
+            box-shadow: var(--shadow-md);
+            background: var(--ce-green-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .story-card-photo img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
         
-        .story-photo-marker::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 50%;
-            border: 2px solid rgba(16, 185, 129, 0.3);
+        .story-card-photo-placeholder {
+            font-family: var(--font-heading);
+            font-size: 48px;
+            font-weight: 700;
+            color: white;
+        }
+        
+        .story-card-name {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--um-dark-blue);
+            margin-bottom: 8px;
+        }
+        
+        .story-card-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            border-radius: var(--radius-full);
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        
+        .story-card-badge i {
+            width: 12px;
+            height: 12px;
+        }
+        
+        .story-card-status {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--um-dark-blue);
+            margin-bottom: 4px;
+        }
+        
+        .story-card-university {
+            font-size: 13px;
+            color: var(--gray-500);
+        }
+        
+        .story-card-body {
+            padding: 0 30px 30px;
+        }
+        
+        .story-card-quote {
+            font-style: italic;
+            color: var(--gray-600);
+            font-size: 14px;
+            line-height: 1.6;
+            border-left: 3px solid var(--ce-green-primary);
+            padding-left: 16px;
+            margin-bottom: 20px;
+        }
+        
+        .story-card-location {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: var(--gray-500);
+            justify-content: center;
+        }
+        
+        .story-card-location i {
+            width: 16px;
+            height: 16px;
+            color: var(--ce-green-primary);
+        }
+        
+        .story-card-cta {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            margin-top: 16px;
+            color: var(--ce-green-primary);
+            font-size: 13px;
+            font-weight: 600;
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: opacity var(--transition-fast);
         }
         
-        .story-photo-marker:hover::after {
+        .story-card-cta i {
+            width: 14px;
+            height: 14px;
+        }
+        
+        .story-card:hover .story-card-cta {
             opacity: 1;
-        }
-        
-        /* Leaflet custom icon for story markers */
-        .leaflet-marker-icon.story-marker {
-            border: none !important;
-            background: transparent !important;
-        }
-        
-        /* Story marker pulse animation */
-        @keyframes story-pulse {
-            0%, 100% {
-                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
-            }
-            50% {
-                box-shadow: 0 0 0 10px rgba(16, 185, 129, 0);
-            }
-        }
-        
-        .story-photo-marker.pulse {
-            animation: story-pulse 2s infinite;
         }
 
 
@@ -3820,6 +3907,18 @@
         </div>
     </section>
     
+    <!-- Alumni Stories Section -->
+    <section class="stories-section" id="stories">
+        <div class="section-header">
+            <h2>Meet Our Alumni</h2>
+            <p>Hear from CE graduates about their experiences and where the programme has taken them</p>
+        </div>
+        
+        <div class="stories-grid" id="storiesGrid">
+            <!-- Populated by JavaScript -->
+        </div>
+    </section>
+    
     <!-- Alumni World Map Section -->
     <section class="map-section" id="map">
         <div class="section-header">
@@ -5143,46 +5242,50 @@
                     this.setStyle({ fillOpacity: 0.85, radius: radius });
                 });
             });
-            
-            // ==========================================
-            // STUDENT STORY PHOTO MARKERS
-            // ==========================================
-            // Add photo markers for featured student stories
-            if (CE_DATA.studentStories && CE_DATA.studentStories.length > 0) {
-                CE_DATA.studentStories.forEach(story => {
-                    // Create custom icon with photo
-                    const storyIcon = L.divIcon({
-                        className: 'story-marker',
-                        html: `<div class="story-photo-marker pulse" data-story-id="${story.id}">
-                                <img src="${story.photo}" alt="${story.name}" onerror="this.src='https://via.placeholder.com/100x100/10B981/ffffff?text=${story.name.charAt(0)}'">
-                            </div>`,
-                        iconSize: [50, 50],
-                        iconAnchor: [25, 25]
-                    });
-                    
-                    // Create marker at story location
-                    const storyMarker = L.marker(story.location.coords, {
-                        icon: storyIcon,
-                        zIndexOffset: 1000  // Ensure stories appear above circle markers
-                    }).addTo(alumniMap);
-                    
-                    // Click event to open story modal
-                    storyMarker.on('click', function() {
-                        openStoryModal(story);
-                    });
-                    
-                    // Hover tooltip
-                    storyMarker.bindTooltip(`
-                        <div style="text-align: center;">
-                            <strong>${story.name}</strong><br>
-                            <span style="font-size: 12px;">${story.location.city}, ${story.location.country}</span>
+        }
+        
+        // ==========================================
+        // ALUMNI STORIES CARDS
+        // ==========================================
+        const storiesGrid = document.getElementById('storiesGrid');
+        if (storiesGrid && CE_DATA.studentStories && CE_DATA.studentStories.length > 0) {
+            storiesGrid.innerHTML = CE_DATA.studentStories.map(story => {
+                const initial = story.name.charAt(0);
+                const photoHtml = story.photo.includes('placeholder') 
+                    ? `<div class="story-card-photo-placeholder">${initial}</div>`
+                    : `<img src="${story.photo}" alt="${story.name}" onerror="this.parentElement.innerHTML='<div class=\\'story-card-photo-placeholder\\'>${initial}</div>'">`;
+                
+                return `
+                    <div class="story-card" onclick='openStoryModal(${JSON.stringify(story).replace(/'/g, "&apos;")})'>
+                        <div class="story-card-header">
+                            <div class="story-card-photo" style="border-color: ${story.concentrationColor};">
+                                ${photoHtml}
+                            </div>
+                            <h3 class="story-card-name">${story.name}</h3>
+                            <div class="story-card-badge" style="background: ${story.concentrationColor}20; color: ${story.concentrationColor};">
+                                <i data-lucide="circle"></i>
+                                ${story.concentration}
+                            </div>
+                            <div class="story-card-status">${story.currentStatus}</div>
+                            <div class="story-card-university">${story.university}</div>
                         </div>
-                    `, {
-                        direction: 'top',
-                        offset: [0, -25]
-                    });
-                });
-            }
+                        <div class="story-card-body">
+                            <div class="story-card-quote">"${story.quote}"</div>
+                            <div class="story-card-location">
+                                <i data-lucide="map-pin"></i>
+                                ${story.location.city}, ${story.location.country}
+                            </div>
+                            <div class="story-card-cta">
+                                Read full story
+                                <i data-lucide="arrow-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            
+            // Re-initialize icons
+            lucide.createIcons();
         }
         
         // ==========================================
